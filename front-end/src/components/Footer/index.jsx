@@ -1,6 +1,6 @@
 import React from 'react'
 import "./style.css";
-import { IoLogoInstagram } from "react-icons/io"
+import { IoLogoInstagram } from "react-icons/io";
 import { LiaFacebookSquare } from "react-icons/lia"
 
 const Footer = () => {
