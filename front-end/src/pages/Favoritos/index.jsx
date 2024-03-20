@@ -55,8 +55,8 @@ export const Favoritos = () => {
                 <option value="" disabled selected>
                   Sexo
                 </option>
-                <option value="Macho">Cachorro</option>
-                <option value="Fêmea">Gato</option>
+                <option value="Macho">Macho</option>
+                <option value="Fêmea">Fêmea</option>
               </select>
             </li>
           </ul>
