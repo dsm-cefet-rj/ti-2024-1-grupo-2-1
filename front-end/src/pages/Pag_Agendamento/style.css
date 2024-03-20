@@ -1,0 +1,34 @@
+.content{
+    padding-bottom: 100vH;
+}
+
+#menu{
+    align-items: center;
+    padding: 10px 0;
+}
+
+.introducao{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+    display: flex;
+    justify-content: left;
+    font-size: 30px;
+    margin-left: 20px;
+    margin-top: 50px;
+    
+}
+
+.line{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2px;
+    background-color: black;
+    margin: 0 1rem;
+}
+
+.Calendar{
+    margin: 100px;
+    display: flex;
+    justify-content: left;
+    
+}
