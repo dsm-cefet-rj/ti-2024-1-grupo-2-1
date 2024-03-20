@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import { Main } from "../pages/Principal";
+import { Favoritos } from "../pages/Favoritos";
 
 
 
@@ -9,7 +9,7 @@ export const AppRouter = () => {
         <Router>
             <Fragment>
                 <Routes>
-                    <Route  path="/main"  element={<Main/>}/>
+                    <Route path="/favoritos" element={<Favoritos/>}/>
                 </Routes>
             </Fragment>    
         </Router>
