@@ -12,6 +12,15 @@ export const Agendamento = () => {
         setDate(date);
     };
 
+    // Função para verificar se uma data é anterior à data atual
+    const isDateDisabled = (date) => {
+        const currentDate = new Date();
+        if (date>=currentDate) {
+            return setDate(date);
+        }
+        console.log(date);
+    };
+
     return (
         <div>
             <HeaderMain></HeaderMain>
@@ -20,7 +29,7 @@ export const Agendamento = () => {
 
             <div className="Calendar">
                 <Calendar
-                    onChange={onChange}
+                    onChange={isDateDisabled}
                     value={date}
                 />
             </div>
