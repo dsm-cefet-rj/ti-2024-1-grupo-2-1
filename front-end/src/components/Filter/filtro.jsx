@@ -23,7 +23,7 @@ const Filtro = ({filter, setFilter, porteFilter, setPorteFilter,
 
         <div className="filtro">
 
-                <span className="tittle">Alguns animais para adoção</span>\
+                <span className="tittle">Alguns animais para adoção</span>
                 <span className="line"></span>
                 <div className="search-filter">
                     <div className="above-filter">
