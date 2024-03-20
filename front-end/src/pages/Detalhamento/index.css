@@ -1,0 +1,12 @@
+.divBody{
+    display: flex;
+    justify-content: space-between;
+}
+
+.divEsquerda{
+    padding-top: 50px;
+}
+
+.divDireita{
+    padding-top: 50px;
+}
