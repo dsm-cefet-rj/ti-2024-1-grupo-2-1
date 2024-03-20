@@ -1,7 +1,6 @@
 import HeaderMain from "../../components/HeaderMain";
 import Footer from "../../components/Footer";
 import "./styles.css"
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const Favoritos = () => {
   return (
