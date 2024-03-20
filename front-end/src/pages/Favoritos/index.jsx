@@ -1,12 +1,14 @@
 import HeaderMain from "../../components/HeaderMain";
 import Footer from "../../components/Footer";
+import "./styles.css"
 
 export const Favoritos = () => {
   return (
     <div>
       <HeaderMain></HeaderMain>
       <div>
-        <h1>Seus Favoritos</h1>
+        <span className="h1">Seus Favoritos</span>
+        <span className="line"></span>
       </div>
       <div>
         <form action="">
