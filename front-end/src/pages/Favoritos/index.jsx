@@ -1,6 +1,8 @@
 import HeaderMain from "../../components/HeaderMain";
 import Footer from "../../components/Footer";
-import "./styles.css"
+import "./styles.css";
+import { Card } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 export const Favoritos = () => {
   return (
