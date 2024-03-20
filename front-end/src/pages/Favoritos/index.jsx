@@ -8,6 +8,61 @@ export const Favoritos = () => {
       <div>
         <h1>Seus Favoritos</h1>
       </div>
+      <div>
+        <form action="">
+          <ul>
+            <li>
+              <select name="tipo-animal" id="tipo-animal">
+                <option value="" disabled selected>
+                  Tipo
+                </option>
+                <option value="cachorro">Cachorro</option>
+                <option value="gato">Gato</option>
+              </select>
+            </li>
+            <li>
+              <select name="porte-animal" id="porte-animal">
+                <option value="" disabled selected>
+                  Porte
+                </option>
+                <option value="grande">Grande</option>
+                <option value="medio">Médio</option>
+                <option value="pequeno">Pequeno</option>
+              </select>
+            </li>
+            <li>
+              <select name="idade-animal" id="idade-animal">
+                <option value="" disabled selected>
+                  Idade
+                </option>
+                <option value="filhote">Filhote</option>
+                <option value="adulto">Adulto</option>
+                <option value="idoso">Idoso</option>
+              </select>
+            </li>
+            <li>
+              <select name="bairro-animal" id="bairro-animal">
+                <option value="" disabled selected>
+                  Bairro
+                </option>
+                <option value="maracana">Maracanã</option>
+                <option value="tijuca">Tijuca</option>
+                <option value="vila-isabel">Vila Isabel</option>
+              </select>
+            </li>
+            <li>
+              <select name="sexo-animal" id="sexo-animal">
+                <option value="" disabled selected>
+                  Sexo
+                </option>
+                <option value="Macho">Cachorro</option>
+                <option value="Fêmea">Gato</option>
+              </select>
+            </li>
+          </ul>
+          <button type="submit">Buscar</button>
+        </form>
+      </div>
       <Footer></Footer>
     </div>
   );
