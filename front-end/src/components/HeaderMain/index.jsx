@@ -40,11 +40,7 @@ const HeaderMain = () => {
                     <Link style={{ textDecoration: 'none', color: 'rgb(1, 73, 131)' }}> Favoritados</Link>
                 </nav>)}
 
-<<<<<<< HEAD
-            <div className="b">
-=======
             <div className="botao-header">
->>>>>>> 51470369df2f690f24369264a041fbaa03fd9326
 
                 <button className="login-bt">Entrar</button>
                 <button className="signup-bt">Cadastrar</button>
