@@ -21,7 +21,7 @@ export const Detalhamento = () => {
                                 <Breadcrumb.Item href="#">{nomeAnimal}</Breadcrumb.Item>
                             </Breadcrumb>
                         </div>
-                        <img src={url} alt="Imagem do Animal"></img>
+                        <img src={url} alt="Imagem do Animal" className="imagemAnimal"></img>
                     </div>
                     <div className="divDireita">
                         <div className="nomeAnimal">

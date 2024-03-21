@@ -1,21 +1,27 @@
-.navegacao{
-    margin-bottom: 0;
-}
 
 .divBody{
     display: flex;
     justify-content: space-between;
+    padding: 0 5rem;
 }
 
 .divEsquerda{
-    margin-left: 100px;
+    margin-left: 0px;
     margin-bottom: 50vh;
     padding-top: 50px;
 
 }
 
+.navegacao{
+    margin-bottom: 0;
+}
+
+.imagemAnimal{
+
+}
+
 .divDireita{
-    margin-right: 100px;
+    margin-right: 0;
     margin-bottom: 50vh;
     padding-top: 40px;
 }
@@ -42,6 +48,7 @@
 .botaoAdotar{
     padding-top: 50px;
     padding-left: 209px;
+    width: 50%;
 }
 
 #botaoQueroAdotar{
@@ -52,4 +59,106 @@
     border-top-left-radius: 35px;
     border-top-right-radius: 35px;
     border-width: 1px;
+}
+
+@media(max-width: 1600px){
+    
+    .divBody{
+        padding: 0 2rem 0 5rem;
+    }
+
+    .divEsquerda{
+        
+    }
+
+    .navegacao{
+        
+    }
+    .imagemAnimal{
+        width: 90%;
+    }
+
+    .nomeAnimal{
+
+    }
+
+    .statusAnimal{
+        width: 90%;
+    }
+
+    .statusAnimal h2{
+        font-size: 25px;
+    }
+
+    .historiaAnimal{
+        width: 90%;
+    }
+
+    .botaoAdotar{
+        margin-left: -2rem;
+        transition: 0.9s;
+    }
+}
+
+@media(max-width: 1570px){
+    .botaoAdotar{
+        margin-left: -2.5rem;
+        transition: 0.9s;
+    }
+}
+
+@media(max-width: 1520px){
+    .botaoAdotar{
+        margin-left: -2.7rem;
+        transition: 0.9s;
+    }
+}
+
+@media(max-width: 1460px){
+    .botaoAdotar{
+        margin-left: -3.5rem;
+        transition: 0.9s;
+    }
+}
+
+@media(max-width: 1390px){
+    .botaoAdotar{
+        margin-left: -4.7rem;
+        transition: 0.9s;
+    }
+}
+
+@media(max-width: 1350px){
+    .botaoAdotar{
+        margin-left: -4.7rem;
+        transition: 0.9s;
+    }
+}
+
+@media(max-width: 1310px){
+    .botaoAdotar{
+        margin-left: -5.7rem;
+        transition: 0.9s;
+    }
+}
+
+@media(max-width: 1250px){
+    .botaoAdotar{
+        margin-left: -6.7rem;
+        transition: 0.9s;
+    }
+}
+
+@media(max-width: 1210px){
+    .botaoAdotar{
+        margin-left: -7rem;
+        transition: 0.9s;
+    }
+}
+
+@media(max-width: 1160px){
+    .botaoAdotar{
+        margin-left: -8rem;
+        transition: 0.9s;
+    }
 }
