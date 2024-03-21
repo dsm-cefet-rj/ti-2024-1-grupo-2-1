@@ -3,15 +3,14 @@ import Footer from "../../components/Footer";
 import "./styles.css";
 import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
-import Filtro from "../../components/Filter/filtro";
 
 export const Favoritos = () => {
   return (
     <div>
       <HeaderMain></HeaderMain>
-      <div className="title-favoritos">
-        <span className="h1">Seus Favoritos</span>
-        <span className="line"></span>
+      <div className="title-favoritos-container">
+        <span className="title-favoritos">Seus Favoritos</span>
+        <span className="sublinha-favoritos"></span>
       </div>
         <form className="form-filtro-favoritos" action="">
             <div>
