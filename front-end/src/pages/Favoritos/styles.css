@@ -1,10 +1,15 @@
-.line {
+.sublinha-favoritos {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 2px;
   background-color: black;
-  margin: 0 5rem;
+  width: 90vw;
+}
+
+.title-favoritos-container {
+  width: 90vw;
+  margin: 2rem 5rem;
 }
 
 .form-filtro-favoritos {
@@ -15,8 +20,16 @@
   margin: 1rem 5rem;
   padding: 1.2rem 3rem;
   height: 4rem;
+  border: 1px solid black;
+  border-radius: 10px;
 }
 
 .title-favoritos {
-  margin: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  color: rgb(1, 73, 131);
 }

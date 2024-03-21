@@ -56,7 +56,7 @@
     display: flex;
     width: 0%;
     height: 2px;
-    background-color:rgb(4, 45, 226) ;
+    background-color:rgb(1, 73, 131) ;
     position: absolute;
     bottom:0.1;
     left:0;
@@ -94,8 +94,8 @@
     border-radius:35px;
     color:#ffffff;
     font-weight: bold;
-    border:1px solid rgb(4, 45, 226) ;
-    box-shadow: 1px 1px 8px 0px rgb(38, 63, 173);
+    border:1px solid rgb(1, 73, 131);
+    box-shadow: 1px 1px 8px 0px rgb(1, 73, 131);
 
     line-height: 1.3;
 
@@ -107,10 +107,10 @@
     width: 7rem;
     height: 3rem;
 
-    background: -webkit-linear-gradient(to right, rgb(4, 45, 226), #1d20ff);
-    background: -o-linear-gradient(to right, rgb(4, 45, 226), #1d20ff);
-    background: -moz-linear-gradient(to right, rgb(4, 45, 226), #1d20ff);
-    background: linear-gradient(to right, rgb(4, 45, 226), #1d20ff);
+    background: -webkit-linear-gradient(to right, rgb(1, 73, 131), rgb(1, 73, 131));
+    background: -o-linear-gradient(to right, rgb(1, 73, 131), rgb(1, 73, 131));
+    background: -moz-linear-gradient(to right, rgb(1, 73, 131), rgb(1, 73, 131));
+    background: linear-gradient(to right, rgb(1, 73, 131), rgb(1, 73, 131));
    
     transition: 0.5s;
     outline: none;
@@ -119,7 +119,7 @@
 .login-bt:hover,.signup-bt:hover{
     cursor: pointer;
     background: white;
-    color: rgb(4, 45, 226);
+    color: rgb(1, 73, 131);
 }
 
 @media (max-width: 1700px){
