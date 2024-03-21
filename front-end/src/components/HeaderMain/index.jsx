@@ -29,7 +29,7 @@ const HeaderMain = () => {
                 </div>
                 <FaBars
                     className="barrinhas"
-                    style={{ color: 'rgb(4, 45, 226)' }}
+                    style={{ color: 'rgb(1, 73, 131)' }}
                     onClick={() => { setMenuOpen(!menuOpen) }} /></div>
             {menuOpen && (
                 <nav className="navbar">
