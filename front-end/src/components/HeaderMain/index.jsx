@@ -40,7 +40,7 @@ const HeaderMain = () => {
                     <Link style={{ textDecoration: 'none', color: 'rgb(4, 45, 226)' }}> Favoritados</Link>
                 </nav>)}
 
-            <div className="btn">
+            <div className="b">
 
                 <button className="login-bt">Entrar</button>
                 <button className="signup-bt">Cadastrar</button>
