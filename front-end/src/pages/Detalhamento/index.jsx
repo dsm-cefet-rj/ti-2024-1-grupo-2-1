@@ -6,13 +6,13 @@ import Breadcrumb from 'react-bootstrap/Breadcrumb';
 
 export const Detalhamento = () => {
 
-    const nomeAnimal = "Raposa"
+    const nomeAnimal = "Animal"
     const url = "https://via.placeholder.com/750x500";
 
     return (
         <div>
             <HeaderMain/>
-                <div className="divBody">
+                <div className="divMain">
                     <div className="divEsquerda">
                         <div className="navegacao">
                             <Breadcrumb>
