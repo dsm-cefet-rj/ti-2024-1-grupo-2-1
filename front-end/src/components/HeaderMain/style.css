@@ -80,7 +80,7 @@
     color: black;
 }
 
-.botao{
+.btn{
     margin-top: 2.5vh;
     padding: 0.5vh 1vw;
     width: 18rem;
@@ -122,26 +122,11 @@
     color: rgb(1, 73, 131);
 }
 
-@media (max-width: 1700px){
-   /* .btn{
-        width: 20vw;
-    }
-    .login-bt, .signup-bt{
-        width:45% ;
-    
-        font-size: 15px;
-    }
-*/
-}
+
 @media (max-width: 1300px){
-    /*.btn{
-        width: 20vw;
+    .logo{
+        transition: 0.9s;
     }
-    .login-bt, .signup-bt{
-        width:45% ;
-    
-        font-size: 15px;
-    }*/
 
 }
 
@@ -160,12 +145,17 @@
     .headermain .barrinhas{
         display: flex;
         cursor: pointer;
-        transition: opacity 0.3s;
+        
     
+    }
+    .barrinhas{
+        font-size: 40px;
+        transition: 0.6s;
     }
     .logo{
         margin-left: 43%;
         align-items: center;
+        transition: 0.9s;
         
     }
     .headermain .barrinhas:hover{
@@ -191,7 +181,7 @@
         margin-top: -5%;
     }
     .navbar span{
-    display: none;
+        display: none;
     }
     .btn{
         margin-top: -2vh;
@@ -206,10 +196,19 @@
 }
 
 @media (max-width: 730px){
+
+    .barrinhas{
+        font-size: 35px;
+        transition: 0.6s;
+    }
     .logo{
         margin-left: 40%;
         align-items: center;
         
+    }
+    .logo .Pref{
+        
+        transition: 0.9s;
     }
     .btn{
         margin-top: -1.5vh;
@@ -228,10 +227,50 @@
 
 }
 @media (max-width: 560px){
+    .barrinhas{
+        font-size: 30px;
+        transition: 0.6s;
+    }
     .logo{
-        margin-left: 35%;
+        margin-left: 40%;
         align-items: center;
         
+    }
+    .logo .Pref{
+        width: 7rem;
+        transition: 0.9s;
+    }
+    .login-bt{
+        margin-top: -25%;
+        margin-left: -5%;
+        width: 5rem;
+        font-size: 12px;
+    }
+
+}
+
+@media (max-width: 420px){
+    
+    
+    .logo{
+        margin-left: 40%;
+        align-items: center;
+        transition: 0.9s;
+        margin-top:0.2rem
+        
+    }
+    
+    .logo .Pref{
+        width: 5rem;
+        transition: 0.9s;
+    }
+
+    .login-bt{
+        margin-top: -18%;
+        margin-left: -5%;
+        width: 5rem;
+        height: 2.5rem;
+        font-size: 12px;
     }
 
 }

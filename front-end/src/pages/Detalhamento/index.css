@@ -1,3 +1,6 @@
+.navegacao{
+    margin-bottom: 0;
+}
 
 .divBody{
     display: flex;
@@ -26,18 +29,19 @@
     /*background-color: burlywood;*/
     border: 2px solid rgb(93, 85, 85);
     margin-top: 1rem;
+    padding: 1rem 2rem;
 }
 
 .historiaAnimal{
     /*background-color: aqua;*/
     border: 2px solid rgb(93, 85, 85);
     margin-top: 3rem;
-    height: 240px;
+    padding: 1rem 2rem;
 }
 
 .botaoAdotar{
     padding-top: 50px;
-    padding-left: 170px;
+    padding-left: 209px;
 }
 
 #botaoQueroAdotar{

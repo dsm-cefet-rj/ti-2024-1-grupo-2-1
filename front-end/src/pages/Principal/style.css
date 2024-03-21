@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 1rem ;
+    margin: 4rem 1rem ;
 }
 
 .ImgPrincipal img{
@@ -11,53 +11,15 @@
     border-radius: 20px;
 }
 
-.legenda{
-    display: flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction: column;
-    margin-left: -19rem;
-    margin-top: 18rem;
-    background-color: rgba(255, 255, 255, 0.7);
-    width: 20vw;
-    height: 40vh;
-    padding: 40px;
-    border-radius: 200px;
-}
-.legenda div{
-    width: 290px;
-    margin-top: 0rem;
-    margin-left: -2rem;
-
-}
-.legenda span{
-    font-family: 'Poppins', Arial, sans-serif;
-    color: rgb(104, 79, 10);
-    display: block;
-}
-
-.letra{
-    font-size: 20px;
-    margin-left: 0.5rem;
-}
-.letra2{
-    font-size: 20px;
-    margin-left: 4.5rem;
-}
-
-.letra-bold{
-    font-weight: 700;
-    font-size: 45px;
-    margin-left: 1rem;
-}
 
 @media (max-width: 1700px){
-    /*.ImgPrincipal img{
+
+    /* .ImgPrincipal img{
         width: 90% ;
-        width: 50vw ;
         height: 45vh ;
         margin:0 0rem;
-    }*/
+    }
+    
     .legenda{
         width: 20rem;
         height: 20rem;
@@ -68,7 +30,7 @@
     .legenda div{
         margin-top: 1.0rem;
         margin-left: -1.5rem;
-    }
+    }*/
 
 }
 @media (max-width: 1600px){
@@ -77,7 +39,7 @@
         width: 45vw ;
         height: 40vh ;
         margin:0 0rem;
-    }*/
+    }
     .all{
         width: 100vw;
     }
@@ -89,19 +51,19 @@
     .legenda div{
         margin-top: 1.0rem;
         margin-left: -2.0rem;
-    }
+    }*/
 
 }
 @media (max-width:1400px){
     .ImgPrincipal{
-        margin: 1rem 1rem;
+        margin: 3rem 1rem;
     }
     .ImgPrincipal img{
-        width: 70% ;
-        height: 40% ;
-        margin:0 1rem;
+        width: 51rem ;
+        height: 21rem ;
+        transition: 0.9s;
     }
-    .legenda{
+    /*.legenda{
         width: 16rem;
         height: 16rem;
         margin-left: -14.5rem;
@@ -125,17 +87,17 @@
         font-weight: 700;
         font-size: 35px;
         margin-left: 1rem;
-    }
+    }*/
 }
 @media (max-width:1200px){
-    .legenda div{
+    /*.legenda div{
         margin-top: .0rem;
         margin-left: 2rem;
-    }
+    }*/
 }
 
 @media (max-width:1100px){
-    .legenda div{
+    /*.legenda div{
         margin-top: -1.5rem;
         margin-left: 2rem;
     }
@@ -152,10 +114,10 @@
         font-weight: 700;
         font-size: 35px;
         margin-left: 1rem;
-    }
+    }*/
 }
 @media (max-width:1030px){
-    .legenda div{
+    /*.legenda div{
         margin-top: -4rem;
         margin-left: 4rem;
     }
@@ -172,10 +134,18 @@
         font-weight: 700;
         font-size: 30px;
         margin-left: 1rem;
-    }
+    }*/
 }
 @media (max-width:900px){
-    .legenda{
+    .ImgPrincipal{
+        margin: 2rem 1rem;
+    }
+    .ImgPrincipal img{
+        width: 33rem ;
+        height: 14rem ;
+        transition: 0.9s;
+    }
+    /*.legenda{
         margin-top: 14rem;
     }
     .legenda div{
@@ -195,9 +165,9 @@
         font-weight: 700;
         font-size: 30px;
         margin-left: 1rem;
-    }
+    }*/
 }@media (max-width:700px){
-    .legenda div{
+    /*.legenda div{
         margin-top: -5rem;
         margin-left: 4rem;
     }
@@ -214,22 +184,21 @@
         font-weight: 700;
         font-size: 30px;
         margin-left: 1rem;
-    }
+    }*/
 }
 
 @media (max-width: 600px){
 
     .ImgPrincipal{
-        width: 99%;
-       margin: 0.2rem
-    }
+       margin: 2rem 0.1rem;
+     }
     .ImgPrincipal img{
-        width: 90% ;
-        height: 220px;
-        border-radius: 10px;
-        margin:0 0rem;
+       
+        width: 20rem ;
+        height: 8rem ;
+        transition: 0.9s;
     }
-    .legenda{
+   /* .legenda{
         width: 140px;
         height: 140px;
         margin-left: -8.5rem;
@@ -255,6 +224,6 @@
         font-weight: 700;
         font-size: 20px;
         margin-left: 1rem;
-    }
+    }*/
 }
 
