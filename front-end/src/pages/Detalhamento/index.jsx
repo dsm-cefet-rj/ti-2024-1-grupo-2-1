@@ -3,16 +3,19 @@ import Footer from "../../components/Footer";
 import "./index.css";
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 
-
 export const Detalhamento = () => {
 
-    const nomeAnimal = "Animal"
-    const url = "https://via.placeholder.com/750x500";
+    const nomeAnimal = "Nome do Animal";
+    const localizacao = "Recreio dos Bandeirantes"
+    const acessos = 205;
+    const publicador = "Flavio Alecio";
+    const url = "https://via.placeholder.com/650x400";
 
     return (
         <div>
-            <HeaderMain/>
-                <div className="divMain">
+            <HeaderMain />
+            <div className="divMain">
+                <div className="divTopo">
                     <div className="divEsquerda">
                         <div className="navegacao">
                             <Breadcrumb>
@@ -21,16 +24,16 @@ export const Detalhamento = () => {
                                 <Breadcrumb.Item href="#">{nomeAnimal}</Breadcrumb.Item>
                             </Breadcrumb>
                         </div>
-                        <img src={url} alt="Imagem do Animal" className="imagemAnimal"></img>
+                        <img src={url} alt="Imagem do Animal" id="imagemAnimal"></img>
                     </div>
                     <div className="divDireita">
                         <div className="nomeAnimal">
-                            <h1>Nome do Animal</h1>
+                            <h1 id="nome">{nomeAnimal}</h1>
                         </div>
                         <div className="statusAnimal">
-                            <h2>Localização do Animal:</h2>
-                            <h2>Publicador:</h2>
-                            <h2>Acessos à página:</h2>
+                            <h2 id="localizacao">Localização do Animal: {  localizacao}</h2>
+                            <h2 id="publicador">Publicador:   {publicador}</h2>
+                            <h2 id="acessos">Acessos à página: {acessos}</h2>
                         </div>
                         <div className="historiaAnimal">
                             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum, eaque!</p>
@@ -39,11 +42,15 @@ export const Detalhamento = () => {
                             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum, eaque!</p>
                         </div>
                         <div className="botaoAdotar">
-                            <input type="button" value="QUERO ADOTAR" id="botaoQueroAdotar"/>
+                            <input type="button" value="QUERO ADOTAR" id="botaoQueroAdotar" />
                         </div>
                     </div>
                 </div>
-            <Footer/>
+                <div className="divFundo">
+                    <h1>Fundo</h1>
+                </div>
+            </div>
+            <Footer />
         </div>
     );
 
