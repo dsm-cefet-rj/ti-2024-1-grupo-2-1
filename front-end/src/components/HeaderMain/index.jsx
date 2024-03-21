@@ -15,6 +15,9 @@ const HeaderMain = () => {
             if (window.innerWidth <= 980) {
                 setMenuOpen(false)
             }
+            if (window.innerWidth >= 980) {
+                setMenuOpen(true)
+            }
         })
     })
     return (
@@ -22,10 +25,9 @@ const HeaderMain = () => {
         <div className="headermain">
             <div className="header-container">
                 <div className="logo">
-                    <img src={Pref} alt="" />
-
+                    <img className="Pref" src={Pref} alt="" />
                 </div>
-                <FaBars size={40}
+                <FaBars
                     className="barrinhas"
                     style={{ color: 'rgb(4, 45, 226)' }}
                     onClick={() => { setMenuOpen(!menuOpen) }} /></div>
@@ -38,7 +40,7 @@ const HeaderMain = () => {
                     <Link style={{ textDecoration: 'none', color: 'rgb(4, 45, 226)' }}> Favoritados</Link>
                 </nav>)}
 
-            <div className="botao">
+            <div className="btn">
 
                 <button className="login-bt">Entrar</button>
                 <button className="signup-bt">Cadastrar</button>

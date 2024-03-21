@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import HeaderMain from "../../components/HeaderMain";
-import FtMain from "../../assets/ft_gato.jpg"
+import FtMain from "../../assets/image.png"
 import './style.css'
 import Filtro from "../../components/Filter/filtro";
 import PetCards from "../../components/PetCards";
@@ -14,7 +14,7 @@ export const Main = () => {
             img: "https://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQOO0X7mMnoYz-e9Zdc6Pe6Wz7Ow1DcvhEiaex5aSv6QJDoCtcooqA7UUbjrphvjlIc",
             nome: "Flavio",
             tipo: "Cachorro",
-            porte: "Gostoso",
+            porte: "Grande",
             sexo: "Macho",
             idade: "5 anos",
         },
@@ -59,13 +59,6 @@ export const Main = () => {
 
             <div className="ImgPrincipal">
                 <img src={FtMain} alt="" />
-                <div className="legenda">
-                    <div>
-                        <span className="letra">Mais de</span>
-                        <span className="letra-bold">300 animais</span>
-                        <span className="letra2"> esperando adoção</span>
-                    </div>
-                </div>
 
             </div>
 
