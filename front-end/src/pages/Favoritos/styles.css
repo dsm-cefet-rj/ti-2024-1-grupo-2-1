@@ -6,3 +6,17 @@
   background-color: black;
   margin: 0 5rem;
 }
+
+.form-filtro-favoritos {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(10, 10, 10, 0.05);
+  width: 90vw;
+  margin: 1rem 5rem;
+  padding: 1.2rem 3rem;
+  height: 4rem;
+}
+
+.title-favoritos {
+  margin: 1rem;
+}
