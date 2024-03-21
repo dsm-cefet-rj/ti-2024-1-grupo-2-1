@@ -1,9 +1,12 @@
 import HeaderMain from "../../components/HeaderMain";
 import Footer from "../../components/Footer";
 import "./index.css";
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
+
 
 export const Detalhamento = () => {
 
+    const nomeAnimal = "Raposa"
     const url = "https://via.placeholder.com/750x500";
 
     return (
@@ -11,6 +14,13 @@ export const Detalhamento = () => {
             <HeaderMain/>
                 <div className="divBody">
                     <div className="divEsquerda">
+                        <div className="navegacao">
+                            <Breadcrumb>
+                                <Breadcrumb.Item href="/">Pricipal</Breadcrumb.Item>
+                                <Breadcrumb.Item href="#">Detalhamento do Animal</Breadcrumb.Item>
+                                <Breadcrumb.Item href="#">{nomeAnimal}</Breadcrumb.Item>
+                            </Breadcrumb>
+                        </div>
                         <img src={url} alt="Imagem do Animal"></img>
                     </div>
                     <div className="divDireita">
