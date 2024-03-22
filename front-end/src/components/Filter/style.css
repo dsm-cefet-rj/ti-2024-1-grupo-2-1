@@ -81,7 +81,7 @@
 .under-filter div select{
     display: block;
     width: 90%;
-    padding: 5px 10px;
+    padding: 10px 15px;
     margin: 0;
     font-size: 16px;
     color: #2d2d2d;
@@ -117,7 +117,7 @@ select{
     box-shadow: 1px 1px 8px 0px #007BFF;
 }
 
-.btn-search{
+.under-filter .btn-search{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -159,7 +159,7 @@ select{
     color: rgb(1, 73, 131);
 }
 
-@media (max-width: 900px){
+@media (max-width: 820px){
     /*.filtro{  
         margin-top: -1rem;
         margin: -1rem 1rem;  
@@ -188,6 +188,10 @@ select{
         font-size: 23px;
         
     }  */
+    .above-filter .filtro-select,
+.under-filter .filtro-select{
+    font-size: 18px;
+}
     .search-filter{
 
         padding: 0.5rem 0.5rem;
@@ -204,6 +208,16 @@ select{
     }
 
 
+}
+
+@media (max-width: 720px){
+    .above-filter .filtro-select,
+    .under-filter .filtro-select{
+        font-size: 15px;
+    }
+    .tittle{
+        font-size: 30px;
+    }
 }
 
 @media (max-width: 560px){

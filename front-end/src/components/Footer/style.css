@@ -12,7 +12,7 @@
 .above{
 
     width: 100%;
-    padding: 2% 7%;
+    padding: 2% 0%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -31,7 +31,7 @@
 
 .footerpt2{
     display: flex;
-    padding-top: 2rem;
+    padding-top: 3.2rem;
     justify-content: space-between;
 }
 .footerpt1 ul,
@@ -69,23 +69,25 @@
 }
 @media (max-width: 1440px){
     .above{
-        
-        margin-left: -4.5rem;
+        margin-left: 5.5rem;
     }
     .footerpt1 ul,
     .footerpt2 ul{
-    margin: 0 1rem 0 0;
-    width: 13rem;
+    margin: 0 0rem 0 0;
+    width: 15rem;
 }
 }@media (max-width: 1200px){
+    .above{
+        margin-left: -3.5rem;
+    }
     .footerpt1 ul,
     .footerpt2 ul{
     margin: 0 1.5rem 0 0;
-    width: 12rem;
+    width: 14rem;
 }
 }
 
-@media (max-width: 1060px){
+@media (max-width: 1080px){
     .footer{
         width: 100%;
         padding: 2% 0%;
@@ -97,6 +99,7 @@
         flex-direction: column;
         align-items: flex-start;
         margin-left: -2.5rem;
+        padding: 0 10rem;
     }
     .above div h2{
         color:white;
@@ -125,7 +128,13 @@
 }
 
 }
-@media (max-width: 680px){
+@media (max-width: 815px){
+    .above{
+        padding: 0 4rem;
+    }
+
+}
+@media (max-width: 712px){
     .footerpt1 ul,
 .footerpt2 ul{
     margin: 0 2.5rem 0 0;
@@ -143,7 +152,10 @@
 
 }
 }
-@media (max-width: 560px){
+@media (max-width: 590px){
+    .above{
+        padding: 0 2rem;
+    }
     .footerpt1 ul,
 .footerpt2 ul{
     margin: 0 1.5rem 0 0;
@@ -186,19 +198,22 @@
 
 }
 }
-@media (max-width: 340px){
+@media (max-width: 365px){
+    .above{
+        padding: 0 0.5rem;
+    }
     .above div h2{
         font-size: 13px;
     }
     .footerpt1 ,
 .footerpt2 {
-    margin: 0 0.5rem 0 0;
-    width: 15rem;
+    margin: 1rem 0.5rem 0 0;
+    width: 13rem;
 }
     .footerpt1 ul,
 .footerpt2 ul{
     margin: 0 0.5rem 0 0;
-    width: 4rem;
+    width: 7rem;
 }
 .footerpt1 ul li,
 .footerpt2 ul li{
