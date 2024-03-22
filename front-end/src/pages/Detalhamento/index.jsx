@@ -2,14 +2,16 @@ import HeaderMain from "../../components/HeaderMain";
 import Footer from "../../components/Footer";
 import "./index.css";
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
+import Card from 'react-bootstrap/Card';
 
 export const Detalhamento = () => {
 
     const nomeAnimal = "Nome do Animal";
-    const localizacao = "Recreio dos Bandeirantes"
+    const localizacao = "Recreio dos Bandeirantes";
     const acessos = 205;
     const publicador = "Flavio Alecio";
     const url = "https://via.placeholder.com/650x400";
+    const cardImg = "https://via.placeholder.com/480x480";
 
     return (
         <div>
@@ -31,7 +33,7 @@ export const Detalhamento = () => {
                             <h1 id="nome">{nomeAnimal}</h1>
                         </div>
                         <div className="statusAnimal">
-                            <h2 id="localizacao">Localização do Animal: {  localizacao}</h2>
+                            <h2 id="localizacao">Localização do Animal: {localizacao}</h2>
                             <h2 id="publicador">Publicador:   {publicador}</h2>
                             <h2 id="acessos">Acessos à página: {acessos}</h2>
                         </div>
@@ -55,6 +57,44 @@ export const Detalhamento = () => {
                     <div className="outrosAnimais">
                         <h3>Outros animais parecidos...</h3>
                         <span id="linha"></span>
+                    </div>
+                    <div className="cardsAnimais">
+                        <Card border="dark" style={{ width: "15rem" }}>
+                            <Card.Img variant="top" src={cardImg} />
+                            <Card.Body>
+                                <Card.Title>{nomeAnimal}</Card.Title>
+                                <Card.Text>
+                                    {localizacao}
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                        <Card border="dark" style={{ width: "15rem" }}>
+                            <Card.Img variant="top" src={cardImg} />
+                            <Card.Body>
+                                <Card.Title>{nomeAnimal}</Card.Title>
+                                <Card.Text>
+                                    {localizacao}
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                        <Card border="dark" style={{ width: "15rem" }}>
+                            <Card.Img variant="top" src={cardImg} />
+                            <Card.Body>
+                                <Card.Title>{nomeAnimal}</Card.Title>
+                                <Card.Text>
+                                    {localizacao}
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                        <Card border="dark" style={{ width: "15rem" }}>
+                            <Card.Img variant="top" src={cardImg} />
+                            <Card.Body>
+                                <Card.Title>{nomeAnimal}</Card.Title>
+                                <Card.Text>
+                                    {localizacao}
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
                     </div>
                 </div>
             </div>
