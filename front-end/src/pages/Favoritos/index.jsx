@@ -1,11 +1,18 @@
 import HeaderMain from "../../components/HeaderMain";
 import Footer from "../../components/Footer";
 import "./styles.css";
+import { Breadcrumb } from "react-bootstrap";
 
 export const Favoritos = () => {
   return (
     <div>
       <HeaderMain></HeaderMain>
+      <div className="breadcrumb-favoritos">
+        <Breadcrumb>
+          <Breadcrumb.Item href="#">Principal</Breadcrumb.Item>
+          <Breadcrumb.Item active>Favoritos</Breadcrumb.Item>
+        </Breadcrumb>
+      </div>
       <div className="title-favoritos-container">
         <span className="title-favoritos">Seus Favoritos</span>
         <span className="sublinha-favoritos"></span>
@@ -59,7 +66,9 @@ export const Favoritos = () => {
             <option value="Fêmea">Fêmea</option>
           </select>
         </div>
-        <button className="botao-search" type="submit">Filtrar</button>
+        <button className="botao-search" type="submit">
+          Filtrar
+        </button>
       </form>
       <Footer></Footer>
     </div>
