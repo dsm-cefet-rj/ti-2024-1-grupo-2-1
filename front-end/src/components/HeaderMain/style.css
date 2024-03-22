@@ -42,7 +42,7 @@
     display: flex;
     font-family: 'Poppins', Arial, sans-serif;
     font-weight: bold;
-    margin-left: 3vw;
+    margin-left: 8vw;
     margin-top: 3vh;
     
 }
@@ -83,10 +83,10 @@
 .botao-header{
     margin-top: 2.5vh;
     padding: 0.5vh 1vw;
-    width: 18rem;
+    width: 17rem;
     justify-content: space-between;
     display: flex;
-    gap: 2;
+    gap:0.5rem;
 }
 .login-bt,.signup-bt{
     font-size: 15px;

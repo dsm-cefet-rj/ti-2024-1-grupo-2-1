@@ -76,7 +76,7 @@ const Filtro = ({ filter, setFilter, porteFilter, setPorteFilter,
                             <option value="14 anos">14 anos</option>
                         </select>
                     </div>
-                    <div className="btn-search">
+                    <div className="btnn-search">
 
                         <button className="bt-search">Buscar</button>
 

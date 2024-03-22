@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";  
-import { IoMdHeart } from "react-icons/io";
-import { IoIosHeartEmpty } from "react-icons/io";
+/*import { IoMdHeart } from "react-icons/io";
+import { IoIosHeartEmpty } from "react-icons/io";*/
 import './style.css'
+//import Card from 'react-bootstrap/Card';
 
 
 const PetCards = ({animais, showLink=true})=>{

@@ -50,7 +50,7 @@
     font-size: 24px;
     font-family: 'Poppins', Arial, sans-serif;
     font-weight: 600;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     background-color: transparent;
     border-radius: 4px;
     overflow: hidden;
@@ -101,8 +101,8 @@ select{
     -webkit-appearance: none;
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MHB4IiBoZWlnaHQ9IjUwcHgiPgogICAgPHBvbHlsaW5lIHBvaW50cz0iNDYuMTM5LDE1LjUxOCAyNS4xNjYsMzYuNDkgNC4xOTMsMTUuNTE5IiAvPgo8L3N2Zz4K);
     background-repeat: no-repeat;
-    background-position: 98.5%;
-    background-size: 9px;
+    background-position: 95.5%;
+    background-size: 15px;
     -moz-background-position: -9999px -9999px;
     cursor: pointer;
     padding: 8px;
@@ -117,11 +117,14 @@ select{
     box-shadow: 1px 1px 8px 0px #007BFF;
 }
 
-.under-filter .btn-search{
+.under-filter .btnn-search{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 4px solid #0000;
+    border: 2px solid #cccccc56;
+    border-radius: 4px;
+    padding: 0.5rem 3rem;
+    margin: 1rem 0rem;
 
 }
 
