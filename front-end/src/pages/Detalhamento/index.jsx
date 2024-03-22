@@ -49,10 +49,12 @@ export const Detalhamento = () => {
                 <div className="divFundo">
                     <div className="informacoesAnimal">
                         <h3>Informações do animal</h3>
+                        <span id="linha"></span>
                         <p id="infoAnimal">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ea reiciendis repellat ratione itaque totam necessitatibus tempora quisquam, exercitationem rerum, dolorem earum officia nihil dolores libero. Deleniti nihil ullam repellat dolores libero eaque quia sint unde corrupti magni totam dolor possimus, quo voluptatibus quas earum maxime tempore id mollitia animi voluptatum! Recusandae, nostrum eius. Placeat facere eveniet et, illum nihil pariatur eligendi dolor tempore aliquid aliquam ducimus similique accusamus culpa omnis. Quisquam ut corporis, laudantium officiis vero mollitia magnam quo?</p>
                     </div>
                     <div className="outrosAnimais">
                         <h3>Outros animais parecidos...</h3>
+                        <span id="linha"></span>
                     </div>
                 </div>
             </div>

@@ -84,8 +84,18 @@
     margin: 0 0 2.5rem 0;
 }
 
+#linha{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 0.1rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    margin: 0 0 2rem 0;
+}
+
 #infoAnimal{
-    border: 2px solid black;
+    border: 1px solid black;
     border-radius: 10px;
     padding: 0.5rem;
 }
