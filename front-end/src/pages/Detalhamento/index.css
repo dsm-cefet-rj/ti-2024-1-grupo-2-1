@@ -1,14 +1,14 @@
-.divMain{
+.div-main{
     display: block;
 }
 
-.divTopo{
+.div-topo{
     display: flex;
     justify-content: space-around;
     padding: 4rem 0 2rem 0;
 }
 
-.divEsquerda{
+.div-esquerda{
 
 }
 
@@ -16,15 +16,15 @@
 
 }
 
-#imagemAnimal{
+#imagem-animal{
     
 }
 
-.divDireita{
+.div-direita{
 
 }
 
-.nomeAnimal{
+.nome-animal{
     text-align: center;
     margin: 0 0 1rem 0;
 }
@@ -33,7 +33,7 @@
     font-style: italic;
 }
 
-.statusAnimal{
+.status-animal{
     text-align: left;
     border: 2px solid black;
     border-radius: 10px;
@@ -53,7 +53,7 @@
     font-size: 20px;
 }
 
-.historiaAnimal{
+.historia-animal{
     text-align: left;
     border: 2px solid black;
     border-radius: 10px;
@@ -61,12 +61,12 @@
     margin: 0 0 1.5rem 0;
 }
 
-.botaoAdotar{
+.botao-adotar{
     display: flex;
     justify-content: center;
 }
 
-#botaoQueroAdotar{
+#botao-quero-adotar{
     width: 13rem;
     height: 5rem;
     border: 1px solid rgb(1, 73, 131);
@@ -75,12 +75,12 @@
     background-color: rgb(1, 73, 131);
 }
 
-.divFundo{
+.div-fundo{
     padding: 2rem 7rem;
     display: block;
 }
 
-.informacoesAnimal{
+.informacoes-animal{
     margin: 0 0 2.5rem 0;
 }
 
@@ -94,17 +94,19 @@
     margin: 0 0 2rem 0;
 }
 
-#infoAnimal{
+#info-animal{
     border: 1px solid black;
     border-radius: 10px;
     padding: 0.5rem;
 }
 
-.outrosAnimais{
+.outros-animais{
 
 }
 
-.cardsAnimais{
+.cards-animais{
     display: flex;
     justify-content: space-between;
 }
+
+/* media queries */

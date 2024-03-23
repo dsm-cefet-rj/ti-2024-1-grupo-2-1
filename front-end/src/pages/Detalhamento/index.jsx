@@ -16,9 +16,9 @@ export const Detalhamento = () => {
     return (
         <div>
             <HeaderMain />
-            <div className="divMain">
-                <div className="divTopo">
-                    <div className="divEsquerda">
+            <div className="div-main">
+                <div className="div-topo">
+                    <div className="div-esquerda">
                         <div className="navegacao">
                             <Breadcrumb>
                                 <Breadcrumb.Item href="/">Pricipal</Breadcrumb.Item>
@@ -26,39 +26,39 @@ export const Detalhamento = () => {
                                 <Breadcrumb.Item href="#">{nomeAnimal}</Breadcrumb.Item>
                             </Breadcrumb>
                         </div>
-                        <img src={url} alt="Imagem do Animal" id="imagemAnimal"></img>
+                        <img src={url} alt="Imagem do Animal" id="imagem-animal"></img>
                     </div>
-                    <div className="divDireita">
-                        <div className="nomeAnimal">
+                    <div className="div-direita">
+                        <div className="nome-animal">
                             <h1 id="nome">{nomeAnimal}</h1>
                         </div>
-                        <div className="statusAnimal">
+                        <div className="status-animal">
                             <h2 id="localizacao">Localização do Animal: {localizacao}</h2>
                             <h2 id="publicador">Publicador:   {publicador}</h2>
                             <h2 id="acessos">Acessos à página: {acessos}</h2>
                         </div>
-                        <div className="historiaAnimal">
+                        <div className="historia-animal">
                             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum, eaque!</p>
                             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum, eaque!</p>
                             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum, eaque!</p>
                             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum, eaque!</p>
                         </div>
-                        <div className="botaoAdotar">
-                            <input type="button" value="QUERO ADOTAR" id="botaoQueroAdotar" />
+                        <div className="botao-adotar">
+                            <input type="button" value="QUERO ADOTAR" id="botao-quero-adotar" />
                         </div>
                     </div>
                 </div>
-                <div className="divFundo">
-                    <div className="informacoesAnimal">
+                <div className="div-fundo">
+                    <div className="informacoes-animal">
                         <h3>Informações do animal</h3>
                         <span id="linha"></span>
-                        <p id="infoAnimal">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ea reiciendis repellat ratione itaque totam necessitatibus tempora quisquam, exercitationem rerum, dolorem earum officia nihil dolores libero. Deleniti nihil ullam repellat dolores libero eaque quia sint unde corrupti magni totam dolor possimus, quo voluptatibus quas earum maxime tempore id mollitia animi voluptatum! Recusandae, nostrum eius. Placeat facere eveniet et, illum nihil pariatur eligendi dolor tempore aliquid aliquam ducimus similique accusamus culpa omnis. Quisquam ut corporis, laudantium officiis vero mollitia magnam quo?</p>
+                        <p id="info-animal">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor ea reiciendis repellat ratione itaque totam necessitatibus tempora quisquam, exercitationem rerum, dolorem earum officia nihil dolores libero. Deleniti nihil ullam repellat dolores libero eaque quia sint unde corrupti magni totam dolor possimus, quo voluptatibus quas earum maxime tempore id mollitia animi voluptatum! Recusandae, nostrum eius. Placeat facere eveniet et, illum nihil pariatur eligendi dolor tempore aliquid aliquam ducimus similique accusamus culpa omnis. Quisquam ut corporis, laudantium officiis vero mollitia magnam quo?</p>
                     </div>
-                    <div className="outrosAnimais">
+                    <div className="outros-animais">
                         <h3>Outros animais parecidos...</h3>
                         <span id="linha"></span>
                     </div>
-                    <div className="cardsAnimais">
+                    <div className="cards-animais">
                         <Card border="dark" style={{ width: "15rem" }}>
                             <Card.Img variant="top" src={cardImg} />
                             <Card.Body>
