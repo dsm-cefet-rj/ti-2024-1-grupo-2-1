@@ -2,8 +2,6 @@ import HeaderMain from "../../components/HeaderMain";
 import Footer from "../../components/Footer";
 import "./index.css";
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
-import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
 
 export const Detalhamento = () => {
 

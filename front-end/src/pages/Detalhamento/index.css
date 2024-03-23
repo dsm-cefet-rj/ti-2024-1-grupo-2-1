@@ -198,6 +198,28 @@
 
 }
 
-@media screen and (max-width: 1200px){
+@media screen and (max-width: 730px){
+    #imagem-animal{
+        width: 100%;
+        height: auto;
+    }
     
+    #info-animal{
+        font-size: 95%;
+    }
+}
+
+@media screen and (max-width: 600px){
+    #imagem-animal{
+        width: 100%;
+        height: auto;
+    }
+    
+    .div-fundo{
+        padding: 0 0.7rem;
+    }
+
+    #info-animal{
+        font-size: 100%;
+    }
 }
