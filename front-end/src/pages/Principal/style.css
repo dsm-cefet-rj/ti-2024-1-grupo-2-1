@@ -10,7 +10,10 @@
     height: 30rem ;
     border-radius: 20px;
 }
-
+.animais-list{
+    
+    
+}
 
 @media (max-width: 1700px){
 
@@ -198,6 +201,9 @@
         height: 8rem ;
         transition: 0.9s;
     }
+    .animais-list{
+        margin-top: 0rem;
+    }
    /* .legenda{
         width: 140px;
         height: 140px;
@@ -227,3 +233,9 @@
     }*/
 }
 
+@media (max-width: 560px){
+
+    .animais-list{
+        margin-top: 30rem;
+    }
+}

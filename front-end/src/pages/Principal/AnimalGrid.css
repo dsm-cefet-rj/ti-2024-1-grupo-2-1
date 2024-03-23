@@ -1,15 +1,19 @@
+
 .card-container{
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(200px, 1fr)); /* Cria colunas automáticas com um tamanho mínimo de 200px */
+    gap: 10px; /* Espaçamento entre os itens do grid */
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 4rem;
-    max-width: 90%;
-    margin: 0 auto;
+    padding: 1rem;
+    max-width: 100%;
+    margin: 0 2rem;
+    transition: 0.9s;
 
 }
 
 .card-container div{
-    width: 20%;
+    width: 15rem;
     margin-bottom: 5%;
     display: flex;
     flex-direction: column;
@@ -17,6 +21,7 @@
     box-shadow:0 2px 5px 0px rgba(0, 0, 0, 0.3);
     background-color: rgb(255, 255, 255);
     padding: 0.5rem;
+    margin: 1rem 1rem;
 }
 
 .card-container div img{
@@ -37,6 +42,22 @@
     background-color: transparent;
     color:#041be9;
     border: 2px solid #041be9;
+    
+}
+
+@media (max-width: 1210px){
+    .card-container{
+
+        grid-template-columns: repeat(3, minmax(200px, 1fr)); /* Cria colunas automáticas com um tamanho mínimo de 200px */
+        gap: 9px; /* Espaçamento entre os itens do grid */
+        transition: 0.9s;
+    }
+    
+}
+@media (max-width: 1020px){
+    .card-container{
+        padding: 0rem 10rem;
+    }
     
 }
 

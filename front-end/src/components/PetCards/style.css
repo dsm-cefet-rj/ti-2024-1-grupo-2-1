@@ -3,6 +3,9 @@
     flex-wrap: wrap;
     overflow-wrap: break-word;
     border-radius: 10px;
+    box-sizing: border-box;
+    width: 10rem;
+    height: 25rem;
     
 }
 .pet-card h2{
