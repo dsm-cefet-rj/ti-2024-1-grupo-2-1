@@ -55,22 +55,7 @@
 .under-filter div p{
     padding: 1px;
 }
-/*.above-filter div select,
-.under-filter div select{
-    width: 100%;
-    border: rgba(10, 10, 10, 0.2) solid 2px ;
-    height: 2rem;
-    padding: 0 1rem;
-    font-size: 20px;
-    border-radius: 10px;
-    
-    outline: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    cursor: pointer;
 
-}*/
 .above-filter div select,
 .under-filter div select{
     display: block;
@@ -217,34 +202,7 @@ select{
 }
 
 @media (max-width: 820px){
-    /*.filtro{  
-        margin-top: -1rem;
-        margin: -1rem 1rem;  
-    }
-    .line{
-        
-        height: 2px;
-        background-color: black;
-        margin: 0 2rem;
     
-    }
-    .search-filter{
-        margin: 3rem 10rem;
-        padding: 3rem 10rem;
-        height: 22rem;
-    }
-    .above-filter,
-    .under-filter{
-    
-        width: 100%;
-        gap:13rem;
-    }
-    .above-filter div,
-    .under-filter div{
-        flex: 1 1 0;
-        font-size: 23px;
-        
-    }  */
     .above-filter .filtro-select,
 .under-filter .filtro-select{
     font-size: 18px;
@@ -290,10 +248,12 @@ select{
         margin: 0 1rem;
     }
     .search-filter{
-        margin: 2rem 1rem;
-        padding: 1rem;
-        height: 15rem;
+    
+        
+        margin: 1rem 1rem;
+       
     }
+    
 
     .above-filter,
     .under-filter{

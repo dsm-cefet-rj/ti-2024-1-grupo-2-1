@@ -10,51 +10,20 @@
     height: 30rem ;
     border-radius: 20px;
 }
-.animais-list{
-    
-    
+.main{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
 }
+
 
 @media (max-width: 1700px){
 
-    /* .ImgPrincipal img{
-        width: 90% ;
-        height: 45vh ;
-        margin:0 0rem;
-    }
     
-    .legenda{
-        width: 20rem;
-        height: 20rem;
-        margin-left: -17.5rem;
-        margin-top: 17rem ;
-    
-    }
-    .legenda div{
-        margin-top: 1.0rem;
-        margin-left: -1.5rem;
-    }*/
 
 }
 @media (max-width: 1600px){
-    /*.ImgPrincipal img{
-        width: 90% ;
-        width: 45vw ;
-        height: 40vh ;
-        margin:0 0rem;
-    }
-    .all{
-        width: 100vw;
-    }
-    .legenda{
-        margin-left: -17.0rem;
-        margin-top: 17rem ;
     
-    }
-    .legenda div{
-        margin-top: 1.0rem;
-        margin-left: -2.0rem;
-    }*/
 
 }
 @media (max-width:1400px){
@@ -66,78 +35,17 @@
         height: 21rem ;
         transition: 0.9s;
     }
-    /*.legenda{
-        width: 16rem;
-        height: 16rem;
-        margin-left: -14.5rem;
-        margin-top: 19rem ;
     
-    }
-    .legenda div{
-        margin-top: 0.5rem;
-        margin-left: 2rem;
-    }
-    .letra{
-        font-size: 15px;
-        margin-left: 0.5rem;
-    }
-    .letra2{
-        font-size: 15px;
-        margin-left: 4.5rem;
-    }
-    
-    .letra-bold{
-        font-weight: 700;
-        font-size: 35px;
-        margin-left: 1rem;
-    }*/
 }
 @media (max-width:1200px){
-    /*.legenda div{
-        margin-top: .0rem;
-        margin-left: 2rem;
-    }*/
+   
 }
 
 @media (max-width:1100px){
-    /*.legenda div{
-        margin-top: -1.5rem;
-        margin-left: 2rem;
-    }
-    .letra{
-        font-size: 15px;
-        margin-left: 0.5rem;
-    }
-    .letra2{
-        font-size: 15px;
-        margin-left: 4.5rem;
-    }
     
-    .letra-bold{
-        font-weight: 700;
-        font-size: 35px;
-        margin-left: 1rem;
-    }*/
 }
 @media (max-width:1030px){
-    /*.legenda div{
-        margin-top: -4rem;
-        margin-left: 4rem;
-    }
-    .letra{
-        font-size: 14px;
-        margin-left: 0.5rem;
-    }
-    .letra2{
-        font-size: 14px;
-        margin-left: 4.5rem;
-    }
     
-    .letra-bold{
-        font-weight: 700;
-        font-size: 30px;
-        margin-left: 1rem;
-    }*/
 }
 @media (max-width:900px){
     .ImgPrincipal{
@@ -148,46 +56,9 @@
         height: 14rem ;
         transition: 0.9s;
     }
-    /*.legenda{
-        margin-top: 14rem;
-    }
-    .legenda div{
-        margin-top: -3rem;
-        margin-left: 4rem;
-    }
-    .letra{
-        font-size: 14px;
-        margin-left: 0.5rem;
-    }
-    .letra2{
-        font-size: 14px;
-        margin-left: 4.5rem;
-    }
     
-    .letra-bold{
-        font-weight: 700;
-        font-size: 30px;
-        margin-left: 1rem;
-    }*/
 }@media (max-width:700px){
-    /*.legenda div{
-        margin-top: -5rem;
-        margin-left: 4rem;
-    }
-    .letra{
-        font-size: 14px;
-        margin-left: 0.5rem;
-    }
-    .letra2{
-        font-size: 14px;
-        margin-left: 4.5rem;
-    }
     
-    .letra-bold{
-        font-weight: 700;
-        font-size: 30px;
-        margin-left: 1rem;
-    }*/
 }
 
 @media (max-width: 600px){
@@ -201,41 +72,10 @@
         height: 8rem ;
         transition: 0.9s;
     }
-    .animais-list{
-        margin-top: 0rem;
-    }
-   /* .legenda{
-        width: 140px;
-        height: 140px;
-        margin-left: -8.5rem;
-        margin-top:12rem ;
     
-    }
-    .legenda div{
-        width: 130px;
-        margin-top: -1.6rem;
-        margin-left: -0.5rem;
-        
-    }
-    .letra{
-        font-size: 12px;
-        margin-left: 0.9rem;
-    }
-    .letra2{
-        font-size: 12px;
-        margin-left: 1.5rem;
-    }
-    
-    .letra-bold{
-        font-weight: 700;
-        font-size: 20px;
-        margin-left: 1rem;
-    }*/
 }
 
 @media (max-width: 560px){
 
-    .animais-list{
-        margin-top: 30rem;
-    }
+    
 }

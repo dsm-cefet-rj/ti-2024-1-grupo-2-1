@@ -1,27 +1,25 @@
 
 .card-container{
     display: grid;
-    grid-template-columns: repeat(4, minmax(200px, 1fr)); /* Cria colunas automáticas com um tamanho mínimo de 200px */
-    gap: 10px; /* Espaçamento entre os itens do grid */
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 1rem;
-    max-width: 100%;
-    margin: 0 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Cria colunas automáticas com um tamanho mínimo de 200px */
+    grid-gap:20px; /* Espaçamento entre os itens do grid */
+    justify-items: center;
+    justify-content: center;
+    margin: 2rem 0rem;
+    padding: 1rem 0rem;
     transition: 0.9s;
+    max-width: 100%;
+    max-height: 100%;
 
 }
 
 .card-container div{
-    width: 15rem;
-    margin-bottom: 5%;
+    width: 11rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     box-shadow:0 2px 5px 0px rgba(0, 0, 0, 0.3);
     background-color: rgb(255, 255, 255);
-    padding: 0.5rem;
-    margin: 1rem 1rem;
+    padding: 0.5rem 0.5rem ;
 }
 
 .card-container div img{
@@ -31,7 +29,7 @@
 .card-container div img,
 .card-container div h2, 
 .card-container div p{
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.1rem;
 }
 
 .card-container div a{
@@ -44,47 +42,105 @@
     border: 2px solid #041be9;
     
 }
+/*@media (max-width: 1425px){
+    .card-container{
+        margin: 2rem 4rem;
+        padding: 1rem 3rem;
+        gap:4%;
+    }
+}
 
-@media (max-width: 1210px){
+@media (max-width: 1250px){
     .card-container{
 
-        grid-template-columns: repeat(3, minmax(200px, 1fr)); /* Cria colunas automáticas com um tamanho mínimo de 200px */
-        gap: 9px; /* Espaçamento entre os itens do grid */
+        grid-template-columns: repeat(4, minmax(200px, 1fr)); /* Cria colunas automáticas com um tamanho mínimo de 200px 
+        gap: 7%; /* Espaçamento entre os itens do grid 
         transition: 0.9s;
+        padding: 1rem 2rem;
     }
     
-}
-@media (max-width: 1020px){
+}*/
+/*@media (max-width: 1190px){
     .card-container{
-        padding: 0rem 10rem;
-    }
-    
-}
 
-@media (max-width: 560px){
-    .card-container{
-        padding: 1rem;
-        max-width: 90%;
-        margin: 0 auto;
+        
+        gap: 5%; /* Espaçamento entre os itens do grid 
+        transition: 0.9s;
+        
+    }
     
+}*/
+/*@media (max-width: 1020px){
+    .card-container{
+        grid-template-columns: repeat(3, minmax(200px, 1fr)); /* Cria colunas automáticas com um tamanho mínimo de 200px 
+        /* Espaçamento entre os itens do grid 
+        transition: 0.9s;
+        gap: 9%; 
+    }
+    
+}*/
+/*@media (max-width: 790px){
+    .card-container{
+        grid-template-columns: repeat(3, minmax(0,1fr));
+        transition: 0.9s;
+        margin: 2rem 2rem 2rem 4rem;
+        padding: 0.5rem;
+        gap: 1%; 
     }
     
     .card-container div{
-        width: 40%;
-        margin-bottom: 5%;
-        padding: 0.4rem;
+        width: 11rem;
+        height: 20rem;
+        padding: 0.5rem;
+        margin: 1rem 0rem;
     }
-    
-    .card-container div img{
-        max-width: 100%;
-    }
-    
-    .card-container div img,
     .card-container div h2, 
     .card-container div p{
-        margin-bottom: 0.5rem;
+        margin-top: 5px;
+    }
+    .card-container div a{
+
+        font-size: 15px;
     }
     
+}*/
+/*@media(max-width:650px){
 
+
+    .card-container{
+        grid-template-columns: repeat(2, minmax(200px, 1fr)); /* Cria colunas automáticas com um tamanho mínimo de 200px 
+        gap: 9px; /* Espaçamento entre os itens do grid 
+        transition: 0.9s;
+    }
+
+}*/
+
+/*@media (max-width: 560px){
+    
+    .card-container div{
+        height: 18rem;  
+    }
+
+}*/
+@media (max-width: 470px){
+    .card-container{
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        margin: 1rem 1rem;
+    }
+    
+    
+    .card-container div{
+        width: 10rem;
+       
+    }
 }
 
+/*@media (max-width: 380px){
+    
+    .card-container{
+        
+        margin-left: -2rem;
+    }
+
+}
+*/
