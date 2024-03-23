@@ -3,6 +3,7 @@ import Footer from "../../components/Footer";
 import "./index.css";
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import Card from 'react-bootstrap/Card';
+import CardGroup from 'react-bootstrap/CardGroup';
 
 export const Detalhamento = () => {
 
@@ -59,42 +60,7 @@ export const Detalhamento = () => {
                         <span id="linha"></span>
                     </div>
                     <div className="cards-animais">
-                        <Card border="dark" style={{ width: "15rem" }}>
-                            <Card.Img variant="top" src={cardImg} />
-                            <Card.Body>
-                                <Card.Title>{nomeAnimal}</Card.Title>
-                                <Card.Text>
-                                    {localizacao}
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                        <Card border="dark" style={{ width: "15rem" }}>
-                            <Card.Img variant="top" src={cardImg} />
-                            <Card.Body>
-                                <Card.Title>{nomeAnimal}</Card.Title>
-                                <Card.Text>
-                                    {localizacao}
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                        <Card border="dark" style={{ width: "15rem" }}>
-                            <Card.Img variant="top" src={cardImg} />
-                            <Card.Body>
-                                <Card.Title>{nomeAnimal}</Card.Title>
-                                <Card.Text>
-                                    {localizacao}
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                        <Card border="dark" style={{ width: "15rem" }}>
-                            <Card.Img variant="top" src={cardImg} />
-                            <Card.Body>
-                                <Card.Title>{nomeAnimal}</Card.Title>
-                                <Card.Text>
-                                    {localizacao}
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
+                        
                     </div>
                 </div>
             </div>

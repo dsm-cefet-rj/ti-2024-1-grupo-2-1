@@ -105,8 +105,99 @@
 }
 
 .cards-animais{
-    display: flex;
-    justify-content: space-between;
+    display: inline;
 }
 
 /* media queries */
+
+@media screen and (max-width: 1250px) {
+    
+    .div-topo{
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+    }
+    
+    .div-esquerda{
+    
+    }
+    
+    .navegacao{
+    
+    }
+    
+    #imagem-animal{
+        
+    }
+    
+    .div-direita{
+        width: 90%;
+        padding: 2rem 0 0 0;
+    }
+    
+    .nome-animal{
+        margin: 1rem 0 3rem 0;
+    }
+    
+    #nome{
+        
+    }
+    
+    .status-animal{
+
+    }
+    
+    #localizacao{
+
+    }
+    
+    #publicador{
+
+    }
+    
+    #acessos{
+
+    }
+    
+    .historia-animal{
+
+    }
+    
+    .botao-adotar{
+
+    }
+    
+    #botao-quero-adotar{
+        width: 20rem;
+    }
+    
+    .div-fundo{
+
+    }
+    
+    .informacoes-animal{
+
+    }
+    
+    #linha{
+
+    }
+    
+    #info-animal{
+
+    }
+    
+    .outros-animais{
+    
+    }
+    
+    .cards-animais{
+
+    }
+
+
+}
+
+@media screen and (max-width: 1200px){
+    
+}
