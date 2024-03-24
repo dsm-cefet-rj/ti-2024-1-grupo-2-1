@@ -6,6 +6,7 @@ import Filtro from "../../components/Filter/filtro";
 import PetCards from "../../components/PetCards";
 import './AnimalGrid.css'
 import Footer from "../../components/Footer";
+import Grid from "../../components/GridContainer/Index";
 export const Main = () => {
 
     const [animais, setAnimais] = useState([
@@ -89,7 +90,7 @@ export const Main = () => {
                 />
 
 
-                <div className="card-container">
+                <Grid>
 
                     {animais
                         .filter((animais) =>
@@ -114,7 +115,7 @@ export const Main = () => {
                             <PetCards
                                 key={animais.id}
                                 animais={animais} />
-                        )}</div>
+                        )}</Grid>
             </div>
 
 
