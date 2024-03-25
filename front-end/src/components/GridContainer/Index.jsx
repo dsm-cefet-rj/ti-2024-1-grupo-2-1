@@ -1,6 +1,6 @@
 import React from 'react'
 import "./style.css"
-const Grid = (props) => {
+const Grade = (props) => {
   return (
     <div className='card-container'>
       {props.children}
@@ -8,4 +8,4 @@ const Grid = (props) => {
   )
 }
 
-export default Grid
+export default Grade
