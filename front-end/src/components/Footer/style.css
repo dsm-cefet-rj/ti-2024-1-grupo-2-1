@@ -1,0 +1,214 @@
+.footer{
+    /*background-color: rgb(111, 2, 201) ;*/
+    background-color: rgb(4, 45, 226);
+    width: 100%;
+    padding: 0% 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+.above{
+
+    width: 100%;
+    padding: 2% 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 1 0;
+}
+.above div h2{
+    color:white;
+    font-size: 17px;
+
+}
+.footerpt1{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.footerpt2{
+    display: flex;
+    padding-top: 2rem;
+    justify-content: space-between;
+}
+.footerpt1 ul,
+.footerpt2 ul{
+    margin: 0 4rem 0 0;
+    list-style: none;
+    color: white;
+    width: 16.5rem;
+}
+.footerpt1 ul li,
+.footerpt2 ul li{
+    margin: 0.5rem 0 0 0;
+    font-size: 15px;
+}
+
+.icones_links{
+    margin: 2rem 0;
+    font-size: 50px;
+
+}
+@media (max-width: 1700px){
+    .footerpt1 ul,
+    .footerpt2 ul{
+    margin: 0 2.5rem 0 0;
+    width: 17rem;
+    }
+}
+@media (max-height:990) {
+    .footerpt1 ul,
+    .footerpt2 ul{
+    margin: 0 2.5rem 0 0;
+    width: 14rem;
+    }
+    
+}
+@media (max-width: 1440px){
+    .above{
+        
+        margin-left: -4.5rem;
+    }
+    .footerpt1 ul,
+    .footerpt2 ul{
+    margin: 0 1rem 0 0;
+    width: 13rem;
+}
+}@media (max-width: 1200px){
+    .footerpt1 ul,
+    .footerpt2 ul{
+    margin: 0 1.5rem 0 0;
+    width: 12rem;
+}
+}
+
+@media (max-width: 1060px){
+    .footer{
+        width: 100%;
+        padding: 2% 0%;
+        
+    }
+
+    .above{
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: -2.5rem;
+    }
+    .above div h2{
+        color:white;
+        font-size: 15px;
+        margin:0;
+    
+    }
+    .footerpt1,.footerpt2{
+        margin:0.5rem 0 0.5rem 0;
+    }
+.footerpt1 ul,
+.footerpt2 ul{
+    margin: 0 2.5rem 0 0;
+    width: 18rem;
+}
+.footerpt1 ul li,
+.footerpt2 ul li{
+    margin: 0.5rem 0 0 0;
+    font-size: 12px;
+}
+
+.icones_links{
+    margin: 2rem 0;
+    font-size: 40px;
+
+}
+
+}
+@media (max-width: 680px){
+    .footerpt1 ul,
+.footerpt2 ul{
+    margin: 0 2.5rem 0 0;
+    width: 14rem;
+}
+.footerpt1 ul li,
+.footerpt2 ul li{
+    margin: 0.5rem 0 0 0;
+    font-size: 11px;
+}
+
+.icones_links{
+    margin: 2rem 0;
+    font-size: 40px;
+
+}
+}
+@media (max-width: 560px){
+    .footerpt1 ul,
+.footerpt2 ul{
+    margin: 0 1.5rem 0 0;
+    width: 14rem;
+}
+}
+
+@media (max-width: 520px){
+    .footerpt1 ul,
+.footerpt2 ul{
+    margin: 0 0.5rem 0 0;
+    width: 13rem;
+}
+}
+@media (max-width: 450px){
+    .footerpt1 ul,
+.footerpt2 ul{
+    margin: 0 0.5rem 0 0;
+    width: 12rem;
+}
+}
+@media (max-width: 415px){
+    .above div h2{
+        font-size: 14px;
+    }
+    .footerpt1 ul,
+.footerpt2 ul{
+    margin: 0 0.5rem 0 0;
+    width: 10rem;
+}
+.footerpt1 ul li,
+.footerpt2 ul li{
+    margin: 0.5rem 0 0 0;
+    font-size: 10px;
+}
+
+.icones_links{
+    margin: 2rem 0;
+    font-size: 40px;
+
+}
+}
+@media (max-width: 340px){
+    .above div h2{
+        font-size: 13px;
+    }
+    .footerpt1 ,
+.footerpt2 {
+    margin: 0 0.5rem 0 0;
+    width: 15rem;
+}
+    .footerpt1 ul,
+.footerpt2 ul{
+    margin: 0 0.5rem 0 0;
+    width: 4rem;
+}
+.footerpt1 ul li,
+.footerpt2 ul li{
+    margin: 0.5rem 0 0 0;
+    font-size: 9px;
+}
+
+.icones_links{
+    margin: 2rem 0;
+    font-size: 40px;
+
+}
+}
