@@ -22,7 +22,7 @@ const PetCards = ({animais, showLink=true})=>{
               {animais && <p> Porte: {animais.porte}</p>}
               
               
-            {showLink && <Link className="info" to = {`/receita/${id}`}>Detalhes</Link>}
+            {showLink && <Link className="info" to = {`/detalhamento`}>Detalhes</Link>}
         </div>
     )
 }
