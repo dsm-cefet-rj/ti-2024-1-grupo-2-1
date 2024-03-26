@@ -12,7 +12,7 @@ export const AppRouter = () => {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/favoritos" element={<Favoritos />} />
-          <Route path="/detalhamento" element={<Detalhamento />} />
+          <Route exact path="/detalhamento/:id" element={<Detalhamento />} />
           <Route path="/agendamento" element={<Agendamento />} />
         </Routes>
       </Fragment>

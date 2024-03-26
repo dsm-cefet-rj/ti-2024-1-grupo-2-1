@@ -1,39 +1,43 @@
-.div-main{
+.div-main {
     display: block;
 }
 
-.div-topo{
+.div-topo {
     display: flex;
     justify-content: space-around;
     padding: 4rem 0 2rem 0;
 }
 
-.div-esquerda{
+.div-esquerda {}
+
+.navegacao {}
+
+#imagem-animal {
+    width: 30rem;
+    height: 20rem;
+    margin-left: 2rem;
+    border-radius: 4px;
+
+
 
 }
 
-.navegacao{
+.div-direita {
+
+    margin: 0 2rem;
 
 }
 
-#imagem-animal{
-    
-}
-
-.div-direita{
-
-}
-
-.nome-animal{
+.nome-animal {
     text-align: center;
     margin: 0 0 1rem 0;
 }
 
-#nome{
+#nome {
     font-style: italic;
 }
 
-.status-animal{
+.status-animal {
     text-align: left;
     border: 2px solid black;
     border-radius: 10px;
@@ -41,19 +45,20 @@
     margin: 0 0 2rem 0;
 }
 
-#localizacao{
+#localizacao {
     font-size: 20px;
 }
 
-#publicador{
+#publicador {
     font-size: 20px;
 }
 
-#acessos{
+#acessos {
     font-size: 20px;
 }
 
-.historia-animal{
+
+.historia-animal {
     text-align: left;
     border: 2px solid black;
     border-radius: 10px;
@@ -61,12 +66,12 @@
     margin: 0 0 1.5rem 0;
 }
 
-.botao-adotar{
+.botao-adotar {
     display: flex;
     justify-content: center;
 }
 
-#botao-quero-adotar{
+#botao-quero-adotar {
     width: 13rem;
     height: 5rem;
     border: 1px solid rgb(1, 73, 131);
@@ -75,16 +80,16 @@
     background-color: rgb(1, 73, 131);
 }
 
-.div-fundo{
+.div-fundo {
     padding: 2rem 7rem;
     display: block;
 }
 
-.informacoes-animal{
+.informacoes-animal {
     margin: 0 0 2.5rem 0;
 }
 
-#linha{
+#linha {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -94,132 +99,98 @@
     margin: 0 0 2rem 0;
 }
 
-#info-animal{
+#info-animal {
     border: 1px solid black;
     border-radius: 10px;
     padding: 0.5rem;
 }
 
-.outros-animais{
+.outros-animais {}
 
-}
-
-.cards-animais{
+.cards-animais {
     display: inline;
 }
 
 /* media queries */
 
 @media screen and (max-width: 1250px) {
-    
-    .div-topo{
+
+    .div-topo {
         flex-direction: column;
         align-items: center;
         padding: 2rem 0;
     }
-    
-    .div-esquerda{
-    
-    }
-    
-    .navegacao{
-    
-    }
-    
-    #imagem-animal{
-        
-    }
-    
-    .div-direita{
+
+    .div-esquerda {}
+
+    .navegacao {}
+
+    #imagem-animal {}
+
+    .div-direita {
         width: 90%;
         padding: 2rem 0 0 0;
     }
-    
-    .nome-animal{
+
+    .nome-animal {
         margin: 1rem 0 3rem 0;
     }
-    
-    #nome{
-        
-    }
-    
-    .status-animal{
 
-    }
-    
-    #localizacao{
+    #nome {}
 
-    }
-    
-    #publicador{
+    .status-animal {}
 
-    }
-    
-    #acessos{
+    #localizacao {}
 
-    }
-    
-    .historia-animal{
+    #publicador {}
 
-    }
-    
-    .botao-adotar{
+    #acessos {}
 
-    }
-    
-    #botao-quero-adotar{
+    .historia-animal {}
+
+    .botao-adotar {}
+
+    #botao-quero-adotar {
         width: 20rem;
     }
-    
-    .div-fundo{
 
-    }
-    
-    .informacoes-animal{
+    .div-fundo {}
 
-    }
-    
-    #linha{
+    .informacoes-animal {}
 
-    }
-    
-    #info-animal{
+    #linha {}
 
-    }
-    
-    .outros-animais{
-    
-    }
-    
-    .cards-animais{
+    #info-animal {}
 
-    }
+    .outros-animais {}
+
+    .cards-animais {}
 
 
 }
 
-@media screen and (max-width: 730px){
-    #imagem-animal{
-        width: 100%;
+@media screen and (max-width: 730px) {
+    #imagem-animal {
+        width: 50%;
         height: auto;
     }
-    
-    #info-animal{
+
+    #info-animal {
         font-size: 95%;
     }
 }
 
-@media screen and (max-width: 600px){
-    #imagem-animal{
-        width: 100%;
+@media screen and (max-width: 600px) {
+    #imagem-animal {
+        width: 50%;
         height: auto;
     }
-    
-    .div-fundo{
+
+    .div-fundo {
         padding: 0 0.7rem;
     }
 
-    #info-animal{
+    #info-animal {
         font-size: 100%;
     }
 }

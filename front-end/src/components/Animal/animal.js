@@ -9,7 +9,7 @@ const animal = {
         porte: "Grande",
         sexo: "Macho",
         idade: "5 anos",
-        historia: "Flavio é um cachorro amável que foi encontrado vagando pelas ruas em busca de comida e abrigo. Ele tem uma personalidade gentil e brincalhona, e rapidamente conquista o coração de todos que o conhecem. Apesar de ter tido um passado difícil, Flavio é extremamente leal e está pronto para encontrar um lar amoroso onde possa receber todo o carinho e cuidado que merece."
+        história: "Flavio é um cachorro amável que foi encontrado vagando pelas ruas em busca de comida e abrigo. Ele tem uma personalidade gentil e brincalhona, e rapidamente conquista o coração de todos que o conhecem. Apesar de ter tido um passado difícil, Flavio é extremamente leal e está pronto para encontrar um lar amoroso onde possa receber todo o carinho e cuidado que merece."
     },
       2: {
         id: 2,
@@ -38,7 +38,8 @@ const animal = {
         tipo: "Gato",
         porte: "Médio",
         sexo: "Macho",
-        idade: "9 anos"
+        idade: "9 anos",
+        história: "Yzhak é um gato adorável que foi resgatado das ruas quando era apenas um filhote. Ele teve uma infância difícil, mas graças aos cuidados amorosos de seus protetores, ele se transformou em um gato carinhoso e brincalhão. Yzhak adora brincar com bolinhas de papel e tirar sonecas aconchegantes em seu cantinho favorito. Ele está ansioso para encontrar um lar amoroso onde possa receber todo o carinho e atenção que merece."
       },
       5: {
         id: 5,
@@ -48,7 +49,7 @@ const animal = {
         porte: "Grande",
         sexo: "Macho",
         idade: "5 anos",
-        historia: "Flavio é um cachorro amável que foi encontrado vagando pelas ruas em busca de comida e abrigo. Ele tem uma personalidade gentil e brincalhona, e rapidamente conquista o coração de todos que o conhecem. Apesar de ter tido um passado difícil, Flavio é extremamente leal e está pronto para encontrar um lar amoroso onde possa receber todo o carinho e cuidado que merece."
+        história: "Flavio é um cachorro amável que foi encontrado vagando pelas ruas em busca de comida e abrigo. Ele tem uma personalidade gentil e brincalhona, e rapidamente conquista o coração de todos que o conhecem. Apesar de ter tido um passado difícil, Flavio é extremamente leal e está pronto para encontrar um lar amoroso onde possa receber todo o carinho e cuidado que merece."
     },
       6: {
         id: 6,
@@ -77,7 +78,8 @@ const animal = {
         tipo: "Gato",
         porte: "Médio",
         sexo: "Macho",
-        idade: "9 anos"
+        idade: "9 anos",
+        história: "Yzhak é um gato adorável que foi resgatado das ruas quando era apenas um filhote. Ele teve uma infância difícil, mas graças aos cuidados amorosos de seus protetores, ele se transformou em um gato carinhoso e brincalhão. Yzhak adora brincar com bolinhas de papel e tirar sonecas aconchegantes em seu cantinho favorito. Ele está ansioso para encontrar um lar amoroso onde possa receber todo o carinho e atenção que merece."
       }
   
 }

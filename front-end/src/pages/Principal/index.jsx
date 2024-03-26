@@ -49,7 +49,7 @@ export const Main = () => {
                     idadeFilter={idadeFilter} setIdadeFilter={setIdadeFilter}
                 />
 
-
+            
                 <Grade>
 
                     {animais && animais
