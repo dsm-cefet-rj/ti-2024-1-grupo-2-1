@@ -171,8 +171,9 @@
 
 @media screen and (max-width: 730px) {
     #imagem-animal {
-        width: 50%;
+        width: 90%;
         height: auto;
+        margin: 0rem 2rem;
     }
 
     #info-animal {
@@ -182,8 +183,10 @@
 
 @media screen and (max-width: 600px) {
     #imagem-animal {
-        width: 50%;
+        width: 92%;
         height: auto;
+        margin: 0 0.8rem;
+        
     }
 
     .div-fundo {
