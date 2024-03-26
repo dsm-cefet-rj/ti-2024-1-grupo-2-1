@@ -3,8 +3,8 @@ import HeaderMain from "../../components/HeaderMain";
 import Footer from "../../components/Footer";
 import "./index.css";
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
-import Grade from "../../components/GridContainer/Index";
 import PetCards from "../../components/PetCards";
+import { Grade } from "../../components/GridContainer/grade";
 
 export const Detalhamento = () => {
 
@@ -119,10 +119,9 @@ export const Detalhamento = () => {
                         <span id="linha"></span>
                     </div>
                     <Grade>
-                        <PetCards key={animais.id} animais={animais}/>
-                        <PetCards key={animais.id} animais={animais}/>
-                        <PetCards key={animais.id} animais={animais}/>
-                        <PetCards key={animais.id} animais={animais}/>
+                        {animais.map((animais) => <PetCards key={animais.id} animais={animais}/>)
+                
+                        };
                     </Grade>
                 </div>
             </div>
