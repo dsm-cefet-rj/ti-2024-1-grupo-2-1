@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";  
-import { IoMdHeart } from "react-icons/io";
-import { IoIosHeartEmpty } from "react-icons/io";
+/*import { IoMdHeart } from "react-icons/io";
+import { IoIosHeartEmpty } from "react-icons/io";*/
 import './style.css'
+//import Card from 'react-bootstrap/Card';
 
 
 const PetCards = ({animais, showLink=true})=>{
@@ -21,7 +22,7 @@ const PetCards = ({animais, showLink=true})=>{
               {animais && <p> Porte: {animais.porte}</p>}
               
               
-            {showLink && <Link className="info" to = {`/receita/${id}`}>Detalhes</Link>}
+            {showLink && <Link className="info" to = {`/detalhamento/${id}`}>Detalhes</Link>}
         </div>
     )
 }

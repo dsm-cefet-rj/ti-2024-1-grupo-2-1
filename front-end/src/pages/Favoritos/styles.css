@@ -1,0 +1,78 @@
+.breadcrumb-favoritos {
+  display: flex;
+  justify-content: flex-start;
+  margin: 1rem 5rem -0.8rem;
+}
+
+.title-favoritos-container {
+  width: 90vw;
+  margin: 0rem 5rem 0.5rem;
+}
+
+.title-favoritos {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 40px;
+  font-weight: 550;
+  color: rgb(1, 73, 131);
+}
+
+.sublinha-favoritos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 0.1rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 90vw;
+}
+
+.form-filtro-favoritos {
+  display: flex;
+  justify-content: space-evenly;
+  float: left;
+  background-color: rgba(10, 10, 10, 0.05);
+  width: 90vw;
+  margin: 1rem 5rem;
+  padding: 1.4rem 3rem;
+  height: 5rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}
+
+.form-filtro-favoritos div select {
+  height: 2.2rem;
+  width: 7.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  font-size: 18px;
+}
+
+.botao-search {
+  font-size: 16px;
+  border: none;
+  border-radius: 35px;
+  color: #ffffff;
+  font-weight: bold;
+  border: 1px solid rgb(1, 73, 131);
+  box-shadow: 1px 1px 8px 0px rgb(38, 63, 173);
+
+  line-height: 1.3;
+
+  text-transform: uppercase;
+  width: 7.5rem;
+  height: 2.2rem;
+
+  background: -webkit-linear-gradient(
+    to right,
+    rgb(1, 73, 131),
+    rgb(1, 73, 131)
+  );
+  background: -o-linear-gradient(to right, rgb(1, 73, 131), rgb(1, 73, 131));
+  background: -moz-linear-gradient(to right, rgb(1, 73, 131), rgb(1, 73, 131));
+  background: linear-gradient(to right, rgb(1, 73, 131), rgb(1, 73, 131));
+
+  transition: 1.2s;
+  outline: none;
+}

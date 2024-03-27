@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import HeaderMain from "../../components/Header";
-import Footer from "../../components/Footer/indexfooter";
+import HeaderMain from "../../components/HeaderMain";
+import Footer from "../../components/Footer";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './style.css';

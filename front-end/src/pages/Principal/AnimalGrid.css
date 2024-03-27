@@ -1,22 +1,25 @@
+
 .card-container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 4rem;
-    max-width: 90%;
-    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Cria colunas automáticas com um tamanho mínimo de 200px */
+    grid-gap:20px; /* Espaçamento entre os itens do grid */
+    justify-items: center;
+    justify-content: center;
+    margin: 2rem 0rem;
+    padding: 1rem 0rem;
+    transition: 0.9s;
+    max-width: 100%;
+    max-height: 100%;
 
 }
 
 .card-container div{
-    width: 20%;
-    margin-bottom: 5%;
+    width: 11rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     box-shadow:0 2px 5px 0px rgba(0, 0, 0, 0.3);
     background-color: rgb(255, 255, 255);
-    padding: 0.5rem;
+    padding: 0.5rem 0.5rem ;
 }
 
 .card-container div img{
@@ -26,7 +29,7 @@
 .card-container div img,
 .card-container div h2, 
 .card-container div p{
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.1rem;
 }
 
 .card-container div a{
@@ -40,30 +43,15 @@
     
 }
 
-@media (max-width: 560px){
+@media (max-width: 470px){
     .card-container{
-        padding: 1rem;
-        max-width: 90%;
-        margin: 0 auto;
-    
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        margin: 1rem 1rem;
     }
+    
     
     .card-container div{
-        width: 40%;
-        margin-bottom: 5%;
-        padding: 0.4rem;
+        width: 10rem;
+       
     }
-    
-    .card-container div img{
-        max-width: 100%;
-    }
-    
-    .card-container div img,
-    .card-container div h2, 
-    .card-container div p{
-        margin-bottom: 0.5rem;
-    }
-    
-
 }
-

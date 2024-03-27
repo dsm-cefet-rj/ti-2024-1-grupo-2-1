@@ -15,6 +15,9 @@ const HeaderMain = () => {
             if (window.innerWidth <= 980) {
                 setMenuOpen(false)
             }
+            if (window.innerWidth >= 980) {
+                setMenuOpen(true)
+            }
         })
     })
     return (
@@ -22,23 +25,22 @@ const HeaderMain = () => {
         <div className="headermain">
             <div className="header-container">
                 <div className="logo">
-                    <img src={Pref} alt="" />
-
+                    <img className="Pref" src={Pref} alt="" />
                 </div>
-                <FaBars size={40}
+                <FaBars
                     className="barrinhas"
-                    style={{ color: 'rgb(4, 45, 226)' }}
+                    style={{ color: 'rgb(1, 73, 131)' }}
                     onClick={() => { setMenuOpen(!menuOpen) }} /></div>
             {menuOpen && (
                 <nav className="navbar">
 
-                    <Link style={{ textDecoration: 'none', color: 'rgb(4, 45, 226)' }}>Animais </Link><span>|</span>
-                    <Link style={{ textDecoration: 'none', color: 'rgb(4, 45, 226)' }}> Adotar  </Link><span>|</span>
-                    <Link style={{ textDecoration: 'none', color: 'rgb(4, 45, 226)' }}> Quem somos  </Link><span>|</span>
-                    <Link style={{ textDecoration: 'none', color: 'rgb(4, 45, 226)' }}> Favoritados</Link>
+                    <Link style={{ textDecoration: 'none', color: 'rgb(1, 73, 131)' }}>Animais </Link><span> | </span>
+                    <Link style={{ textDecoration: 'none', color: 'rgb(1, 73, 131)' }}> Adotar  </Link><span> | </span>
+                    <Link style={{ textDecoration: 'none', color: 'rgb(1, 73, 131)' }}> Quem somos  </Link><span> | </span>
+                    <Link style={{ textDecoration: 'none', color: 'rgb(1, 73, 131)' }}> Favoritados</Link>
                 </nav>)}
 
-            <div className="btn">
+            <div className="botao-header">
 
                 <button className="login-bt">Entrar</button>
                 <button className="signup-bt">Cadastrar</button>

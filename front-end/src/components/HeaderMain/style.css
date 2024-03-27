@@ -42,8 +42,8 @@
     display: flex;
     font-family: 'Poppins', Arial, sans-serif;
     font-weight: bold;
-    margin-left: 3vw;
-    margin-top: 4vh;
+    margin-left: 8vw;
+    margin-top: 3vh;
     
 }
 .navbar a{
@@ -56,7 +56,7 @@
     display: flex;
     width: 0%;
     height: 2px;
-    background-color:rgb(4, 45, 226) ;
+    background-color:rgb(1, 73, 131) ;
     position: absolute;
     bottom:0.1;
     left:0;
@@ -80,13 +80,13 @@
     color: black;
 }
 
-.btn{
+.botao-header{
     margin-top: 2.5vh;
     padding: 0.5vh 1vw;
-    width: 18rem;
+    width: 17rem;
     justify-content: space-between;
     display: flex;
-    gap: 2;
+    gap:0.5rem;
 }
 .login-bt,.signup-bt{
     font-size: 15px;
@@ -94,8 +94,8 @@
     border-radius:35px;
     color:#ffffff;
     font-weight: bold;
-    border:1px solid rgb(4, 45, 226) ;
-    box-shadow: 1px 1px 8px 0px rgb(38, 63, 173);
+    border:1px solid rgb(1, 73, 131);
+    box-shadow: 1px 1px 8px 0px rgb(1, 73, 131);
 
     line-height: 1.3;
 
@@ -107,10 +107,10 @@
     width: 7rem;
     height: 3rem;
 
-    background: -webkit-linear-gradient(to right, rgb(4, 45, 226), #1d20ff);
-    background: -o-linear-gradient(to right, rgb(4, 45, 226), #1d20ff);
-    background: -moz-linear-gradient(to right, rgb(4, 45, 226), #1d20ff);
-    background: linear-gradient(to right, rgb(4, 45, 226), #1d20ff);
+    background: -webkit-linear-gradient(to right, rgb(1, 73, 131), rgb(1, 73, 131));
+    background: -o-linear-gradient(to right, rgb(1, 73, 131), rgb(1, 73, 131));
+    background: -moz-linear-gradient(to right, rgb(1, 73, 131), rgb(1, 73, 131));
+    background: linear-gradient(to right, rgb(1, 73, 131), rgb(1, 73, 131));
    
     transition: 0.5s;
     outline: none;
@@ -119,29 +119,17 @@
 .login-bt:hover,.signup-bt:hover{
     cursor: pointer;
     background: white;
-    color: rgb(4, 45, 226);
+    color: rgb(1, 73, 131);
 }
 
-@media (max-width: 1700px){
-   /* .btn{
-        width: 20vw;
-    }
-    .login-bt, .signup-bt{
-        width:45% ;
-    
-        font-size: 15px;
-    }
-*/
-}
+
 @media (max-width: 1300px){
-    /*.btn{
-        width: 20vw;
+    .logo{
+        transition: 0.9s;
     }
-    .login-bt, .signup-bt{
-        width:45% ;
-    
-        font-size: 15px;
-    }*/
+    .navbar{
+        margin-top: 3%;
+    }
 
 }
 
@@ -160,13 +148,23 @@
     .headermain .barrinhas{
         display: flex;
         cursor: pointer;
-        transition: opacity 0.3s;
+        
     
+    }
+    .barrinhas{
+        font-size: 40px;
+        transition: 0.6s;
+        margin-top: 0.6rem;
     }
     .logo{
         margin-left: 43%;
         align-items: center;
+        transition: 0.9s;
         
+    }
+    .logo .Pref{
+        margin-bottom: 1rem;
+        transition: 0.9s;
     }
     .headermain .barrinhas:hover{
         opacity: 0.5;
@@ -191,10 +189,10 @@
         margin-top: -5%;
     }
     .navbar span{
-    display: none;
+        display: none;
     }
-    .btn{
-        margin-top: -2vh;
+    .botao-header{
+        margin-top: -1.4rem;
         width: 14rem;
     }
     .signup-bt,.login-bt{
@@ -206,13 +204,23 @@
 }
 
 @media (max-width: 730px){
+
+    .barrinhas{
+        font-size: 35px;
+        transition: 0.6s;
+        margin-top: 1rem;
+    }
     .logo{
         margin-left: 40%;
         align-items: center;
         
     }
-    .btn{
-        margin-top: -1.5vh;
+    .logo .Pref{
+        margin-bottom: 0.5rem;
+        transition: 0.9s;
+    }
+    .botao-header{
+        margin-top: -1rem;
     }
     .signup-bt{
         display: none;
@@ -228,10 +236,56 @@
 
 }
 @media (max-width: 560px){
+    .barrinhas{
+        font-size: 30px;
+        transition: 0.6s;
+        margin-top: 1.3rem;
+    }
     .logo{
-        margin-left: 35%;
+        margin-left: 40%;
         align-items: center;
         
+    }
+    .logo .Pref{
+        width: 7rem;
+        transition: 0.9s;
+    }
+    .login-bt{
+        margin-top: -20%;
+        margin-left: -5%;
+        width: 5rem;
+        font-size: 12px;
+    }
+
+}
+
+@media (max-width: 420px){
+    
+    .barrinhas{
+        font-size: 25px;
+        margin-top: 0.6rem;
+        transition: 0.6s;
+    }
+    
+    .logo{
+        margin-left: 40%;
+        align-items: center;
+        transition: 0.9s;
+        margin-top:0.2rem
+        
+    }
+    
+    .logo .Pref{
+        width: 5rem;
+        transition: 0.9s;
+    }
+
+    .login-bt{
+        margin-top: -15%;
+        margin-left: -5%;
+        width: 5rem;
+        height: 2.2rem;
+        font-size: 12px;
     }
 
 }
