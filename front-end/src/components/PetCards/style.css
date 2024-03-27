@@ -1,4 +1,26 @@
-.pet-card {
+.card-img-top{
+    height: 10rem;
+}
+
+.info {
+    text-decoration: none;
+    padding: 0.5rem 0.5rem;
+    border: 2px solid #000000;
+    color: #000000;
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 4px;
+    background-color: #fff;
+    text-align: center;
+
+}
+
+.info:hover{
+    background-color: transparent;
+    color:#041be9;
+    border: 2px solid #041be9;
+}
+/* .pet-card {
     font-size: 20px;
     flex-wrap: wrap;
     overflow-wrap: break-word;
@@ -147,4 +169,4 @@
 
     }
 
-}
+} */

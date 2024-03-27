@@ -41,7 +41,7 @@ const Filtro = ({ filter, setFilter, porteFilter, setPorteFilter,
                         <select value={porteFilter} onChange={handlePorteChange}>
                             <option value="All">Todos</option>
                             <option value="Grande">Grande</option>
-                            <option value="Medio">Médio</option>
+                            <option value="Médio">Médio</option>
                             <option value="Pequeno">Pequeno</option>
                         </select>
                     </div>

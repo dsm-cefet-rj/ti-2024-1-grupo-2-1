@@ -4,7 +4,7 @@ import Footer from "../../components/Footer";
 import "./index.css";
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import PetCards from "../../components/PetCards";
-import { Grade } from "../../components/GridContainer/grade";
+import { Grade } from "../../components/GridContainer";
 import animal from "../../components/Animal/animal";
 import { useParams } from "react-router-dom";
 
@@ -78,7 +78,7 @@ export const Detalhamento = () => {
                     <Grade>
                         {animais.map((animais) => <PetCards key={animais.id} animais={animais} />)
 
-                        };
+                        }
                     </Grade>
                 </div>
             </div>

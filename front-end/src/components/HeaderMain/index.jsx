@@ -25,7 +25,9 @@ const HeaderMain = () => {
         <div className="headermain">
             <div className="header-container">
                 <div className="logo">
+                    <Link to={`/`}>
                     <img className="Pref" src={Pref} alt="" />
+                    </Link>
                 </div>
                 <FaBars
                     className="barrinhas"
@@ -35,15 +37,16 @@ const HeaderMain = () => {
                 <nav className="navbar">
 
                     <Link style={{ textDecoration: 'none', color: 'rgb(1, 73, 131)' }}>Animais </Link><span> | </span>
-                    <Link style={{ textDecoration: 'none', color: 'rgb(1, 73, 131)' }}> Adotar  </Link><span> | </span>
+                    <Link style={{ textDecoration: 'none', color: 'rgb(1, 73, 131)' }}to = {`/`}> Adotar  </Link><span> | </span>
                     <Link style={{ textDecoration: 'none', color: 'rgb(1, 73, 131)' }}> Quem somos  </Link><span> | </span>
-                    <Link style={{ textDecoration: 'none', color: 'rgb(1, 73, 131)' }}> Favoritados</Link>
+                    <Link style={{ textDecoration: 'none', color: 'rgb(1, 73, 131)' }} to = {`/favoritos`}> Favoritados</Link>
                 </nav>)}
 
             <div className="botao-header">
 
                 <button className="login-bt">Entrar</button>
                 <button className="signup-bt">Cadastrar</button>
+
             </div>
 
 

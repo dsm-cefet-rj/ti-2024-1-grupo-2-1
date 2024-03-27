@@ -6,7 +6,7 @@ import Filtro from "../../components/Filter/filtro";
 import PetCards from "../../components/PetCards";
 import './AnimalGrid.css'
 import Footer from "../../components/Footer";
-import { Grade } from "../../components/GridContainer/grade";
+import { Grade } from "../../components/GridContainer";
 import animal from "../../components/Animal/animal";
 
 export const Main = () => {
