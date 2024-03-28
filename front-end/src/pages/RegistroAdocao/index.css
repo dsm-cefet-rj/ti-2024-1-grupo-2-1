@@ -1,0 +1,60 @@
+.div-container{
+    display: block;
+    margin: 1rem;
+}
+
+.title-registro-adocao-container{
+
+}
+
+.sublinha-favoritos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 0.1rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    margin: 0 0 2rem 0;
+}
+
+.div-principal{
+    border: solid 2px black;
+    border-radius: 5px;
+    display: block;
+}
+
+.div-informacoes{
+    display: flex;
+    justify-content: space-around;
+    margin: 0 0 4rem 0;
+}
+
+.div-info-esquerda{
+    width: 45%;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.div-info-direita{
+    width: 45%;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.div-responsabilidade-adocao{
+
+}
+
+.titulo-responsabilidade{
+    margin: 0 2rem;
+}
+
+.sublinha-responsabilidade{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 0.1rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    margin: 0 0 2rem 0;
+}
