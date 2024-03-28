@@ -1,28 +1,43 @@
-import React from "react";
+import React, {useState} from "react";
 import "./style.css";
 
 
 const Filtro = ({ filter, setFilter, porteFilter, setPorteFilter,
     sexoFilter, setSexoFilter, idadeFilter, setIdadeFilter }) => {
+    
+    
+    const [selectedFilter, setSelectedFilter] = useState(filter);
+    const [selectedPorteFilter, setSelectedPorteFilter] = useState(porteFilter);
+    const [selectedSexoFilter, setSelectedSexoFilter] = useState(sexoFilter);
+    const [selectedIdadeFilter, setSelectedIdadeFilter] = useState(idadeFilter);
+    const[err, setErr]=useState("");
 
     const handleFilterChange = (e) => {
-        setFilter(e.target.value);
+        setSelectedFilter(e.target.value);
     };
 
     const handlePorteChange = (e) => {
-        setPorteFilter(e.target.value);
+        setSelectedPorteFilter(e.target.value);
     };
     const handleSexoChange = (e) => {
-        setSexoFilter(e.target.value);
+        setSelectedSexoFilter(e.target.value);
     };
 
     const handleIdadeChange = (e) => {
-        setIdadeFilter(e.target.value);
+        setSelectedIdadeFilter(e.target.value);
     };
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        
+        setFilter(selectedFilter);
+        setPorteFilter(selectedPorteFilter);
+        setSexoFilter(selectedSexoFilter);
+        setIdadeFilter(selectedIdadeFilter);
+    }
 
     return (
 
-        <div className="filtro">
+        <form className="filtro" onSubmit={handleSubmit}>
 
             <span className="tittle">Alguns animais para adoção</span>
             <span className="line"></span>
@@ -30,15 +45,15 @@ const Filtro = ({ filter, setFilter, porteFilter, setPorteFilter,
                 <div className="above-filter">
                     <div className="filtro-select">
                         <p>Tipos de animal</p>
-                        <select value={filter} onChange={handleFilterChange}>
+                        <select  onChange={handleFilterChange}>
                             <option value="All">Todos</option>
-                            <option value="Cat">Gato</option>
-                            <option value="Dog">Cachorro</option>
+                            <option value="Gato">Gato</option>
+                            <option value="Cachorro">Cachorro</option>
                         </select>
                     </div>
                     <div className="filtro-select">
                         <p>Porte do animal</p>
-                        <select value={porteFilter} onChange={handlePorteChange}>
+                        <select  onChange={handlePorteChange}>
                             <option value="All">Todos</option>
                             <option value="Grande">Grande</option>
                             <option value="Médio">Médio</option>
@@ -50,15 +65,15 @@ const Filtro = ({ filter, setFilter, porteFilter, setPorteFilter,
                 <div className="under-filter">
                     <div className="filtro-select">
                         <p>Sexo do animal</p>
-                        <select value={sexoFilter} onChange={handleSexoChange}>
+                        <select  onChange={handleSexoChange}>
                             <option value="All">Todos</option>
                             <option value="Macho">Macho</option>
-                            <option value="Femea">Fêmea</option>
+                            <option value="Fêmea">Fêmea</option>
                         </select>
                     </div>
                     <div className="filtro-select">
                         <p>Idade do animal</p>
-                        <select value={idadeFilter} onChange={handleIdadeChange}>
+                        <select  onChange={handleIdadeChange}>
                             <option value="All">Todos</option>
                             <option value="1 ano">1 ano</option>
                             <option value="2 anos">2 anos</option>
@@ -78,14 +93,14 @@ const Filtro = ({ filter, setFilter, porteFilter, setPorteFilter,
                     </div>
                     <div className="btnn-search">
 
-                        <button className="bt-search">Buscar</button>
+                        <button className="bt-search" type="submit">Buscar</button>
 
                     </div>
 
                 </div>
             </div>
 
-        </div>
+        </form>
     )
 }
 

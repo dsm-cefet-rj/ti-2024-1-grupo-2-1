@@ -43,7 +43,7 @@ const animal = {
       },
       5: {
         id: 5,
-        img: "https://pt.vecteezy.com/foto/5857332-engracado-retrato-de-fofo-corgi-cao-ao-ar-livre",
+        img: "https://img.freepik.com/fotos-gratis/jovem-buldogue-frances-marrom-jogando-isolado-no-fundo-branco-do-estudio_155003-46058.jpg?t=st=1711629302~exp=1711632902~hmac=edd189535dd6ff7035abc4dce10531aab25ee52af1fdc0f2d8c29c973f5bcc98&w=1380",
         nome: "Luna",
         tipo: "Cachorro",
         porte: "Médio",
@@ -53,7 +53,7 @@ const animal = {
     },
     6: {
         id: 6,
-        img: "https://pt.vecteezy.com/foto/3018949-close-up-portrait-of-tricolor-australian-shepherd-dog-deitado-na-mesa-de-um-parque-olho-natural-ao-dele",
+        img: "https://img.freepik.com/fotos-gratis/cachorrinho-fofo-de-volta-a-escola_23-2148985921.jpg?t=st=1711629379~exp=1711632979~hmac=7573f009cc9b729b3b10fb751222bffe5defa2036fce90529a2725a3270f66b6&w=1380",
         nome: "Branco",
         tipo: "Cachorro",
         porte: "Pequeno",
@@ -63,7 +63,7 @@ const animal = {
     },
     7: {
         id: 7,
-        img: "https://pt.vecteezy.com/foto/17622035-belo-retrato-de-close-up-de-um-cachorro",
+        img: "https://img.freepik.com/fotos-gratis/lindo-retrato-de-animal-de-estimacao-isolado_23-2149192357.jpg?t=st=1711629417~exp=1711633017~hmac=10739cbab90b88381da329fb1f560910279ace571bb8865185d1e618e70c840a&w=1380",
         nome: "Mel",
         tipo: "Cachorro",
         porte: "Grande",

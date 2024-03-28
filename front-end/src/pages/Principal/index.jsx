@@ -53,12 +53,11 @@ export const Main = () => {
                 <Grade>
 
                     {animais && animais
-                        .filter((animal) =>
-                            filter === "All"
-                                ? true
-                                : filter === "Cat"
-                                    ? animal.tipo === "Gato"
-                                    : animal.tipo === "Cachorro")
+                        .filter((animal) =>{
+                           if(filter === "All") return true;
+                           return animal.tipo === filter;
+                        })
+
                         .filter((animal) => {
                             if (porteFilter === "All") return true;
                             return animal.porte === porteFilter;
@@ -76,6 +75,7 @@ export const Main = () => {
                                 key={animal.id}
                                 animais={animal} />
                         )}
+                       
                 </Grade>
             </div>
 

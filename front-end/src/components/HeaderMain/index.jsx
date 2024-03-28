@@ -26,7 +26,7 @@ const HeaderMain = () => {
             <div className="header-container">
                 <div className="logo">
                     <Link to={`/`}>
-                    <img className="Pref" src={Pref} alt="" />
+                    <img className="Pref" src={Pref} alt=""/>
                     </Link>
                 </div>
                 <FaBars
@@ -34,7 +34,7 @@ const HeaderMain = () => {
                     style={{ color: 'rgb(1, 73, 131)' }}
                     onClick={() => { setMenuOpen(!menuOpen) }} /></div>
             {menuOpen && (
-                <nav className="navbar">
+                <nav className="navbarra">
 
                     <Link style={{ textDecoration: 'none', color: 'rgb(1, 73, 131)' }}>Animais </Link><span> | </span>
                     <Link style={{ textDecoration: 'none', color: 'rgb(1, 73, 131)' }}to = {`/`}> Adotar  </Link><span> | </span>
