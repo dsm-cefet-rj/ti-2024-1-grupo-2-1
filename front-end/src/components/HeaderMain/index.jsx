@@ -34,7 +34,7 @@ const HeaderMain = () => {
                     style={{ color: 'rgb(1, 73, 131)' }}
                     onClick={() => { setMenuOpen(!menuOpen) }} /></div>
             {menuOpen && (
-                <nav className="navbar">
+                <nav className="navbarra">
 
                     <Link style={{ textDecoration: 'none', color: 'rgb(1, 73, 131)' }}>Animais </Link><span> | </span>
                     <Link style={{ textDecoration: 'none', color: 'rgb(1, 73, 131)' }}to = {`/`}> Adotar  </Link><span> | </span>

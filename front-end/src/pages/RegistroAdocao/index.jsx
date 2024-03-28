@@ -8,8 +8,14 @@ export const RegistroAdocao = () => {
     return (
         <div>
             <HeaderMain/>
-               <div className="div-main">
-                    <h1>Registro de adoção</h1>
+               <div className="div-container">
+                    <div className="title-registro-adocao-container">
+                        <h1>Registro de Adoção</h1>
+                        <span className="sublinha-favoritos"></span>
+                    </div>
+                    <div className="div-principal">
+
+                    </div>
                </div>
             <Footer/>
         </div>

@@ -1,4 +1,30 @@
-.div-main{
+.div-container{
     display: block;
     margin: 1rem;
+}
+
+.title-registro-adocao-container{
+
+}
+
+.sublinha-favoritos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 0.1rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    margin: 0 0 2rem 0;
+}
+
+.div-principal{
+
+}
+
+.div-informacoes{
+
+}
+
+.div-responsabilidade-adocao{
+    
 }

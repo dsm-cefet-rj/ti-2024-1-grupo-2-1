@@ -36,7 +36,7 @@
    
 }*/
 
-.navbar{
+.navbarra{
     line-height: 2;
     text-decoration: none;
     display: flex;
@@ -46,12 +46,12 @@
     margin-top: 3vh;
     
 }
-.navbar a{
+.navbarra a{
     transition: opacity 0.3s;
     position: relative;
  
 }
-.navbar a::after{
+.navbarra a::after{
     content: "";
     display: flex;
     width: 0%;
@@ -63,15 +63,15 @@
     transition: 0.5s ease-in-out;
     margin-top: -10px;
 }
-.navbar a:hover::after{
+.navbarra a:hover::after{
     width: 100%;
 }
  
-.navbar a:hover{
+.navbarra a:hover{
     opacity:0.5 ;
 }
 
-.navbar span{
+.navbarra span{
     font-size: 20px;
     margin-top: -1.5%;
     margin-right: 0.2rem;
@@ -128,7 +128,7 @@
     .logo{
         transition: 0.9s;
     }
-    .navbar{
+    .navbarra{
         margin-top: 3%;
     }
 
@@ -172,13 +172,13 @@
         
     }
 
-    .headermain .navbar{
+    .headermain .navbarra{
         margin-top: 0.1rem;
         margin-right: 0rem;
         flex-direction: column;
         align-items: flex-end;
     }
-    .headermain .navbar Link{
+    .headermain .navbarra Link{
         width: 100px;
         max-width: 30%;
         margin-left: 0;
@@ -186,10 +186,10 @@
         display: flex;
         justify-content: flex-end;
     }
-    .navbar{
+    .navbarra{
         margin-top: -5%;
     }
-    .navbar span{
+    .navbarra span{
         display: none;
     }
     .botao-header{
@@ -231,7 +231,7 @@
         margin-left: -5%;
         width: 5rem;
     }
-    .navbar{
+    .navbarrara{
         margin-top: -5%;
     }
 
