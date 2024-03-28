@@ -1,4 +1,14 @@
-.card-img-top{
+.card-animal {
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.card-animal:hover {
+    transform: scale(1.10);
+}
+
+
+.card-img-top {
     height: 10rem;
 }
 
@@ -15,19 +25,25 @@
 
 }
 
-.info:hover{
+.info:hover {
     background-color: transparent;
-    color:#041be9;
+    color: #041be9;
     border: 2px solid #041be9;
 }
+
 /* .pet-card {
+    position: relative;
     font-size: 20px;
     flex-wrap: wrap;
     overflow-wrap: break-word;
     border-radius: 10px;
     box-sizing: border-box;
     height: 20rem;
+    transition: transform 0.5s ease;
 
+}
+.pet-card:hover{
+    transform: scale(1.15);
 }
 
 .pet-card h2 {

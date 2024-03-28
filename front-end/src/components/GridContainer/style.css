@@ -12,7 +12,8 @@
 
 }
 
-@media (max-width: 470px){
+
+@media (max-width: 770px){
     .card-container{
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
         margin: 1rem 1rem;
