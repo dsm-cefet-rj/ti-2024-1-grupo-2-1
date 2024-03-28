@@ -10,7 +10,9 @@
 
 .div-esquerda {}
 
-.navegacao {}
+.navegacao {
+    margin-left: 2rem;
+}
 
 #imagem-animal {
     width: 30rem;
@@ -64,6 +66,7 @@
     border-radius: 10px;
     padding: 0.5rem;
     margin: 0 0 1.5rem 0;
+    max-width: 40rem;
 }
 
 .botao-adotar {
@@ -146,7 +149,9 @@
 
     #acessos {}
 
-    .historia-animal {}
+    .historia-animal {
+        max-width: none;
+    }
 
     .botao-adotar {}
 

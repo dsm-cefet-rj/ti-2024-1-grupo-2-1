@@ -41,9 +41,9 @@ export const Detalhamento = () => {
                     <div className="div-esquerda">
                         <div className="navegacao">
                             <Breadcrumb>
-                                <Breadcrumb.Item href="/">Pricipal</Breadcrumb.Item>
+                                <Breadcrumb.Item href="/">Principal</Breadcrumb.Item>
                                 <Breadcrumb.Item href="#">Detalhamento do Animal</Breadcrumb.Item>
-                                <Breadcrumb.Item href="#">{nomeAnimal}</Breadcrumb.Item>
+                                <Breadcrumb.Item href="#">{animal[id].nome}</Breadcrumb.Item>
                             </Breadcrumb>
                         </div>
                         <img src={animal[id].img} alt="Imagem do Animal" id="imagem-animal"></img>
