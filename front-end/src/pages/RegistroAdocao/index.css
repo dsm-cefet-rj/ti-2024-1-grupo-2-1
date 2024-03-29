@@ -93,3 +93,50 @@
     width: 100%;
     margin: 0 0 2rem 0;
 }
+
+.div-inputs-responsabilidade{
+    display: block;
+    text-align: center;
+    font: 20px solid black;
+}
+
+.div-pergunta{
+    margin: 0 0 2rem 0;
+}
+
+.div-pergunta div{
+    margin:  1rem 0 0 0;
+}
+
+.div-pergunta input{
+    margin: 0 8px;
+}
+
+.div-documentos{
+    margin: 4rem 0;
+    text-align: center;
+}
+
+.div-documentos div{
+    margin: 1rem 0 0 0;
+    display: block;
+}
+
+.div-btn-registrar-adocao{
+    display: flex;
+    justify-content: center;
+}
+
+#btn-registar-adocao{
+    margin: 2rem 0 2rem 0;
+
+
+    width: 25rem;
+    height: 5rem;
+    border: 1px solid rgb(1, 73, 131);
+    border-radius: 20px;
+    color: white;
+    background-color: rgb(1, 73, 131);
+
+    font-size: 30px;
+}
