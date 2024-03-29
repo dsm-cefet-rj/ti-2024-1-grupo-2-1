@@ -8,7 +8,7 @@
     box-shadow:0 2px 5px 0px rgba(0, 0, 0, 0.3);
     width: 100%;
     flex:1 1 0;
-    padding: 1% 5%;
+    padding: 0.5% 5%;
     justify-content: space-between;
     display: flex;
     background-color: #ffffff;
@@ -43,7 +43,7 @@
     font-family: 'Poppins', Arial, sans-serif;
     font-weight: bold;
     margin-left: 8vw;
-    margin-top: 3vh;
+    margin-top: 3.5vh;
     
 }
 .navbarra a{
@@ -81,8 +81,8 @@
 }
 
 .botao-header{
-    margin-top: 2.5vh;
-    padding: 0.5vh 1vw;
+    margin-top: 2vh;
+    padding: 0.5vh 0.5vw;
     width: 17rem;
     justify-content: space-between;
     display: flex;
@@ -128,9 +128,6 @@
     .logo{
         transition: 0.9s;
     }
-    .navbarra{
-        margin-top: 3%;
-    }
 
 }
 
@@ -149,13 +146,11 @@
     .headermain .barrinhas{
         display: flex;
         cursor: pointer;
-        
-    
     }
     .barrinhas{
         font-size: 40px;
         transition: 0.6s;
-        margin-top: 0.6rem;
+        margin-top: 0.4rem;
     }
     .logo{
         margin-left: 43%;
@@ -164,7 +159,7 @@
         
     }
     .logo .Pref{
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
         transition: 0.9s;
     }
     .headermain .barrinhas:hover{
@@ -173,28 +168,27 @@
     }
 
     .headermain .navbarra{
-        margin-top: 0.1rem;
+        margin-top: -1.0rem;
         margin-right: 0rem;
         flex-direction: column;
         align-items: flex-end;
+        transition: 0.9s ease;
     }
-    .headermain .navbarra Link{
+    .navbarra Link{
         width: 100px;
         max-width: 30%;
-        margin-left: 0;
-        margin-bottom: 1rem;
         display: flex;
         justify-content: flex-end;
     }
     .navbarra{
-        margin-top: -5%;
+        margin-top: -2%;
         
     }
     .navbarra span{
         display: none;
     }
     .botao-header{
-        margin-top: -1.4rem;
+        margin-top: -1.0rem;
         width: 14rem;
     }
     .signup-bt,.login-bt{
@@ -210,7 +204,7 @@
     .barrinhas{
         font-size: 35px;
         transition: 0.6s;
-        margin-top: 1rem;
+        margin-top: 0rem;
     }
     .logo{
         margin-left: 40%;
@@ -239,9 +233,9 @@
 }
 @media (max-width: 560px){
     .barrinhas{
-        font-size: 30px;
+        font-size: 35px;
         transition: 0.6s;
-        margin-top: 1.3rem;
+        margin-top: 0.8rem;
     }
     .logo{
         margin-left: 40%;
@@ -264,8 +258,8 @@
 @media (max-width: 420px){
     
     .barrinhas{
-        font-size: 25px;
-        margin-top: 0.6rem;
+        font-size: 30px;
+        margin-top: -0.2rem;
         transition: 0.6s;
     }
     
