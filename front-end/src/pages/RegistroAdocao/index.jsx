@@ -16,15 +16,35 @@ export const RegistroAdocao = () => {
                     <div className="div-principal">
                         <div className="div-informacoes">
                             <div className="div-info-esquerda">
-                                <img src="https://placehold.co/300x300" alt="Imagem" id="teste"></img>
+                                <img src="https://placehold.co/400x400" alt="Imagem" id="teste"></img>
+                                <div className="div-inputs-esquerda">
+                                    <label className="labelInput-E">Nome do animal</label>
+                                    <input type="text" className="inputs-info-esquerda"/>
+                                    <label className="labelInput-E">RGA do animal</label>
+                                    <input type="text" className="inputs-info-esquerda"/>
+                                    <label className="labelInput-E">Email do tutor</label>
+                                    <input type="text" className="inputs-info-esquerda"/>
+                                </div>
                             </div>
                             <div className="div-info-direita">
-                                <img src="https://placehold.co/100x100" alt="Imagem"></img>
+                                <img src="https://placehold.co/200x200" alt="Imagem"></img>
+                                <div className="div-inputs-direita">
+                                    <label className="labelInput-D">Nome do tutor</label>
+                                    <input type="text" className="inputs-info-direita"/>
+                                    <label className="labelInput-D">Idade do tutor</label>
+                                    <input type="text" className="inputs-info-direita"/>
+                                    <label className="labelInput-D">CPF do tutor</label>
+                                    <input type="text" className="inputs-info-direita"/>
+                                    <label className="labelInput-D">RG do tutor</label>
+                                    <input type="text" className="inputs-info-direita"/>
+                                    <label className="labelInput-D">Telefone/Celular do tutor</label>
+                                    <input type="text" className="inputs-info-direita"/>
+                                </div>
                             </div>
                         </div>
                         <div className="div-responsabilidade-adocao">
                             <div className="titulo-responsabilidade">
-                                <h3>Registro de Adoção</h3>
+                                <h3>Responsabilidade de Adoção</h3>
                                 <span className="sublinha-responsabilidade"></span>
                             </div>
                         </div>

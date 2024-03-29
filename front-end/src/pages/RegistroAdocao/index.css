@@ -31,14 +31,49 @@
 
 .div-info-esquerda{
     width: 45%;
-    text-align: center;
     margin: 2rem 0;
 }
+
+.div-inputs-esquerda{
+    margin: 2rem 0 0 0;
+}
+
+.labelInput-E{
+    display: block;
+    font: 20px solid black;
+    text-align: left;
+}
+
+.inputs-info-esquerda{
+    display: block;
+    width: 400px;
+    margin: 0 0 1rem 0;
+    border: solid 2px black;
+}
+
 
 .div-info-direita{
     width: 45%;
     text-align: center;
     margin: 2rem 0;
+}
+
+.div-inputs-direita{
+    margin: 2rem 0 0 0;
+}
+
+.labelInput-D{
+    display: block;
+    font: 20px solid black;
+    max-width: 80%;
+    text-align: left;
+    margin: 0 0 0 6rem;
+}
+
+.inputs-info-direita{
+    width: 650px;
+    margin: 0 0 2rem 0;
+    border: solid 2px black;
 }
 
 .div-responsabilidade-adocao{
