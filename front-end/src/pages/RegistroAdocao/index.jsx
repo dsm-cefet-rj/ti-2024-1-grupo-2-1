@@ -29,18 +29,30 @@ export const RegistroAdocao = () => {
                                 </div>
                             </div>
                             <div className="div-info-direita">
-                                <img src="https://placehold.co/200x200" alt="Imagem"></img>
+                                <div>
+                                    <img src="https://placehold.co/200x200" alt="Imagem"></img>
+                                </div>
                                 <div className="div-inputs-direita">
-                                    <label className="labelInput-D">Nome do tutor</label>
-                                    <input type="text" className="inputs-info-direita"/>
-                                    <label className="labelInput-D">Idade do tutor</label>
-                                    <input type="text" className="inputs-info-direita"/>
-                                    <label className="labelInput-D">CPF do tutor</label>
-                                    <input type="text" className="inputs-info-direita"/>
-                                    <label className="labelInput-D">RG do tutor</label>
-                                    <input type="text" className="inputs-info-direita"/>
-                                    <label className="labelInput-D">Telefone/Celular do tutor</label>
-                                    <input type="text" className="inputs-info-direita"/>
+                                    <div className="inputs-info-direita">
+                                        <label>Nome do tutor</label>
+                                        <input type="text"/>
+                                    </div>
+                                    <div className="inputs-info-direita">
+                                        <label>Idade do tutor</label>
+                                        <input type="text"/>
+                                    </div>
+                                    <div className="inputs-info-direita">
+                                        <label>CPF do tutor</label>
+                                        <input type="text"/>
+                                    </div>
+                                    <div className="inputs-info-direita">
+                                        <label>RG do tutor</label>
+                                        <input type="text"/>
+                                    </div>
+                                    <div className="inputs-info-direita">
+                                        <label>Telefone/Celular do tutor</label>
+                                        <input type="text"/>
+                                    </div>
                                 </div>
                             </div>
                         </div>

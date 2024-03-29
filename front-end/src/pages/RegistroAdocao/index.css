@@ -1,4 +1,5 @@
 .div-container{
+    font-weight: bold;
     display: block;
     margin: 1rem;
 }
@@ -24,27 +25,32 @@
 }
 
 .div-informacoes{
+    font-family: 'Poppins', Arial, sans-serif;
     display: flex;
     justify-content: space-around;
     margin: 0 0 4rem 0;
 }
 
 .div-info-esquerda{
+    font-family: 'Poppins', Arial, sans-serif;
     width: 45%;
     margin: 2rem 0;
 }
 
 .div-inputs-esquerda{
+    font-family: 'Poppins', Arial, sans-serif;
     margin: 2rem 0 0 0;
 }
 
 .labelInput-E{
+    font-family: 'Poppins', Arial, sans-serif;
     display: block;
     font: 20px solid black;
     text-align: left;
 }
 
 .inputs-info-esquerda{
+    font-family: 'Poppins', Arial, sans-serif;
     display: block;
     width: 400px;
     margin: 0 0 1rem 0;
@@ -59,21 +65,24 @@
 }
 
 .div-inputs-direita{
-    margin: 2rem 0 0 0;
-}
-
-.labelInput-D{
     display: block;
-    font: 20px solid black;
-    max-width: 80%;
-    text-align: left;
-    margin: 0 0 0 6rem;
+    text-align: center;
 }
 
 .inputs-info-direita{
-    width: 650px;
     margin: 0 0 2rem 0;
+}
+
+.inputs-info-direita label{
+    display: flex;
+    font-family: 'Poppins', Arial, sans-serif;
+    font: 20px solid black;
+}
+
+.inputs-info-direita input{
+    width: 100%;
     border: solid 2px black;
+
 }
 
 .div-responsabilidade-adocao{
@@ -98,6 +107,7 @@
     display: block;
     text-align: center;
     font: 20px solid black;
+    font-family: 'Poppins', Arial, sans-serif;
 }
 
 .div-pergunta{
@@ -139,4 +149,12 @@
     background-color: rgb(1, 73, 131);
 
     font-size: 30px;
+}
+
+@media screen and (max-width: 980px){
+    .div-informacoes{
+        font-family: 'Poppins', Arial, sans-serif;
+        display: block;
+    }
+
 }
