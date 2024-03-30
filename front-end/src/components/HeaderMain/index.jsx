@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./style.css";
 import { FaBars } from "react-icons/fa"
 import { useNavigate, Link } from "react-router-dom";
-import Pref from "../../assets/logo-prefeitura.png"
+import Logo from "../../assets/logo2.png"
+import Logo2 from "../../assets/logopart2.png"
 
 
 const HeaderMain = () => {
@@ -26,7 +27,8 @@ const HeaderMain = () => {
             <div className="header-container">
                 <div className="logo">
                     <Link to={`/`}>
-                    <img className="Pref" src={Pref} alt=""/>
+                    <img className="pata" src={Logo} alt=""/>
+                    <img className="logo_nome" src={Logo2} alt="" />
                     </Link>
                 </div>
                 <FaBars

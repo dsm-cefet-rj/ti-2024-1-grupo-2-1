@@ -42,6 +42,109 @@
     margin: 2rem 0 0 0;
 }
 
+.wraper-input-r{
+    width:62%;
+    position: relative;
+    border-bottom: 2px solid #635e5e;
+    margin-bottom: 35px;
+
+}
+.input{
+    font-size: 20px;
+    color: #000000;
+    line-height: 1.3;
+    border: none;
+    display: block;
+
+    width: 100%;
+    height: 45px;
+    background-color:transparent;
+    padding:0 5px
+}
+.focused-input:-ms-input-placeholder  {
+    font-size:40px;
+  }
+
+.focused-input::-webkit-input-placeholder {
+    font-size:40px;
+  }
+
+.focused-input:-moz-placeholder {
+    font-size:40px;
+  }
+
+.focused-input{
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    top:0px;
+    left:0;
+
+    pointer-events: none;
+    color: rgb(0, 0, 0);
+
+}
+
+.focused-input::before{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 3px;
+
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+
+    background: -webkit-linear-gradient(to right, #00eeff, rgb(1, 73, 131));
+    background: -o-linear-gradient(to right,#00eeff, rgb(1, 73, 131));
+    background: -moz-linear-gradient(to right,#00eeff, rgb(1, 73, 131));
+    background: linear-gradient(to right,#00eeff, rgb(1, 73, 131));
+
+}
+
+.focused-input::after{
+    font-size: 20px;
+    color: #999999;
+    line-height: 1.3;
+
+    content: attr(data-placeholder);
+    display: block;
+    width: 100%;
+    position: absolute;
+    top:20px;
+    left: 0px;
+
+    padding-left: 5px;
+
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+}
+
+.input:focus{
+    outline: none;
+}
+
+.input:focus + .focused-input::after{
+    top: -10px;
+}
+.input:focus + .focused-input::before{
+    width:100%;
+}
+
+.has-val + .focused-input::after{
+    top:-10px;
+}
+
+.has-val + .focused-input::before{
+    width:100%;
+}
+
 .labelInput-E{
     font-family: 'Poppins', Arial, sans-serif;
     display: block;
@@ -60,13 +163,26 @@
 
 .div-info-direita{
     width: 45%;
-    text-align: center;
     margin: 2rem 0;
+}
+.div-info-direita div{
+
+    align-items: center;
+   
+}
+.div-info-direita img{
+
+    align-items: center;
+    justify-content: center;
+    margin-left: 17rem;
+    margin-bottom: 2rem;
+   
 }
 
 .div-inputs-direita{
-    display: block;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    
 }
 
 .inputs-info-direita{

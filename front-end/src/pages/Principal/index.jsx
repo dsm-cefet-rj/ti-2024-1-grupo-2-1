@@ -8,29 +8,63 @@ import './AnimalGrid.css'
 import Footer from "../../components/Footer";
 import { Grade } from "../../components/GridContainer";
 import animal from "../../components/Animal/animal";
+import Paginacao from "../../components/Pagination";
+
+
+const LIMIT = 10;
+
+
 
 export const Main = () => {
 
     const [animais, setAnimais] = useState([]);
-    const getAnimal = async () => {
-        try { // Verifica se o animal com o ID fornecido existe
-            console.log(animal);
-            setAnimais(Object.values(animal));
-            
-        }catch (error) {
-            console.error('Erro ao buscar a receita: ', error);
-        }
-      };
-
-    useEffect(() => {
-        getAnimal();
-    }, []);
-
     const [filter, setFilter] = useState("All");
     const [porteFilter, setPorteFilter] = useState("All");
     const [sexoFilter, setSexoFilter] = useState("All");
     const [idadeFilter, setIdadeFilter] = useState("All");
+    const[filtredAnimals, setFiltredAnimals]=useState([])
+    const[offset,setOffset]=useState (0);
+  
+    
 
+
+
+    const getAnimal = async () => {
+        try { // Verifica se o animal com o ID fornecido existe
+            setAnimais(Object.values(animal));
+
+        } catch (error) {
+            console.error('Erro ao buscar o animal: ', error);
+        }};
+
+        
+    const animaisFiltrados= (animais && animais
+        .filter((animal) => {
+            if (filter === "All") return true;
+            return animal.tipo === filter;
+        })
+        .filter((animal) => {
+            if (porteFilter === "All") return true;
+            return animal.porte === porteFilter;
+        })
+        .filter((animal) => {
+            if (sexoFilter === "All") return true;
+            return animal.sexo === sexoFilter;
+        })
+        .filter((animal) => {
+            if (idadeFilter === "All") return true;
+            return animal.idade === idadeFilter;
+        }));
+    
+    useEffect(() => {
+        getAnimal();
+        setFiltredAnimals(animaisFiltrados);
+        console.log(filtredAnimals.length)
+        
+        
+    }, [offset,filter,porteFilter, sexoFilter,idadeFilter]);
+    
+   
     return (
         <div className="all">
 
@@ -49,37 +83,28 @@ export const Main = () => {
                     idadeFilter={idadeFilter} setIdadeFilter={setIdadeFilter}
                 />
 
-            
+
                 <Grade>
 
-                    {animais && animais
-                        .filter((animal) =>{
-                           if(filter === "All") return true;
-                           return animal.tipo === filter;
-                        })
-
-                        .filter((animal) => {
-                            if (porteFilter === "All") return true;
-                            return animal.porte === porteFilter;
-                        })
-                        .filter((animal) => {
-                            if (sexoFilter === "All") return true;
-                            return animal.sexo === sexoFilter;
-                        })
-                        .filter((animal) => {
-                            if (idadeFilter === "All") return true;
-                            return animal.idade === idadeFilter;
-                        })
+                    {animaisFiltrados
                         .map((animal) =>
                             <PetCards
                                 key={animal.id}
                                 animais={animal} />
-                        )}
-                       
+                        )
+                    }
+
                 </Grade>
+
             </div>
+            {animaisFiltrados.length && (
+                <Paginacao 
+                limit={LIMIT} 
+                total={animaisFiltrados.length} 
+                offset={offset}
+                setOffset={setOffset} />
 
-
+            )}
             <Footer />
 
         </div>
