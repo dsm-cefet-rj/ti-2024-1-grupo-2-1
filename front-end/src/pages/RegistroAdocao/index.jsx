@@ -1,18 +1,18 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./index.css"
 import HeaderMain from "../../components/HeaderMain";
 import Footer from "../../components/Footer";
 
 
 export const RegistroAdocao = () => {
-    const[nomeAnimal,setNomeAnimal]=useState("");
-    const[email,setEmail]=useState("");
-    const[rga,setRga]=useState("");
-    const[nome,setNome]=useState("");
-    const[idade,setIdade]=useState("");
-    const[cpf,setCpf]=useState("");
-    const[rg,setRg]=useState("");
-    const[cel,setCel]=useState("");
+    const [nomeAnimal, setNomeAnimal] = useState("");
+    const [email, setEmail] = useState("");
+    const [rga, setRga] = useState("");
+    const [nome, setNome] = useState("");
+    const [idade, setIdade] = useState("");
+    const [cpf, setCpf] = useState("");
+    const [rg, setRg] = useState("");
+    const [cel, setCel] = useState("");
 
     const linkTermoAdocao = "https://pt.scribd.com/document/331088569/Termo-de-Adocao-de-Caes";
 
@@ -60,7 +60,7 @@ export const RegistroAdocao = () => {
                                 <img src="https://placehold.co/200x200" alt="Imagem"></img>
                             </div>
                             <div className="div-inputs-direita">
-                            <div className="wraper-input-r">
+                                <div className="wraper-input-r">
                                     <input
                                         className={nome !== "" ? 'has-val input' : 'input'}
                                         type="name"

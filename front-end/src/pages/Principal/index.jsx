@@ -11,7 +11,7 @@ import animal from "../../components/Animal/animal";
 import Paginacao from "../../components/Pagination";
 
 
-const LIMIT = 10;
+// const LIMIT = 10;
 
 
 
@@ -22,23 +22,24 @@ export const Main = () => {
     const [porteFilter, setPorteFilter] = useState("All");
     const [sexoFilter, setSexoFilter] = useState("All");
     const [idadeFilter, setIdadeFilter] = useState("All");
-    const[filtredAnimals, setFiltredAnimals]=useState([])
-    const[offset,setOffset]=useState (0);
-  
-    
+    const [animalsPerPage, setAnimalsPerPage] = useState(10)
+    const [paginaAtual, setPaginaAtual] = useState(0);
 
 
 
-    const getAnimal = async () => {
-        try { // Verifica se o animal com o ID fornecido existe
-            setAnimais(Object.values(animal));
 
-        } catch (error) {
-            console.error('Erro ao buscar o animal: ', error);
-        }};
 
-        
-    const animaisFiltrados= (animais && animais
+    // const getAnimal = async () => {
+    //     try { 
+    //         // Verifica se o animal com o ID fornecido existe
+    //         setAnimais(Object.values(animal));
+
+    //     } catch (error) {
+    //         console.error('Erro ao buscar o animal: ', error);
+    //     }};
+
+
+    const animaisFiltrados = (animais && animais
         .filter((animal) => {
             if (filter === "All") return true;
             return animal.tipo === filter;
@@ -55,16 +56,32 @@ export const Main = () => {
             if (idadeFilter === "All") return true;
             return animal.idade === idadeFilter;
         }));
-    
+
+    const pages = Math.ceil(animaisFiltrados.length/ animalsPerPage);
+    const startIndex = paginaAtual * animalsPerPage;
+    const endIndex = startIndex + animalsPerPage;
+    const itensAtuais = animaisFiltrados.slice(startIndex, endIndex)
+
     useEffect(() => {
-        getAnimal();
-        setFiltredAnimals(animaisFiltrados);
-        console.log(filtredAnimals.length)
+        const fetchData = async () => {
+            // const result =await fetch (Object.values(animal))
+            //     .then(response => response.json())
+            //     .then(data => data)
+            setAnimais(Object.values(animal))
+        }
+        fetchData();
+        // getAnimal();
+        // setFiltredAnimals(animaisFiltrados);
+        }, []);
+
+        useEffect(()=>{
+            setPaginaAtual(0)
+        },[animalsPerPage])
+
+        console.log(animaisFiltrados.length)
         
-        
-    }, [offset,filter,porteFilter, sexoFilter,idadeFilter]);
-    
-   
+
+
     return (
         <div className="all">
 
@@ -86,7 +103,7 @@ export const Main = () => {
 
                 <Grade>
 
-                    {animaisFiltrados
+                    {itensAtuais
                         .map((animal) =>
                             <PetCards
                                 key={animal.id}
@@ -99,12 +116,12 @@ export const Main = () => {
             </div>
             {animaisFiltrados.length && (
                 <Paginacao 
-                limit={LIMIT} 
-                total={animaisFiltrados.length} 
-                offset={offset}
-                setOffset={setOffset} />
+                paginaAtual={paginaAtual}
+                pages={pages}
+                setPaginaAtual={setPaginaAtual} 
+                 />
 
-            )}
+            )} 
             <Footer />
 
         </div>

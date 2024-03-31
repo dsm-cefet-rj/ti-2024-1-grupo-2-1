@@ -196,7 +196,7 @@ const animal = {
 20: {
   id: 20,
   img: "https://img.freepik.com/fotos-gratis/close-vertical-de-um-lindo-gato-europeu-de-pelo-curto_181624-34587.jpg?size=626&ext=jpg&ga=GA1.1.1459418701.1707737255&semt=sph",
-  nome: "Bella",
+  nome: "Bela",
   tipo: "Gato",
   porte: "Pequeno",
   sexo: "Fêmea",

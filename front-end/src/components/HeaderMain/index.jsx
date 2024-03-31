@@ -38,8 +38,7 @@ const HeaderMain = () => {
             {menuOpen && (
                 <nav className="navbarra">
 
-                    <Link style={{ textDecoration: 'none', color: 'rgb(1, 73, 131)' }}>Animais </Link><span> | </span>
-                    <Link style={{ textDecoration: 'none', color: 'rgb(1, 73, 131)' }}to = {`/`}> Adotar  </Link><span> | </span>
+                    <Link style={{ textDecoration: 'none', color: 'rgb(1, 73, 131)' }}to = {`/`}> Home  </Link><span> | </span>
                     <Link style={{ textDecoration: 'none', color: 'rgb(1, 73, 131)' }}> Quem somos  </Link><span> | </span>
                     <Link style={{ textDecoration: 'none', color: 'rgb(1, 73, 131)' }} to = {`/favoritos`}> Favoritados</Link>
                 </nav>)}

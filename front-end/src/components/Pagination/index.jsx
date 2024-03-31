@@ -4,28 +4,20 @@ import "./style.css"
 const Max_items = 5;
 const Max_Left = (Max_items - 1) / 2;
 
-const Paginacao = ({ limit, total, offset, setOffset }) => {
-    const atual = offset ? offset / limit + 1 : 1;
-    const pages = Math.ceil(total / limit);
+const Paginacao = ({paginaAtual,pages, setPaginaAtual }) => {
+    
+   // const last = Math.min(pages, first + Max_items - 1)
 
-    const first = Math.max(1,atual - Max_Left);
-    const last = Math.min(pages, first + Max_items - 1)
-
-    function onPageChange(page) {
-        setOffset((page - 1) * limit)
-    }
     return (
         <ul className='lista'>
-            {Array.from({ length: Math.min(Max_items,pages) })
-                .map((_, index) => index + first)
-                .map((page) => (
-                    <li key={page}>
-                        <button className={page === atual ? 'botao_pg__ativado' : 'botao_pg'}
-                            onClick={() => onPageChange(page)}
-                        >{page}
+            {Array.from(Array(pages), (animais, index)=>{
+                   return <li key={pages}>
+                        <button className={index === paginaAtual ? 'botao_pg__ativado' : 'botao_pg'}
+                           value={index} onClick={(e) => setPaginaAtual(Number(e.target.value))}
+                        >{index+1}
                         </button>
-                    </li>
-                ))}
+                    </li>}
+)}
         </ul>
 
 
