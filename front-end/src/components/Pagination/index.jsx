@@ -11,7 +11,7 @@ const Paginacao = ({paginaAtual,pages, setPaginaAtual }) => {
     return (
         <ul className='lista'>
             {Array.from(Array(pages), (animais, index)=>{
-                   return <li key={pages}>
+                   return <li key={index}>
                         <button className={index === paginaAtual ? 'botao_pg__ativado' : 'botao_pg'}
                            value={index} onClick={(e) => setPaginaAtual(Number(e.target.value))}
                         >{index+1}

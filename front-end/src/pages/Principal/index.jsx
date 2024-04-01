@@ -57,7 +57,7 @@ export const Main = () => {
             return animal.idade === idadeFilter;
         }));
 
-    const pages = Math.ceil(animaisFiltrados.length/ animalsPerPage);
+    const pages = Math.ceil(animaisFiltrados.length/ animalsPerPage, 1);
     const startIndex = paginaAtual * animalsPerPage;
     const endIndex = startIndex + animalsPerPage;
     const itensAtuais = animaisFiltrados.slice(startIndex, endIndex)
@@ -74,9 +74,9 @@ export const Main = () => {
         // setFiltredAnimals(animaisFiltrados);
         }, []);
 
-        useEffect(()=>{
-            setPaginaAtual(0)
-        },[animalsPerPage])
+        // useEffect(()=>{
+        //     setPaginaAtual(0)
+        // },[animalsPerPage])
 
         console.log(animaisFiltrados.length)
         
