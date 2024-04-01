@@ -5,13 +5,17 @@ import { Detalhamento } from "../pages/Detalhamento";
 import { Main } from "../pages/Principal";
 import Agendamento from "../pages/Pag_Agendamento";
 import { RegistroAdocao } from "../pages/RegistroAdocao";
+import { Login } from "../pages/Login";
+import{Cadastrar} from "../pages/Cadastrar"
 
 export const AppRouter = () => {
   return (
     <Router>
       <Fragment>
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route exact path="/" element={<Main />} />
+          <Route  path="/login"  element={<Login/>}/>
+          <Route  path="/cadastrar"  element={<Cadastrar/>}/>
           <Route path="/favoritos" element={<Favoritos />} />
           <Route exact path="/detalhamento/:id" element={<Detalhamento />} />
           <Route path="/agendamento" element={<Agendamento />} />

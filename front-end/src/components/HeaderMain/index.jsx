@@ -21,6 +21,12 @@ const HeaderMain = () => {
             }
         })
     })
+    const goLogin=()=>{
+        navigate("/login")
+    }
+    const goSignup=()=>{
+        navigate("/cadastrar")
+    }
     return (
 
         <div className="headermain">
@@ -45,8 +51,8 @@ const HeaderMain = () => {
 
             <div className="botao-header">
 
-                <button className="login-bt">Entrar</button>
-                <button className="signup-bt">Cadastrar</button>
+                <button className="login-bt" onClick={goLogin}>Entrar</button>
+                <button className="signup-bt" onClick={goSignup}>Cadastrar</button>
 
             </div>
 
