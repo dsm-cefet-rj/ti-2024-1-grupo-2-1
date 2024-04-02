@@ -48,6 +48,9 @@ const FilterFavoritos = ({
           id="tipo-animal"
           onChange={handleFilterChange}
         >
+          <option value="" disabled selected>
+            Tipo
+          </option>
           <option value="All">Todos</option>
           <option value="Cachorro">Cachorro</option>
           <option value="Gato">Gato</option>
@@ -59,6 +62,9 @@ const FilterFavoritos = ({
           id="porte-animal"
           onChange={handlePorteChange}
         >
+          <option value="" disabled selected>
+            Porte
+          </option>
           <option value="All">Todos</option>
           <option value="Grande">Grande</option>
           <option value="Médio">Médio</option>
@@ -71,6 +77,9 @@ const FilterFavoritos = ({
           id="idade-animal"
           onChange={handleIdadeChange}
         >
+          <option value="" disabled selected>
+            Idade
+          </option>
           <option value="All">Todos</option>
           <option value="1 ano">1 ano</option>
           <option value="2 anos">2 anos</option>
@@ -90,6 +99,7 @@ const FilterFavoritos = ({
       </div>
       <div>
         <select name="sexo-animal" id="sexo-animal" onChange={handleSexoChange}>
+        <option value="" disabled selected>Sexo</option>
           <option value="All">Todos</option>
           <option value="Macho">Macho</option>
           <option value="Fêmea">Fêmea</option>
@@ -102,4 +112,4 @@ const FilterFavoritos = ({
   );
 };
 
-export default FilterFavoritos
+export default FilterFavoritos;
