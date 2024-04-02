@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React, {useState} from "react";
 import HeaderMain from "../../components/HeaderMain";
 import Footer from "../../components/Footer";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import './style.css';
-
-
+import "./style.css";
 
 export const Agendamento = () => {
+
     const [date, setDate] = useState(new Date());
     const [selecao, setSelecao] = useState('');
 
@@ -24,46 +23,50 @@ export const Agendamento = () => {
         setSelecao(event.target.value);
     };
 
-        // Aqui você pode adicionar a lógica para enviar o horário para o servidor
-
     return (
         <div>
-            <HeaderMain></HeaderMain>
-            <span className="introducao"><strong>Agende sua visita</strong></span>
-            <span className="line"></span>
-                    
-            <div className="Calendar">
-                <Calendar
-                    onChange={isDateDisabled}
-                    value={date}
-                />
-                <div className='Day'><h4>Dia</h4></div>
-                
-                <div className="data">
-                    <strong>{date.toLocaleDateString()}</strong> 
+            <HeaderMain/>
+                <div>
+                    <div className="div-name">
+                        <h1>Agende sua visita</h1>
+                        <span id="linha"></span>
+                    </div>
+                    <div className="div-mainContainer">
+                        <div className="div-top">
+                            <div className="div-left">
+                                <Calendar
+                                    onChange={isDateDisabled}
+                                    value={date}
+                                />
+                            </div>
+                            <div className="div-right">
+                                <div className="div-day">
+                                    <h3>Dia: </h3>
+                                    <strong>{date.toLocaleDateString()}</strong>
+                                </div>
+                                <div className="div-hour">
+                                    <h3 id="text-hour">Hora: </h3>
+                                    <select value={selecao} onChange={handleChange}>
+                                        <option value="">Selecione...</option>
+                                        <option value="option1">12:00h</option>
+                                        <option value="option2">14:00h</option>
+                                        <option value="option3">14:30h</option>
+                                        <option value="option4">16:00h</option>
+                                        <option value="option5">16:30h</option>
+                                    </select>
+                                </div>
+                                <div className="div-button">
+                                    <input type="button" value="Confirmar Agendamento" id="confirm-button"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <div className='time'>
-                    <h4>Hora</h4>
-                </div>
-                <div className='hora'>
-                    <select value={selecao} onChange={handleChange}>
-                        <option value="">Selecione...</option>
-                        <option value="opcao1">12:00h</option>
-                        <option value="opcao2">14:00h</option>
-                        <option value="opcao3">14:45h</option>
-                        <option value="opcao4">17:00h</option>
-                    </select>
-                </div>
-            <button className='Botao'>Confirmar</button>
-
-            
-            </div>
-
-            <div className="content"></div>
-            <Footer></Footer>
+            <Footer/>
         </div>
     );
-}
+
+
+};
 
 export default Agendamento;
