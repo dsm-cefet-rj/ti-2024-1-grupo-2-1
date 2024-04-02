@@ -57,14 +57,20 @@ export const AuthProvider=({children})=>{
         if(hasUser?.length){
             return (<label>Já tem uma conta com esse email</label>);
         }
-        const newUser = {
-            name: name,
-            email: email,
-            password: password
-        };
+        // const newUser = {
+        //     name: name,
+        //     email: email,
+        //     password: password
+        // };
 
-        const updatedUsers = usersStorage ? [...usersStorage, newUser] : [newUser];
-        localStorage.setItem("users_db", JSON.stringify(updatedUsers));
+        // const updatedUsers = usersStorage ? [...usersStorage, newUser] : [newUser];
+        let newUser;
+        if(usersStorage){
+            newUser=[...usersStorage,{name,email,password}];
+        }else{
+            newUser=[{name,email,password}]
+        }
+        localStorage.setItem("users_db", JSON.stringify(newUser));
     };
 
     const logOut=()=>{

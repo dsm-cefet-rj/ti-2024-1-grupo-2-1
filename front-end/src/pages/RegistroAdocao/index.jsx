@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./index.css"
 import HeaderMain from "../../components/HeaderMain";
 import Footer from "../../components/Footer";
+import logo from "../../assets/logopreta2.png"
+import animal from "../../components/Animal/animal";
+import { useParams } from "react-router-dom";
 
 
 export const RegistroAdocao = () => {
@@ -13,6 +16,21 @@ export const RegistroAdocao = () => {
     const [cpf, setCpf] = useState("");
     const [rg, setRg] = useState("");
     const [cel, setCel] = useState("");
+    const { id } = useParams()
+    const [animais, setAnimais] = useState([]);
+    const getAnimal = async () => {
+        try { // Verifica se o animal com o ID fornecido existe
+            console.log(animal);
+            setAnimais(Object.values(animal));
+
+        } catch (error) {
+            console.error('Erro ao buscar a receita: ', error);
+        }
+    };
+
+    useEffect(() => {
+        getAnimal();
+    }, [id]);
 
     const linkTermoAdocao = "https://pt.scribd.com/document/331088569/Termo-de-Adocao-de-Caes";
 
@@ -27,7 +45,8 @@ export const RegistroAdocao = () => {
                 <div className="div-principal">
                     <div className="div-informacoes">
                         <div className="div-info-esquerda">
-                            <img src="https://placehold.co/400x400" alt="Imagem" id="teste"></img>
+                            <img src={animal[id].img} alt="Imagem" id="teste"
+                            style={{width:'400px'}}></img>
                             <div className="div-inputs-esquerda">
                                 <div className="wraper-input-r">
                                     <input
@@ -57,7 +76,7 @@ export const RegistroAdocao = () => {
                         </div>
                         <div className="div-info-direita">
                             <div>
-                                <img src="https://placehold.co/200x200" alt="Imagem"></img>
+                                <img src={logo} alt="Imagem"></img>
                             </div>
                             <div className="div-inputs-direita">
                                 <div className="wraper-input-r">

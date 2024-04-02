@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import HeaderMain from "../../components/HeaderMain";
 import Footer from "../../components/Footer";
 import "./index.css";
@@ -11,6 +12,7 @@ import { useParams } from "react-router-dom";
 export const Detalhamento = () => {
     const { id } = useParams()
     const [animais, setAnimais] = useState([]);
+    const navigate = useNavigate();
     const getAnimal = async () => {
         try { // Verifica se o animal com o ID fornecido existe
             console.log(animal);
@@ -25,6 +27,12 @@ export const Detalhamento = () => {
         getAnimal();
     }, [id]);
 
+    const handleClick = (e) => {
+        e.preventDefault()
+        navigate(`/registro_adocao/${id}`);
+        {window.scrollTo({ top: 0, behavior: 'smooth' })}
+        
+    }
 
     const nomeAnimal = "Nome do Animal";
     const localizacao = "Recreio dos Bandeirantes";
@@ -61,7 +69,7 @@ export const Detalhamento = () => {
                             <p>{animal[id].história}</p>
                         </div>
                         <div className="botao-adotar">
-                            <input type="button" value="QUERO ADOTAR" id="botao-quero-adotar" />
+                            <input type="button" onClick={handleClick} value="QUERO ADOTAR" id="botao-quero-adotar" />
                         </div>
                     </div>
                 </div>

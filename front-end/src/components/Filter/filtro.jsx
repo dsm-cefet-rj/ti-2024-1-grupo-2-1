@@ -39,7 +39,7 @@ const Filtro = ({ filter, setFilter, porteFilter, setPorteFilter,
 
         <form className="filtro" onSubmit={handleSubmit}>
 
-            <span className="tittle">Alguns animais para adoção</span>
+            <span className="titlle">Alguns animais para adoção</span>
             <span className="line"></span>
             <div className="search-filter">
                 <div className="above-filter">

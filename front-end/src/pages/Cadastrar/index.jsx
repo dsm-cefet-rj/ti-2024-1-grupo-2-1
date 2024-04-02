@@ -16,17 +16,17 @@ export const Cadastrar =()=>{
     const{signUp}=useAuth();
 
     const handleSingUp=()=>{
+        
         if(!email| !senha| !nome){
             setErr("Preencha todos os campos");
         }
 
         const res = signUp(nome, email, senha);
-
+        
         if(res){
             setErr(res);
             return;
         }
-
         alert("Usuario cadastrado com sucesso!");
         navigate("/login");
     }

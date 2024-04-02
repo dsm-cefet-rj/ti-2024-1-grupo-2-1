@@ -1,13 +1,19 @@
-
-.container-form{
-    width: 100%;
-    min-height: 100%;
+.contaner{
+    /* background-color: rgba(29, 78, 185, 0.7); */
+    background: -webkit-linear-gradient(to right, rgba(1, 73, 131, 0.9), rgb(1, 73, 131, 0.8));
+    background: -o-linear-gradient(to right, rgba(1, 73, 131, 0.9), rgb(1, 73, 131, 0.8));
+    background: -moz-linear-gradient(to right, rgba(1, 73, 131, 0.9), rgb(1, 73, 131, 0.8));
+    background: linear-gradient(to right, rgba(1, 73, 131, 0.9), rgb(1, 73, 131, 0.8));
+}
+.contaner-form{
+    width: 100vw;
+    max-width: 100%;
     overflow: hidden;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center ;
-    background-color: rgba(42, 99, 224, 0.9); /* Fallback color */
+    background-image: url('../../assets/logobranca.png');
     background-repeat: repeat;
 }
 .wrap-form{
@@ -20,16 +26,13 @@
     padding: 70px 55px 20px 55px;
 
     box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.3);
-    margin-top: -90vh;
-  
+    margin-top: 20vh;
+    margin-bottom: 20.9vh;
+    opacity: 2;
 
 }
 
 
 .bg_logo{
     opacity: 0.35;
-    background-repeat: repeat;
-    height: 100vh;
-    width: 100%;
-    overflow: hidden;
 }
