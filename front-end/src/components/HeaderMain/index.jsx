@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext, useRef } from "react";
 import "./style.css";
 import { FaBars } from "react-icons/fa"
 import { useNavigate, Link } from "react-router-dom";
 import Logo from "../../assets/logo2.png"
 import Logo2 from "../../assets/logopart2.png"
-
+import { AuthContext } from "../../contexts/auth";
+import { VscAccount } from "react-icons/vsc";
+import useAuth from "../../hooks/useAuth";
 
 const HeaderMain = () => {
     const navigate = useNavigate();
-
+    const { logOut } = useAuth();
+     const { user }= useContext(AuthContext);
+     const [infoOpen, setInfoOpen] = useState(false);
+     const perfilRef=useRef(null)
     const [menuOpen, setMenuOpen] = useState(true)
 
     useEffect(() => {
@@ -22,11 +27,32 @@ const HeaderMain = () => {
         })
     })
     const goLogin=()=>{
-        navigate("/login")
+        // {console.log(user)}
+        // {console.log(user.name)}
+        // {console.log(user.name.length)}
+          navigate("/login")
     }
     const goSignup=()=>{
         navigate("/cadastrar")
     }
+
+    useEffect(() => {
+        // Adiciona um ouvinte de evento de clique ao documento inteiro
+        function handleClickOutside(event) {
+          if (perfilRef.current && !perfilRef.current.contains(event.target)) {
+            // Clique fora do botão de perfil, então ele é escondido
+            setInfoOpen(false);
+          }
+        }
+    
+        document.addEventListener('click', handleClickOutside);
+    
+        // Limpa o ouvinte de evento quando o componente de mostrar perfil é desmontado
+        return () => {
+          document.removeEventListener('click', handleClickOutside);
+        };
+      }, []);
+    
     return (
 
         <div className="headermain">
@@ -50,9 +76,30 @@ const HeaderMain = () => {
                 </nav>)}
 
             <div className="botao-header">
+ 
+            {user != null && user.name != null ? (
+                    <button ref={perfilRef} type="submit" className="show_perfil" onClick={() => {
+                        setInfoOpen(!infoOpen)
+                    }}>
+                        <VscAccount className="show-perfil-svg" color="rgb(1, 73, 131)"  />
+                    </button>
+                ) : (
+                    <>
+                        <button className="login-bt" onClick={goLogin}>Entrar</button>
+                        <button className="signup-bt" onClick={goSignup}>Cadastrar</button>
+                    </>
+                )}
 
-                <button className="login-bt" onClick={goLogin}>Entrar</button>
-                <button className="signup-bt" onClick={goSignup}>Cadastrar</button>
+                {infoOpen && user!= null && user.name != null && (
+                    <div className="perfil">
+                        <ul>
+                            <label className="welcome">Bem vindo: {user.name}</label>
+                            <button className="sair" onClick={() => [logOut()]}>Sair</button>
+                        </ul>
+                    </div>
+                )}
+                
+                
 
             </div>
 

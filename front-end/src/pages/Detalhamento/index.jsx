@@ -8,6 +8,7 @@ import PetCards from "../../components/PetCards";
 import { Grade } from "../../components/GridContainer";
 import animal from "../../components/Animal/animal";
 import { useParams } from "react-router-dom";
+import Paginacao from "../../components/Pagination";
 
 export const Detalhamento = () => {
     const { id } = useParams()
@@ -34,12 +35,19 @@ export const Detalhamento = () => {
         
     }
 
-    const nomeAnimal = "Nome do Animal";
+    // const nomeAnimal = "Nome do Animal";
     const localizacao = "Recreio dos Bandeirantes";
     const acessos = 205;
     const publicador = "Flavio Alecio";
-    const url = "https://via.placeholder.com/650x400";
-    const cardImg = "https://via.placeholder.com/480x480";
+    // const url = "https://via.placeholder.com/650x400";
+    // const cardImg = "https://via.placeholder.com/480x480";
+    const [animalsPerPage, setAnimalsPerPage] = useState(5)
+    const [paginaAtual, setPaginaAtual] = useState(0);
+
+    const pages = Math.ceil(animais.length/ animalsPerPage, 1);
+    const startIndex = paginaAtual * animalsPerPage;
+    const endIndex = startIndex + animalsPerPage;
+    const itensAtuais = animais.slice(startIndex, endIndex)
 
     return (
         <div>
@@ -84,11 +92,26 @@ export const Detalhamento = () => {
                         <span id="linha"></span>
                     </div>
                     <Grade>
-                        {animais.map((animais) => <PetCards key={animais.id} animais={animais} />)
 
-                        }
-                    </Grade>
-                </div>
+                    {itensAtuais
+                        .map((animal) =>
+                            <PetCards
+                                key={animal.id}
+                                animais={animal} />
+                        )
+                    }
+
+                </Grade>
+
+            </div>
+            {animais.length && (
+                <Paginacao 
+                paginaAtual={paginaAtual}
+                pages={pages}
+                setPaginaAtual={setPaginaAtual} 
+                 />
+
+            )} 
             </div>
             <Footer />
         </div>

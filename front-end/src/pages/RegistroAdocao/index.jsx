@@ -45,8 +45,7 @@ export const RegistroAdocao = () => {
                 <div className="div-principal">
                     <div className="div-informacoes">
                         <div className="div-info-esquerda">
-                            <img src={animal[id].img} alt="Imagem" id="teste"
-                            style={{width:'400px'}}></img>
+                            <img src={animal[id].img} alt="Imagem" id="teste"></img>
                             <div className="div-inputs-esquerda">
                                 <div className="wraper-input-r">
                                     <input
@@ -70,7 +69,7 @@ export const RegistroAdocao = () => {
                                         type="email"
                                         value={email}
                                         onChange={(e) => [setEmail(e.target.value)]} />
-                                    <span className="focused-input" data-placeholder="Email do Tutor"></span>
+                                    <span className="focused-input" data-placeholder="Email do adotante"></span>
                                 </div>
                             </div>
                         </div>
@@ -85,7 +84,7 @@ export const RegistroAdocao = () => {
                                         type="name"
                                         value={nome}
                                         onChange={(e) => [setNome(e.target.value)]} />
-                                    <span className="focused-input" data-placeholder="Nome do tutor"></span>
+                                    <span className="focused-input" data-placeholder="Nome do adotante"></span>
                                 </div>
                                 <div className="wraper-input-r">
                                     <input
@@ -93,7 +92,7 @@ export const RegistroAdocao = () => {
                                         type="name"
                                         value={idade}
                                         onChange={(e) => [setIdade(e.target.value)]} />
-                                    <span className="focused-input" data-placeholder="Idade do tutor"></span>
+                                    <span className="focused-input" data-placeholder="Idade do adotante"></span>
                                 </div>
                                 <div className="wraper-input-r">
                                     <input
@@ -101,7 +100,7 @@ export const RegistroAdocao = () => {
                                         type="name"
                                         value={cpf}
                                         onChange={(e) => [setCpf(e.target.value)]} />
-                                    <span className="focused-input" data-placeholder="CPF do tutor"></span>
+                                    <span className="focused-input" data-placeholder="CPF do adotante"></span>
                                 </div>
                                 <div className="wraper-input-r">
                                     <input
@@ -109,7 +108,7 @@ export const RegistroAdocao = () => {
                                         type="name"
                                         value={rg}
                                         onChange={(e) => [setRg(e.target.value)]} />
-                                    <span className="focused-input" data-placeholder="Rg do tutor"></span>
+                                    <span className="focused-input" data-placeholder="Rg do adotante"></span>
                                 </div>
                                 <div className="wraper-input-r">
                                     <input
