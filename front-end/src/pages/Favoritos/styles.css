@@ -34,15 +34,15 @@
   float: left;
   background-color: rgba(10, 10, 10, 0.05);
   width: 90vw;
-  margin: 1rem 5rem;
-  padding: 1.4rem 3rem;
+  margin: 1rem 5rem 2rem;
+  padding: 2rem 3rem;
   height: 5rem;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 6px;
 }
 
 .form-filtro-favoritos div select {
-  height: 2.2rem;
+  height: 2.5rem;
   width: 7.5rem;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 6px;
@@ -50,6 +50,7 @@
 }
 
 .botao-search {
+  margin-top: -0.57rem;
   font-size: 16px;
   border: none;
   border-radius: 35px;
@@ -75,4 +76,15 @@
 
   transition: 1.2s;
   outline: none;
+}
+
+.botao-search:hover {
+  cursor: pointer;
+  background: white;
+  color: rgb(1, 73, 131);
+  transform: scale(1.1);
+}
+
+.grade-container {
+  margin-left: 0.6rem;
 }
