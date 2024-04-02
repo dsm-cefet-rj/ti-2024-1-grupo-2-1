@@ -18,7 +18,7 @@ export const AppRouter = () => {
           <Route  path="/cadastrar"  element={<Cadastrar/>}/>
           <Route path="/favoritos" element={<Favoritos />} />
           <Route exact path="/detalhamento/:id" element={<Detalhamento />} />
-          <Route path="/agendamento" element={<Agendamento />} />
+          <Route path="/agendamento/:id" element={<Agendamento />} />
           <Route path="/registro_adocao/:id" element={<RegistroAdocao />} />
         </Routes>
       </Fragment>

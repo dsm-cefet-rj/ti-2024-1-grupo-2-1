@@ -30,7 +30,7 @@ export const Detalhamento = () => {
 
     const handleClick = (e) => {
         e.preventDefault()
-        navigate(`/registro_adocao/${id}`);
+        navigate(`/agendamento/${id}`);
         {window.scrollTo({ top: 0, behavior: 'smooth' })}
         
     }

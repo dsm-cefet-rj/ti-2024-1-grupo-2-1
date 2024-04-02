@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./index.css"
 import HeaderMain from "../../components/HeaderMain";
 import Footer from "../../components/Footer";
@@ -9,6 +10,7 @@ import { useParams } from "react-router-dom";
 
 export const RegistroAdocao = () => {
     const [nomeAnimal, setNomeAnimal] = useState("");
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [rga, setRga] = useState("");
     const [nome, setNome] = useState("");
@@ -31,6 +33,12 @@ export const RegistroAdocao = () => {
     useEffect(() => {
         getAnimal();
     }, [id]);
+    const handleConfirm= (e)=>{
+        e.preventDefault()
+        navigate(`/`);
+        {window.scrollTo({ top: 0, behavior: 'smooth' })}
+        alert("Pedido de adoção realizado")
+    }
 
     const linkTermoAdocao = "https://pt.scribd.com/document/331088569/Termo-de-Adocao-de-Caes";
 
@@ -192,7 +200,7 @@ export const RegistroAdocao = () => {
                         </div>
                     </div>
                     <div className="div-btn-registrar-adocao">
-                        <input type="button" value="REGISTRAR ADOÇÃO" id="btn-registar-adocao" />
+                        <input type="button" value="REGISTRAR ADOÇÃO" id="btn-registar-adocao" onClick={handleConfirm}/>
                     </div>
                 </div>
             </div>

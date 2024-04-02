@@ -1,14 +1,30 @@
 import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
 import HeaderMain from "../../components/HeaderMain";
 import Footer from "../../components/Footer";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import "./style.css";
+import animal from "../../components/Animal/animal";
+import { useParams } from "react-router-dom";
 
 export const Agendamento = () => {
 
     const [date, setDate] = useState(new Date());
     const [selecao, setSelecao] = useState('');
+
+    const { id } = useParams()
+    const [animais, setAnimais] = useState([]);
+    const navigate = useNavigate();
+    const getAnimal = async () => {
+        try { // Verifica se o animal com o ID fornecido existe
+            console.log(animal);
+            setAnimais(Object.values(animal));
+
+        } catch (error) {
+            console.error('Erro ao buscar a receita: ', error);
+        }
+    };
 
     // Função para verificar se uma data é anterior à data atual
     const isDateDisabled = (date) => {
@@ -22,6 +38,12 @@ export const Agendamento = () => {
     const handleChange = (event) => {
         setSelecao(event.target.value);
     };
+    const handleConfirm= (e)=>{
+        e.preventDefault()
+        navigate(`/registro_adocao/${id}`);
+        {window.scrollTo({ top: 0, behavior: 'smooth' })}
+        alert("Agendamento confirmado com êxito")
+    }
 
     return (
         <div>
@@ -56,7 +78,7 @@ export const Agendamento = () => {
                                     </select>
                                 </div>
                                 <div className="div-button">
-                                    <input type="button" value="Confirmar Agendamento" id="confirm-button"/>
+                                    <input type="button" value="Confirmar Agendamento" onClick={handleConfirm}id="confirm-button"/>
                                 </div>
                             </div>
                         </div>
