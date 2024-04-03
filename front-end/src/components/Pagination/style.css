@@ -1,22 +1,25 @@
-.lista{
+.lista {
     display: flex;
     list-style: none;
 }
-.lista li{
+
+.lista li {
     margin-top: 1rem;
 }
-.lista li+li{
+
+.lista li+li {
     margin-left: 1rem;
 }
-.botao_pg{
+
+.botao_pg {
     display: flex;
     list-style: no;
     font-size: 15px;
-    border:none;
-    border-radius:60px;
-    color:#ffffff;
+    border: none;
+    border-radius: 60px;
+    color: #ffffff;
     font-weight: bold;
-    border:1px solid rgb(1, 73, 131);
+    border: 1px solid rgb(1, 73, 131);
     box-shadow: 1px 1px 8px 0px rgb(1, 73, 131);
 
     line-height: 1.3;
@@ -37,18 +40,20 @@
     outline: none;
 }
 
-.botao_pg:hover{
+.botao_pg:hover {
     cursor: pointer;
     background: white;
     color: rgb(1, 73, 131);
     transform: scale(1.10);
 
 }
-.botao_pg__ativado{
+
+.botao_pg__ativado {
     background: white;
     font-weight: bold;
     border: none;
 }
-.botao_pg__ativado:focus{
+
+.botao_pg__ativado:focus {
     outline: none;
 }

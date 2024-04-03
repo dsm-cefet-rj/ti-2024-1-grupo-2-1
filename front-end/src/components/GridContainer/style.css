@@ -1,7 +1,9 @@
-.card-container{
+.card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 0.1fr)); /* Cria colunas automáticas com um tamanho mínimo de 200px */
-    grid-gap:10px; /* Espaçamento entre os itens do grid */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 0.1fr));
+    /* Cria colunas automáticas com um tamanho mínimo de 200px */
+    grid-gap: 10px;
+    /* Espaçamento entre os itens do grid */
     justify-items: center;
     justify-content: center;
     margin: 2rem 0rem;
@@ -13,8 +15,8 @@
 }
 
 
-@media (max-width: 770px){
-    .card-container{
+@media (max-width: 770px) {
+    .card-container {
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
         margin: 1rem 1rem;
     }

@@ -1,27 +1,29 @@
-.contaner{
+.contaner {
     /* background-color: rgba(29, 78, 185, 0.7); */
     background: -webkit-linear-gradient(to right, rgba(1, 73, 131, 0.9), rgb(1, 73, 131, 0.8));
     background: -o-linear-gradient(to right, rgba(1, 73, 131, 0.9), rgb(1, 73, 131, 0.8));
     background: -moz-linear-gradient(to right, rgba(1, 73, 131, 0.9), rgb(1, 73, 131, 0.8));
     background: linear-gradient(to right, rgba(1, 73, 131, 0.9), rgb(1, 73, 131, 0.8));
 }
-.contaner-form{
+
+.contaner-form {
     width: 100vw;
     max-width: 100%;
     overflow: hidden;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center ;
+    justify-content: center;
     background-image: url('../../assets/logobranca.png');
     background-repeat: repeat;
 }
-.wrap-form{
+
+.wrap-form {
     position: relative;
     display: flex;
-    width:450px;
+    width: 450px;
     height: 550px;
-    background-color:rgba(255, 255, 255, 1.0);
+    background-color: rgba(255, 255, 255, 1.0);
     border-radius: 10px;
     padding: 70px 55px 20px 55px;
 
@@ -33,6 +35,6 @@
 }
 
 
-.bg_logo{
+.bg_logo {
     opacity: 0.35;
 }

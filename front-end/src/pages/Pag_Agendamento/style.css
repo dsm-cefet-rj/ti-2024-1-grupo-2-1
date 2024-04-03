@@ -1,170 +1,154 @@
-.div-name{
-
+.div-name {
 }
 
-#linha{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 0.1rem;
-    background-color: rgba(0, 0, 0, 0.8);
-    width: 100%;
-    margin: 0 0 2rem 0;
+#linha {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 0.1rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  margin: 0 0 2rem 0;
 }
 
-.div-mainContainer{
-    margin: 5rem 0 2rem 0;
+.div-mainContainer {
+  margin: 5rem 0 2rem 0;
 }
 
-.div-top{
-    display: flex;
-    justify-content: space-around;
+.div-top {
+  display: flex;
+  justify-content: space-around;
 }
 
-.div-left{
-
+.div-left {
 }
 
-.react-calendar{
-    width: 100%;
+.react-calendar {
+  width: 100%;
+  height: 35rem;
+}
+
+.react-calendar__month-view__days {
+  height: 28rem;
+}
+
+.react-calendar__month-view__weekdays {
+  width: 100%;
+  height: 3rem;
+}
+
+.div-right {
+  margin: 5rem 0 0 0;
+}
+
+.div-day {
+  margin: 0 0 2rem 0;
+  text-align: center;
+}
+
+.div-hour {
+  margin: 0 0 2rem 0;
+  text-align: center;
+}
+
+.div-hour select {
+  width: 20rem;
+}
+
+#text-hour {
+  margin: 0 0 1rem 0;
+}
+
+.div-button {
+  text-align: center;
+  margin: 0 0 2rem 0;
+}
+
+#confirm-button {
+  font-size: 18px;
+  width: 13rem;
+  height: 5rem;
+  border: 1px solid rgb(1, 73, 131);
+  border-radius: 35px;
+  color: white;
+  background-color: rgb(1, 73, 131);
+}
+
+@media screen and (max-width: 1240px) {
+  .div-top {
+    display: block;
+  }
+
+  .react-calendar {
+    margin: 0 auto;
+    width: 80%;
     height: 35rem;
-}
+  }
 
-.react-calendar__month-view__days{
+  .react-calendar__month-view__days {
     height: 28rem;
+  }
 
-}
-
-.react-calendar__month-view__weekdays{
+  .react-calendar__month-view__weekdays {
     width: 100%;
     height: 3rem;
-
+  }
 }
 
-.div-right{
-    margin: 5rem 0 0 0;
+@media screen and (max-width: 980px) {
+  .react-calendar {
+    margin: 0 auto;
+    width: 70%;
+    height: 35rem;
+  }
+
+  .react-calendar__month-view__days {
+    height: 28rem;
+  }
+
+  .react-calendar__month-view__weekdays {
+    width: 100%;
+    height: 3rem;
+  }
 }
 
-.div-day{
-    margin: 0 0 2rem 0;
-    text-align: center;
+@media screen and (max-width: 790px) {
+  .react-calendar {
+    margin: 0 auto;
+    width: 60%;
+    height: 30rem;
+  }
+
+  .react-calendar__month-view__days {
+    height: 23rem;
+  }
+
+  .react-calendar__month-view__weekdays {
+    width: 100%;
+    height: 3rem;
+  }
 }
 
-.div-hour{
-    margin: 0 0 2rem 0;
-    text-align: center;
+@media screen and (max-width: 670px) {
+  .react-calendar {
+    margin: 0 auto;
+    width: 70%;
+    height: 25rem;
+  }
+
+  .react-calendar__month-view__days {
+    height: 17rem;
+  }
 }
 
-.div-hour select{
-    width: 20rem;
-}
+@media screen and (max-width: 480px) {
+  .react-calendar {
+    margin: 0 auto;
+    width: 65%;
+    height: 20rem;
+  }
 
-#text-hour{
-    margin: 0 0 1rem 0;
-}
-
-.div-button{
-    text-align: center;
-    margin: 0 0 2rem 0;
-}
-
-#confirm-button{
-    font-size: 18px;
-    width: 13rem;
-    height: 5rem;
-    border: 1px solid rgb(1, 73, 131);
-    border-radius: 35px;
-    color: white;
-    background-color: rgb(1, 73, 131);
-}
-
-@media screen and (max-width: 1240px){
-    .div-top{
-        display: block;
-    }
-
-    .react-calendar{
-        margin: 0 auto;
-        width: 80%;
-        height: 35rem;
-    }
-    
-    .react-calendar__month-view__days{
-        height: 28rem;
-    
-    }
-    
-    .react-calendar__month-view__weekdays{
-        width: 100%;
-        height: 3rem;
-    
-    }
-}   
-
-@media screen and (max-width: 980px){
-
-    .react-calendar{
-        margin: 0 auto;
-        width: 70%;
-        height: 35rem;
-    }
-    
-    .react-calendar__month-view__days{
-        height: 28rem;
-    
-    }
-    
-    .react-calendar__month-view__weekdays{
-        width: 100%;
-        height: 3rem;
-    
-    }
-}
-
-@media screen and (max-width: 790px){
-
-    .react-calendar{
-        margin: 0 auto;
-        width: 60%;
-        height: 30rem;
-    }
-    
-    .react-calendar__month-view__days{
-        height: 23rem;
-    
-    }
-    
-    .react-calendar__month-view__weekdays{
-        width: 100%;
-        height: 3rem;
-    
-    }
-}
-
-@media screen and (max-width: 670px){
-
-    .react-calendar{
-        margin: 0 auto;
-        width: 70%;
-        height: 25rem;
-    }
-    
-    .react-calendar__month-view__days{
-        height: 17rem;
-    
-    }
-}
-
-@media screen and (max-width: 480px){
-
-    .react-calendar{
-        margin: 0 auto;
-        width: 65%;
-        height: 20rem;
-    }
-    
-    .react-calendar__month-view__days{
-        height: 13rem;
-    
-    }
+  .react-calendar__month-view__days {
+    height: 13rem;
+  }
 }

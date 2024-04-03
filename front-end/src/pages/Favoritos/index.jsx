@@ -15,37 +15,37 @@ import FilterFavoritos from "../../components/FilterFavoritos";
 export const Favoritos = () => {
   const { id } = useParams();
   const [favAnimais, setFavAnimais] = useState([]);
-  const [filter, setFilter] = useState("All");
-  const [porteFilter, setPorteFilter] = useState("All");
-  const [sexoFilter, setSexoFilter] = useState("All");
-  const [idadeFilter, setIdadeFilter] = useState("All");
+  // const [filter, setFilter] = useState("All");
+  // const [porteFilter, setPorteFilter] = useState("All");
+  // const [sexoFilter, setSexoFilter] = useState("All");
+  // const [idadeFilter, setIdadeFilter] = useState("All");
   const [animalsPerPage, setAnimalsPerPage] = useState(10);
   const [paginaAtual, setPaginaAtual] = useState(0);
 
-  const animaisFiltrados =
-    (favAnimais &&
-    favAnimais
-      .filter((animal) => {
-        if (filter === "All") return true;
-        return animal.tipo === filter;
-      })
-      .filter((animal) => {
-        if (porteFilter === "All") return true;
-        return animal.porte === porteFilter;
-      })
-      .filter((animal) => {
-        if (sexoFilter === "All") return true;
-        return animal.sexo === sexoFilter;
-      })
-      .filter((animal) => {
-        if (idadeFilter === "All") return true;
-        return animal.idade === idadeFilter;
-      }));
+  // const animaisFiltrados =
+  //   (favAnimais &&
+  //   favAnimais
+  //     .filter((animal) => {
+  //       if (filter === "All") return true;
+  //       return animal.tipo === filter;
+  //     })
+  //     .filter((animal) => {
+  //       if (porteFilter === "All") return true;
+  //       return animal.porte === porteFilter;
+  //     })
+  //     .filter((animal) => {
+  //       if (sexoFilter === "All") return true;
+  //       return animal.sexo === sexoFilter;
+  //     })
+  //     .filter((animal) => {
+  //       if (idadeFilter === "All") return true;
+  //       return animal.idade === idadeFilter;
+  //     }));
 
-  const pages = Math.ceil(animaisFiltrados.length / animalsPerPage, 1);
+  const pages = Math.ceil(favAnimais.length / animalsPerPage, 1);
   const startIndex = paginaAtual * animalsPerPage;
   const endIndex = startIndex + animalsPerPage;
-  const itensAtuais = animaisFiltrados.slice(startIndex, endIndex);
+  const itensAtuais = favAnimais.slice(startIndex, endIndex);
 
   //  const getAnimal = async () => {
   //    try {
@@ -77,12 +77,12 @@ export const Favoritos = () => {
         <span className="title-favoritos">Seus Favoritos</span>
         <span className="sublinha-favoritos"></span>
       </div>
-      <FilterFavoritos>
+      {/* <FilterFavoritos>
         filter={filter} setFilter={setFilter}
         porteFilter={porteFilter} setPorteFilter={setPorteFilter}
         sexoFilter={sexoFilter} setSexoFilter={setSexoFilter}
         idadeFilter={idadeFilter} setIdadeFilter={setIdadeFilter}
-      </FilterFavoritos>
+      </FilterFavoritos> */}
       <div className="grade-container">
         <Grade>
           {itensAtuais.map((animal) => (
