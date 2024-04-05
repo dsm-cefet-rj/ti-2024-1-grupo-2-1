@@ -10,11 +10,11 @@ import useAuth from "../../hooks/useAuth";
 import { useSelector, useDispatch } from "react-redux";
 import rootReducer from "../../redux/root-reducer";
 
-import UserActionsTypes from "../../redux/user/actions-types";
+import {loginUser,logOutUser} from "../../redux/user/actions";
 
 const HeaderMain = () => {
   const navigate = useNavigate();
-  const { logOut } = useAuth();
+  // const { logOut } = useAuth();
   const { user } = useContext(AuthContext);
   const [infoOpen, setInfoOpen] = useState(false);
   const perfilRef = useRef(null);
@@ -28,11 +28,12 @@ const HeaderMain = () => {
   console.log({ usuarioAtual });
 
   const handlelog = () =>{
-    dispatch({
-      type: UserActionsTypes.LOGIN
-
-    })
-  }
+    dispatch(loginUser( { name: "Vinicius" , email: "teste@teste"}));
+     
+  };
+  const handleLogOut = () =>{
+    dispatch((logOutUser()))
+  };
 
 
   useEffect(() => {
@@ -137,11 +138,11 @@ const HeaderMain = () => {
           </>
         )}
 
-        {infoOpen && user != null && user.name != null && (
+        {infoOpen && usuarioAtual && (
           <div className="perfil">
             <ul>
-              <label className="welcome">Bem vindo: {user.name}</label>
-              <button className="sair" onClick={() => [logOut()]}>
+              <label className="welcome">Bem vindo: {usuarioAtual.name}</label>
+              <button className="sair" onClick={handleLogOut}>
                 Sair
               </button>
             </ul>
