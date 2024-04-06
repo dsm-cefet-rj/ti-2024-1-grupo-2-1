@@ -7,20 +7,22 @@ import { Grade } from "../../components/GridContainer";
 import animal from "../../components/Animal/animal";
 import { useParams } from "react-router-dom";
 import Paginacao from "../../components/Pagination";
-import { useState } from "react";
-import { useEffect } from "react";
-import useAuth from "../../hooks/useAuth";
-import FilterFavoritos from "../../components/FilterFavoritos";
+import { useState, useEffect } from "react";
+import {useSelector} from "react-redux"
+// import useAuth from "../../hooks/useAuth";
+// import FilterFavoritos from "../../components/FilterFavoritos";
+
 
 export const Favoritos = () => {
   const { id } = useParams();
-  const [favAnimais, setFavAnimais] = useState([]);
+  // const [favAnimais, setFavAnimais] = useState([]);
   // const [filter, setFilter] = useState("All");
   // const [porteFilter, setPorteFilter] = useState("All");
   // const [sexoFilter, setSexoFilter] = useState("All");
   // const [idadeFilter, setIdadeFilter] = useState("All");
-  const [animalsPerPage, setAnimalsPerPage] = useState(10);
-  const [paginaAtual, setPaginaAtual] = useState(0);
+  // const [animalsPerPage, setAnimalsPerPage] = useState(10);
+  // const [paginaAtual, setPaginaAtual] = useState(0);
+
 
   // const animaisFiltrados =
   //   (favAnimais &&
@@ -41,11 +43,14 @@ export const Favoritos = () => {
   //       if (idadeFilter === "All") return true;
   //       return animal.idade === idadeFilter;
   //     }));
+  const { animalsFav } = useSelector((rootReducer) => rootReducer.animalFavReducer)
+  // const dispatch=useDispatch();
+  console.log({animalsFav})
 
-  const pages = Math.ceil(favAnimais.length / animalsPerPage, 1);
-  const startIndex = paginaAtual * animalsPerPage;
-  const endIndex = startIndex + animalsPerPage;
-  const itensAtuais = favAnimais.slice(startIndex, endIndex);
+  // const pages = Math.ceil(animalFav.length / animalsPerPage, 1);
+  // const startIndex = paginaAtual * animalsPerPage;
+  // const endIndex = startIndex + animalsPerPage;
+  // const itensAtuais = animal.slice(startIndex, endIndex);
 
   //  const getAnimal = async () => {
   //    try {
@@ -57,12 +62,12 @@ export const Favoritos = () => {
   //    }
   //  };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setFavAnimais(Object.values(animal));
-    };
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     setFavAnimais(Object.values(animal));
+  //   };
+  //   fetchData();
+  // }, []);
 
   return (
     <div>
@@ -85,18 +90,18 @@ export const Favoritos = () => {
       </FilterFavoritos> */}
       <div className="grade-container">
         <Grade>
-          {itensAtuais.map((animal) => (
+          {animalsFav.map((animal) => (
             <PetCards key={animal.id} animais={animal} />
           ))}
         </Grade>
       </div>
-      {favAnimais.length && (
+      {/* {favAnimais.length && (
         <Paginacao
           paginaAtual={paginaAtual}
           pages={pages}
           setPaginaAtual={setPaginaAtual}
         />
-      )}
+      )} */}
       <Footer></Footer>
     </div>
   );

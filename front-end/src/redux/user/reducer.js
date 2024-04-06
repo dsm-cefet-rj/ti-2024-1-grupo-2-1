@@ -1,6 +1,6 @@
 // aqui iremos armazenar state de usuario
 
-import { defer } from "react-router-dom";
+// import { defer } from "react-router-dom";
 import UserActionsTypes from "./actions-types";
 
 //guarda os dados de um estado inicial

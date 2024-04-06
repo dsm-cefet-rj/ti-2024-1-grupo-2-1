@@ -1,25 +1,36 @@
 import React from "react";
-import { Link } from "react-router-dom";
-/*import { IoMdHeart } from "react-icons/io";
-import { IoIosHeartEmpty } from "react-icons/io";*/
+// import { Link } from "react-router-dom";
+import { IoMdHeart } from "react-icons/io";
+import { IoIosHeartEmpty } from "react-icons/io";
 import "./style.css";
 import Card from "react-bootstrap/Card";
-//import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { addAnimalToFav, removeAnimalToFav } from "../../redux/favanimal/actions";
+import { useState } from "react";
 
 const PetCards = ({ animais, showLink = true }) => {
+
   const id = animais.id;
+  
+  const[fav,setFav]=useState(animais.isFav);
   const navigate = useNavigate();
-  // <div className="pet-card">
-  //     <img className="img_pet" src={animais.img}></img>
 
-  //     <h2>{animais.nome}</h2>
+  const dispatch = useDispatch()
+  // console.log({ animalFav });
 
-  //       {animais && <p> Idade: {animais.idade}</p>}
-  //       {animais && <p> Porte: {animais.porte}</p>}
+  const handleAnimalFav = ( ) => {
+    dispatch(addAnimalToFav(animais))
+    setFav(!animais.isFav)
+     console.log( animais );
 
-  //     {showLink && <Link className="info" to = {`/detalhamento/${id}`}>Detalhes</Link>}
-  // </div>
+  }
+  
+  const handleRemove = () =>{
+    dispatch(removeAnimalToFav(animais.id))
+    setFav(animais.isFav)
+  }
+ 
   const handleClick = (e) => {
     e.preventDefault();
     navigate(`/detalhamento/${id}`);
@@ -32,7 +43,12 @@ const PetCards = ({ animais, showLink = true }) => {
     <Card className="card-animal" style={{ width: "18rem" }}>
       <Card.Img variant="top" src={animais.img} />
       <Card.Body>
-        <Card.Title>{animais.nome}</Card.Title>
+        <Card.Title>{animais.nome}
+        {fav ? (
+                    <IoMdHeart className="complete" onClick={handleRemove}/>
+            ):( <IoIosHeartEmpty className="incomplete" onClick={handleAnimalFav}/>
+                 )}
+        </Card.Title>
         <Card.Text>
           {animais && <p> Idade: {animais.idade}</p>}
           {animais && <p> Porte: {animais.porte}</p>}

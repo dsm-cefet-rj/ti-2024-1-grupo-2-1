@@ -178,6 +178,7 @@ const animal = {
   },
   17: {
     id: 17,
+    isfav:false,
     img: "https://img.freepik.com/fotos-gratis/em-fuga-o-cachorrinho-maltipu-esta-posando_155003-22631.jpg?t=st=1712059498~exp=1712063098~hmac=c6f0f4985de3a6391e12cf23b2e04453671edbe1a3168acc5d2ce09f27d26bf6&w=1380",
     nome: "Milena",
     tipo: "Cachorro",
