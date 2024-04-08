@@ -44,7 +44,8 @@ export const Favoritos = () => {
   //       return animal.idade === idadeFilter;
   //     }));
   const { animalsFav } = useSelector((rootReducer) => rootReducer.animalFavReducer)
-  // const dispatch=useDispatch();
+  
+  // const dispatch= useDispatch();
   console.log({animalsFav})
 
   // const pages = Math.ceil(animalFav.length / animalsPerPage, 1);

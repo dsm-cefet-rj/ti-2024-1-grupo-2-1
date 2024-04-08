@@ -1,6 +1,7 @@
 const animal = {
   1: {
     id: 1,
+    isfav:false,
     img: "https://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQOO0X7mMnoYz-e9Zdc6Pe6Wz7Ow1DcvhEiaex5aSv6QJDoCtcooqA7UUbjrphvjlIc",
     nome: "Flavio",
     tipo: "Cachorro",
@@ -12,6 +13,7 @@ const animal = {
   },
   2: {
     id: 2,
+    isfav:false,
     img: "https://www.petz.com.br/blog/wp-content/uploads/2021/11/tipos-de-pitbull3-1280x720.jpg",
     nome: "Vini",
     tipo: "Cachorro",
@@ -23,6 +25,7 @@ const animal = {
   },
   3: {
     id: 3,
+    isfav:false,
     img: "https://ih1.redbubble.net/image.1677539366.0714/aps,504x498,medium,transparent-pad,600x600,f8f8f8.jpg",
     nome: "Felipe",
     tipo: "Gato",
@@ -34,6 +37,7 @@ const animal = {
   },
   4: {
     id: 4,
+    isfav:false,
     img: "https://t.ctcdn.com.br/QzjtRMp1djLnIW2I5XgPS825Ox4=/640x360/smart/i615361.jpeg",
     nome: "Yzhak",
     tipo: "Gato",
@@ -45,6 +49,7 @@ const animal = {
   },
   5: {
     id: 5,
+    isfav:false,
     img: "https://img.freepik.com/fotos-gratis/jovem-buldogue-frances-marrom-jogando-isolado-no-fundo-branco-do-estudio_155003-46058.jpg?t=st=1711629302~exp=1711632902~hmac=edd189535dd6ff7035abc4dce10531aab25ee52af1fdc0f2d8c29c973f5bcc98&w=1380",
     nome: "Luna",
     tipo: "Cachorro",
@@ -56,6 +61,7 @@ const animal = {
   },
   6: {
     id: 6,
+    isfav:false,
     img: "https://img.freepik.com/fotos-gratis/cachorrinho-fofo-de-volta-a-escola_23-2148985921.jpg?t=st=1711629379~exp=1711632979~hmac=7573f009cc9b729b3b10fb751222bffe5defa2036fce90529a2725a3270f66b6&w=1380",
     nome: "Branco",
     tipo: "Cachorro",
@@ -67,6 +73,7 @@ const animal = {
   },
   7: {
     id: 7,
+    isfav:false,
     img: "https://img.freepik.com/fotos-gratis/lindo-retrato-de-animal-de-estimacao-isolado_23-2149192357.jpg?t=st=1711629417~exp=1711633017~hmac=10739cbab90b88381da329fb1f560910279ace571bb8865185d1e618e70c840a&w=1380",
     nome: "Mel",
     tipo: "Cachorro",
@@ -79,6 +86,7 @@ const animal = {
 
   8: {
     id: 8,
+    isfav:false,
     img: "https://img.freepik.com/fotos-gratis/feche-o-gato-fofo-dentro-de-casa_23-2148882585.jpg?size=626&ext=jpg&ga=GA1.1.1459418701.1707737255&semt=sph",
     nome: "Luma",
     tipo: "Gato",
@@ -90,6 +98,7 @@ const animal = {
   },
   9: {
     id: 9,
+    isfav:false,
     img: "https://img.freepik.com/fotos-gratis/lindo-gato-peludo-relaxando-dentro-de-casa_23-2150679180.jpg?size=626&ext=jpg&ga=GA1.1.1459418701.1707737255&semt=sph",
     nome: "Spike",
     tipo: "Gato",
@@ -101,6 +110,7 @@ const animal = {
   },
   10: {
     id: 10,
+    isfav:false,
     img: "https://img.freepik.com/fotos-gratis/close-vertical-de-um-lindo-gato-europeu-de-pelo-curto_181624-34587.jpg?size=626&ext=jpg&ga=GA1.1.1459418701.1707737255&semt=sph",
     nome: "Bella",
     tipo: "Gato",
@@ -112,6 +122,7 @@ const animal = {
   },
   11: {
     id: 11,
+    isfav:false,
     img: "https://img.freepik.com/fotos-premium/cao-de-border-collie-curioso-fechado-olhando-para-a-camera-isolada-em-fundo-azul_77749-687.jpg?w=996",
     nome: "Rufus",
     tipo: "Cachorro",
@@ -123,6 +134,7 @@ const animal = {
   },
   12: {
     id: 12,
+    isfav:false,
     img: "https://img.freepik.com/fotos-gratis/cachorro-com-olhos-azuis_181624-22621.jpg?t=st=1712059561~exp=1712063161~hmac=09e4a4d139623136d2af9e45d7393dd125d79edeafcaf1e4da1bb41f4fbb4c88&w=996",
     nome: "Bolt",
     tipo: "Cachorro",
@@ -134,6 +146,7 @@ const animal = {
   },
   13: {
     id: 13,
+    isfav:false,
     img: "https://img.freepik.com/fotos-gratis/gato-branco-esta-de-joelhos-de-mulher_8353-539.jpg?size=626&ext=jpg&ga=GA1.1.1459418701.1707737255&semt=sph",
     nome: "Fiona",
     tipo: "Gato",
@@ -145,6 +158,7 @@ const animal = {
   },
   14: {
     id: 14,
+    isfav:false,
     img: "https://img.freepik.com/fotos-gratis/um-gato-brincalhao-espreitando-por-tras-de-uma-superficie-branca_60438-3920.jpg?size=626&ext=jpg&ga=GA1.1.1459418701.1707737255&semt=sph",
     nome: "Whiskers",
     tipo: "Gato",
@@ -156,6 +170,7 @@ const animal = {
   },
   15: {
     id: 15,
+    isfav:false,
     img: "https://img.freepik.com/fotos-gratis/beagles-filhotes-procurando-algo_1150-18193.jpg?t=st=1712059599~exp=1712063199~hmac=85514f2ad7ded4b0d2da29f0141e8cc95ec0400036b81be28fc63b5a0c685bdc&w=1380",
     nome: "Stella",
     tipo: "Cachorro",
@@ -167,6 +182,7 @@ const animal = {
   },
   16: {
     id: 16,
+    isfav:false,
     img: "https://img.freepik.com/fotos-gratis/lindo-retrato-de-cachorro_23-2149218450.jpg?t=st=1712059471~exp=1712063071~hmac=9c949cb55417557cd5bd9b9c96645d0de9589c8caa744acdf12f1f36f60e478a&w=1380",
     nome: "Richyele",
     tipo: "Cachorro",
@@ -190,6 +206,7 @@ const animal = {
   },
   18: {
     id: 18,
+    isfav:false,
     img: "https://as1.ftcdn.net/v2/jpg/07/06/97/56/1000_F_706975647_6Dm65UnynJ7xCxR0vSs4RajV1WmG2oJG.jpg",
     nome: "Luisa",
     tipo: "Cachorro",
@@ -202,6 +219,7 @@ const animal = {
 
   19: {
     id: 19,
+    isfav:false,
     img: "https://img.freepik.com/fotos-gratis/gato-selvagem-preto-com-olhos-verdes_181624-20030.jpg?size=626&ext=jpg&ga=GA1.1.1459418701.1707737255&semt=sph",
     nome: "Luma",
     tipo: "Gato",
@@ -213,6 +231,7 @@ const animal = {
   },
   20: {
     id: 20,
+    isfav:false,
     img: "https://img.freepik.com/fotos-gratis/gatinho-adoravel-com-oculos-de-sol_23-2150886414.jpg?size=626&ext=jpg&ga=GA1.1.1459418701.1707737255&semt=sph",
     nome: "Mila",
     tipo: "Gato",

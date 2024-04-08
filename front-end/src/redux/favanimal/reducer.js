@@ -5,6 +5,8 @@ const initialState = {
 };
 
 const animalFavReducer = (state = initialState, action) => {
+
+
   switch (action.type) {
     case animalActionType.ADD_ANIMAL:
       //verificar se o animal ja está favoritado
@@ -26,13 +28,14 @@ const animalFavReducer = (state = initialState, action) => {
       //se nao estiver, adicionamos
       return {
         ...state,
-        animalsFav: [...state.animalsFav,{...action.payload, quantity: 1}],
+        animalsFav:  [...state.animalsFav,{...action.payload, quantity: 1}]
       };
 
     case animalActionType.REMOVE_ANIMAL:
       return  {
         ...state,
-        animalsFav: state.animalsFav.filter(animal => animal.id != action.payload )
+        animalsFav: state.animalsFav.filter(animal => animal.id !== action.payload ),
+        
       }
 
     default:

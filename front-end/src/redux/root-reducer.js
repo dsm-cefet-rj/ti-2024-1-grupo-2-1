@@ -1,7 +1,8 @@
 import { combineReducers } from "redux";
 import userReducer from "./user/reducer";
 import animalFavReducer from "./favanimal/reducer";
+import animalReducer from "./Animais/reducer";
 
-const rootReducer = combineReducers({userReducer, animalFavReducer});
+const rootReducer = combineReducers({userReducer, animalFavReducer,animalReducer});
 
 export default rootReducer;

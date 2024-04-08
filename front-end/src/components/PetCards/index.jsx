@@ -5,7 +5,7 @@ import { IoIosHeartEmpty } from "react-icons/io";
 import "./style.css";
 import Card from "react-bootstrap/Card";
 import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addAnimalToFav, removeAnimalToFav } from "../../redux/favanimal/actions";
 import { useState } from "react";
 

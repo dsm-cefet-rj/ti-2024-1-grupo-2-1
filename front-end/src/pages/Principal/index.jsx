@@ -7,19 +7,21 @@ import PetCards from "../../components/PetCards";
 import "./AnimalGrid.css";
 import Footer from "../../components/Footer";
 import { Grade } from "../../components/GridContainer";
-import animal from "../../components/Animal/animal";
 import Paginacao from "../../components/Pagination";
+import { useSelector} from "react-redux";
 
-// const LIMIT = 10;
+
 
 export const Main = () => {
-  const [animais, setAnimais] = useState([]);
+  // const [animais, setAnimais] = useState([]);
   const [filter, setFilter] = useState("All");
   const [porteFilter, setPorteFilter] = useState("All");
   const [sexoFilter, setSexoFilter] = useState("All");
   const [idadeFilter, setIdadeFilter] = useState("All");
   const [animalsPerPage, setAnimalsPerPage] = useState(10);
   const [paginaAtual, setPaginaAtual] = useState(0);
+
+  const {animais} = useSelector((rootReducer)=>rootReducer.animalReducer)
 
   // const getAnimal = async () => {
   //     try {
@@ -55,17 +57,17 @@ export const Main = () => {
   const endIndex = startIndex + animalsPerPage;
   const itensAtuais = animaisFiltrados.slice(startIndex, endIndex);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      // const result =await fetch (Object.values(animal))
-      //     .then(response => response.json())
-      //     .then(data => data)
-      setAnimais(Object.values(animal));
-    };
-    fetchData();
-    // getAnimal();
-    // setFiltredAnimals(animaisFiltrados);
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     // const result =await fetch (Object.values(animal))
+  //     //     .then(response => response.json())
+  //     //     .then(data => data)
+  //     setAnimais(Object.values(animal));
+  //   };
+  //   fetchData();
+  //   // getAnimal();
+  //   // setFiltredAnimals(animaisFiltrados);
+  // }, []);
 
   // useEffect(()=>{
   //     setPaginaAtual(0)
