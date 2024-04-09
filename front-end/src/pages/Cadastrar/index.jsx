@@ -2,9 +2,15 @@ import React, { useState } from "react";
 import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Layout } from "../../components/Layoutform";
-import useAuth from "../../hooks/useAuth";
+import { useSelector, useDispatch } from "react-redux";
+import { signupUser } from "../../redux/user/actions";
 
 export const Cadastrar = () => {
+
+  const { usuarioAtual } = useSelector(rootReducer => rootReducer.userReducer);
+  const { ultimoTesteEmailVerificado } = useSelector(rootReducer => rootReducer.userReducer);
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [nome, setNome] = useState("");
@@ -12,21 +18,20 @@ export const Cadastrar = () => {
 
   const navigate = useNavigate();
 
-  const { signUp } = useAuth();
-
-  const handleSingUp = () => {
+  // Lida ao apertar o botão de signUp
+  const handleSignUp = () => {
+    // Caso um dos states (email, senha, nome) esteja vazio, setamos Err com a mensagem de erro
     if (!email | !senha | !nome) {
       setErr("Preencha todos os campos");
+      return; // Retornamos para não continuar a execução
     }
 
-    const res = signUp(nome, email, senha);
+    //Caso a execução passe do if's, realizamos o dispatch para o cadastro do usuário
+    dispatch(signupUser({nome: nome, email: email, senha: senha}));
 
-    if (res) {
-      setErr(res);
-      return;
-    }
     alert("Usuario cadastrado com sucesso!");
     navigate("/login");
+    return;
   };
 
   return (
@@ -62,7 +67,7 @@ export const Cadastrar = () => {
         </div>
         <label>{err}</label>
         <div className="container-register-botao">
-          <button className="botao-form" onClick={handleSingUp}>
+          <button className="botao-form" onClick={handleSignUp}>
             Cadastre-se
           </button>
         </div>
