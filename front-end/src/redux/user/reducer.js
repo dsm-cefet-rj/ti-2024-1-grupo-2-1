@@ -2,34 +2,49 @@
 
 import UserActionsTypes from "./actions-types";
 
-// Guardamos o state inicial do userReducer
-const inicialState = {
-    usuarioAtual: [{nome:"", email:"", senha:""}],
-    ultimoTesteEmailVerificado: null,
-}
+const initialState = {
+  currentUser: null,
+  userDB: [],
+};
 
-const userReducer = (state = inicialState, action) => {
+const userReducer = (state = initialState, action) => {
     //assim que uma action for efetuada, e o tipo for user/login, pega tudo do usuario e jogue no state
   switch(action.type){
     case UserActionsTypes.SIGNUP:
 
-      //Verifica se o email do usuário recebido na action já está no "Banco de Dados"
-      const userEmailIsAlredyInDB = state.usuarioAtual.some(
-        (usuarioAtual) => usuarioAtual.email === action.payload.email);
+      const userEmailIsAlredyInDB = state.userDB.some((userDB) => userDB.email === action.payload.email);
 
-      // FAZER LÓGICA AINDA, deveria sinalizar algo para setar o state de erro no componente
-      if(userEmailIsAlredyInDB){
-        state.ultimoTesteEmailVerificado = true;
-        return {...state, ultimoTesteEmailVerificado: true};
+      if(!userEmailIsAlredyInDB){
+        const newUser = { ...action.payload};
+        return { ...state, userDB: [...state.userDB, newUser]}
       }
 
-      return {...state, usuarioAtual: [...state.usuarioAtual, {...action.payload}], ultimoTesteEmailVerificado: null};
+      return { ...state, userDB: [...state.userDB]};
 
     case UserActionsTypes.LOGIN:
-      return{...state, usuarioAtual: action.payload};
+
+       const autenticateUser = () => {
+          state.userDB.map((userObject) => {
+              if(userObject.email === action.payload.email && userObject.senha === action.payload.senha){
+                return userObject;
+              }
+          });
+
+          return null;
+       }
+
+       if(autenticateUser()){
+          return { ...state, currentUser: autenticateUser}
+       }
+
+       return { ...state, currentUser: null}
+
     case UserActionsTypes.LOGOUT:
-      return{...state, usuarioAtual:null};
+
+      return{...state, currentUser: null};
+      
     default:
+
       return state    
   }
 };
