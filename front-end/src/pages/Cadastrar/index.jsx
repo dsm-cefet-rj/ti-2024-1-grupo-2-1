@@ -7,8 +7,7 @@ import { signupUser } from "../../redux/user/actions";
 
 export const Cadastrar = () => {
 
-  const { usuarioAtual } = useSelector(rootReducer => rootReducer.userReducer);
-  const { ultimoTesteEmailVerificado } = useSelector(rootReducer => rootReducer.userReducer);
+  const { userDB } = useSelector(rootReducer => rootReducer.userReducer);
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
@@ -19,7 +18,7 @@ export const Cadastrar = () => {
   const navigate = useNavigate();
 
   // Lida ao apertar o botão de signUp
-  const handleSignUp = () => {
+  const handleSignUp = (e) => {
     // Caso um dos states (email, senha, nome) esteja vazio, setamos Err com a mensagem de erro
     if (!email | !senha | !nome) {
       setErr("Preencha todos os campos");
@@ -29,9 +28,16 @@ export const Cadastrar = () => {
     //Caso a execução passe do if's, realizamos o dispatch para o cadastro do usuário
     dispatch(signupUser({nome: nome, email: email, senha: senha}));
 
+    const found = userDB.find((object) => object.email === email);
+
+    if(!found){
     alert("Usuario cadastrado com sucesso!");
     navigate("/login");
-    return;
+    }
+    else{
+      e.preventDefault();
+      setErr("Email já existente");
+    }
   };
 
   return (
