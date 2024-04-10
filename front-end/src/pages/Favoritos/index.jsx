@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import Paginacao from "../../components/Pagination";
 import { useState, useEffect } from "react";
 import {useSelector} from "react-redux"
+import rootReducer from "../../redux/root-reducer";
 // import useAuth from "../../hooks/useAuth";
 // import FilterFavoritos from "../../components/FilterFavoritos";
 
@@ -44,8 +45,13 @@ export const Favoritos = () => {
   //       return animal.idade === idadeFilter;
   //     }));
   const { animalsFav } = useSelector((rootReducer) => rootReducer.animalFavReducer)
+  const { animais } = useSelector((rootReducer)=>rootReducer.animalReducer)
   
   // const dispatch= useDispatch();
+  {animalsFav.map((animal) => (
+    animal.isfav = !animais.isfav
+  ))}
+  // animalsFav.isfav=true;
   console.log({animalsFav})
 
   // const pages = Math.ceil(animalFav.length / animalsPerPage, 1);

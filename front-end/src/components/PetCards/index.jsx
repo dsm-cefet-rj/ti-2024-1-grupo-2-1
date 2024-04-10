@@ -9,11 +9,11 @@ import { useDispatch } from "react-redux";
 import { addAnimalToFav, removeAnimalToFav } from "../../redux/favanimal/actions";
 import { useState } from "react";
 
-const PetCards = ({ animais, showLink = true }) => {
+const PetCards = ({ animais }) => {
 
   const id = animais.id;
   
-  const[fav,setFav]=useState(animais.isFav);
+  const[fav,setFav]=useState(animais.isfav);
   const navigate = useNavigate();
 
   const dispatch = useDispatch()
@@ -21,13 +21,15 @@ const PetCards = ({ animais, showLink = true }) => {
 
   const handleAnimalFav = ( ) => {
     dispatch(addAnimalToFav(animais))
-    setFav(!animais.isFav)
-     console.log( animais );
+    animais.isfav=true;
+    setFav(animais.isfav)
+     
 
   }
   
   const handleRemove = () =>{
     dispatch(removeAnimalToFav(animais.id))
+    animais.isfav=false;
     setFav(animais.isFav)
   }
  
@@ -54,11 +56,11 @@ const PetCards = ({ animais, showLink = true }) => {
           {animais && <p> Porte: {animais.porte}</p>}
         </Card.Text>
         {/* <Button variant="primary" onClick={handleSubmit} >Detalhes</Button> */}
-        {showLink && (
+        
           <button className="info" onClick={handleClick}>
             Detalhes
           </button>
-        )}
+        
       </Card.Body>
     </Card>
   );

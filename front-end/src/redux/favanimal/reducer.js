@@ -23,6 +23,7 @@ const animalFavReducer = (state = initialState, action) => {
               animal.id === action.payload.id
               ?{...animal, quantity: 1}
               : animal)
+              
             }
           }
       //se nao estiver, adicionamos

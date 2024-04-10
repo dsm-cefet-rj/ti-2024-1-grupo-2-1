@@ -56,6 +56,7 @@ export const Main = () => {
   const startIndex = paginaAtual * animalsPerPage;
   const endIndex = startIndex + animalsPerPage;
   const itensAtuais = animaisFiltrados.slice(startIndex, endIndex);
+  const { animalsFav } = useSelector((rootReducer) => rootReducer.animalFavReducer)
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -97,7 +98,9 @@ export const Main = () => {
 
         <Grade>
           {itensAtuais.map((animal) => (
-            <PetCards key={animal.id} animais={animal} />
+            
+            <PetCards key={animal.id} animais={animal}  />
+            
           ))}
         </Grade>
       </div>
