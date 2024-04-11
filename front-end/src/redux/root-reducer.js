@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import userReducer from "./user/slice";
-import animalFavReducer from "./favanimal/reducer";
-import animalReducer from "./Animais/reducer";
+import animalFavReducer from "./favanimal/slice";
+import animalReducer from "./Animais/slice";
 
 const rootReducer = combineReducers({userReducer, animalFavReducer,animalReducer});
 
