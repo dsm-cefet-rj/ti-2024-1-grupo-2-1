@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addAnimalToFav, removeAnimalToFav } from "../../redux/favanimal/actions";
 import { useState } from "react";
+import { useSelector} from "react-redux";
 
 const PetCards = ({ animais }) => {
 
@@ -17,20 +18,32 @@ const PetCards = ({ animais }) => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch()
-  // console.log({ animalFav });
+  const { animalsFav } = useSelector((rootReducer) => rootReducer.animalFavReducer)
+  const { animals } = useSelector((rootReducer) => rootReducer.animalReducer)
+  
+  
+  
 
   const handleAnimalFav = ( ) => {
     dispatch(addAnimalToFav(animais))
     animais.isfav=true;
-    setFav(animais.isfav)
+    animalsFav.isfav=true;
+    setFav(animais.isfav);
+    console.log(animais.isfav);
+    console.log(animalsFav.isfav);
      
 
   }
   
   const handleRemove = () =>{
+    animais.isfav= false
     dispatch(removeAnimalToFav(animais.id))
-    animais.isfav=false;
+    animalsFav.isfav=false;
+    animals.isfav=false;
     setFav(animais.isFav)
+    console.log(animais.isfav);
+    console.log(animalsFav.isfav);
+    console.log(animals.isfav)
   }
  
   const handleClick = (e) => {

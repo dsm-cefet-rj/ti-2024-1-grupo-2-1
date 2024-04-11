@@ -88,6 +88,9 @@
 .grade-container {
   margin-left: 0.6rem;
 }
+.footer_favoritos{
+  margin-top:200rem;
+}
 
 @media (max-width: 860px) {
 

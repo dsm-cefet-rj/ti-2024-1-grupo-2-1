@@ -21,7 +21,12 @@ export const Main = () => {
   const [animalsPerPage, setAnimalsPerPage] = useState(10);
   const [paginaAtual, setPaginaAtual] = useState(0);
 
-  const {animais} = useSelector((rootReducer)=>rootReducer.animalReducer)
+  const {animals} = useSelector((rootReducer)=>rootReducer.animalReducer)
+  const { animalsFav } = useSelector((rootReducer) => rootReducer.animalFavReducer)
+  
+  
+  console.log({animalsFav})
+  console.log({ animals });
 
   // const getAnimal = async () => {
   //     try {
@@ -33,8 +38,8 @@ export const Main = () => {
   //     }};
 
   const animaisFiltrados =
-    animais &&
-    animais
+    animals &&
+    animals
       .filter((animal) => {
         if (filter === "All") return true;
         return animal.tipo === filter;
@@ -56,7 +61,13 @@ export const Main = () => {
   const startIndex = paginaAtual * animalsPerPage;
   const endIndex = startIndex + animalsPerPage;
   const itensAtuais = animaisFiltrados.slice(startIndex, endIndex);
-  const { animalsFav } = useSelector((rootReducer) => rootReducer.animalFavReducer)
+  
+  
+  itensAtuais.map((animal) => {
+    if(animal.id === animalsFav.id){
+    animal.isfav = animalsFav.isfav
+    return animal;
+  }})
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -75,6 +86,7 @@ export const Main = () => {
   // },[animalsPerPage])
 
   console.log(animaisFiltrados.length);
+
 
   return (
     <div className="all">
