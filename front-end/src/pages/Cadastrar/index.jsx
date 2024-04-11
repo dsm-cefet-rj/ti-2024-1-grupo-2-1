@@ -3,7 +3,7 @@ import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Layout } from "../../components/Layoutform";
 import { useSelector, useDispatch } from "react-redux";
-import { signupUser } from "../../redux/user/actions";
+import { signUp } from "../../redux/user/slice";
 
 export const Cadastrar = () => {
 
@@ -26,7 +26,7 @@ export const Cadastrar = () => {
     }
 
     //Caso a execução passe do if's, realizamos o dispatch para o cadastro do usuário
-    dispatch(signupUser({nome: nome, email: email, senha: senha}));
+    dispatch(signUp({nome: nome, email: email, senha: senha}));
 
     const found = userDB.find((object) => object.email === email);
 

@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import userReducer from "./user/reducer";
+import userReducer from "./user/slice";
 import animalFavReducer from "./favanimal/reducer";
 import animalReducer from "./Animais/reducer";
 
