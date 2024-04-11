@@ -21,6 +21,7 @@ export const Cadastrar = () => {
   const handleSignUp = (e) => {
     // Caso um dos states (email, senha, nome) esteja vazio, setamos Err com a mensagem de erro
     if (!email | !senha | !nome) {
+      e.preventDefault();
       setErr("Preencha todos os campos");
       return; // Retornamos para não continuar a execução
     }
