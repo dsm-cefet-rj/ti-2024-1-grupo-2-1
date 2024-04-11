@@ -2,7 +2,7 @@ import animalActionType from "../favanimal/action-type";
 import animaisActionType from "./action-type";
 
 const estadoInicial = {
-  animais: [
+  animals: [
     {
       id: 1,
       isfav: false,

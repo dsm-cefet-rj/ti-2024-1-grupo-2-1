@@ -45,14 +45,29 @@ export const Favoritos = () => {
   //       return animal.idade === idadeFilter;
   //     }));
   const { animalsFav } = useSelector((rootReducer) => rootReducer.animalFavReducer)
-  const { animais } = useSelector((rootReducer)=>rootReducer.animalReducer)
+  const { animals } = useSelector((rootReducer) => rootReducer.animalReducer)
   
   // const dispatch= useDispatch();
-  {animalsFav.map((animal) => (
-    animal.isfav = !animais.isfav
-  ))}
-  // animalsFav.isfav=true;
-  console.log({animalsFav})
+  console.log({animals})
+  // animals && animals.map((animal) => {
+  //   if(animal.isfav === true){
+  //     return animal.isfav === true;
+  //   }
+  //   else{
+  //     <p>Não Há animais favoritados</p>
+  //   }
+  // })
+  
+  const favoritados = animals && animals.filter((animal) => {
+    if(animal.isfav === !animalsFav.isfav){
+      return animal
+    }
+    
+    }
+  )
+
+  
+  
 
   // const pages = Math.ceil(animalFav.length / animalsPerPage, 1);
   // const startIndex = paginaAtual * animalsPerPage;
@@ -96,11 +111,13 @@ export const Favoritos = () => {
         idadeFilter={idadeFilter} setIdadeFilter={setIdadeFilter}
       </FilterFavoritos> */}
       <div className="grade-container">
-        <Grade>
-          {animalsFav.map((animal) => (
+        {favoritados.length ?
+        (<Grade>
+          {favoritados.map((animal) => (
             <PetCards key={animal.id} animais={animal} />
           ))}
-        </Grade>
+        </Grade>) : 
+        (<p>Não animais favoritados por você ainda</p>)}
       </div>
       {/* {favAnimais.length && (
         <Paginacao
@@ -109,7 +126,7 @@ export const Favoritos = () => {
           setPaginaAtual={setPaginaAtual}
         />
       )} */}
-      <Footer></Footer>
+      <Footer ></Footer>
     </div>
   );
 };
