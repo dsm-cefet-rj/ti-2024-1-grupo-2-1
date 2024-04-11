@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    currentUser: null,
+    currentUser: {},
     userDB: [],
 };
 
@@ -25,23 +25,9 @@ const userSlice = createSlice({
 
         logIn: (state, action) => {
 
-            const autenticateUser = () => {
-                state.userDB.map((userObject) => {
-                    if(userObject.email === action.payload.email && userObject.senha === action.payload.senha){
-                      return userObject;
-                    }
-                });
+            state.currentUser = action.payload
       
-                return null;
-            }
-
-            if(autenticateUser()){
-                 state.currentUser = autenticateUser
-                 return;
-            }
-
-             state.currentUser = null
-             return;
+            return;
         },
 
         logOut: (state) => {

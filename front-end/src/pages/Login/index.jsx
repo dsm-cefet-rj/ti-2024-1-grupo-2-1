@@ -1,30 +1,39 @@
 import React, { useState, useContext } from "react";
 import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logIn } from "../../redux/user/slice";
 import { Layout } from "../../components/Layoutform";
-import useAuth from "../../hooks/useAuth";
 
 export const Login = () => {
+  const { currentUser, userDB } = useSelector(rootReducer => rootReducer.userReducer);
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [err, setErr] = useState("");
 
-  const { logIn } = useAuth();
   const navigate = useNavigate();
 
-  const handleIn = () => {
+  const handleIn = (e) => {
     if (!email | !senha) {
+      e.preventDefault();
       setErr("Preencha todos os campos");
       return;
     }
 
-    const res = logIn(email, senha);
-
-    if (res) {
-      setErr(res);
-      return;
+    const foundUser = userDB.find((conta) => conta.email === email && conta.senha === senha);
+    
+    if(foundUser){
+      dispatch(logIn(foundUser));
+      alert("Logado com sucesso");
+      navigate("/");
     }
-    navigate("/");
+    else{
+      e.preventDefault();
+      setErr("Verifique os dados inserido!");
+    }
+
   };
   return (
     <Layout>
