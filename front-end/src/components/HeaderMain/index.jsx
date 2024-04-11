@@ -4,35 +4,27 @@ import { FaBars } from "react-icons/fa";
 import { useNavigate, Link } from "react-router-dom";
 import Logo from "../../assets/logo2.png";
 import Logo2 from "../../assets/logopart2.png";
-import { AuthContext } from "../../contexts/auth";
 import { VscAccount } from "react-icons/vsc";
-import useAuth from "../../hooks/useAuth";
 import { useSelector, useDispatch } from "react-redux";
 import rootReducer from "../../redux/root-reducer";
+import { logOut } from "../../redux/user/slice";
 
-import {loginUser,logOutUser} from "../../redux/user/actions";
 
 const HeaderMain = () => {
   const navigate = useNavigate();
-  // const { logOut } = useAuth();
-  const { user } = useContext(AuthContext);
   const [infoOpen, setInfoOpen] = useState(false);
   const perfilRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(true);
 
  //acessando o objeto usuario, afim de pegar os dados, atraves do useSelector 
-  const{ usuarioAtual } = useSelector((rootReducer) => rootReducer.userReducer);
+  const{ currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
  //altera os dados do objeto 
   const dispatch=useDispatch();
 
-  console.log({ usuarioAtual });
+  console.log({ currentUser });
 
-  const handlelog = () =>{
-    dispatch(loginUser( { name: "Vinicius" , email: "teste@teste"}));
-     
-  };
   const handleLogOut = () =>{
-    dispatch((logOutUser()))
+    dispatch((logOut()))
   };
 
 
@@ -116,7 +108,7 @@ const HeaderMain = () => {
       )}
 
       <div className="botao-header">
-        {usuarioAtual ? (
+        {currentUser ? (
           <button
             ref={perfilRef}
             type="submit"
@@ -129,7 +121,7 @@ const HeaderMain = () => {
           </button>
         ) : (
           <>
-            <button className="login-bt" onClick={handlelog}>
+            <button className="login-bt" onClick={goLogin}>
               Entrar
             </button>
             <button className="signup-bt" onClick={goSignup}>
@@ -138,10 +130,10 @@ const HeaderMain = () => {
           </>
         )}
 
-        {infoOpen && usuarioAtual && (
+        {infoOpen && currentUser != [] && currentUser != null && (
           <div className="perfil">
             <ul>
-              <label className="welcome">Bem vindo: {usuarioAtual.name}</label>
+              <label className="welcome">Bem vindo: {currentUser.nome}</label>
               <button className="sair" onClick={handleLogOut}>
                 Sair
               </button>
