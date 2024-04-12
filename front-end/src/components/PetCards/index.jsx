@@ -6,44 +6,48 @@ import "./style.css";
 import Card from "react-bootstrap/Card";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addAnimalToFav, removeAnimalToFav } from "../../redux/favanimal/actions";
+
 import { useState } from "react";
 import { useSelector} from "react-redux";
+import { addAnimalToFav, removeAnimalToFav } from "../../redux/favanimal/slice";
+import { changeAnimalIsFav } from "../../redux/Animais/slice";
 
 const PetCards = ({ animais }) => {
 
   const id = animais.id;
   
+  
   const[fav,setFav]=useState(animais.isfav);
   const navigate = useNavigate();
 
   const dispatch = useDispatch()
-  const { animalsFav } = useSelector((rootReducer) => rootReducer.animalFavReducer)
-  const { animals } = useSelector((rootReducer) => rootReducer.animalReducer)
+  // const { animalsFav } = useSelector((rootReducer) => rootReducer.animalFavReducer)
+  // const { animals } = useSelector((rootReducer) => rootReducer.animalReducer)
   
   
   
 
   const handleAnimalFav = ( ) => {
-    dispatch(addAnimalToFav(animais))
-    animais.isfav=true;
-    animalsFav.isfav=true;
-    setFav(animais.isfav);
-    console.log(animais.isfav);
-    console.log(animalsFav.isfav);
-     
+    // animais.isfav=true;
+    dispatch(addAnimalToFav(animais));
+    dispatch(changeAnimalIsFav(animais.id));
+    //dispatch isFav to animals array here!!!!!!
 
+
+
+    setFav(!animais.isfav);
+    // animals.isfav=true;
+    // animalsFav.isfav=true;
   }
   
   const handleRemove = () =>{
-    animais.isfav= false
-    dispatch(removeAnimalToFav(animais.id))
-    animalsFav.isfav=false;
-    animals.isfav=false;
+    // animais.isfav= false
+    dispatch(removeAnimalToFav(animais.id));
+    dispatch(changeAnimalIsFav(animais.id));
+    // animalsFav.isfav=false;
+    // animals.isfav=false;
     setFav(animais.isFav)
-    console.log(animais.isfav);
-    console.log(animalsFav.isfav);
-    console.log(animals.isfav)
+    
   }
  
   const handleClick = (e) => {

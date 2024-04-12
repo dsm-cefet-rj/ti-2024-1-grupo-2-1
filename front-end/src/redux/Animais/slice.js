@@ -251,10 +251,20 @@ const animalSlice = createSlice({
     name: "animal",
     initialState,
     reducers: {
+        changeAnimalIsFav: (state, action) => {
+            //pegar o index do animal
+            //payload = id
+            const index = state.animals.findIndex((e) => e.id === action.payload);
+            //mudar no state no index do array
+            state.animals[index].isfav = !state.animals[index].isfav;
 
+            // {Array.from(Array(state.animals), (_, index) => {
+            //     return ( index )}
+            //     )}
+        },
     }
 });
 
-export const {} = animalSlice.actions;
+export const  { changeAnimalIsFav } = animalSlice.actions;
 
 export default animalSlice.reducer;

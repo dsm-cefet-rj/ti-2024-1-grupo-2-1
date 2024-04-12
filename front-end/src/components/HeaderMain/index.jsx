@@ -21,7 +21,6 @@ const HeaderMain = () => {
  //altera os dados do objeto 
   const dispatch=useDispatch();
 
-  console.log({ currentUser });
 
   const handleLogOut = () =>{
     dispatch((logOut()))
@@ -39,9 +38,7 @@ const HeaderMain = () => {
     });
   });
   const goLogin = () => {
-    // {console.log(user)}
-    // {console.log(user.name)}
-    // {console.log(user.name.length)}
+   
     navigate("/login");
   };
   const goSignup = () => {

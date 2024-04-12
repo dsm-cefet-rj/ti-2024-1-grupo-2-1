@@ -48,7 +48,8 @@ export const Favoritos = () => {
   const { animals } = useSelector((rootReducer) => rootReducer.animalReducer)
   
   // const dispatch= useDispatch();
-  console.log({animals})
+  console.log({animals});
+  console.log({animalsFav});
   // animals && animals.map((animal) => {
   //   if(animal.isfav === true){
   //     return animal.isfav === true;
@@ -58,11 +59,11 @@ export const Favoritos = () => {
   //   }
   // })
   
+  // verifica qual dos elementos animals está com o atributo isfav em animalsFav true e retorna na pagina
   const favoritados = animals && animals.filter((animal) => {
-    if(animal.isfav === !animalsFav.isfav){
+    if(animal.isfav === true){
       return animal
     }
-    
     }
   )
 
@@ -126,7 +127,7 @@ export const Favoritos = () => {
           setPaginaAtual={setPaginaAtual}
         />
       )} */}
-      <Footer ></Footer>
+      <Footer></Footer>
     </div>
   );
 };

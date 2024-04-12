@@ -21,13 +21,11 @@ export const Main = () => {
   const [animalsPerPage, setAnimalsPerPage] = useState(10);
   const [paginaAtual, setPaginaAtual] = useState(0);
 
-  const {animals} = useSelector((rootReducer)=>rootReducer.animalReducer)
+  const { animals } = useSelector((rootReducer)=>rootReducer.animalReducer)
   const { animalsFav } = useSelector((rootReducer) => rootReducer.animalFavReducer)
   
   
-  console.log({animalsFav})
-  console.log({ animals });
-
+  
   // const getAnimal = async () => {
   //     try {
   //         // Verifica se o animal com o ID fornecido existe
@@ -84,9 +82,6 @@ export const Main = () => {
   // useEffect(()=>{
   //     setPaginaAtual(0)
   // },[animalsPerPage])
-
-  console.log(animaisFiltrados.length);
-
 
   return (
     <div className="all">
