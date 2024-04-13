@@ -21,7 +21,7 @@ export const AppRouter = () => {
           <Route exact path="/detalhamento/:id" element={<Detalhamento />} />
           <Route path="/agendamento/:id" element={<Agendamento />} />
           <Route path="/registro_adocao/:id" element={<RegistroAdocao />} />
-          <Route path ="/quem_somos/" element = {<QuemSomos />} />
+          <Route path ="/quem_somos" element = {<QuemSomos />} />
         </Routes>
       </Fragment>
     </Router>
