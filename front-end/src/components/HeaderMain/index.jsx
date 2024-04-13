@@ -89,7 +89,10 @@ const HeaderMain = () => {
             Home{" "}
           </Link>
           <span> | </span>
-          <Link style={{ textDecoration: "none", color: "rgb(1, 73, 131)" }} to={"/quem_somos"}>
+          <Link 
+            style={{ textDecoration: "none", color: "rgb(1, 73, 131)" }}
+            to={`/quem_somos`}
+          >
             {" "}
             Quem somos{" "}
           </Link>

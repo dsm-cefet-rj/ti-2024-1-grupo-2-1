@@ -8,6 +8,7 @@ import { RegistroAdocao } from "../pages/RegistroAdocao";
 import { Login } from "../pages/Login";
 import { Cadastrar } from "../pages/Cadastrar";
 import QuemSomos from "../pages/Quem_Somos";
+import CadastroAnimal from "../pages/Cadastro Animal";
 
 export const AppRouter = () => {
   return (
@@ -21,7 +22,8 @@ export const AppRouter = () => {
           <Route exact path="/detalhamento/:id" element={<Detalhamento />} />
           <Route path="/agendamento/:id" element={<Agendamento />} />
           <Route path="/registro_adocao/:id" element={<RegistroAdocao />} />
-          <Route path ="/quem_somos/" element = {<QuemSomos />} />
+          <Route path ="/quem_somos" element = {<QuemSomos/>} />
+          <Route path="/cadastro_animal" element={<CadastroAnimal/>} />
         </Routes>
       </Fragment>
     </Router>

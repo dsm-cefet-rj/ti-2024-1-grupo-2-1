@@ -1,9 +1,27 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     currentUser: null,
     userDB: [],
 };
+export const fetchUsuarios = createAsyncThunk ('user/fetchUsuarios', 
+async () => {
+    //poderia ser feito um try catch para averiguar se os dados serão pegos corretamente 
+    //busca os animais na API
+    const resp = await fetch("http://localhost:5000/userDB");
+    // transforma a resposta da API em json
+    return await resp.json();
+
+    }, )
+
+    // Função reducer para atualizar o estado quando os animais forem obtidos com sucesso
+    function fullfillUsersReducer(state, action){
+        //criaçao de um novo estado de objeto com os animais requisitados 
+        return {
+            ...state,
+            userDB: action.payload,
+        };
+    };
 
 const userSlice = createSlice({
     name: "user",
@@ -34,7 +52,12 @@ const userSlice = createSlice({
              state.currentUser = null
              return;
         }
-    }
+    },
+    extraReducers: (builder) => {
+        builder
+        .addCase(fetchUsuarios.fulfilled, fullfillUsersReducer);
+        
+    },
 });
 
 export const { signUp, logIn, logOut } = userSlice.actions;
