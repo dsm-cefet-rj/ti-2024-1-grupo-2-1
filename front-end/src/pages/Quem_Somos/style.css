@@ -1,0 +1,18 @@
+.quem-somos-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.quem-somos-container h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.quem-somos-container p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #666;
+    margin-bottom: 20px;
+}

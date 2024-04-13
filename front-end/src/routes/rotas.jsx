@@ -7,6 +7,7 @@ import Agendamento from "../pages/Pag_Agendamento";
 import { RegistroAdocao } from "../pages/RegistroAdocao";
 import { Login } from "../pages/Login";
 import { Cadastrar } from "../pages/Cadastrar";
+import QuemSomos from "../pages/Quem_Somos";
 
 export const AppRouter = () => {
   return (
@@ -20,6 +21,7 @@ export const AppRouter = () => {
           <Route exact path="/detalhamento/:id" element={<Detalhamento />} />
           <Route path="/agendamento/:id" element={<Agendamento />} />
           <Route path="/registro_adocao/:id" element={<RegistroAdocao />} />
+          <Route path ="/quem_somos/" element = {<QuemSomos />} />
         </Routes>
       </Fragment>
     </Router>
