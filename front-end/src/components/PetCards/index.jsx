@@ -63,11 +63,11 @@ const PetCards = ({ animais }) => {
       <Card.Img variant="top" src={animais.img} />
       <Card.Body>
         <Card.Title>{animais.nome}
+        </Card.Title>
         {fav ? (
                     <IoMdHeart className="complete" onClick={handleRemove}/>
             ):( <IoIosHeartEmpty className="incomplete" onClick={handleAnimalFav}/>
                  )}
-        </Card.Title>
         <Card.Text>
           {animais && <p> Idade: {animais.idade}</p>}
           {animais && <p> Porte: {animais.porte}</p>}
