@@ -4,6 +4,30 @@ const initialState = {
     currentUser: null,
     userDB: [],
 };
+
+export const postUsuarios = createAsyncThunk ('user/postUsuarios', 
+async (userData) => {
+    //poderia ser feito um try catch para averiguar se os dados serão pegos corretamente 
+    //busca os animais na API
+    const resp = await fetch("http://localhost:5000/userDB",{
+        method: 'POST',
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(userData)
+    })
+    .then((response) => response.json())
+    .then((data) => console.log('Usuário criado:', data))
+    .catch((error) => console.error('Erro ao criar usuário:', error));
+    // transforma a resposta da API em json
+    return await resp.json();
+
+    }, )
+
+    function userPostReducer(state, action) {
+        state.userDB.push({...action.payload});
+    }
+
 export const fetchUsuarios = createAsyncThunk ('user/fetchUsuarios', 
 async () => {
     //poderia ser feito um try catch para averiguar se os dados serão pegos corretamente 
@@ -13,6 +37,7 @@ async () => {
     return await resp.json();
 
     }, )
+
 
     // Função reducer para atualizar o estado quando os animais forem obtidos com sucesso
     function fullfillUsersReducer(state, action){
@@ -55,7 +80,8 @@ const userSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-        .addCase(fetchUsuarios.fulfilled, fullfillUsersReducer);
+        .addCase(fetchUsuarios.fulfilled, fullfillUsersReducer)
+        .addCase(postUsuarios.fulfilled, userPostReducer );
         
     },
 });
