@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { logIn } from "../../redux/user/slice";
+import { fetchUserByEmail, logIn } from "../../redux/user/slice";
 import { Layout } from "../../components/Layoutform";
 
 export const Login = () => {
@@ -22,8 +22,8 @@ export const Login = () => {
       return;
     }
 
-    const foundUser = userDB.find((conta) => conta.email === email && conta.senha === senha);
-    
+    //const foundUser = userDB.find((conta) => conta.email === email && conta.senha === senha);
+    /*
     if(foundUser){
       dispatch(logIn(foundUser));
       alert("Logado com sucesso");
@@ -33,7 +33,10 @@ export const Login = () => {
       e.preventDefault();
       setErr("Verifique os dados inserido!");
     }
+    */
 
+    dispatch(fetchUserByEmail({email, senha}));
+    navigate("/");
   };
   return (
     <Layout>

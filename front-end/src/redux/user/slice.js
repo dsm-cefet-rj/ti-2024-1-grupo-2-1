@@ -45,11 +45,24 @@ export const addUserServer = createAsyncThunk('users/addUserServer', async (user
     return await httpPost(`${baseUrl}/userDB`, user);
 });
 
+export const fetchUserByEmail = createAsyncThunk('users/fetchUSerByEmail', async(payload, {getState}) =>{
+    try{
+      const {email, senha} = payload
+      const response = await fetch(`${baseUrl}/userDB?email=${email}&senha=${senha}`);
+      const user = await response.json();
+      return user[0];
+    } catch(error){
+      throw error;
+    }
+});
+
 const userSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
-        
+        logOut: (state) => {
+            state.currentUser = null;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -75,12 +88,23 @@ const userSlice = createSlice({
             state.status = "failed";
             state.error = action.error.message;
         })
+        .addCase(fetchUserByEmail.fulfilled, (state, action) =>{
+            state.status = "logged";
+            state.currentUser = action.payload;
+        })
+        .addCase(fetchUserByEmail.pending, (state, action) =>{
+            state.status = "loading"; 
+        })
+        .addCase(fetchUserByEmail.rejected, (state, action) => {
+            state.status = "failed";
+            state.error = action.error.message;
+        })
 
         //.addCase(postUsuarios.fulfilled, userPostReducer );
         
     },
 });
 
-export const { signUp, logIn, logOut } = userSlice.actions;
+export const { logOut } = userSlice.actions;
 
 export default userSlice.reducer;

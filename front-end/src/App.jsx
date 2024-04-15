@@ -2,11 +2,11 @@ import { AppRouter } from "./routes/rotas";
 
 import { Provider } from "react-redux";
 import { fetchAnimais } from "./redux/Animais/slice";
-import { fetchUsuarios } from "./redux/user/slice";
+import { fetchUser } from "./redux/user/slice";
 import store from "./redux/store";
 
 store.dispatch(fetchAnimais());
-store.dispatch(fetchUsuarios());
+store.dispatch(fetchUser());
 
 
 function App() {
