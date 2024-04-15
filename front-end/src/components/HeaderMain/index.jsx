@@ -18,6 +18,7 @@ const HeaderMain = () => {
 
  //acessando o objeto usuario, afim de pegar os dados, atraves do useSelector 
   const{ currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
+  console.log(currentUser);
  //altera os dados do objeto 
   const dispatch=useDispatch();
 
@@ -101,6 +102,14 @@ const HeaderMain = () => {
             {" "}
             Favoritados
           </Link>
+          {(currentUser !== null && currentUser.nome === "Adm" && currentUser.email === "admin@admin" && currentUser.senha === "admin" && currentUser.id === "0000") ? 
+          (<> <span> | </span> <Link
+            style={{ textDecoration: "none", color: "rgb(1, 73, 131)" }}
+            to={`/cadastro_animal`}
+          >
+            {" "}
+            Cadastro de Animais
+          </Link> </>) : (<></>)}
         </nav>
       )}
 

@@ -223,6 +223,12 @@
   ],
   "userDB": [
     {
+      "nome": "Adm",
+      "email": "admin@admin",
+      "senha": "admin",
+      "id": "0000"
+    },
+    {
       "nome": "Vinicius Saidy",
       "email": "vs@vs",
       "senha": "123",
