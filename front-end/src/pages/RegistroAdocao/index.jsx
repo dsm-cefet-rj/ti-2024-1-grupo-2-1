@@ -72,7 +72,7 @@ export const RegistroAdocao = () => {
                 <div className="wraper-input-r">
                   <input
                     className={rga !== "" ? "has-val input" : "input"}
-                    type="name"
+                    type="text"
                     value={rga}
                     onChange={(e) => [setRga(e.target.value)]}
                   />
@@ -127,7 +127,7 @@ export const RegistroAdocao = () => {
                 <div className="wraper-input-r">
                   <input
                     className={cpf !== "" ? "has-val input" : "input"}
-                    type="name"
+                    type="text"
                     value={cpf}
                     onChange={(e) => [setCpf(e.target.value)]}
                   />
@@ -139,7 +139,7 @@ export const RegistroAdocao = () => {
                 <div className="wraper-input-r">
                   <input
                     className={rg !== "" ? "has-val input" : "input"}
-                    type="name"
+                    type="text"
                     value={rg}
                     onChange={(e) => [setRg(e.target.value)]}
                   />
@@ -151,7 +151,7 @@ export const RegistroAdocao = () => {
                 <div className="wraper-input-r">
                   <input
                     className={cel !== "" ? "has-val input" : "input"}
-                    type="name"
+                    type="number"
                     value={cel}
                     onChange={(e) => [setCel(e.target.value)]}
                   />
