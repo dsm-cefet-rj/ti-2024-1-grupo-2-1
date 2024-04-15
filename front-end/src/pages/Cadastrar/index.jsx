@@ -3,7 +3,7 @@ import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Layout } from "../../components/Layoutform";
 import { useSelector, useDispatch } from "react-redux";
-import { addUserServer, signUp } from "../../redux/user/slice";
+import { addUserServer, signUp, emailExistServer} from "../../redux/user/slice";
 
 export const Cadastrar = () => {
 
@@ -17,29 +17,23 @@ export const Cadastrar = () => {
 
   const navigate = useNavigate();
 
-  // Lida ao apertar o botão de signUp
   const handleSignUp = (e) => {
-    // Caso um dos states (email, senha, nome) esteja vazio, setamos Err com a mensagem de erro
+    e.preventDefault();
     if (!email | !senha | !nome) {
-      e.preventDefault();
       setErr("Preencha todos os campos");
-      return; // Retornamos para não continuar a execução
+      return;
     }
 
-    //Caso a execução passe do if's, realizamos o dispatch para o cadastro do usuário
-    dispatch(addUserServer({nome, email, senha}));
-
-    //const found = userDB.find((object) => object.email === email);
-
-    navigate("/login");
-    /*if(){
-    alert("Usuario cadastrado com sucesso!");
-    }
-    else{
-      e.preventDefault();
-      setErr("Email já existente");
-    }
-    */
+    dispatch(emailExistServer(email)).then((result) => {
+      if(result.payload){
+        setErr('Este e-mail já está cadastrado')
+      }
+      else{
+        dispatch(addUserServer({nome, email, senha}))
+        alert("Usuário cadastrado com sucesso!");
+        navigate("/login");
+      }
+    })
   };
 
   return (

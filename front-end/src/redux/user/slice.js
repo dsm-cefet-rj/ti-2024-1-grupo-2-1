@@ -56,6 +56,12 @@ export const fetchUserByEmail = createAsyncThunk('users/fetchUSerByEmail', async
     }
 });
 
+export const emailExistServer = createAsyncThunk('users/emailExistServer', async (email, {getState}) => {
+    const response = await fetch (`${baseUrl}/userDB?email=${email}`);
+    const existe = await response.json();
+    return existe.length > 0;
+});
+
 const userSlice = createSlice({
     name: "user",
     initialState,
