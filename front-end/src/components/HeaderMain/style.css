@@ -177,9 +177,10 @@
     flex-direction: column;
     display: flex;
     box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.3);
-    margin-left: 1vw;
-    margin-top: 3.1vh;
+    margin-top: 4vh;
     padding: 10px 10px 10px 0px;
+    width: 16rem;
+    margin-left: -4vw;
 }
 
 .sair {
