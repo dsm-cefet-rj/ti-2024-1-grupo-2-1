@@ -62,8 +62,15 @@ const PetCards = ({ animais }) => {
       <Card.Img variant="top" src={animais.img} />
       <Card.Body>
         <Card.Title>{animais.nome}
+<<<<<<< HEAD
         </Card.Title>{fav ? (<IoMdHeart className="completado" onClick={handleRemove}/>
             ):( <IoIosHeartEmpty className="incompleto" onClick={handleAnimalFav}/>
+=======
+        </Card.Title>
+        {fav ? (
+                    <IoMdHeart className="complete" onClick={handleRemove}/>
+            ):( <IoIosHeartEmpty className="incomplete" onClick={handleAnimalFav}/>
+>>>>>>> 1ac4dabfb65ccafee7fe94f0d97e1e64099424bc
                  )}
         <Card.Text>
           {animais && <p> Idade: {animais.idade}</p>}

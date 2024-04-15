@@ -224,10 +224,12 @@
   "userDB": [
     {
       "nome": "Vinicius Saidy",
-      "email": "123@123",
-      "senha": "123"
+      "email": "vs@vs",
+      "senha": "123",
+      "id": "0001"
     },
     {
+<<<<<<< HEAD
       "id": "3a30"
     },
     {
@@ -241,6 +243,24 @@
     },
     {
       "id": "b8ef"
+=======
+      "nome": "Flavio Alecio",
+      "email": "fl@fl",
+      "senha": "123",
+      "id": "0002"
+    },
+    {
+      "nome": "Felipe Nogueira",
+      "email": "felp@felp",
+      "senha": "123",
+      "id": "0003"
+    },
+    {
+      "nome": "Yzhak Zalmon",
+      "email": "yz@yz",
+      "senha": "123",
+      "id": "0004"
+>>>>>>> 1ac4dabfb65ccafee7fe94f0d97e1e64099424bc
     }
   ]
 }
