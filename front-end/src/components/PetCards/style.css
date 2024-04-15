@@ -1,6 +1,7 @@
 .card-animal {
     position: relative;
     transition: transform 0.3s ease;
+    box-sizing: border-box;
 }
 
 .card-animal:hover {
@@ -77,11 +78,11 @@
 
 }*/
 
-.complete,.incomplete{
+.completado,.incompleto{
     background-color: #fff;
     color: rgb(214, 27, 27);
     font-size: 35px;
-    position: static;
+    position: absolute;
     border-radius: 40px;
     border: none;
     padding: 3px;
@@ -89,11 +90,12 @@
     cursor: pointer;
     opacity: 0.8;
     transition: 0.5s;
-    margin-left: 10rem;
+    margin-left: 14rem;
+    margin-top: -2rem;
 
 }
 
-.complete:hover, .incomplete:hover {
+.completado:hover, .incompleto:hover {
     opacity: 1;
 }
 

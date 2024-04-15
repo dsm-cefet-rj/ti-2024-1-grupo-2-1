@@ -11,8 +11,7 @@ const animalFavReducer = (state = initialState, action) => {
     case animalActionType.ADD_ANIMAL:
       //verificar se o animal ja está favoritado
         const animalJaFavoritado = state.animalsFav.some(
-           (animal) => animal.id === action.payload.id
-           );
+           (animal) => animal.id === action.payload.id);
 
       //se ele estiver, n poderá ser favoritado dnv
           if(animalJaFavoritado){

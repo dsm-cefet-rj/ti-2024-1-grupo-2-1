@@ -16,7 +16,6 @@ const PetCards = ({ animais }) => {
 
   const id = animais.id;
   
-  
   const[fav,setFav]=useState(animais.isfav);
   const navigate = useNavigate();
 
@@ -63,11 +62,9 @@ const PetCards = ({ animais }) => {
       <Card.Img variant="top" src={animais.img} />
       <Card.Body>
         <Card.Title>{animais.nome}
-        {fav ? (
-                    <IoMdHeart className="complete" onClick={handleRemove}/>
-            ):( <IoIosHeartEmpty className="incomplete" onClick={handleAnimalFav}/>
+        </Card.Title>{fav ? (<IoMdHeart className="completado" onClick={handleRemove}/>
+            ):( <IoIosHeartEmpty className="incompleto" onClick={handleAnimalFav}/>
                  )}
-        </Card.Title>
         <Card.Text>
           {animais && <p> Idade: {animais.idade}</p>}
           {animais && <p> Porte: {animais.porte}</p>}

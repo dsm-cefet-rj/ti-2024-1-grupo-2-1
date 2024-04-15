@@ -1,7 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+    status: "not_loaded",
     animals: [],
+    error: null
 };
 
 // Função assíncrona para buscar animais da API
@@ -20,6 +22,7 @@ async () => {
         //criaçao de um novo estado de objeto com os animais requisitados 
         return {
             ...state,
+            status : "loaded",
             animals: action.payload,
         };
     };
@@ -42,7 +45,9 @@ const animalSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-        .addCase(fetchAnimais.fulfilled, fullfillAnimalsReducer);
+        .addCase(fetchAnimais.fulfilled, fullfillAnimalsReducer)
+        // .addCase(fetchAnimais.pending, (state,action)=>(state.status="loading")) 
+        // .addCase(fetchAnimais.rejected,(state, action) => ( state.status = "failed", state.error = action.error.message))
         
     },
 });

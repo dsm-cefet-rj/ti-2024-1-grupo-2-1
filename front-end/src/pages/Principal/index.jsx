@@ -23,9 +23,10 @@ export const Main = () => {
 
   const { animals } = useSelector((rootReducer)=>rootReducer.animalReducer)
   const { animalsFav } = useSelector((rootReducer) => rootReducer.animalFavReducer)
+  const { error } = useSelector((rootReducer) => rootReducer.animalReducer)
+  const { status } = useSelector((rootReducer) => rootReducer.animalReducer)
   
-  
-  
+ 
   // const getAnimal = async () => {
   //     try {
   //         // Verifica se o animal com o ID fornecido existe
@@ -82,6 +83,32 @@ export const Main = () => {
   // useEffect(()=>{
   //     setPaginaAtual(0)
   // },[animalsPerPage])
+  let animaisTabelados = "";
+  if(status === "loaded"){
+    animaisTabelados = 
+    <Grade>
+    {itensAtuais.map((animal) => (
+      
+      <PetCards key={animal.id} animais={animal}  />
+      
+    ))}
+  </Grade>
+  }else if(status === "loading"){
+    animaisTabelados = <div>
+      
+        Carregando animais...
+      
+
+    </div>
+  }else if(status === "failed"){
+    animaisTabelados = <div>
+      
+        error: {error}
+      
+
+    </div>
+  }
+
 
   return (
     <div className="all">
@@ -102,14 +129,7 @@ export const Main = () => {
           idadeFilter={idadeFilter}
           setIdadeFilter={setIdadeFilter}
         />
-
-        <Grade>
-          {itensAtuais.map((animal) => (
-            
-            <PetCards key={animal.id} animais={animal}  />
-            
-          ))}
-        </Grade>
+      {animaisTabelados}
       </div>
       {animaisFiltrados.length && (
         <Paginacao
