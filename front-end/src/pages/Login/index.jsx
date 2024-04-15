@@ -1,12 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { logIn } from "../../redux/user/slice";
+import { useDispatch } from "react-redux";
+import { fetchUserByEmail, logIn } from "../../redux/user/slice";
 import { Layout } from "../../components/Layoutform";
 
 export const Login = () => {
-  const { currentUser, userDB } = useSelector(rootReducer => rootReducer.userReducer);
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
@@ -15,15 +14,9 @@ export const Login = () => {
 
   const navigate = useNavigate();
 
-  const handleIn = (e) => {
-    if (!email | !senha) {
-      e.preventDefault();
-      setErr("Preencha todos os campos");
-      return;
-    }
 
-    const foundUser = userDB.find((conta) => conta.email === email && conta.senha === senha);
-    
+    //const foundUser = userDB.find((conta) => conta.email === email && conta.senha === senha);
+    /*
     if(foundUser){
       dispatch(logIn(foundUser));
       alert("Logado com sucesso");
@@ -33,7 +26,25 @@ export const Login = () => {
       e.preventDefault();
       setErr("Verifique os dados inserido!");
     }
-
+    */
+  
+  const handleLogin = (e) => {
+    if (!email | !senha) {
+      e.preventDefault();
+      setErr("Preencha todos os campos");
+      return;
+    }
+    e.preventDefault();
+    dispatch(fetchUserByEmail({ email, senha })).then((result) => {
+      if (result.payload) {
+        alert('Usuário Logado!');
+        navigate("/");
+      } else {
+        setErr("E-mail ou senha inválidos!")
+      }
+    }).catch((err) => {
+      console.log("Error fetching user: ", err)
+    });
   };
   return (
     <Layout>
@@ -59,7 +70,7 @@ export const Login = () => {
         </div>
         <label className="erro">{err}</label>
         <div className="container-login-botao">
-          <button className="botao-form" onClick={handleIn}>
+          <button className="botao-form" onClick={handleLogin}>
             Login
           </button>
         </div>

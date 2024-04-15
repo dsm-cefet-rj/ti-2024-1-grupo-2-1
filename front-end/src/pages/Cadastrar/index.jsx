@@ -3,7 +3,7 @@ import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Layout } from "../../components/Layoutform";
 import { useSelector, useDispatch } from "react-redux";
-import { signUp } from "../../redux/user/slice";
+import { addUserServer, signUp } from "../../redux/user/slice";
 
 export const Cadastrar = () => {
 
@@ -27,18 +27,19 @@ export const Cadastrar = () => {
     }
 
     //Caso a execução passe do if's, realizamos o dispatch para o cadastro do usuário
-    dispatch(signUp({nome: nome, email: email, senha: senha}));
+    dispatch(addUserServer({nome, email, senha}));
 
-    const found = userDB.find((object) => object.email === email);
+    //const found = userDB.find((object) => object.email === email);
 
-    if(!found){
-    alert("Usuario cadastrado com sucesso!");
     navigate("/login");
+    /*if(){
+    alert("Usuario cadastrado com sucesso!");
     }
     else{
       e.preventDefault();
       setErr("Email já existente");
     }
+    */
   };
 
   return (
