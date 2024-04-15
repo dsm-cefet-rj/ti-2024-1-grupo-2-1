@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { baseUrl } from "../../baseUrl";
 
 const initialState = {
     status: "not_loaded",
@@ -11,7 +12,7 @@ export const fetchAnimais = createAsyncThunk ('animal/fetchAnimais',
 async () => {
     //poderia ser feito um try catch para averiguar se os dados serão pegos corretamente 
     //busca os animais na API
-    const resp = await fetch("http://localhost:5000/animals");
+    const resp = await fetch(`${baseUrl}/animals`);
     // transforma a resposta da API em json
     return await resp.json();
 
@@ -46,8 +47,10 @@ const animalSlice = createSlice({
     extraReducers: (builder) => {
         builder
         .addCase(fetchAnimais.fulfilled, fullfillAnimalsReducer)
-        // .addCase(fetchAnimais.pending, (state,action)=>(state.status="loading")) 
-        // .addCase(fetchAnimais.rejected,(state, action) => ( state.status = "failed", state.error = action.error.message))
+        .addCase(fetchAnimais.pending, (state) => {state.status = "loading"})
+        .addCase(fetchAnimais.rejected, (state, action) => {state.status = "failed"; state.error = action.error.message})
+        //.addCase(fetchAnimais.pending, (state,action)=>(state.status="loading")) 
+        //.addCase(fetchAnimais.rejected,(state, action) => ( state.status = "failed", state.error = action.error.message))
         
     },
 });

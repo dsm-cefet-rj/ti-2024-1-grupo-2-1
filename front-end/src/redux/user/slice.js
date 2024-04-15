@@ -5,7 +5,7 @@ const initialState = {
     currentUser: null,
     userDB: [],
 };
-
+/*
 export const postUsuarios = createAsyncThunk ('user/postUsuarios', 
 async (userData) => {
     //poderia ser feito um try catch para averiguar se os dados serão pegos corretamente 
@@ -28,7 +28,7 @@ async (userData) => {
     function userPostReducer(state, action) {
         state.userDB.push({...action.payload});
     }
-
+*/
 export const fetchUsuarios = createAsyncThunk ('user/fetchUsuarios', 
 async () => {
     //poderia ser feito um try catch para averiguar se os dados serão pegos corretamente 
@@ -82,7 +82,7 @@ const userSlice = createSlice({
     extraReducers: (builder) => {
         builder
         .addCase(fetchUsuarios.fulfilled, fullfillUsersReducer)
-        .addCase(postUsuarios.fulfilled, userPostReducer );
+        //.addCase(postUsuarios.fulfilled, userPostReducer );
         
     },
 });

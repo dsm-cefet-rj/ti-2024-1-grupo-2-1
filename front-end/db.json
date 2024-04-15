@@ -229,21 +229,6 @@
       "id": "0001"
     },
     {
-<<<<<<< HEAD
-      "id": "3a30"
-    },
-    {
-      "id": "020b"
-    },
-    {
-      "id": "955c"
-    },
-    {
-      "id": "9389"
-    },
-    {
-      "id": "b8ef"
-=======
       "nome": "Flavio Alecio",
       "email": "fl@fl",
       "senha": "123",
@@ -260,7 +245,6 @@
       "email": "yz@yz",
       "senha": "123",
       "id": "0004"
->>>>>>> 1ac4dabfb65ccafee7fe94f0d97e1e64099424bc
     }
   ]
 }
