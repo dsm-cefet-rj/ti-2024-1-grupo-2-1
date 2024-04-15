@@ -1,10 +1,18 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, createEntityAdapter } from "@reduxjs/toolkit";
+import { baseUrl } from "../../baseUrl";
+import { httpGet, httpDelete, httpPost, httpPut } from "../../utils";
 
-const initialState = {
-    
+
+const userAdapter = createEntityAdapter();
+
+const initialState = userAdapter.getInitialState({
+    status: "not_loaded",
     currentUser: null,
-    userDB: [],
-};
+    error: null
+});
+
+const userSelector = userAdapter.getSelectors(state => state.rootReducer);
+
 /*
 export const postUsuarios = createAsyncThunk ('user/postUsuarios', 
 async (userData) => {
@@ -29,59 +37,45 @@ async (userData) => {
         state.userDB.push({...action.payload});
     }
 */
-export const fetchUsuarios = createAsyncThunk ('user/fetchUsuarios', 
-async () => {
-    //poderia ser feito um try catch para averiguar se os dados serão pegos corretamente 
-    //busca os usuarios na API
-    const resp = await fetch("http://localhost:5000/userDB");
-    // transforma a resposta da API em json
-    return await resp.json();
+export const fetchUser = createAsyncThunk('users/fetchUser', async (_, {getState}) => {
+    return await httpGet(`${baseUrl}/userDB`);
+});
 
-    }, )
-
-
-    // Função reducer para atualizar o estado quando os animais forem obtidos com sucesso
-    function fullfillUsersReducer(state, action){
-        //criaçao de um novo estado de objeto com os animais requisitados 
-        return {
-            ...state,
-            userDB: action.payload,
-        };
-    };
+export const addUserServer = createAsyncThunk('users/addUserServer', async (user, {getState}) => {
+    return await httpPost(`${baseUrl}/userDB`, user);
+});
 
 const userSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
-        signUp: (state, action) => {
-
-            const userEmailIsAlredyInDB = state.userDB.some((userDB) => userDB.email === action.payload.email);
-
-            if(!userEmailIsAlredyInDB){
-                const newUser = { ...action.payload};
-                state.userDB = [...state.userDB, newUser]
-                return;
-            }
-
-             state.userDB = [...state.userDB]
-             return;
-        },
-
-        logIn: (state, action) => {
-
-            state.currentUser = action.payload
-      
-            return;
-        },
-
-        logOut: (state) => {
-             state.currentUser = null
-             return;
-        }
+        
     },
     extraReducers: (builder) => {
         builder
-        .addCase(fetchUsuarios.fulfilled, fullfillUsersReducer)
+        .addCase(fetchUser.pending, (state, action) => {
+            state.status = "loading";
+        })
+        .addCase(fetchUser.fulfilled, (state, action) => {
+            state.status = "loaded";
+            userAdapter.setAll(state, action.payload);
+        })
+        .addCase(fetchUser.rejected, (state, action) =>{
+            state.status = "failed";
+            state.error = action.error.message;
+        })
+        .addCase(addUserServer.pending, (state, action) =>{
+            state.status = "loading";
+        })
+        .addCase(addUserServer.fulfilled, (state, action) =>{
+            state.status = "saved";
+            userAdapter.addOne(state, action.payload);
+        })
+        .addCase(addUserServer.rejected, (state, action) =>{
+            state.status = "failed";
+            state.error = action.error.message;
+        })
+
         //.addCase(postUsuarios.fulfilled, userPostReducer );
         
     },
