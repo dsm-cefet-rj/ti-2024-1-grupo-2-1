@@ -101,6 +101,14 @@
     display: flex;
     gap: 0.5rem;
 }
+.botao-perfil-header{
+    margin-top: 2vh;
+    padding: 0.5vh 0.5vw;
+    width: 8rem;
+    justify-content: space-between;
+    display: flex;
+    gap: 0.5rem;
+}
 
 .login-bt,
 .signup-bt {
@@ -233,7 +241,7 @@
     .barrinhas {
         font-size: 40px;
         transition: 0.6s;
-        margin-top: 0.4rem;
+        margin-top: 0.8rem;
     }
 
     .logo {
@@ -278,9 +286,14 @@
         display: none;
     }
 
-    .botao-header {
+    .botao-header{
         margin-top: -1.0rem;
-        width: 14rem;
+        width: 13rem;
+    }
+    
+    .botao-perfil-header {
+        margin-top: -1.0rem;
+        width: 10rem;
     }
 
     .signup-bt,
@@ -322,7 +335,7 @@
         width: 8rem;
     }
 
-    .botao-header {
+    .botao-header,.botao-perfil-header {
         margin-top: -1rem;
     }
 
@@ -341,7 +354,7 @@
     }
 
     .show-perfil-svg {
-        font-size: 35px;
+        font-size: 39px;
         transition: 0.6s;
     }
 

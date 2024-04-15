@@ -113,8 +113,9 @@ const HeaderMain = () => {
         </nav>
       )}
 
-      <div className="botao-header">
+      
         {currentUser ? (
+          <div className="botao-perfil-header">
           <button
             ref={perfilRef}
             type="submit"
@@ -125,18 +126,7 @@ const HeaderMain = () => {
           >
             <VscAccount className="show-perfil-svg" color="rgb(1, 73, 131)" />
           </button>
-        ) : (
-          <>
-            <button className="login-bt" onClick={goLogin}>
-              Entrar
-            </button>
-            <button className="signup-bt" onClick={goSignup}>
-              Cadastrar
-            </button>
-          </>
-        )}
-
-        {infoOpen && currentUser != [] && currentUser != null && (
+          {infoOpen && currentUser != [] && currentUser != null && (
           <div className="perfil">
             <ul>
               <label className="welcome">Bem vindo: {currentUser.nome}</label>
@@ -146,8 +136,18 @@ const HeaderMain = () => {
             </ul>
           </div>
         )}
+          </div>
+        ) : (
+          <div className="botao-header">
+            <button className="login-bt" onClick={goLogin}>
+              Entrar
+            </button>
+            <button className="signup-bt" onClick={goSignup}>
+              Cadastrar
+            </button>
+          </div>
+        )}
       </div>
-    </div>
   );
 };
 export default HeaderMain;

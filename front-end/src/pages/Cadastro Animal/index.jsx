@@ -5,78 +5,52 @@ import HeaderMain from "../../components/HeaderMain";
 import "./style.css";
 
 const CadastroAnimal = () => {
-  const [animal, setAnimal] = useState({});
 
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const [size, setSize] = useState("");
   const [sex, setSex] = useState("");
   const [age, setAge] = useState("");
-  const [image, setImage] = useState("");
   const [history, setHistory] = useState("");
 
   // Utilizando o useEfect para verificar a captura de dados está ocorrendo
-
-  useEffect(() => {
-    console.log(`${animal.id}`);
-    console.log(`${animal.isFav}`);
-    console.log(`${animal.img}`);
-    console.log(`${animal.nome}`);
-    console.log(`${animal.tipo}`);
-    console.log(`${animal.porte}`);
-    console.log(`${animal.sexo}`);
-    console.log(`${animal.idade}`);
-    console.log(`${animal.história}`);
-  }, [animal]);
-
-  const inputFile=document.querySelector('#ft_input');
-const pictureImage = document.querySelector('.ft_image');
-const pictureImgTxt = 'Escolha uma imagem';
-pictureImage.innerHTML = pictureImgTxt
-
-inputFile.addEventListener('change', function(e){
-    const inputTarget = e.target;
-    const file = inputTarget.files[0];
-    if(file){
-        const reader = new FileReader();
-
-        reader.addEventListener('load',function(e){
-            const thisReader = e.target;
-            
-            const img = document.createElement('img');
-            img.src = thisReader.result;
-            img.classList.add('ft_img');
-
-            pictureImage.innerHTML = ""
-            
-            pictureImage.appendChild(img);
-        })
-
-        reader.readAsDataURL(file)
-    }else{  
-        pictureImage.innerHTML = pictureImgTxt
-
-
+  async function handleImageChange(event) {
+    const inputFile = document.querySelector('#ft_input');
+    const pictureImage = document.querySelector('.ft_image');
+    const pictureImgTxt = 'Escolha uma imagem';
+  
+    if (!inputFile || !pictureImage) {
+      throw new Error('DOM elements not found. Ensure #ft_input and .ft_image exist.');
     }
-})
-  /*
-    useEffect(() => {
-        console.log(`${name}`);
-        console.log(`${type}`);
-        console.log(`${size}`);
-        console.log(`${sex}`);
-        console.log(`${age}`);
-        console.log(`${history}`);
-        console.log(`${image}`);
-    }, [name, type, size, sex, age, history, image]);
-    */
-
-  const handleImageChange = (e) => {
-    // estamos setando uma imagem padrão
-    setImage(
-      "https://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQOO0X7mMnoYz-e9Zdc6Pe6Wz7Ow1DcvhEiaex5aSv6QJDoCtcooqA7UUbjrphvjlIc"
-    );
-  };
+  
+    const file = event.target.files[0];
+  
+    if (file) {
+      const reader = new FileReader();
+  
+      try {
+        const imageData = await new Promise((resolve, reject) => {
+          reader.addEventListener('load', () => resolve(reader.result));
+          reader.addEventListener('error', reject);
+          reader.readAsDataURL(file);
+        });
+  
+        pictureImage.innerHTML = ''; //limpa a imagem usada anteriormente
+        const img = document.createElement('img');
+        img.src = imageData;
+        img.classList.add('ft_img');
+        pictureImage.appendChild(img);
+      } catch (error) {
+        console.error('Error loading image:', error);
+        pictureImage.innerHTML = pictureImgTxt; // mostra um erro caso ocorra
+      }
+    } else {
+      pictureImage.innerHTML = pictureImgTxt;
+    }
+    inputFile.addEventListener('change', handleImageChange);
+  }
+  
+  // Usage:
 
   return (
     <div>
