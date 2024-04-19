@@ -29,6 +29,12 @@ export const RegistroAdocao = () => {
     }
   };
 
+  function formatName(name) {
+    if (!name) return "";
+    name = name.trim("");
+    return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+  }
+
   useEffect(() => {
     getAnimal();
   }, [id]);
@@ -62,7 +68,9 @@ export const RegistroAdocao = () => {
                     className={nomeAnimal !== "" ? "has-val input" : "input"}
                     type="name"
                     value={nomeAnimal}
-                    onChange={(e) => [setNomeAnimal(e.target.value)]}
+                    onChange={(e) => [
+                      setNomeAnimal(formatName(e.target.value)),
+                    ]}
                   />
                   <span
                     className="focused-input"
@@ -129,7 +137,15 @@ export const RegistroAdocao = () => {
                     className={cpf !== "" ? "has-val input" : "input"}
                     type="text"
                     value={cpf}
-                    onChange={(e) => [setCpf(e.target.value)]}
+                    onChange={(e) => {
+                      const cpfMask = e.target.value
+                        .replace(/\D/g, "")
+                        .replace(/(\d{3})(\d)/, "$1.$2")
+                        .replace(/(\d{3})(\d)/, "$1.$2")
+                        .replace(/(\d{3})(\d{1,2})/, "$1-$2")
+                        .replace(/(-\d{2})(\d+?$)/, "$1");
+                      setCpf(cpfMask);
+                    }}
                   />
                   <span
                     className="focused-input"
@@ -151,9 +167,17 @@ export const RegistroAdocao = () => {
                 <div className="wraper-input-r">
                   <input
                     className={cel !== "" ? "has-val input" : "input"}
-                    type="number"
+                    type="tel"
                     value={cel}
-                    onChange={(e) => [setCel(e.target.value)]}
+                    onChange={(e) => {
+                      const formattedTel = e.target.value
+                        .replace(/\D/g, "")
+                        .replace(/(\d{2})(\d)/, "($1) $2")
+                        .replace(/(\d{5})(\d{1,2})/, "$1-$2")
+                        .replace(/(-\d{4})(\d+?$)/, "$1");
+
+                      setCel(formattedTel);
+                    }}
                   />
                   <span
                     className="focused-input"

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash  } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { fetchUserByEmail, logIn } from "../../redux/user/slice";
 import { Layout } from "../../components/Layoutform";
@@ -11,6 +12,12 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [err, setErr] = useState("");
+
+  const[hide , setHide] = useState(false);
+
+  const visualizar_senha = () => {
+    setHide(!hide)    
+}
 
   const navigate = useNavigate();
 
@@ -62,11 +69,12 @@ export const Login = () => {
         <div className="wrap-input">
           <input
             className={senha !== "" ? "has-val input" : "input"}
-            type="password"
+            type={hide ? 'text'  : 'password'}
             value={senha}
             onChange={(e) => [setSenha(e.target.value), setErr("")]}
           />
           <span className="focus-input" data-placeholder="Senha"></span>
+          {hide ? (<FaEyeSlash onClick={visualizar_senha} className="olho"/>):(<FaEye onClick={visualizar_senha} className="olho"/>)}
         </div>
         <label className="erro">{err}</label>
         <div className="container-login-botao">

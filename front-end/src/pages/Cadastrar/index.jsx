@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash  } from "react-icons/fa";
 import { Layout } from "../../components/Layoutform";
 import { useSelector, useDispatch } from "react-redux";
 import { addUserServer, signUp, emailExistServer} from "../../redux/user/slice";
@@ -14,6 +15,11 @@ export const Cadastrar = () => {
   const [senha, setSenha] = useState("");
   const [nome, setNome] = useState("");
   const [err, setErr] = useState("");
+  const[hide , setHide] = useState(false);
+
+  const visualizar_senha = () => {
+    setHide(!hide)    
+}
 
   const navigate = useNavigate();
 
@@ -61,11 +67,12 @@ export const Cadastrar = () => {
         <div className="wrap-input-r">
           <input
             className={senha !== "" ? "has-val input" : "input"}
-            type="password"
+            type={hide ? 'text'  : 'password'}
             value={senha}
             onChange={(e) => [setSenha(e.target.value), setErr("")]}
           />
           <span className="focus-input" data-placeholder="Senha"></span>
+          {hide ? (<FaEyeSlash onClick={visualizar_senha} className="olho"/>):(<FaEye onClick={visualizar_senha} className="olho"/>)}
         </div>
         <label>{err}</label>
         <div className="container-register-botao">
