@@ -7,7 +7,7 @@ import logo from "../../assets/logopreta2.png";
 import animal from "../../components/Animal/animal";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addRequest } from "../../redux/registroAdocao/slice";
+import { addRequest } from "../../redux/pedidoAdocao/slice";
 
 export const RegistroAdocao = () => {
   const dispatch = useDispatch();

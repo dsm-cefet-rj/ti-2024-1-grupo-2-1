@@ -31,3 +31,5 @@ const requestAdoptionRegisterSlice = createSlice({
         })
     },
 });
+
+export default requestAdoptionRegisterSlice.reducer;

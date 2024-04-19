@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash  } from "react-icons/fa";
 import { Layout } from "../../components/Layoutform";
 import { useSelector, useDispatch } from "react-redux";
 import { addUserServer, signUp, emailExistServer} from "../../redux/user/slice";
+import {InputUsuario} from "../../components/InputUsuario"
 
 export const Cadastrar = () => {
 
@@ -46,35 +47,29 @@ export const Cadastrar = () => {
     <Layout>
       <form className="register-form">
         <span className="tittle-r">Fazer cadastro</span>
-        <div className="wrap-input-r">
-          <input
-            className={nome !== "" ? "has-val input" : "input"}
-            type="name"
-            value={nome}
-            onChange={(e) => [setNome(e.target.value), setErr("")]}
+        <InputUsuario 
+        valor ={nome}
+        type = {"name"}
+        value = { nome }
+        onChange={(e) => [setNome(e.target.value), setErr("Preencha o nome")]}
+        label = { "Nome" }
           />
-          <span className="focus-input" data-placeholder="Nome"></span>
-        </div>
-        <div className="wrap-input-r">
-          <input
-            className={email !== "" ? "has-val input" : "input"}
-            type="email"
-            value={email}
-            onChange={(e) => [setEmail(e.target.value), setErr("")]}
+
+        <InputUsuario 
+        valor ={email}
+        type = {"email"}
+        value = { email }
+        onChange={(e) => [setEmail(e.target.value), setErr("")]}
+        label = { "Email" }
           />
-          <span className="focus-input" data-placeholder="Email"></span>
-        </div>
-        <div className="wrap-input-r">
-          <input
-            className={senha !== "" ? "has-val input" : "input"}
-            type={hide ? 'text'  : 'password'}
-            value={senha}
+        <InputUsuario
+          valor ={senha}
+            type = { hide ? 'text'  : 'password'}
+            value = { senha }
             onChange={(e) => [setSenha(e.target.value), setErr("")]}
-          />
-          <span className="focus-input" data-placeholder="Senha"></span>
-          {hide ? (<FaEyeSlash onClick={visualizar_senha} className="olho"/>):(<FaEye onClick={visualizar_senha} className="olho"/>)}
-        </div>
-        <label>{err}</label>
+            label = { "Senha" }
+        />
+        <label className="erro">{err}</label>
         <div className="container-register-botao">
           <button className="botao-form" onClick={handleSignUp}>
             Cadastre-se

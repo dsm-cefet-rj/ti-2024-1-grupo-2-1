@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash  } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { fetchUserByEmail, logIn } from "../../redux/user/slice";
 import { Layout } from "../../components/Layoutform";
+import { InputUsuario } from "../../components/InputUsuario";
 
 export const Login = () => {
   const dispatch = useDispatch();
@@ -57,25 +58,20 @@ export const Login = () => {
     <Layout>
       <form className="login-form">
         <span className="tittle">Seja Bem Vindo</span>
-        <div className="wrap-input">
-          <input
-            className={email !== "" ? "has-val input" : "input"}
-            type="email"
-            value={email}
-            onChange={(e) => [setEmail(e.target.value), setErr("")]}
+        <InputUsuario 
+        valor ={email}
+        type = {"email"}
+        value = { email }
+        onChange={(e) => [setEmail(e.target.value), setErr("")]}
+        label = { "Email" }
           />
-          <span className="focus-input" data-placeholder="Email"></span>
-        </div>
-        <div className="wrap-input">
-          <input
-            className={senha !== "" ? "has-val input" : "input"}
-            type={hide ? 'text'  : 'password'}
-            value={senha}
+        <InputUsuario
+          valor ={senha}
+            type = { hide ? 'text'  : 'password'}
+            value = { senha }
             onChange={(e) => [setSenha(e.target.value), setErr("")]}
-          />
-          <span className="focus-input" data-placeholder="Senha"></span>
-          {hide ? (<FaEyeSlash onClick={visualizar_senha} className="olho"/>):(<FaEye onClick={visualizar_senha} className="olho"/>)}
-        </div>
+            label = { "Senha" }
+        />
         <label className="erro">{err}</label>
         <div className="container-login-botao">
           <button className="botao-form" onClick={handleLogin}>
