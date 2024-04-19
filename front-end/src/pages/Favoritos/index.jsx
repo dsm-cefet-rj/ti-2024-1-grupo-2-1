@@ -23,7 +23,7 @@ export const Favoritos = () => {
   // const [idadeFilter, setIdadeFilter] = useState("All");
   // const [animalsPerPage, setAnimalsPerPage] = useState(10);
   // const [paginaAtual, setPaginaAtual] = useState(0);
-
+  const{ currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
 
   // const animaisFiltrados =
   //   (favAnimais &&
@@ -118,7 +118,7 @@ export const Favoritos = () => {
             <PetCards key={animal.id} animais={animal} />
           ))}
         </Grade>) : 
-        (<p>Não animais favoritados por você ainda</p>)}
+        (currentUser != null ? <p>Não animais favoritados por você ainda</p> : <p>Você precisa estar logado para favoritar animais!</p>)}
       </div>
       {/* {favAnimais.length && (
         <Paginacao

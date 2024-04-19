@@ -9,8 +9,10 @@ import { Grade } from "../../components/GridContainer";
 import animal from "../../components/Animal/animal";
 import { useParams } from "react-router-dom";
 import Paginacao from "../../components/Pagination";
+import { useSelector } from "react-redux";
 
 export const Detalhamento = () => {
+  const{ currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
   const { id } = useParams();
   const [animais, setAnimais] = useState([]);
   const navigate = useNavigate();
@@ -29,10 +31,15 @@ export const Detalhamento = () => {
   }, [id]);
 
   const handleClick = (e) => {
-    e.preventDefault();
-    navigate(`/agendamento/${id}`);
-    {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    if(currentUser != null){
+      e.preventDefault();
+      navigate(`/agendamento/${id}`);
+      {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }
+    else{
+      alert("Você precisa estar logado para reailzar um agendamento!");
     }
   };
 

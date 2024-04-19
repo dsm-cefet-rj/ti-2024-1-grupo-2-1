@@ -15,7 +15,7 @@ import { changeAnimalIsFav } from "../../redux/Animais/slice";
 const PetCards = ({ animais }) => {
 
   const id = animais.id;
-  
+  const{ currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
   const[fav,setFav]=useState(animais.isfav);
   const navigate = useNavigate();
 
@@ -27,16 +27,18 @@ const PetCards = ({ animais }) => {
   
 
   const handleAnimalFav = ( ) => {
+    if(currentUser !== null){
     // animais.isfav=true;
     dispatch(addAnimalToFav(animais));
     dispatch(changeAnimalIsFav(animais.id));
-    //dispatch isFav to animals array here!!!!!!
-
-
-
+    //dispatch isFav to animals array here!!!!!
     setFav(!animais.isfav);
     // animals.isfav=true;
     // animalsFav.isfav=true;
+    }
+    else{
+      alert("Você precisa estar logado para favoritar um animal");
+    }
   }
   
   const handleRemove = () =>{
