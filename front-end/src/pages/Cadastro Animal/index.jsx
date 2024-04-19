@@ -3,8 +3,11 @@ import { useEffect } from "react";
 import Footer from "../../components/Footer";
 import HeaderMain from "../../components/HeaderMain";
 import "./style.css";
+import { useNavigate } from "react-router-dom";
 
 const CadastroAnimal = () => {
+
+  const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [type, setType] = useState("");
@@ -50,6 +53,18 @@ const CadastroAnimal = () => {
     inputFile.addEventListener('change', handleImageChange);
   }
   
+  const handleCadastroAnimal = (e) =>{
+    e.preventDefault();
+    if(!name | !type | !size | !sex | !age | history ){
+      alert("Preencha todos os campos!");
+      return;
+    }
+
+    alert("Animal cadastrado com sucesso!");
+    navigate("/");
+  }
+
+
   // Usage:
 
   return (
@@ -169,10 +184,10 @@ const CadastroAnimal = () => {
               />
               <span
                 className="focused-input-c"
-                data-placeholder="Nome do animal"
+                data-placeholder="História do animal"
               ></span>
             </div>
-            <button className="cadastro-animal-bt">
+            <button className="cadastro-animal-bt" onClick={handleCadastroAnimal}>
               Cadastrar animal
             </button>
           </form>
