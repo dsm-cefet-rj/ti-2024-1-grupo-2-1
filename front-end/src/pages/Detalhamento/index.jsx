@@ -37,9 +37,9 @@ export const Detalhamento = () => {
   };
 
   // const nomeAnimal = "Nome do Animal";
-  const localizacao = "Recreio dos Bandeirantes";
+  const localizacao = "Rio de Janeiro";
   const acessos = 205;
-  const publicador = "Flavio Alecio";
+  const publicador = "Administrador";
   // const url = "https://via.placeholder.com/650x400";
   // const cardImg = "https://via.placeholder.com/480x480";
   const [animalsPerPage, setAnimalsPerPage] = useState(5);
