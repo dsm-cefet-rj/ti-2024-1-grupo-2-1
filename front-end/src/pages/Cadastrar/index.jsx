@@ -51,7 +51,7 @@ export const Cadastrar = () => {
         valor ={nome}
         type = {"name"}
         value = { nome }
-        onChange={(e) => [setNome(e.target.value), setErr("Preencha o nome")]}
+        onChange={(e) => [setNome(e.target.value), setErr("")]}
         label = { "Nome" }
           />
 
