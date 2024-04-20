@@ -60,6 +60,11 @@ const CadastroAnimal = () => {
   const cadastrarAnimal = (e) => {
     e.preventDefault();
 
+    if(!name | !type | !size | !sex | !age | history ){
+      alert("Preencha todos os campos!");
+      return;
+    }
+
     dispatch(addAnimalServer({
       isfav: false,
       img: img,
@@ -73,6 +78,7 @@ const CadastroAnimal = () => {
 
     alert("Animal cadastrado com sucesso!");
     navigate("/");
+    window.location.reload();
   };
 
   // Usage:
