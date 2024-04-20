@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addRequest } from "../../redux/pedidoAdocao/slice";
 import { useSelector } from "react-redux";
+import { pedidoAdocaoSchema } from "../../validations/registroPedidoAdocaoValidation";
 
 export const RegistroAdocao = () => {
   const { animals } = useSelector((rootReducer) => rootReducer.animalReducer)
@@ -41,8 +42,21 @@ export const RegistroAdocao = () => {
   }
 
   
-  const handleConfirm = (e) => {
+  const handleConfirm = async (e) => {
     e.preventDefault();
+
+    const isValid = await pedidoAdocaoSchema.isValid({email});
+
+    if(!nomeAnimal | !nome | !cpf | !rg | !email | !idade | !cel){
+      alert("Preencha todos os campos!");
+      return;
+    } 
+
+    if(!isValid){
+      alert("Email Inválido");
+      return;
+    }
+
     dispatch(addRequest({idAnimal: id, 
     nomeAnimal: nomeAnimal,
     //rgaAnimal: rga,
@@ -51,6 +65,7 @@ export const RegistroAdocao = () => {
     rgAdotante: rg,
     emailAdotante: email,
     idadeAdotante: idade,
+    celAdotante: cel,
     pergunta1: q1,
     pergunta2: q2,
     pergunta3: q3,

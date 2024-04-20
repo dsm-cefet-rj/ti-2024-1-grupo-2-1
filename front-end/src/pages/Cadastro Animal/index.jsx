@@ -86,6 +86,7 @@ const CadastroAnimal = () => {
 
     alert("Animal cadastrado com sucesso!");
     navigate("/");
+    window.location.reload();
   };
 
   // Usage:
