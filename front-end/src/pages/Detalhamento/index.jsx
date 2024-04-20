@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 
 
 export const Detalhamento = () => {
+  const{ currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
   const { id } = useParams();
   const { animals } = useSelector((rootReducer) => rootReducer.animalReducer)
   const { error } = useSelector((rootReducer) => rootReducer.animalReducer)
@@ -23,10 +24,15 @@ export const Detalhamento = () => {
   
   
   const handleClick = (e) => {
-    e.preventDefault();
-    navigate(`/agendamento/${id}`);
-    {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    if(currentUser != null){
+      e.preventDefault();
+      navigate(`/agendamento/${id}`);
+      {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }
+    else{
+      alert("Você precisa estar logado para reailzar um agendamento!");
     }
   };
   

@@ -3,11 +3,13 @@ import { useEffect } from "react";
 import Footer from "../../components/Footer";
 import HeaderMain from "../../components/HeaderMain";
 import "./style.css";
+import { useDispatch } from "react-redux";
+import { addAnimalServer } from "../../redux/Animais/slice";
 import { useNavigate } from "react-router-dom";
 
 const CadastroAnimal = () => {
-
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [name, setName] = useState("");
   const [type, setType] = useState("");
@@ -15,6 +17,7 @@ const CadastroAnimal = () => {
   const [sex, setSex] = useState("");
   const [age, setAge] = useState("");
   const [history, setHistory] = useState("");
+  const [img, setImg] = useState("");
 
   // Utilizando o useEfect para verificar a captura de dados está ocorrendo
   async function handleImageChange(event) {
@@ -43,6 +46,7 @@ const CadastroAnimal = () => {
         img.src = imageData;
         img.classList.add('ft_img');
         pictureImage.appendChild(img);
+        setImg(img.src);
       } catch (error) {
         console.error('Error loading image:', error);
         pictureImage.innerHTML = pictureImgTxt; // mostra um erro caso ocorra
@@ -53,17 +57,23 @@ const CadastroAnimal = () => {
     inputFile.addEventListener('change', handleImageChange);
   }
   
-  const handleCadastroAnimal = (e) =>{
+  const cadastrarAnimal = (e) => {
     e.preventDefault();
-    if(!name | !type | !size | !sex | !age | history ){
-      alert("Preencha todos os campos!");
-      return;
-    }
+
+    dispatch(addAnimalServer({
+      isfav: false,
+      img: img,
+      nome: name,
+      tipo: type,
+      porte: size,
+      sexo: sex,
+      idade: age,
+      história: history 
+    }))
 
     alert("Animal cadastrado com sucesso!");
     navigate("/");
-  }
-
+  };
 
   // Usage:
 
@@ -187,7 +197,7 @@ const CadastroAnimal = () => {
                 data-placeholder="História do animal"
               ></span>
             </div>
-            <button className="cadastro-animal-bt" onClick={handleCadastroAnimal}>
+            <button className="cadastro-animal-bt" onClick={cadastrarAnimal}>
               Cadastrar animal
             </button>
           </form>

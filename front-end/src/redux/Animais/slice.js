@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { baseUrl } from "../../baseUrl";
+import { httpGet, httpDelete, httpPost, httpPut } from "../../utils";
 
 const initialState = {
     status: "not_loaded",
@@ -28,6 +29,11 @@ async () => {
         };
     };
 
+export const addAnimalServer = createAsyncThunk('animal/addAnimalServer', async (animal, {getState}) => {
+    return await httpPost(`${baseUrl}/animals`, animal);
+});
+
+
 const animalSlice = createSlice({
     name: "animal",
     initialState,
@@ -48,7 +54,10 @@ const animalSlice = createSlice({
         builder
         .addCase(fetchAnimais.fulfilled, fullfillAnimalsReducer)
         .addCase(fetchAnimais.pending, (state) => {state.status = "loading"})
-        .addCase(fetchAnimais.rejected, (state, action) => {state.status = "failed"; state.error = action.error.message})
+        .addCase(fetchAnimais.rejected, (state, action) => {state.status = "failed"; state.error = action.error.message;})
+        .addCase(addAnimalServer.fulfilled, (state) => {state.status = "saved"})
+        .addCase(addAnimalServer.pending, (state) => {state.status = "loading"})
+        .addCase(addAnimalServer.rejected, (state,action) => {state.status = "failed"; state.error = action.error.message;})
         //.addCase(fetchAnimais.pending, (state,action)=>(state.status="loading")) 
         //.addCase(fetchAnimais.rejected,(state, action) => ( state.status = "failed", state.error = action.error.message))
         
