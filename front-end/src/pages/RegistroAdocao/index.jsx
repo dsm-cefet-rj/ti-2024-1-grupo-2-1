@@ -4,12 +4,15 @@ import "./index.css";
 import HeaderMain from "../../components/HeaderMain";
 import Footer from "../../components/Footer";
 import logo from "../../assets/logopreta2.png";
-import animal from "../../components/Animal/animal";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addRequest } from "../../redux/pedidoAdocao/slice";
+import { useSelector } from "react-redux";
 
 export const RegistroAdocao = () => {
+  const { animals } = useSelector((rootReducer) => rootReducer.animalReducer)
+  const { error } = useSelector((rootReducer) => rootReducer.animalReducer)
+  const { status } = useSelector((rootReducer) => rootReducer.animalReducer)
   const dispatch = useDispatch();
 
   const [nomeAnimal, setNomeAnimal] = useState("");
@@ -22,22 +25,14 @@ export const RegistroAdocao = () => {
   const [rg, setRg] = useState("");
   const [cel, setCel] = useState("");
   const { id } = useParams();
-  const [animais, setAnimais] = useState([]);
+  
   const [q1, setQ1] = useState();
   const [q2, setQ2] = useState();
   const [q3, setQ3] = useState();
   const [q4, setQ4] = useState();
   const [q5, setQ5] = useState();
   //const [arquivos, setArquivos] = useState([null, null, null]);
-  const getAnimal = async () => {
-    try {
-      // Verifica se o animal com o ID fornecido existe
-      console.log(animal);
-      setAnimais(Object.values(animal));
-    } catch (error) {
-      console.error("Erro ao buscar a receita: ", error);
-    }
-  };
+
 
   function formatName(name) {
     if (!name) return "";
@@ -45,9 +40,7 @@ export const RegistroAdocao = () => {
     return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
   }
 
-  useEffect(() => {
-    getAnimal();
-  }, [id]);
+  
   const handleConfirm = (e) => {
     e.preventDefault();
     dispatch(addRequest({idAnimal: id, 
@@ -71,6 +64,13 @@ export const RegistroAdocao = () => {
     }
     alert("Pedido de adoção realizado");
   };
+
+  const animais =
+   animals &&
+   animals
+   .filter((animal) => {
+    if(id === animal.id) return animal
+   }); 
   /*
   const handleArquivosAnexados = (files) => {
     const fileList = Array.from(files).slice(0, 3); // Limita a seleção a 3 arquivos
@@ -110,7 +110,7 @@ export const RegistroAdocao = () => {
         <div className="div-principal">
           <div className="div-informacoes">
             <div className="div-info-esquerda">
-              <img src={animal[id].img} alt="Imagem" id="teste"></img>
+              <img src={animais && animais[0] && animais[0].img} alt="Imagem" id="teste"></img>
               <div className="div-inputs-esquerda">
                 <div className="wraper-input-r">
                   <input
