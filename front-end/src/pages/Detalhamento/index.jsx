@@ -5,44 +5,31 @@ import Footer from "../../components/Footer";
 import "./index.css";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import PetCards from "../../components/PetCards";
-import { Grade } from "../../components/GridContainer";
-import animal from "../../components/Animal/animal";
+import { Grade } from "../../components/GridContainer"
 import { useParams } from "react-router-dom";
 import Paginacao from "../../components/Pagination";
 import { useSelector } from "react-redux";
 
+
 export const Detalhamento = () => {
-  const{ currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
   const { id } = useParams();
-  const [animais, setAnimais] = useState([]);
+  const { animals } = useSelector((rootReducer) => rootReducer.animalReducer)
+  const { error } = useSelector((rootReducer) => rootReducer.animalReducer)
+  const { status } = useSelector((rootReducer) => rootReducer.animalReducer)
   const navigate = useNavigate();
-  const getAnimal = async () => {
-    try {
-      // Verifica se o animal com o ID fornecido existe
-      console.log(animal);
-      setAnimais(Object.values(animal));
-    } catch (error) {
-      console.error("Erro ao buscar a receita: ", error);
-    }
-  };
-
-  useEffect(() => {
-    getAnimal();
-  }, [id]);
-
+  
+  
+  
+  
+  
   const handleClick = (e) => {
-    if(currentUser != null){
-      e.preventDefault();
-      navigate(`/agendamento/${id}`);
-      {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-    }
-    else{
-      alert("Você precisa estar logado para reailzar um agendamento!");
+    e.preventDefault();
+    navigate(`/agendamento/${id}`);
+    {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
-
+  
   // const nomeAnimal = "Nome do Animal";
   const localizacao = "Rio de Janeiro";
   const acessos = 205;
@@ -51,15 +38,103 @@ export const Detalhamento = () => {
   // const cardImg = "https://via.placeholder.com/480x480";
   const [animalsPerPage, setAnimalsPerPage] = useState(5);
   const [paginaAtual, setPaginaAtual] = useState(0);
-
-  const pages = Math.ceil(animais.length / animalsPerPage, 1);
+  
+  const pages = Math.ceil(animals.length / animalsPerPage, 1);
   const startIndex = paginaAtual * animalsPerPage;
   const endIndex = startIndex + animalsPerPage;
-  const itensAtuais = animais.slice(startIndex, endIndex);
+  const itensAtuais = animals.slice(startIndex, endIndex);
+  
+  // useEffect(() => {
+  //   // Buscar dados dos animais do Redux ou de outra fonte
+  //   const fetchData = async () => {
+  //     const animais = animals;
+  //     if(animais && animais.length>0){
+  //       return animais
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
+
+    // console.log(id);
+    // console.log(animals);
+
+  //  let animais = "";
+  //   if(status==="loaded"){
+  //     animais = animals && animals.filter((animal) => {
+  //         if(animal.id === id){
+  //           return animals
+  //         }
+  //         })
+  //   }else if(status === "loading"){
+  //     animais = <div>
+        
+  //         Carregando animais...
+        
+  
+  //     </div>
+  //   }else if(status === "failed"){
+  //     animais= <div>
+        
+  //         error: {error}
+        
+  
+  //     </div>
+  //   }
+  
+    // const animais = animals && animals.filter((animal) => {
+    //   if(animal.id === id){
+    //     return true
+    //   }
+    // })
+   const animais =
+   animals &&
+   animals
+   .filter((animal) => {
+    if(id === animal.id) return animal
+   }); 
+    
+   const animalDetalhado = animais.slice(0, 1);
+   console.log(animalDetalhado)
+
+
+ 
+  let animaisTabelados = "";
+  if(status === "loaded"){
+    animaisTabelados = 
+    <Grade>
+    {itensAtuais.map((animal) => (
+      
+      <PetCards key={animal.id} animais={animal}  />
+      
+    ))}
+  </Grade>
+  }else if(status === "loading"){
+    animaisTabelados = <div>
+      
+        Carregando animais...
+      
+
+    </div>
+  }else if(status === "failed"){
+    animaisTabelados = <div>
+      
+        error: {error}
+      
+
+    </div>
+  }
+
+  // animais.map((animal) => {
+  //   if(animal.id === id){
+  //     return animal;
+  //   }
+  // })
+
 
   return (
     <div>
       <HeaderMain />
+      { animais &&
       <div className="div-main">
         <div className="div-topo">
           <div className="div-esquerda">
@@ -69,18 +144,19 @@ export const Detalhamento = () => {
                 <Breadcrumb.Item href="#">
                   Detalhamento do Animal
                 </Breadcrumb.Item>
-                <Breadcrumb.Item href="#">{animal[id].nome}</Breadcrumb.Item>
+                <Breadcrumb.Item href="#"> {animais && animais[0] && animais[0].nome}</Breadcrumb.Item>
               </Breadcrumb>
             </div>
+            
             <img
-              src={animal[id].img}
+              src={animais && animais[0] && animais[0].img}
               alt="Imagem do Animal"
               id="imagem-animal"
             ></img>
           </div>
           <div className="div-direita">
             <div className="nome-animal">
-              <h1 id="nome">{animal[id].nome}</h1>
+              <h1 id="nome">{animais && animais[0] && animais[0].nome}</h1>
             </div>
             <div className="status-animal">
               <h2 id="localizacao">Localização do Animal: {localizacao}</h2>
@@ -88,7 +164,7 @@ export const Detalhamento = () => {
               <h2 id="acessos">Acessos à página: {acessos}</h2>
             </div>
             <div className="historia-animal">
-              <p>{animal[id].história}</p>
+              <p>{animais && animais[0] && animais[0].história}</p>
             </div>
             <div className="botao-adotar">
               <input
@@ -121,20 +197,16 @@ export const Detalhamento = () => {
             <h3>Outros animais parecidos...</h3>
             <span id="linha"></span>
           </div>
-          <Grade>
-            {itensAtuais.map((animal) => (
-              <PetCards key={animal.id} animais={animal} />
-            ))}
-          </Grade>
+          {animaisTabelados}
         </div>
-        {animais.length && (
+        {animals.length && (
           <Paginacao
             paginaAtual={paginaAtual}
             pages={pages}
             setPaginaAtual={setPaginaAtual}
           />
         )}
-      </div>
+      </div>}
       <Footer />
     </div>
   );

@@ -18,7 +18,6 @@ const HeaderMain = () => {
 
  //acessando o objeto usuario, afim de pegar os dados, atraves do useSelector 
   const{ currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
-  console.log(currentUser);
  //altera os dados do objeto 
   const dispatch=useDispatch();
 

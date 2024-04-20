@@ -13,7 +13,7 @@ import { useSelector} from "react-redux";
 
 
 export const Main = () => {
-  // const [animais, setAnimais] = useState([]);
+  
   const [filter, setFilter] = useState("All");
   const [porteFilter, setPorteFilter] = useState("All");
   const [sexoFilter, setSexoFilter] = useState("All");
@@ -25,16 +25,6 @@ export const Main = () => {
   const { animalsFav } = useSelector((rootReducer) => rootReducer.animalFavReducer)
   const { error } = useSelector((rootReducer) => rootReducer.animalReducer)
   const { status } = useSelector((rootReducer) => rootReducer.animalReducer)
-  
- 
-  // const getAnimal = async () => {
-  //     try {
-  //         // Verifica se o animal com o ID fornecido existe
-  //         setAnimais(Object.values(animal));
-
-  //     } catch (error) {
-  //         console.error('Erro ao buscar o animal: ', error);
-  //     }};
 
   const animaisFiltrados =
     animals &&
@@ -55,6 +45,7 @@ export const Main = () => {
         if (idadeFilter === "All") return true;
         return animal.idade === idadeFilter;
       });
+  
 
   const pages = Math.ceil(animaisFiltrados.length / animalsPerPage, 1);
   const startIndex = paginaAtual * animalsPerPage;
