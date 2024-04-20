@@ -26,10 +26,11 @@ export const Cadastrar = () => {
 
   const handleSignUp = (e) => {
     e.preventDefault();
-    if (!email | !senha | !nome) {
+    if (!email || !senha || !nome) {
+      e.preventDefault();
       setErr("Preencha todos os campos");
       return;
-    }
+    } 
 
     dispatch(emailExistServer(email)).then((result) => {
       if(result.payload){

@@ -37,21 +37,34 @@ export const Login = () => {
     */
   
   const handleLogin = (e) => {
-    if (!email | !senha) {
+    if (!email && !senha) {
       e.preventDefault();
       setErr("Preencha todos os campos");
+      return;
+    } else if (email && senha == "") {
+      e.preventDefault();
+      setErr("Preencha a senha");
+      return;
+    }else if (email =="" && senha) {
+      e.preventDefault();
+      setErr("Preencha o email");
       return;
     }
     e.preventDefault();
     dispatch(fetchUserByEmail({ email, senha })).then((result) => {
+      // if (email == result.payload.email && senha == result.payload.senha) {
+      //   alert('Usuário Logado!');
+      //   navigate("/");
+      // }
       if (result.payload) {
         alert('Usuário Logado!');
         navigate("/");
-      } else {
+      } else{
         setErr("E-mail ou senha inválidos!")
       }
     }).catch((err) => {
       console.log("Error fetching user: ", err)
+      setErr("Email não cadastrado")
     });
   };
   return (
