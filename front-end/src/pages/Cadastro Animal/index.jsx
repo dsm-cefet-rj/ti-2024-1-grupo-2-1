@@ -3,11 +3,17 @@ import { useEffect } from "react";
 import Footer from "../../components/Footer";
 import HeaderMain from "../../components/HeaderMain";
 import "./style.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addAnimalServer } from "../../redux/Animais/slice";
 import { useNavigate } from "react-router-dom";
+import * as yup from "yup";
+import { animalSchema } from "../../validations/cadastroAnimalValidation";
+
 
 const CadastroAnimal = () => {
+
+  const{ currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
+  let usuario = currentUser;
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -57,10 +63,12 @@ const CadastroAnimal = () => {
     inputFile.addEventListener('change', handleImageChange);
   }
   
-  const cadastrarAnimal = (e) => {
+  const cadastrarAnimal = async (e) => {
     e.preventDefault();
 
-    if(!name | !type | !size | !sex | !age | history ){
+    const isValid = await animalSchema.isValid({img, name, type, size, sex, age, history})
+
+    if(!isValid){
       alert("Preencha todos os campos!");
       return;
     }
@@ -78,7 +86,6 @@ const CadastroAnimal = () => {
 
     alert("Animal cadastrado com sucesso!");
     navigate("/");
-    window.location.reload();
   };
 
   // Usage:
@@ -92,7 +99,7 @@ const CadastroAnimal = () => {
           <span className="sublinha-cadastro_animal"></span>
         </div>
         <div className="div-form">
-          <form>
+          <form onSubmit={cadastrarAnimal}>
           <h4 className="label-radio">Imagem do animal</h4>
           <label className="ft" for="ft_input" tabIndex={0}>
             <span className="ft_image">Escolha uma imagem</span>
@@ -203,7 +210,7 @@ const CadastroAnimal = () => {
                 data-placeholder="História do animal"
               ></span>
             </div>
-            <button className="cadastro-animal-bt" onClick={cadastrarAnimal}>
+            <button className="cadastro-animal-bt" type="submit">
               Cadastrar animal
             </button>
           </form>
