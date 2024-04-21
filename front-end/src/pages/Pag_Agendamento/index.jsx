@@ -7,8 +7,13 @@ import "react-calendar/dist/Calendar.css";
 import "./style.css";
 import animal from "../../components/Animal/animal";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addVisitation } from "../../redux/agendamento/slice";
 
 export const Agendamento = () => {
+  const dispatch = useDispatch();
+  const{ currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
+
   const [date, setDate] = useState(new Date());
   const [selecao, setSelecao] = useState("");
 
@@ -39,6 +44,11 @@ export const Agendamento = () => {
   };
   const handleConfirm = (e) => {
     e.preventDefault();
+
+    const dateFinal = date.toISOString().split('T');
+
+    dispatch(addVisitation({nome: currentUser.nome, idUsuario: currentUser.id, email: currentUser.email, data: dateFinal[0], hora: selecao}))
+
     navigate(`/registro_adocao/${id}`);
     {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -68,11 +78,11 @@ export const Agendamento = () => {
                 <h3 id="text-hour">Hora: </h3>
                 <select value={selecao} onChange={handleChange}>
                   <option value="">Selecione...</option>
-                  <option value="option1">12:00h</option>
-                  <option value="option2">14:00h</option>
-                  <option value="option3">14:30h</option>
-                  <option value="option4">16:00h</option>
-                  <option value="option5">16:30h</option>
+                  <option value="12:00h">12:00h</option>
+                  <option value="14:00h">14:00h</option>
+                  <option value="14:30h">14:30h</option>
+                  <option value="16:00h">16:00h</option>
+                  <option value="16:30h">16:30h</option>
                 </select>
               </div>
               <div className="div-button">
