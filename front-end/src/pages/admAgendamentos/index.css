@@ -1,0 +1,14 @@
+.container-div{
+    margin: 1rem;
+   }
+   
+   #linha {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       height: 0.1rem;
+       background-color: rgba(0, 0, 0, 0.8);
+       width: 100%;
+       margin: 0 0 2rem 0;
+   }
+   
