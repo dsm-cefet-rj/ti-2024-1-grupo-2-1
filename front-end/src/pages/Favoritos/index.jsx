@@ -118,7 +118,7 @@ export const Favoritos = () => {
             <PetCards key={animal.id} animais={animal} />
           ))}
         </Grade>) : 
-        (currentUser != null ? <p>Não animais favoritados por você ainda</p> : <p>Você precisa estar logado para favoritar animais!</p>)}
+        (currentUser != null ?<div className=" espaço-preenchido"> <p>Não animais favoritados por você ainda</p></div> :<div className=" espaço-preenchido">  <p>Você precisa estar logado para favoritar animais!</p></div>)}
       </div>
       {/* {favAnimais.length && (
         <Paginacao

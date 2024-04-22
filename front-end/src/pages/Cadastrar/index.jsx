@@ -25,20 +25,45 @@ export const Cadastrar = () => {
     e.preventDefault();
     if (!email || !senha || !nome) {
       e.preventDefault();
+      if(!nome){
       setErr("Preencha todos os campos");
+          if(!email){
+            setErrE("Preencha todos os campos");
+            if(!senha){
+              setErrP("Preencha todos os campos");
+              return
+            }
+            return
+          }
       return;
+      }
+      if(!email){
+        setErrE("Preencha todos os campos");
+        if(!senha){
+          setErrP("Preencha todos os campos");
+          return
+        }
+        return
+      }
+      if(!senha){
+        setErrP("Preencha todos os campos");
+        return
+      }
     } 
 
     dispatch(emailExistServer(email)).then((result) => {
       if(result.payload){
         setErrE('Este e-mail já está cadastrado')
+        return;
       } 
-      if (!isEmailValid(email)){
-        setErrE("Preencha o email de maneira correta.")
+
+      if(!isEmailValid(email)){
+        if (!isPasswordValid(senha,5))return;
+
+        return;
       }
-      if (!isPasswordValid(senha,5)){
-        setErrP("A senha precisa de no mínimo 5 digitos")
-      }
+      if (!isPasswordValid(senha,5))return
+        
       else{
         dispatch(addUserServer({nome, email, senha}))
         alert("Usuário cadastrado com sucesso!");
@@ -46,27 +71,32 @@ export const Cadastrar = () => {
       }
     })
   };
-
+  
   const isEmailValid =(email) =>{
-
-    const emailRegex = new RegExp(
-      /^[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+.[a-z]{2,}$/
-    )
-
+    
+    const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+    
     if(emailRegex.test(email)){
       return true
-    }
+    }else{
+    setErrE("Preencha o email de maneira correta.")
     return false
+    }
   }
 
-  const isPasswordValid =(password, minDigits) => {
-    if (password.length >= minDigits){return true;}
+  const isPasswordValid = (password, minDigits) => {
+    if (password.length >= minDigits){
+      return true;
+    }else{
+      setErrP("A senha precisa de no mínimo 5 digitos");
+      return false;
+    }
 
   }
 
   return (
     <Layout>
-      <form className="register-form">
+      <form id="form" className="register-form">
         <span className="tittle-r">Fazer cadastro</span>
         <InputUsuario 
         valor ={nome}
@@ -74,31 +104,31 @@ export const Cadastrar = () => {
         value = { nome }
         onChange={(e) => [setNome(e.target.value), setErr("")]}
         label = { "Nome" }
+        error = {err}
           />
 
         <InputUsuario 
         valor ={email}
         type = {"email"}
         value = { email }
-        onChange={(e) => [setEmail(e.target.value), setErr("")]}
+        onChange={(e) => [setEmail(e.target.value), isEmailValid, setErrE(""),setErr("")]}
         label = { "Email" }
         error = {errE}
-
           />
         <InputUsuario
           valor ={senha}
             type = {'password'}
             value = { senha }
-            onChange={(e) => [setSenha(e.target.value), setErr("")]}
+            onChange={(e) => [setSenha(e.target.value), setErrP(""), setErr("")]}
             label = { "Senha" }
             error = {errP}
         />
-        <label className="erro">{err}</label>
         <div className="container-register-botao">
           <button className="botao-form" onClick={handleSignUp}>
             Cadastre-se
           </button>
         </div>
+        {/* <label className="erro">{err}</label> */}
 
         <div className="text-center-r">
           <span className="txtr1">Possui conta?</span>

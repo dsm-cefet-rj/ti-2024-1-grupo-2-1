@@ -19,6 +19,13 @@
   color: rgb(1, 73, 131);
 }
 
+.espaço-preenchido{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 37.1Vh;
+
+}
 .sublinha-favoritos {
   display: flex;
   justify-content: center;

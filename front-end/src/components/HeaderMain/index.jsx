@@ -24,6 +24,7 @@ const HeaderMain = () => {
 
   const handleLogOut = () =>{
     dispatch((logOut()))
+    window.location.reload();
   };
 
 

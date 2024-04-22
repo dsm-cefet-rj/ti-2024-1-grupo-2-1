@@ -4,7 +4,7 @@ import "./style.css";
 import { useState } from "react";
 
 export const InputUsuario = (
-  { valor, type, value, onChange, label, error }
+  { valor, type, value, onChange, label, error, id }
 ) => {
 
     const [showPassword, setShowPassword] = useState(false);
@@ -20,6 +20,7 @@ export const InputUsuario = (
         type={type && type === "password" ?( showPassword? 'text'  : 'password'):(type) }
         value={value}
         onChange={onChange}
+        id={id}
         />
       <span className="focus-input-user" data-placeholder={label}></span>
       {type === "password" && (
