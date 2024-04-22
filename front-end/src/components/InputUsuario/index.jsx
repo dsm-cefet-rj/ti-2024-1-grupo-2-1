@@ -4,7 +4,7 @@ import "./style.css";
 import { useState } from "react";
 
 export const InputUsuario = (
-  { valor, type, value, onChange, label }
+  { valor, type, value, onChange, label, error }
 ) => {
 
     const [showPassword, setShowPassword] = useState(false);
@@ -13,6 +13,7 @@ export const InputUsuario = (
     setShowPassword(!showPassword);
   };
   return (
+    <>
       <div className="wrap-input-user">
       <input
         className={`${valor !== "" ? "has-val input-user" : "input-user"}`}
@@ -27,5 +28,8 @@ export const InputUsuario = (
         </span>
       )}
     </div>
+    <label className="erro">{error}</label>
+
+    </>
   );
 };

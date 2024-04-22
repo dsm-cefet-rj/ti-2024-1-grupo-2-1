@@ -9,18 +9,15 @@ import {InputUsuario} from "../../components/InputUsuario"
 
 export const Cadastrar = () => {
 
-  const { userDB } = useSelector(rootReducer => rootReducer.userReducer);
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [nome, setNome] = useState("");
   const [err, setErr] = useState("");
-  const[hide , setHide] = useState(false);
+  const [errE, setErrE] = useState("");
+  const [errP, setErrP] = useState("");
 
-  const visualizar_senha = () => {
-    setHide(!hide)    
-}
 
   const navigate = useNavigate();
 
@@ -34,7 +31,13 @@ export const Cadastrar = () => {
 
     dispatch(emailExistServer(email)).then((result) => {
       if(result.payload){
-        setErr('Este e-mail já está cadastrado')
+        setErrE('Este e-mail já está cadastrado')
+      } 
+      if (!isEmailValid(email)){
+        setErrE("Preencha o email de maneira correta.")
+      }
+      if (!isPasswordValid(senha,5)){
+        setErrP("A senha precisa de no mínimo 5 digitos")
       }
       else{
         dispatch(addUserServer({nome, email, senha}))
@@ -43,6 +46,23 @@ export const Cadastrar = () => {
       }
     })
   };
+
+  const isEmailValid =(email) =>{
+
+    const emailRegex = new RegExp(
+      /^[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+.[a-z]{2,}$/
+    )
+
+    if(emailRegex.test(email)){
+      return true
+    }
+    return false
+  }
+
+  const isPasswordValid =(password, minDigits) => {
+    if (password.length >= minDigits){return true;}
+
+  }
 
   return (
     <Layout>
@@ -62,13 +82,16 @@ export const Cadastrar = () => {
         value = { email }
         onChange={(e) => [setEmail(e.target.value), setErr("")]}
         label = { "Email" }
+        error = {errE}
+
           />
         <InputUsuario
           valor ={senha}
-            type = { hide ? 'text'  : 'password'}
+            type = {'password'}
             value = { senha }
             onChange={(e) => [setSenha(e.target.value), setErr("")]}
             label = { "Senha" }
+            error = {errP}
         />
         <label className="erro">{err}</label>
         <div className="container-register-botao">
