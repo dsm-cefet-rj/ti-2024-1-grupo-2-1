@@ -1,3 +1,4 @@
+import Agendamento from "../../components/Agendamentos";
 import Footer from "../../components/Footer";
 import HeaderMain from "../../components/HeaderMain";
 import "./index.css"
@@ -13,6 +14,7 @@ export const AdmAgendamento = () => {
                     <span id="linha"></span>
                 </div>
                 <div>
+                    <Agendamento/>
                 </div>
             </div>
             <Footer/>
