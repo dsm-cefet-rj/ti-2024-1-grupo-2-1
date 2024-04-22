@@ -12,6 +12,8 @@ export const AdmAgendamento = () => {
                     <h1>Agendamentos Cadastrados</h1>
                     <span id="linha"></span>
                 </div>
+                <div>
+                </div>
             </div>
             <Footer/>
         </div>
