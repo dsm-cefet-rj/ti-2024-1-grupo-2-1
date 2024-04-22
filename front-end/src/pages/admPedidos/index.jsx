@@ -2,10 +2,13 @@ import "./index.css"
 import Footer from "../../components/Footer";
 import HeaderMain from "../../components/HeaderMain";
 import PedidoAdocao from "../../components/PedidosAdocao";
+import { getRegisters } from "../../redux/pedidoAdocao/slice";
+import { useDispatch } from "react-redux";
 
 export const AdmPedidos = () => {
 
-
+    const dispatch = useDispatch();
+    const registersData = dispatch(getRegisters());
 
     return (
         <div>

@@ -4,12 +4,12 @@ import { httpGet, httpDelete, httpPost, httpPut } from "../../utils";
 
 const initialState = {
     status: "not_sended",
+    orders: [],
     error: null
 };
 
-export const fetchRequest = createAsyncThunk('adoptionRegister/getRegisters', async () => {
-    const resp = await httpGet(`${baseUrl}/animalsAdoptionRegister`);
-    return resp.json();
+export const getRegisters = createAsyncThunk('adoptionRegister/getRegisters', async () => {
+    return await httpGet(`${baseUrl}/animalsAdoptionRegister`);
 })
 
 export const addRequest = createAsyncThunk('adoptionRegister/addRegister', async (animalRegister, {getState}) => {
@@ -34,13 +34,14 @@ const requestAdoptionRegisterSlice = createSlice({
             state.status = "failed";
             state.error = action.error.message;
         })
-        .addCase(fetchRequest.pending, (state) => {
+        .addCase(getRegisters.pending, (state) => {
             state.status = "loading";
         })
-        .addCase(fetchRequest.fulfilled, (state) => {
+        .addCase(getRegisters.fulfilled, (state, action) => {
             state.status = "saved";
+            state.orders = action.payload
         })
-        .addCase(fetchRequest.rejected, (state, action) => {
+        .addCase(getRegisters.rejected, (state, action) => {
             state.status = "failed";
             state.error = action.error.message;
         })
