@@ -1,9 +1,16 @@
+import { useDispatch } from "react-redux";
 import Agendamento from "../../components/Agendamentos";
 import Footer from "../../components/Footer";
 import HeaderMain from "../../components/HeaderMain";
+import { getVisitations } from "../../redux/agendamento/slice";
 import "./index.css"
 
 export const AdmAgendamento = () => {
+
+    const dispatch = useDispatch();
+
+    const visitationsData = getVisitations();
+    console.log(dispatch(visitationsData));
 
     return(
         <div>
@@ -14,6 +21,8 @@ export const AdmAgendamento = () => {
                     <span id="linha"></span>
                 </div>
                 <div>
+                    <Agendamento/>
+                    <Agendamento/>
                     <Agendamento/>
                 </div>
             </div>
