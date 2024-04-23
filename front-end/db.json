@@ -315,54 +315,5 @@
     }
   ],
   "animalsAdoptionRegister": [],
-  "schedulingRegister": [
-    {
-      "id": "ba6e",
-      "nome": "Adm",
-      "idUsuario": "0000",
-      "email": "admin@admin",
-      "data": "2024-05-02",
-      "hora": "14:30h"
-    },
-    {
-      "id": "fec2",
-      "nome": "Adm",
-      "idUsuario": "0000",
-      "email": "admin@admin",
-      "data": "2024-04-26",
-      "hora": "14:00h"
-    },
-    {
-      "id": "4c96",
-      "nome": "Adm",
-      "idUsuario": "0000",
-      "email": "admin@admin",
-      "data": "2024-04-23",
-      "hora": "14:00h"
-    },
-    {
-      "id": "0478",
-      "nome": "Flavio Alecio",
-      "idUsuario": "0002",
-      "email": "fl@fl",
-      "data": "2024-04-23",
-      "hora": "16:00h"
-    },
-    {
-      "id": "beb3",
-      "nome": "Flavio Alecio",
-      "idUsuario": "0002",
-      "email": "fl@fl",
-      "data": "2024-04-23",
-      "hora": "14:00h"
-    },
-    {
-      "id": "adcd",
-      "nome": "Flavio Alecio",
-      "idUsuario": "0002",
-      "email": "fl@fl",
-      "data": "2024-04-23",
-      "hora": "16:00h"
-    }
-  ]
+  "schedulingRegister": []
 }

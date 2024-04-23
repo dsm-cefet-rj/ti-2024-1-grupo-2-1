@@ -18,6 +18,10 @@ export const addVisitation = createAsyncThunk('schedulingRegister/addVisitation'
     return await httpPost(`${baseUrl}/schedulingRegister`, schedulRegister);
 })
 
+export const deleteVisitation = createAsyncThunk('schedulingRegister/deleteVisitation', async (schedulRegisterId, {getState}) => {
+    await httpDelete(`${baseUrl}/schedulingRegister/${schedulRegisterId}`);
+    return schedulRegisterId;
+});
 
 const schedulingSlice = createSlice({
     name: "schedulingRegister",
@@ -40,6 +44,16 @@ const schedulingSlice = createSlice({
         .addCase(getVisitations.fulfilled, (state, action) => {
             state.status = "loaded";
             state.visitations = action.payload;
+        })
+        .addCase(deleteVisitation.pending, (state) => {
+            state.status = "processing delete";
+        })
+        .addCase(deleteVisitation.fulfilled, (state) => {
+            state.status = "deleted";
+        })
+        .addCase(deleteVisitation.rejected, (state, action) => {
+            state.status = "impossible to delete";
+            state.error = action.error.message;
         })
     },
 
