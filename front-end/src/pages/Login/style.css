@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.login-form {
+    width: 100%;
+
+}
+
+.tittle {
+    color: rgb(1, 73, 131);
+    display: block;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-family: 'Poppins', Arial, sans-serif;
+
+}
+
+.container-login-botao {
+    display: flex;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.botao-form {
+    font-size: 15px;
+    border: none;
+    border-radius: 15px;
+    color: #ffffff;
+    font-weight: bold;
+
+    line-height: 1.3;
+
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40%;
+    height: 40px;
+
+    background: -webkit-linear-gradient(to right, rgb(1, 73, 131), rgb(1, 73, 131));
+    background: -o-linear-gradient(to right, rgb(1, 73, 131), rgb(1, 73, 131));
+    background: -moz-linear-gradient(to right, rgb(1, 73, 131), rgb(1, 73, 131));
+    background: linear-gradient(to right, rgb(1, 73, 131), rgb(1, 73, 131));
+
+}
+
+.botao-form:hover {
+    cursor: pointer;
+}
+
+.erro {
+    font-size: 15px;
+    font-weight: bold;
+    color: red;
+    padding: 0 5px;
+    margin-bottom: 14px;
+}
+
+.text-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.txt1 {
+    font-size: 14px;
+    color: #999999;
+    line-height: 1.6;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+.txt2 {
+    font-size: 14px;
+    color: #07acf8;
+    line-height: 1.6;
+    text-decoration: none;
+    margin-left: 2px;
+    font-weight: bold;
+    font-family: 'Poppins', Arial, sans-serif;
+}

@@ -1,0 +1,55 @@
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(200px, 1fr)
+  ); /* Cria colunas automáticas com um tamanho mínimo de 200px */
+  grid-gap: 20px; /* Espaçamento entre os itens do grid */
+  justify-items: center;
+  justify-content: center;
+  margin: 2rem 0rem;
+  padding: 1rem 0rem;
+  transition: 0.9s;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.card-container div {
+  width: 11rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.3);
+  background-color: rgb(255, 255, 255);
+  padding: 0.5rem 0.5rem;
+}
+
+.card-container div img {
+  max-width: 100%;
+}
+
+.card-container div img,
+.card-container div h2,
+.card-container div p {
+  margin-bottom: 0.1rem;
+}
+
+.card-container div a {
+  border: 2px solid #00000000;
+}
+
+.card-container div a:hover {
+  background-color: transparent;
+  color: #041be9;
+  border: 2px solid #041be9;
+}
+
+@media (max-width: 470px) {
+  .card-container {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    margin: 1rem 1rem;
+  }
+
+  .card-container div {
+    width: 10rem;
+  }
+}

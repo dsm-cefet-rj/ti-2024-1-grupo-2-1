@@ -1,0 +1,62 @@
+.register-form {
+    width: 100%;
+
+}
+
+.tittle-r {
+    color: rgb(1, 73, 131);
+    display: block;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    padding: 10px;
+    margin-bottom: 20px;
+    margin-left: 1vw;
+    font-weight: 700;
+    font-family: 'Poppins', Arial, sans-serif;
+
+}
+
+.wrap-input-r {
+    width: 100%;
+    position: relative;
+    border-bottom: 2px solid #635e5e;
+    margin-bottom: 35px;
+
+}
+
+.container-register-botao {
+    display: flex;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.text-center-r {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 10px;
+}
+
+
+.txtr1 {
+    font-size: 14px;
+    color: #999999;
+    line-height: 1.6;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+.txtr2 {
+    font-size: 14px;
+    color: #07acf8;
+    line-height: 1.6;
+    text-decoration: none;
+    margin-left: 2px;
+    font-weight: bold;
+    font-family: 'Poppins', Arial, sans-serif;
+}
