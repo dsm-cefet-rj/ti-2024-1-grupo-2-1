@@ -11,6 +11,7 @@ import QuemSomos from "../pages/Quem_Somos";
 import CadastroAnimal from "../pages/Cadastro Animal";
 import AdmPedidos from "../pages/admPedidos";
 import AdmAgendamento from "../pages/admAgendamentos";
+import Update_Perfil from "../pages/Update_perfil";
 
 export const AppRouter = () => {
   return (
@@ -27,7 +28,9 @@ export const AppRouter = () => {
           <Route path ="/quem_somos" element = {<QuemSomos/>} />
           <Route path="/cadastro_animal" element={<CadastroAnimal/>} />
           <Route path="/admin_pedidos" element={<AdmPedidos/>} />
+          <Route path = "/admin_pedidos/detalhes/:id"/>
           <Route path="/admin_agendamentos" element={<AdmAgendamento/>} />
+          <Route exact path="/detalhes_conta/:id" element={<Update_Perfil/>}/>
         </Routes>
       </Fragment>
     </Router>

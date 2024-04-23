@@ -306,12 +306,6 @@
       "email": "yz@yz",
       "senha": "123",
       "id": "0004"
-    },
-    {
-      "id": "bdb5",
-      "nome": "nome",
-      "email": "email@email.com",
-      "senha": "12345"
     }
   ],
   "animalsAdoptionRegister": [],

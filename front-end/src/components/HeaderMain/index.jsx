@@ -8,6 +8,7 @@ import { VscAccount } from "react-icons/vsc";
 import { useSelector, useDispatch } from "react-redux";
 import rootReducer from "../../redux/root-reducer";
 import { logOut } from "../../redux/user/slice";
+import { useParams } from "react-router-dom";
 
 
 const HeaderMain = () => {
@@ -15,17 +16,30 @@ const HeaderMain = () => {
   const [infoOpen, setInfoOpen] = useState(false);
   const perfilRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(true);
+  const [id, setId] = useState("");
 
  //acessando o objeto usuario, afim de pegar os dados, atraves do useSelector 
   const{ currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
+  useEffect(()=>{
+
+    if(currentUser != null){
+  
+      setId(currentUser.id);
+    }
+
+  })
  //altera os dados do objeto 
   const dispatch=useDispatch();
 
 
   const handleLogOut = () =>{
+    navigate("/")
     dispatch((logOut()))
     window.location.reload();
   };
+ const handleAcount = () =>{
+  navigate(`../detalhes_conta/${id}`);
+ };
 
 
   useEffect(() => {
@@ -129,7 +143,10 @@ const HeaderMain = () => {
           {infoOpen && currentUser != [] && currentUser != null && (
           <div className="perfil">
             <ul>
-              <label className="welcome">Bem vindo: {currentUser.nome}</label>
+              { <label className="welcome">Bem vindo: {currentUser.nome}</label> }
+              <button className="conta" onClick={handleAcount}>
+                conta
+              </button>
               <button className="sair" onClick={handleLogOut}>
                 Sair
               </button>

@@ -45,6 +45,15 @@ export const addUserServer = createAsyncThunk('users/addUserServer', async (user
     return await httpPost(`${baseUrl}/userDB`, user);
 });
 
+export const deleteUser = createAsyncThunk('user/deleteUser', async ( idUser,{getState}) =>{
+    await httpDelete(`${baseUrl}/userDB/${idUser}`);
+    return idUser;
+});
+
+export const updateUsers = createAsyncThunk('users/updateUsers', async (user, {getState}) => {
+    return await httpPut(`${baseUrl}/userDB/${user.id}`, user);
+});
+
 export const fetchUserByEmail = createAsyncThunk('users/fetchUSerByEmail', async(payload, {getState}) =>{
     try{
       const {email, senha} = payload
@@ -105,6 +114,17 @@ const userSlice = createSlice({
             state.status = "failed";
             state.error = action.error.message;
         })
+        .addCase(deleteUser.fulfilled, (state,action) => {
+            state.status = 'deleted';
+            userAdapter.removeOne(state, action.payload);
+          })
+        .addCase(updateUsers.rejected,(state,action)=>{
+            state.status = 'failed';
+          })
+        .addCase(updateUsers.fulfilled, (state, action) => {
+            state.status = 'saved';
+            userAdapter.upsertOne(state, action.payload);
+        }) 
 
         //.addCase(postUsuarios.fulfilled, userPostReducer );
         
