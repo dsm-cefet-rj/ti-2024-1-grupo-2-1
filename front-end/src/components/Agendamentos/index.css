@@ -3,7 +3,7 @@
     border-radius: 8px;
     padding: 1.5rem 0.2rem;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     margin-bottom: 1.5rem;
 }
 
@@ -52,4 +52,27 @@
     color: rgb(255, 255, 255);
     transform: scale(1.10);
 
+}
+
+.la-line{
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #555;
+    max-width: 100%;
+    margin-right: 2rem;
+}
+
+.namoral{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.usuario{
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 28px;
+    font-family: Arial;
+    font-style: normal;
+    color: #000000;
 }

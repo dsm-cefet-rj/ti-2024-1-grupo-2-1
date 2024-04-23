@@ -1,16 +1,27 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Agendamento from "../../components/Agendamentos";
 import Footer from "../../components/Footer";
 import HeaderMain from "../../components/HeaderMain";
 import { getVisitations } from "../../redux/agendamento/slice";
 import "./index.css"
+import rootReducer from "../../redux/root-reducer";
+import { useEffect } from "react";
+import { Grade } from "../../components/GridContainer";
 
 export const AdmAgendamento = () => {
 
     const dispatch = useDispatch();
+    const { status } = useSelector((rootReducer) => rootReducer.schedulingSlice);
+    const { visitations } = useSelector((rootReducer) => rootReducer.schedulingSlice);
 
-    const visitationsData = getVisitations();
-    console.log(dispatch(visitationsData));
+    useEffect(() => {
+        dispatch(getVisitations());
+
+        if(status === "deleted"){
+            dispatch(getVisitations());
+        }
+
+    }, []);
 
     return(
         <div>
@@ -21,9 +32,12 @@ export const AdmAgendamento = () => {
                     <span id="linha"></span>
                 </div>
                 <div>
-                    <Agendamento/>
-                    <Agendamento/>
-                    <Agendamento/>
+                {visitations != 0 ? 
+                    (<>
+                        {Object.values(visitations).map((agendamento) => (<Agendamento key={agendamento.id} infos={agendamento}/>
+                    ))}
+                    </>) : (<div className="espaço-preenchidoAgendamento"> <p>Não há agendamentos marcados</p></div>)
+                }
                 </div>
             </div>
             <Footer/>

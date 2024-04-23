@@ -11,4 +11,10 @@
        width: 100%;
        margin: 0 0 2rem 0;
    }
-   
+
+.espaço-preenchidoAgendamento{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40.5Vh;
+}
