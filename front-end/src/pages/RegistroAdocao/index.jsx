@@ -37,7 +37,6 @@ export const RegistroAdocao = () => {
 
   function formatName(name) {
     if (!name) return "";
-    name = name.trim("");
     return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
   }
 

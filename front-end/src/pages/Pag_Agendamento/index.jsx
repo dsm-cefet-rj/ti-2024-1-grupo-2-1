@@ -45,6 +45,11 @@ export const Agendamento = () => {
   const handleConfirm = (e) => {
     e.preventDefault();
 
+    if(!selecao){
+      alert("Selecione uma hora para visitação!");
+      return;
+    }
+
     const dateFinal = date.toISOString().split('T');
 
     dispatch(addVisitation({nome: currentUser.nome, idUsuario: currentUser.id, email: currentUser.email, data: dateFinal[0], hora: selecao}))
