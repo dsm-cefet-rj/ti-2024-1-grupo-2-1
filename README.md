@@ -1,7 +1,6 @@
-# Para rodar o projeto será necessário: 
-## 1 - git clone "urldoProjeto"
-## 2 - git checkout front-end-develop
-## 3 - cd front-end
-## 4 - npm i
-## 5 - npm start
-## 6 - npm run backend
+# Instruções para rodar o projeto será necessário: 
+## 1 - git clone do projeto
+## 2 - cd /ti-2024-1-grupo-2-1/front-end
+## 3 - npm i
+## 4 - npm start
+## 5 - npm run backend
