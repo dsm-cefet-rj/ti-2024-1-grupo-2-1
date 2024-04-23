@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./style.css";
 import { FaBars } from "react-icons/fa";
 import { useNavigate, Link } from "react-router-dom";
@@ -6,10 +6,7 @@ import Logo from "../../assets/logo2.png";
 import Logo2 from "../../assets/logopart2.png";
 import { VscAccount } from "react-icons/vsc";
 import { useSelector, useDispatch } from "react-redux";
-import rootReducer from "../../redux/root-reducer";
 import { logOut } from "../../redux/user/slice";
-import { useParams } from "react-router-dom";
-
 
 const HeaderMain = () => {
   const navigate = useNavigate();
@@ -18,29 +15,24 @@ const HeaderMain = () => {
   const [menuOpen, setMenuOpen] = useState(true);
   const [id, setId] = useState("");
 
- //acessando o objeto usuario, afim de pegar os dados, atraves do useSelector 
-  const{ currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
-  useEffect(()=>{
-
-    if(currentUser != null){
-  
+  //acessando o objeto usuario, afim de pegar os dados, atraves do useSelector
+  const { currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
+  useEffect(() => {
+    if (currentUser != null) {
       setId(currentUser.id);
     }
+  });
+  //altera os dados do objeto
+  const dispatch = useDispatch();
 
-  })
- //altera os dados do objeto 
-  const dispatch=useDispatch();
-
-
-  const handleLogOut = () =>{
-    navigate("/")
-    dispatch((logOut()))
+  const handleLogOut = () => {
+    navigate("/");
+    dispatch(logOut());
     window.location.reload();
   };
- const handleAcount = () =>{
-  navigate(`../detalhes_conta/${id}`);
- };
-
+  const handleAcount = () => {
+    navigate(`../detalhes_conta/${id}`);
+  };
 
   useEffect(() => {
     window.addEventListener("resize", () => {
@@ -53,7 +45,6 @@ const HeaderMain = () => {
     });
   });
   const goLogin = () => {
-   
     navigate("/login");
   };
   const goSignup = () => {
@@ -104,7 +95,10 @@ const HeaderMain = () => {
             Home{" "}
           </Link>
           <span> | </span>
-          <Link style={{ textDecoration: "none", color: "rgb(1, 73, 131)" }} to={"/quem_somos"}>
+          <Link
+            style={{ textDecoration: "none", color: "rgb(1, 73, 131)" }}
+            to={"/quem_somos"}
+          >
             {" "}
             Quem somos{" "}
           </Link>
@@ -116,20 +110,30 @@ const HeaderMain = () => {
             {" "}
             Favoritados
           </Link>
-          {(currentUser !== null && currentUser.nome === "Adm" && currentUser.email === "admin@admin" && currentUser.senha === "admin" && currentUser.id === "0000") ? 
-          (<> <span> | </span> <Link
-            style={{ textDecoration: "none", color: "rgb(1, 73, 131)" }}
-            to={`/cadastro_animal`}
-          >
-            {" "}
-            Cadastro de Animais
-          </Link> </>) : (<></>)}
+          {currentUser !== null &&
+          currentUser.nome === "Adm" &&
+          currentUser.email === "admin@admin" &&
+          currentUser.senha === "admin" &&
+          currentUser.id === "0000" ? (
+            <>
+              {" "}
+              <span> | </span>{" "}
+              <Link
+                style={{ textDecoration: "none", color: "rgb(1, 73, 131)" }}
+                to={`/opcao_admin`}
+              >
+                {" "}
+                Opções de admin
+              </Link>{" "}
+            </>
+          ) : (
+            <></>
+          )}
         </nav>
       )}
 
-      
-        {currentUser ? (
-          <div className="botao-perfil-header">
+      {currentUser ? (
+        <div className="botao-perfil-header">
           <button
             ref={perfilRef}
             type="submit"
@@ -141,30 +145,34 @@ const HeaderMain = () => {
             <VscAccount className="show-perfil-svg" color="rgb(1, 73, 131)" />
           </button>
           {infoOpen && currentUser != [] && currentUser != null && (
-          <div className="perfil">
-            <ul>
-              { <label className="welcome">Bem vindo: {currentUser.nome}</label> }
-              <button className="conta" onClick={handleAcount}>
-                conta
-              </button>
-              <button className="sair" onClick={handleLogOut}>
-                Sair
-              </button>
-            </ul>
-          </div>
-        )}
-          </div>
-        ) : (
-          <div className="botao-header">
-            <button className="login-bt" onClick={goLogin}>
-              Entrar
-            </button>
-            <button className="signup-bt" onClick={goSignup}>
-              Cadastrar
-            </button>
-          </div>
-        )}
-      </div>
+            <div className="perfil">
+              <ul>
+                {
+                  <label className="welcome">
+                    Bem vindo: {currentUser.nome}
+                  </label>
+                }
+                <button className="conta" onClick={handleAcount}>
+                  conta
+                </button>
+                <button className="sair" onClick={handleLogOut}>
+                  Sair
+                </button>
+              </ul>
+            </div>
+          )}
+        </div>
+      ) : (
+        <div className="botao-header">
+          <button className="login-bt" onClick={goLogin}>
+            Entrar
+          </button>
+          <button className="signup-bt" onClick={goSignup}>
+            Cadastrar
+          </button>
+        </div>
+      )}
+    </div>
   );
 };
 export default HeaderMain;

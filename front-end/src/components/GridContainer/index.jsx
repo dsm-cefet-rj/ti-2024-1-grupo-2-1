@@ -5,9 +5,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 export const Grade = (props) => {
-  //   <div className='card-container'>
-  //   {props.children}
-  // </div>
   return (
     <Container fluid>
       <Row className="justify-content-center">

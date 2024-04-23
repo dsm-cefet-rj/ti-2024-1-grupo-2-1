@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./index.css";
 import HeaderMain from "../../components/HeaderMain";
@@ -11,22 +11,21 @@ import { useSelector } from "react-redux";
 import { pedidoAdocaoSchema } from "../../validations/registroPedidoAdocaoValidation";
 
 export const RegistroAdocao = () => {
-  const { animals } = useSelector((rootReducer) => rootReducer.animalReducer)
-  const { error } = useSelector((rootReducer) => rootReducer.animalReducer)
-  const { status } = useSelector((rootReducer) => rootReducer.animalReducer)
+  const { animals } = useSelector((rootReducer) => rootReducer.animalReducer);
+  // const { error } = useSelector((rootReducer) => rootReducer.animalReducer)
+  // const { status } = useSelector((rootReducer) => rootReducer.animalReducer)
   const dispatch = useDispatch();
 
   const [nomeAnimal, setNomeAnimal] = useState("");
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
-  const [rga, setRga] = useState("");
   const [nome, setNome] = useState("");
   const [idade, setIdade] = useState("");
   const [cpf, setCpf] = useState("");
   const [rg, setRg] = useState("");
   const [cel, setCel] = useState("");
   const { id } = useParams();
-  
+
   const [q1, setQ1] = useState();
   const [q2, setQ2] = useState();
   const [q3, setQ3] = useState();
@@ -34,44 +33,45 @@ export const RegistroAdocao = () => {
   const [q5, setQ5] = useState();
   //const [arquivos, setArquivos] = useState([null, null, null]);
 
-
   function formatName(name) {
     if (!name) return "";
     return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
   }
 
-  
   const handleConfirm = async (e) => {
     e.preventDefault();
 
-    const isValid = await pedidoAdocaoSchema.isValid({email});
+    const isValid = await pedidoAdocaoSchema.isValid({ email });
 
-    if(!nomeAnimal | !nome | !cpf | !rg | !email | !idade | !cel){
+    if (!nomeAnimal | !nome | !cpf | !rg | !email | !idade | !cel) {
       alert("Preencha todos os campos!");
       return;
-    } 
+    }
 
-    if(!isValid){
+    if (!isValid) {
       alert("Email Inválido");
       return;
     }
 
-    dispatch(addRequest({idAnimal: id, 
-    nomeAnimal: nomeAnimal,
-    //rgaAnimal: rga,
-    nomeAdotante: nome,
-    cpfAdotante: cpf,
-    rgAdotante: rg,
-    emailAdotante: email,
-    idadeAdotante: idade,
-    celAdotante: cel,
-    pergunta1: q1,
-    pergunta2: q2,
-    pergunta3: q3,
-    pergunta4: q4,
-    pergunta5: q5,
-    //arquivos: arquivos
-    }));
+    dispatch(
+      addRequest({
+        idAnimal: id,
+        nomeAnimal: nomeAnimal,
+        //rgaAnimal: rga,
+        nomeAdotante: nome,
+        cpfAdotante: cpf,
+        rgAdotante: rg,
+        emailAdotante: email,
+        idadeAdotante: idade,
+        celAdotante: cel,
+        pergunta1: q1,
+        pergunta2: q2,
+        pergunta3: q3,
+        pergunta4: q4,
+        pergunta5: q5,
+        //arquivos: arquivos
+      })
+    );
     navigate(`/`);
     {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -80,11 +80,10 @@ export const RegistroAdocao = () => {
   };
 
   const animais =
-   animals &&
-   animals
-   .filter((animal) => {
-    if(id === animal.id) return animal
-   }); 
+    animals &&
+    animals.filter((animal) => {
+      if (id === animal.id) return animal;
+    });
   /*
   const handleArquivosAnexados = (files) => {
     const fileList = Array.from(files).slice(0, 3); // Limita a seleção a 3 arquivos
@@ -108,7 +107,6 @@ export const RegistroAdocao = () => {
       });
   };
   */
-  
 
   const linkTermoAdocao =
     "https://pt.scribd.com/document/331088569/Termo-de-Adocao-de-Caes";
@@ -124,7 +122,11 @@ export const RegistroAdocao = () => {
         <div className="div-principal">
           <div className="div-informacoes">
             <div className="div-info-esquerda">
-              <img src={animais && animais[0] && animais[0].img} alt="Imagem" id="teste"></img>
+              <img
+                src={animais && animais[0] && animais[0].img}
+                alt="Imagem"
+                id="teste"
+              ></img>
               <div className="div-inputs-esquerda">
                 <div className="wraper-input-r">
                   <input
@@ -140,20 +142,6 @@ export const RegistroAdocao = () => {
                     data-placeholder="Nome do animal"
                   ></span>
                 </div>
-                {/*
-                <div className="wraper-input-r">
-                  <input
-                    className={rga !== "" ? "has-val input" : "input"}
-                    type="text"
-                    value={rga}
-                    onChange={(e) => [setRga(e.target.value)]}
-                  />
-                  <span
-                    className="focused-input"
-                    data-placeholder="RGA do Animal"
-                  ></span>
-                </div>
-                */}
                 <div className="wraper-input-r">
                   <input
                     className={email !== "" ? "has-val input" : "input"}
@@ -262,7 +250,12 @@ export const RegistroAdocao = () => {
                     1. Quem será o responsável pelo cuidado do animal?
                   </span>
                   <div>
-                    <input type="text" onChange={(e) => {setQ1(e.target.value)}}/>
+                    <input
+                      type="text"
+                      onChange={(e) => {
+                        setQ1(e.target.value);
+                      }}
+                    />
                   </div>
                 </div>
                 <div className="div-pergunta">
@@ -273,9 +266,23 @@ export const RegistroAdocao = () => {
                   </span>
                   <div>
                     <span>Sim</span>
-                    <input type="radio" name="q2" value={true} onChange={(e) => {setQ2(e.target.value)}}/>
+                    <input
+                      type="radio"
+                      name="q2"
+                      value={true}
+                      onChange={(e) => {
+                        setQ2(e.target.value);
+                      }}
+                    />
                     <span>Não</span>
-                    <input type="radio" name="q2" value={false} onChange={(e) => {setQ2(e.target.value)}}/>
+                    <input
+                      type="radio"
+                      name="q2"
+                      value={false}
+                      onChange={(e) => {
+                        setQ2(e.target.value);
+                      }}
+                    />
                   </div>
                 </div>
                 <div className="div-pergunta">
@@ -286,18 +293,46 @@ export const RegistroAdocao = () => {
                   </span>
                   <div>
                     <span>Sim</span>
-                    <input type="radio" name="q3" value={true} onChange={(e) => {setQ3(e.target.value)}}/>
+                    <input
+                      type="radio"
+                      name="q3"
+                      value={true}
+                      onChange={(e) => {
+                        setQ3(e.target.value);
+                      }}
+                    />
                     <span>Não</span>
-                    <input type="radio" name="q3" value={false} onChange={(e) => {setQ3(e.target.value)}}/>
+                    <input
+                      type="radio"
+                      name="q3"
+                      value={false}
+                      onChange={(e) => {
+                        setQ3(e.target.value);
+                      }}
+                    />
                   </div>
                 </div>
                 <div className="div-pergunta">
                   <span>4. Você já tem um médico veterinário?</span>
                   <div>
                     <span>Sim</span>
-                    <input type="radio" name="q4" value={true} onChange={(e) => {setQ4(e.target.value)}}/>
+                    <input
+                      type="radio"
+                      name="q4"
+                      value={true}
+                      onChange={(e) => {
+                        setQ4(e.target.value);
+                      }}
+                    />
                     <span>Não</span>
-                    <input type="radio" name="q4" value={false} onChange={(e) => {setQ4(e.target.value)}}/>
+                    <input
+                      type="radio"
+                      name="q4"
+                      value={false}
+                      onChange={(e) => {
+                        setQ4(e.target.value);
+                      }}
+                    />
                   </div>
                 </div>
                 <div className="div-pergunta">
@@ -307,9 +342,23 @@ export const RegistroAdocao = () => {
                   </span>
                   <div>
                     <span>Sim</span>
-                    <input type="radio" name="q5" value={true} onChange={(e) => {setQ5(e.target.value)}}/>
+                    <input
+                      type="radio"
+                      name="q5"
+                      value={true}
+                      onChange={(e) => {
+                        setQ5(e.target.value);
+                      }}
+                    />
                     <span>Não</span>
-                    <input type="radio" name="q5" value={false} onChange={(e) => {setQ5(e.target.value)}}/>
+                    <input
+                      type="radio"
+                      name="q5"
+                      value={false}
+                      onChange={(e) => {
+                        setQ5(e.target.value);
+                      }}
+                    />
                   </div>
                 </div>
               </div>
@@ -323,7 +372,10 @@ export const RegistroAdocao = () => {
               <span>
                 Anexe o termo de adoção, identidade e comprovante de residência:{" "}
               </span>
-              <input type="file" multiple /*onChange={(e) => handleArquivosAnexados(e.target.files)}*/></input>
+              <input
+                type="file"
+                multiple /*onChange={(e) => handleArquivosAnexados(e.target.files)}*/
+              ></input>
             </div>
           </div>
           <div className="div-btn-registrar-adocao">

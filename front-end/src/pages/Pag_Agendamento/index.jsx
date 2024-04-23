@@ -12,7 +12,7 @@ import { addVisitation } from "../../redux/agendamento/slice";
 
 export const Agendamento = () => {
   const dispatch = useDispatch();
-  const{ currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
+  const { currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
 
   const [date, setDate] = useState(new Date());
   const [selecao, setSelecao] = useState("");
@@ -45,14 +45,22 @@ export const Agendamento = () => {
   const handleConfirm = (e) => {
     e.preventDefault();
 
-    if(!selecao){
+    if (!selecao) {
       alert("Selecione uma hora para visitação!");
       return;
     }
 
-    const dateFinal = date.toISOString().split('T');
+    const dateFinal = date.toISOString().split("T");
 
-    dispatch(addVisitation({nome: currentUser.nome, idUsuario: currentUser.id, email: currentUser.email, data: dateFinal[0], hora: selecao}))
+    dispatch(
+      addVisitation({
+        nome: currentUser.nome,
+        idUsuario: currentUser.id,
+        email: currentUser.email,
+        data: dateFinal[0],
+        hora: selecao,
+      })
+    );
 
     navigate(`/registro_adocao/${id}`);
     {

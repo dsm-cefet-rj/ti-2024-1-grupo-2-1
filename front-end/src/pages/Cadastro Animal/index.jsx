@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useEffect } from "react";
 import Footer from "../../components/Footer";
 import HeaderMain from "../../components/HeaderMain";
 import "./style.css";
@@ -9,10 +8,8 @@ import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { animalSchema } from "../../validations/cadastroAnimalValidation";
 
-
 const CadastroAnimal = () => {
-
-  const{ currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
+  const { currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
   let usuario = currentUser;
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -27,62 +24,74 @@ const CadastroAnimal = () => {
 
   // Utilizando o useEfect para verificar a captura de dados está ocorrendo
   async function handleImageChange(event) {
-    const inputFile = document.querySelector('#ft_input');
-    const pictureImage = document.querySelector('.ft_image');
-    const pictureImgTxt = 'Escolha uma imagem';
-  
+    const inputFile = document.querySelector("#ft_input");
+    const pictureImage = document.querySelector(".ft_image");
+    const pictureImgTxt = "Escolha uma imagem";
+
     if (!inputFile || !pictureImage) {
-      throw new Error('DOM elements not found. Ensure #ft_input and .ft_image exist.');
+      throw new Error(
+        "DOM elements not found. Ensure #ft_input and .ft_image exist."
+      );
     }
-  
+
     const file = event.target.files[0];
-  
+
     if (file) {
       const reader = new FileReader();
-  
+
       try {
         const imageData = await new Promise((resolve, reject) => {
-          reader.addEventListener('load', () => resolve(reader.result));
-          reader.addEventListener('error', reject);
+          reader.addEventListener("load", () => resolve(reader.result));
+          reader.addEventListener("error", reject);
           reader.readAsDataURL(file);
         });
-  
-        pictureImage.innerHTML = ''; //limpa a imagem usada anteriormente
-        const img = document.createElement('img');
+
+        pictureImage.innerHTML = ""; //limpa a imagem usada anteriormente
+        const img = document.createElement("img");
         img.src = imageData;
-        img.classList.add('ft_img');
+        img.classList.add("ft_img");
         pictureImage.appendChild(img);
         setImg(img.src);
       } catch (error) {
-        console.error('Error loading image:', error);
+        console.error("Error loading image:", error);
         pictureImage.innerHTML = pictureImgTxt; // mostra um erro caso ocorra
       }
     } else {
       pictureImage.innerHTML = pictureImgTxt;
     }
-    inputFile.addEventListener('change', handleImageChange);
+    inputFile.addEventListener("change", handleImageChange);
   }
-  
+
   const cadastrarAnimal = async (e) => {
     e.preventDefault();
 
-    const isValid = await animalSchema.isValid({img, name, type, size, sex, age, history})
+    const isValid = await animalSchema.isValid({
+      img,
+      name,
+      type,
+      size,
+      sex,
+      age,
+      history,
+    });
 
-    if(!isValid){
+    if (!isValid) {
       alert("Preencha todos os campos!");
       return;
     }
 
-    dispatch(addAnimalServer({
-      isfav: false,
-      img: img,
-      nome: name,
-      tipo: type,
-      porte: size,
-      sexo: sex,
-      idade: age,
-      história: history 
-    }))
+    dispatch(
+      addAnimalServer({
+        isfav: false,
+        img: img,
+        nome: name,
+        tipo: type,
+        porte: size,
+        sexo: sex,
+        idade: age,
+        história: history,
+      })
+    );
 
     alert("Animal cadastrado com sucesso!");
     navigate("/");
@@ -101,12 +110,13 @@ const CadastroAnimal = () => {
         </div>
         <div className="div-form">
           <form onSubmit={cadastrarAnimal}>
-          <h4 className="label-radio">Imagem do animal</h4>
-          <label className="ft" for="ft_input" tabIndex={0}>
-            <span className="ft_image">Escolha uma imagem</span>
-          </label>
-            <input className="ft_input"
-                id="ft_input"
+            <h4 className="label-radio">Imagem do animal</h4>
+            <label className="ft" for="ft_input" tabIndex={0}>
+              <span className="ft_image">Escolha uma imagem</span>
+            </label>
+            <input
+              className="ft_input"
+              id="ft_input"
               type="file"
               accept="image/"
               onChange={handleImageChange}

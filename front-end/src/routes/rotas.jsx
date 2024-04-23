@@ -12,6 +12,7 @@ import CadastroAnimal from "../pages/Cadastro Animal";
 import AdmPedidos from "../pages/admPedidos";
 import AdmAgendamento from "../pages/admAgendamentos";
 import Update_Perfil from "../pages/Update_perfil";
+import OptionAdmin from "../pages/OpcoesAdmin";
 
 export const AppRouter = () => {
   return (
@@ -25,12 +26,13 @@ export const AppRouter = () => {
           <Route exact path="/detalhamento/:id" element={<Detalhamento />} />
           <Route path="/agendamento/:id" element={<Agendamento />} />
           <Route path="/registro_adocao/:id" element={<RegistroAdocao />} />
-          <Route path ="/quem_somos" element = {<QuemSomos/>} />
-          <Route path="/cadastro_animal" element={<CadastroAnimal/>} />
-          <Route path="/admin_pedidos" element={<AdmPedidos/>} />
-          <Route path = "/admin_pedidos/detalhes/:id"/>
-          <Route path="/admin_agendamentos" element={<AdmAgendamento/>} />
-          <Route exact path="/detalhes_conta/:id" element={<Update_Perfil/>}/>
+          <Route path="/quem_somos" element={<QuemSomos />} />
+          <Route path="/cadastro_animal" element={<CadastroAnimal />} />
+          <Route path="/admin_pedidos" element={<AdmPedidos />} />
+          <Route path="/admin_pedidos/detalhes/:id" />
+          <Route path="/admin_agendamentos" element={<AdmAgendamento />} />
+          <Route exact path="/detalhes_conta/:id" element={<Update_Perfil />} />
+          <Route exact path="opcao_admin" element={<OptionAdmin/>}/>
         </Routes>
       </Fragment>
     </Router>

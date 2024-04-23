@@ -3,7 +3,14 @@ import "./style.css";
 import { useNavigate } from "react-router-dom";
 import HeaderMain from "../../components/HeaderMain";
 import Footer from "../../components/Footer";
-import { updateUsers, emailExistServer, fetchUserByEmail, fetchUser, deleteUser, logOut } from "../../redux/user/slice";
+import {
+  updateUsers,
+  emailExistServer,
+  fetchUserByEmail,
+  fetchUser,
+  deleteUser,
+  logOut,
+} from "../../redux/user/slice";
 import { useSelector, useDispatch } from "react-redux";
 import { InputUsuario } from "../../components/InputUsuario";
 
@@ -17,37 +24,32 @@ const Update_Perfil = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const{ currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
-  const{ status } = useSelector((rootReducer) => rootReducer.userReducer);
+  const { currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
+  const { status } = useSelector((rootReducer) => rootReducer.userReducer);
   const { entities } = useSelector((rootReducer) => rootReducer.userReducer);
-  console.log(entities)
+  console.log(entities);
 
-  
-  useEffect(()=>{
-  setNome(currentUser.nome);
-  setEmail(currentUser.email);
-  setSenha(currentUser.senha);
- },[])
+  useEffect(() => {
+    setNome(currentUser.nome);
+    setEmail(currentUser.email);
+    setSenha(currentUser.senha);
+  }, []);
 
- useEffect(()=>{
-   if(status === "saved"){
-    dispatch(fetchUser())
-    dispatch(fetchUserByEmail(currentUser.id))
-     entities.map((entiti) =>{
-       if(entiti.id === currentUser.id){
-         currentUser.nome = entiti.nome
-         currentUser.email = entiti.email
-         currentUser.senha = entiti.senha
-         console.log(entiti)
-       }
-
-
-
-     }) 
+  useEffect(() => {
+    if (status === "saved") {
+      dispatch(fetchUser());
+      dispatch(fetchUserByEmail(currentUser.id));
+      entities.map((entiti) => {
+        if (entiti.id === currentUser.id) {
+          currentUser.nome = entiti.nome;
+          currentUser.email = entiti.email;
+          currentUser.senha = entiti.senha;
+          console.log(entiti);
+        }
+      });
       window.location.reload();
-
-  }
- })
+    }
+  });
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -56,57 +58,54 @@ const Update_Perfil = () => {
 
     if (!email || !senha || !nome) {
       e.preventDefault();
-      if(!nome){
-      setErr("Preencha todos os campos");
-          if(!email){
-            setErrE("Preencha todos os campos");
-            if(!senha){
-              setErrP("Preencha todos os campos");
-              return
-            }
-            return
+      if (!nome) {
+        setErr("Preencha todos os campos");
+        if (!email) {
+          setErrE("Preencha todos os campos");
+          if (!senha) {
+            setErrP("Preencha todos os campos");
+            return;
           }
-      return;
-      }
-      if(!email){
-        setErrE("Preencha todos os campos");
-        if(!senha){
-          setErrP("Preencha todos os campos");
-          return
+          return;
         }
-        return
+        return;
       }
-      if(!senha){
+      if (!email) {
+        setErrE("Preencha todos os campos");
+        if (!senha) {
+          setErrP("Preencha todos os campos");
+          return;
+        }
+        return;
+      }
+      if (!senha) {
         setErrP("Preencha todos os campos");
-        return
+        return;
       }
-    } 
+    }
 
     dispatch(emailExistServer(email)).then((result) => {
-      if(result.payload){
-        if(email === currentUser.email){
-          
+      if (result.payload) {
+        if (email === currentUser.email) {
+        } else {
+          setErrE("Este e-mail já está cadastrado");
+          return;
         }
-        else{
-        setErrE('Este e-mail já está cadastrado')
-        return;
-        }
-      } 
+      }
 
-      if(!isEmailValid(email)){
-        if (!isPasswordValid(senha,5))return;
+      if (!isEmailValid(email)) {
+        if (!isPasswordValid(senha, 5)) return;
 
         return;
       }
-      if (!isPasswordValid(senha,5))return
-        
-      else{
-        dispatch(updateUsers({id, nome, email, senha}))
+      if (!isPasswordValid(senha, 5)) return;
+      else {
+        dispatch(updateUsers({ id, nome, email, senha }));
         alert("Informações do usuário atualizadas!");
         logOut();
         navigate("/login");
       }
-    })
+    });
   };
 
   const isEmailValid = (email) => {
@@ -131,12 +130,12 @@ const Update_Perfil = () => {
   const handleRemove = () => {
     const id = currentUser.id;
     navigate("/");
-    dispatch(deleteUser(id)).then((resposta)=>{
-      if(resposta.payload){
+    dispatch(deleteUser(id)).then((resposta) => {
+      if (resposta.payload) {
         dispatch(logOut());
       }
-    })
-}
+    });
+  };
 
   return (
     <div>
@@ -183,9 +182,13 @@ const Update_Perfil = () => {
                 error={errP}
               />
 
-                <button className="edit_botao" type="submit">Editar informações</button>
+              <button className="edit_botao" type="submit">
+                Editar informações
+              </button>
             </form>
-            <button className="excluir_botao" onClick={handleRemove}>Excluir conta</button>
+            <button className="excluir_botao" onClick={handleRemove}>
+              Excluir conta
+            </button>
           </div>
         </div>
       </div>
