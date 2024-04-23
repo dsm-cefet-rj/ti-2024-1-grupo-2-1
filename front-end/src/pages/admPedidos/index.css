@@ -15,3 +15,10 @@
 .cardpedidos-div{
     
 }
+
+.espaço-preenchidoPedidos{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40.5Vh;
+}

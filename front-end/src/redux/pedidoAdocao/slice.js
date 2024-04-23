@@ -11,10 +11,23 @@ const initialState = {
 export const getRegisters = createAsyncThunk('adoptionRegister/getRegisters', async () => {
     return await httpGet(`${baseUrl}/animalsAdoptionRegister`);
 })
+function fullfillPedidosReducer(state, action){
+    //criaçao de um novo estado de objeto com os pedidos requisitados 
+    return {
+        ...state,
+        status : "saved",
+        orders: action.payload,
+    };
+};
 
 export const addRequest = createAsyncThunk('adoptionRegister/addRegister', async (animalRegister, {getState}) => {
     return await httpPost(`${baseUrl}/animalsAdoptionRegister`, animalRegister);
 })
+
+export const deleteRequest = createAsyncThunk('adoptionRegister/deleteRequest', async (animalRegisterId, {getState}) => {
+    await httpDelete(`${baseUrl}/animalsAdoptionRegister/${animalRegisterId}`);
+    return animalRegisterId;
+});
 
 const requestAdoptionRegisterSlice = createSlice({
     name: "requestAdoptionRegister",
@@ -27,9 +40,7 @@ const requestAdoptionRegisterSlice = createSlice({
         .addCase(addRequest.pending, (state) => {
             state.status = "loading";
         })
-        .addCase(addRequest.fulfilled, (state) => {
-            state.status = "saved";
-        })
+        .addCase(addRequest.fulfilled, fullfillPedidosReducer)
         .addCase(addRequest.rejected, (state, action) => {
             state.status = "failed";
             state.error = action.error.message;
@@ -45,6 +56,10 @@ const requestAdoptionRegisterSlice = createSlice({
             state.status = "failed";
             state.error = action.error.message;
         })
+        .addCase(deleteRequest.fulfilled, (state,action) => {
+            state.status = 'deleted';
+            // pedidoAdapter.removeOne(state, action.payload);
+          })
     },
 });
 
