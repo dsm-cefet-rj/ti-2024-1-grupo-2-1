@@ -15,7 +15,29 @@
 .middle-div{
     margin-top: 1.4rem;
 }
+.Agendamento_Cancel{
+    font-size: 40px;
+    color: red;
+    display: block;
+    position: absolute;
+    margin-top: -2.5rem;
+    margin-left: 95.5%;
+    background-color: white;
+    border:none;
+    border-radius: 30px;
+    box-shadow: 1px 1px 8px 0px rgb(0, 0, 0);
+    transition: transform 0.3s ease;
+}
 
+
+.Agendamento_Cancel:hover {
+    cursor: pointer;
+    background: rgba(255, 0, 0, 1);
+    color: rgb(255, 255, 255);
+    transform: scale(1.10);
+    box-shadow: 1px 1px 8px 0px rgba(255, 0, 0, 1);
+
+}
 .right-div{
     margin-right: 1rem;
 }
@@ -75,4 +97,183 @@
     font-family: Arial;
     font-style: normal;
     color: #000000;
+}
+
+@media(max-width:1540px){
+
+    .Agendamento_Cancel{
+        margin-left: 95.5%;
+    }
+}
+@media(max-width:1395px){
+
+    .Agendamento_Cancel{
+        margin-left: 94.5%;
+    }
+}
+@media(max-width:1125px){
+
+    .Agendamento_Cancel{
+        margin-left: 93.5%;
+    }
+}
+@media(max-width:950px){
+
+    .Agendamento_Cancel{
+        margin-left: 92.5%;
+    }
+}
+@media(max-width:830px){
+
+    .Agendamento_Cancel{
+        margin-left: 91.5%;
+    }
+}
+@media(max-width:735px){
+
+    .Agendamento_Cancel{
+        margin-left: 90.5%;
+    }
+    .btn-details{
+        font-size: 18px;
+        width: 9rem;
+        height: 5rem;
+    }
+}
+@media(max-width:655px){
+
+    .Agendamento_Cancel{
+        margin-left: 89.5%;
+    }
+    .btn-details{
+        font-size: 18px;
+        width: 8rem;
+        height: 5rem;
+    }
+    .usuario{
+        margin-top: 1rem;
+        font-size: 22px;
+    }
+}
+@media(max-width:595px){
+
+    .left-div h3,
+    .middle-div h3{
+        font-size: 22px;
+    }
+    .Agendamento_Cancel{
+        margin-left: 88.5%;
+    }
+    .btn-details{
+        font-size: 15px;
+        width: 7rem;
+        height: 4.5rem;
+    }
+    .usuario{
+        margin-top: 1rem;
+        font-size: 20px;
+    }
+}
+@media(max-width:545px){
+
+    .left-div h3,
+    .middle-div h3{
+        font-size: 20px;
+    }
+    .Agendamento_Cancel{
+        margin-left: 87.5%;
+    }
+    .btn-details{
+        font-size: 14px;
+        width: 7rem;
+        height: 4rem;
+    }
+    .usuario{
+        margin-top: 1rem;
+        font-size: 18px;
+    }
+}
+
+@media(max-width:500px){
+
+    .left-div h3,
+    .middle-div h3{
+        font-size: 15px;
+    }
+    .Agendamento_Cancel{
+        margin-left: 86.5%;
+    }
+    .btn-details{
+        font-size: 14px;
+        width: 7rem;
+        height: 4rem;
+    }
+    .usuario{
+        margin-top: 1rem;
+        font-size: 18px;
+    }
+}
+@media(max-width:465px){
+
+    .left-div h3,
+    .middle-div h3{
+        font-size: 13px;
+    }
+    .Agendamento_Cancel{
+        margin-left: 85%;
+    }
+    .btn-details{
+        font-size: 10px;
+        width: 5rem;
+        height: 3rem;
+    }
+    .usuario{
+        margin-top: 0.5rem;
+        font-size: 13px;
+    }
+}
+@media(max-width:430px){
+
+    .Agendamento_Cancel{
+        margin-left: 84%;
+    }
+    
+}
+@media(max-width:390px){
+
+    .Agendamento_Cancel{
+        margin-left: 83%;
+    }
+    
+}
+@media(max-width:375px){
+
+    .Agendamento_Cancel{
+        margin-left: 82%;
+    }
+    
+}
+@media(max-width:350px){
+    .left-div h3,
+    .middle-div h3{
+        font-size: 10px;
+    }
+
+    .Agendamento_Cancel{
+        margin-left: 80%;
+    }
+    .btn-details{
+        font-size: 10px;
+        width: 4rem;
+        height:2.5rem;
+    }
+    .usuario{
+        margin-top: 0.5rem;
+        font-size: 10px;
+    }
+    .cardagendamento-div{
+        padding: 1rem 0.2rem;
+    }
+    
+    
 }

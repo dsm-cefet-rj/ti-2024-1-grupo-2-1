@@ -54,8 +54,9 @@
     font-size: 40px;
     color: red;
     display: block;
+    position: absolute;
     margin-top: -2.5rem;
-    margin-right: -0.5rem;
+    margin-left: 43rem;
     background-color: white;
     border:none;
     border-radius: 30px;
@@ -69,5 +70,120 @@
     color: rgb(255, 255, 255);
     transform: scale(1.10);
     box-shadow: 1px 1px 8px 0px rgba(255, 0, 0, 1);
+
+}
+
+@media(max-width:770px){
+
+    .cardadocao-main-div{
+        font-size: 20px;
+        height: 7rem;
+        width: 34.5rem;
+    }
+    .left-side-div{
+        margin-left: 1rem;
+    }
+    
+    .right-side-div{
+        margin-right: 1rem;
+    }
+    
+    #btn-verify{
+        font-size: 15px;
+        width: 7rem;
+        height: 3rem;
+    
+    }
+    .Pedido_Cancel{
+        font-size: 30px;
+        margin-left: 33rem;
+        margin-top: -2.5rem;
+    }
+
+}
+
+@media(max-width:620px){
+    .left-side-div{
+        margin-top: -0.5rem;
+    }
+    .left-side-div h3{
+        font-size: 15px;
+    }
+
+    .cardadocao-main-div{
+        font-size: 20px;
+        height: 5rem;
+        width: 25rem;
+    }
+    
+    #btn-verify{
+        font-size: 12px;
+        width: 6rem;
+        height: 2.5rem;
+        margin-top: -0.5rem;
+    
+    }
+    .Pedido_Cancel{
+        font-size: 20px;
+        margin-left: 24rem;
+        margin-top: -2.2rem;
+    }
+
+}
+
+@media(max-width:460px){
+    .left-side-div{
+        margin-top: -0.5rem;
+    }
+    .left-side-div h3{
+        font-size: 15px;
+    }
+
+    .cardadocao-main-div{
+        font-size: 20px;
+        height: 5rem;
+        width: 20rem;
+    }
+    
+    #btn-verify{
+        font-size: 12px;
+        width: 6rem;
+        height: 2.5rem;
+        margin-top: -0.5rem;
+    
+    }
+    .Pedido_Cancel{
+        font-size: 20px;
+        margin-left: 19rem;
+        margin-top: -2.2rem;
+    }
+
+}
+@media(max-width:380px){
+    .left-side-div{
+        margin-top: -0.5rem;
+    }
+    .left-side-div h3{
+        font-size: 11px;
+    }
+
+    .cardadocao-main-div{
+        font-size: 20px;
+        height: 5rem;
+        width: 15rem;
+    }
+    
+    #btn-verify{
+        font-size: 9px;
+        width: 4rem;
+        height: 2.0rem;
+        margin-top: -0.5rem;
+    
+    }
+    .Pedido_Cancel{
+        font-size: 20px;
+        margin-left: 14rem;
+        margin-top: -2.2rem;
+    }
 
 }

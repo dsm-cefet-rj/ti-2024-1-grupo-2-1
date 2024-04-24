@@ -35,7 +35,7 @@ export const Agendamento = ({ infos }) => {
             DETALHES
           </button>
         </div>
-        <MdOutlineCancel className="Pedido_Cancel" onClick={Delete} />
+        <MdOutlineCancel className="Agendamento_Cancel" onClick={Delete} />
       </div>
       {infoOpen && (
         <ul>

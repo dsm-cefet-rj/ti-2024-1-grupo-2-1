@@ -18,3 +18,16 @@
     justify-content: center;
     height: 40.5Vh;
 }
+
+@media(max-width:1440px){
+    .espaço-preenchidoAgendamento{
+    height: 42.5Vh;
+  }
+  
+  }
+@media(max-width:500px){
+    .espaço-preenchidoAgendamento{
+    height: 45.5Vh;
+  }
+  
+  }

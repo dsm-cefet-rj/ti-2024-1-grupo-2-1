@@ -13,6 +13,8 @@
 }
 
 .cardpedidos-div{
+
+  height: 40.5Vh;
     
 }
 
@@ -21,4 +23,14 @@
   align-items: center;
   justify-content: center;
   height: 40.5Vh;
+}
+@media(max-width:1440px){
+  .espaço-preenchidoPedidos{
+  height: 42.5Vh;
+}
+.cardpedidos-div{
+
+  height: 42.5Vh;
+    
+}
 }
