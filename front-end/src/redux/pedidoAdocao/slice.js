@@ -5,8 +5,16 @@ import { httpGet, httpDelete, httpPost, httpPut } from "../../utils";
 const initialState = {
   status: "not_sended",
   orders: [],
+  currentOrder: null,
   error: null,
 };
+
+export const getOneRegister = createAsyncThunk(
+  "adoptionRegister/getOneRegister",
+  async (id) => {
+    return await httpGet(`${baseUrl}/animalsAdoptionRegister/${id}`);
+  }
+);
 
 export const getRegisters = createAsyncThunk(
   "adoptionRegister/getRegisters",
@@ -65,7 +73,19 @@ const requestAdoptionRegisterSlice = createSlice({
       })
       .addCase(deleteRequest.fulfilled, (state, action) => {
         state.status = "deleted";
-      });
+      })
+      .addCase(getOneRegister.fulfilled, (state, action) => {
+        state.status = "loaded";
+        state.currentOrder = action.payload
+      })
+      .addCase(getOneRegister.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(getOneRegister.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+        state.currentOrder = null;
+      })
   },
 });
 

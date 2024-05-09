@@ -3,15 +3,17 @@ import { React } from "react";
 import { MdOutlineCancel } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { deleteRequest } from "../../redux/pedidoAdocao/slice";
+import { useNavigate } from "react-router-dom";
 
 export const PedidoAdocao = ({ pedido }) => {
   const id = pedido.id;
   console.log(id);
   const dispatch = useDispatch();
+  const  navigate = useNavigate(); 
 
   const handleClick = (e) => {
     e.preventDefault();
-    // navigate(`/detalhamentoPedido/${id}`);
+    navigate(`/verificando_pedido/${id}`);
     {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
