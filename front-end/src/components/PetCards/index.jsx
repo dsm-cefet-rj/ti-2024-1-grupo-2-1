@@ -9,7 +9,8 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { addAnimalToFav, removeAnimalToFav } from "../../redux/favanimal/slice";
-import { changeAnimalIsFav } from "../../redux/Animais/slice";
+import { changeAnimalIsFav, deleteAnimal } from "../../redux/Animais/slice";
+import { MdOutlineCancel } from "react-icons/md";
 
 const PetCards = ({ animais }) => {
   const id = animais.id;
@@ -32,7 +33,7 @@ const PetCards = ({ animais }) => {
       alert("Você precisa estar logado para favoritar um animal");
     }
   };
-
+  
   const handleRemove = () => {
     dispatch(removeAnimalToFav(animais.id));
     dispatch(changeAnimalIsFav(animais.id));
@@ -46,6 +47,12 @@ const PetCards = ({ animais }) => {
     {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
+  };
+
+  const Delete = (e) => {
+    e.preventDefault();
+    dispatch(deleteAnimal(id));
+    window.location.reload();
   };
 
   return (
@@ -68,6 +75,7 @@ const PetCards = ({ animais }) => {
           Detalhes
         </button>
       </Card.Body>
+      {currentUser !== null && currentUser.nome === "Adm" && currentUser.email === "admin@admin" ? <MdOutlineCancel className="animal_delete" onClick={Delete} /> : <></>}
     </Card>
   );
 };

@@ -37,6 +37,14 @@ export const addAnimalServer = createAsyncThunk(
   }
 );
 
+export const deleteAnimal = createAsyncThunk(
+  "animal/deleteAnimal",
+  async (animalId, { getState }) => {
+    await httpDelete(`${baseUrl}/animals/${animalId}`);
+    return animalId;
+  }
+);
+
 const animalSlice = createSlice({
   name: "animal",
   initialState,
@@ -72,7 +80,16 @@ const animalSlice = createSlice({
       .addCase(addAnimalServer.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
-      });
+      })
+      .addCase(deleteAnimal.fulfilled, (state) => {
+        state.status = "animal deleted";
+      })
+      .addCase(deleteAnimal.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(deleteAnimal.rejected, (state) => {
+        state.status = "failed to delete";
+      })
     //.addCase(fetchAnimais.pending, (state,action)=>(state.status="loading"))
     //.addCase(fetchAnimais.rejected,(state, action) => ( state.status = "failed", state.error = action.error.message))
   },
