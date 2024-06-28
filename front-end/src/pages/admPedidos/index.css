@@ -13,8 +13,8 @@
 }
 
 .cardpedidos-div{
+display: flex;
 
-  height: 40.5Vh;
     
 }
 

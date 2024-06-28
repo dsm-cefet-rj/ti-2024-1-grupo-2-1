@@ -72,6 +72,13 @@
     box-shadow: 1px 1px 8px 0px rgba(255, 0, 0, 1);
 
 }
+.status_pedido{
+    display: flex;
+    color: rgba(0, 0, 0, 0.473);
+    margin-top: 1.5rem;
+    font-weight: bold;
+    font-size: 14px;
+}
 
 @media(max-width:770px){
 
@@ -98,6 +105,10 @@
         font-size: 30px;
         margin-left: 33rem;
         margin-top: -2.5rem;
+    }
+    .status_pedido{
+        margin-top: 1rem;
+        font-size: 13px;
     }
 
 }
@@ -127,6 +138,10 @@
         font-size: 20px;
         margin-left: 24rem;
         margin-top: -2.2rem;
+    }
+    .status_pedido{
+        margin-top: 0.2rem;
+        font-size: 10px;
     }
 
 }

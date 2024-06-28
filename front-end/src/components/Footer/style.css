@@ -3,6 +3,8 @@
     background-color: rgb(1, 73, 131);
     width: 100%;
     padding: 0% 10%;
+    position: relative;
+    top: 10.4rem;
     display: flex;
     flex-direction: column;
     justify-content: center;

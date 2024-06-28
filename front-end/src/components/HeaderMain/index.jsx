@@ -67,12 +67,17 @@ const HeaderMain = () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
+  
+  const toMain =()=>{
+    navigate("/");
+    window.location.reload();
+  }
 
   return (
     <div className="headermain">
       <div className="header-container">
         <div className="logo">
-          <Link to={`/`}>
+          <Link onClick={toMain}>
             <img className="pata" src={Logo} alt="" />
             <img className="logo_nome" src={Logo2} alt="" />
           </Link>

@@ -13,6 +13,7 @@ import {
 } from "../../redux/user/slice";
 import { useSelector, useDispatch } from "react-redux";
 import { InputUsuario } from "../../components/InputUsuario";
+import TitlePage from "../../components/Title-Page";
 
 const Update_Perfil = () => {
   const [email, setEmail] = useState("");
@@ -33,7 +34,7 @@ const Update_Perfil = () => {
     setNome(currentUser.nome);
     setEmail(currentUser.email);
     setSenha(currentUser.senha);
-  }, []);
+  }, [currentUser]);
 
   useEffect(() => {
     if (status === "saved") {
@@ -142,8 +143,7 @@ const Update_Perfil = () => {
       <HeaderMain />
       <div>
         <div className="title-registro-adocao-container">
-          <h1>Informações da conta</h1>
-          <span className="sublinha-favoritos"></span>
+          <TitlePage text="Informações da Conta"/>
 
           <div className="visualizaçao-de-form">
             <form className="Atualizaçao_User" onSubmit={handleUpdate}>

@@ -1,9 +1,9 @@
 import { Fragment } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { Favoritos } from "../pages/Favoritos";
 import { Detalhamento } from "../pages/Detalhamento";
 import { Main } from "../pages/Principal";
-import Agendamento from "../pages/Pag_Agendamento";
+import Agendamento from "../pages/Agendamento";
 import { RegistroAdocao } from "../pages/RegistroAdocao";
 import { Login } from "../pages/Login";
 import { Cadastrar } from "../pages/Cadastrar";
@@ -14,6 +14,8 @@ import AdmAgendamento from "../pages/admAgendamentos";
 import Update_Perfil from "../pages/Update_perfil";
 import OptionAdmin from "../pages/OpcoesAdmin";
 import VerificarPedido from "../pages/verificarPedido";
+import UpdateAnimais from "../pages/Update_Animais";
+
 
 export const AppRouter = () => {
   return (
@@ -21,6 +23,7 @@ export const AppRouter = () => {
       <Fragment>
         <Routes>
           <Route exact path="/" element={<Main />} />
+          <Route path='*' element={<Navigate to='/'/>} />
           <Route path="/login" element={<Login />} />
           <Route path="/cadastrar" element={<Cadastrar />} />
           <Route path="/favoritos" element={<Favoritos />} />
@@ -35,6 +38,7 @@ export const AppRouter = () => {
           <Route exact path="/detalhes_conta/:id" element={<Update_Perfil />} />
           <Route exact path="opcao_admin" element={<OptionAdmin/>}/>
           <Route exact path="/verificando_pedido/:id" element={<VerificarPedido />} />
+          <Route exact path="/update_animal/:id" element={<UpdateAnimais/>}/>
         </Routes>
       </Fragment>
     </Router>

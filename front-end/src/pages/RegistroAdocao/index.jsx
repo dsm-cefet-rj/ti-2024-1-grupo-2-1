@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./index.css";
 import HeaderMain from "../../components/HeaderMain";
@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { addRequest } from "../../redux/pedidoAdocao/slice";
 import { useSelector } from "react-redux";
 import { pedidoAdocaoSchema } from "../../validations/registroPedidoAdocaoValidation";
+import TitlePage from "../../components/Title-Page";
 
 export const RegistroAdocao = () => {
   const { animals } = useSelector((rootReducer) => rootReducer.animalReducer);
@@ -69,6 +70,7 @@ export const RegistroAdocao = () => {
         pergunta3: q3,
         pergunta4: q4,
         pergunta5: q5,
+        status: "pending",
         //arquivos: arquivos
       })
     );
@@ -78,6 +80,10 @@ export const RegistroAdocao = () => {
     }
     alert("Pedido de adoção realizado");
   };
+
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const fileInputRef = useRef(null);
 
   const animais =
     animals &&
@@ -107,6 +113,27 @@ export const RegistroAdocao = () => {
       });
   };
   */
+  const handleFileChange = (event) => {
+    const selectedFile = fileInputRef.current.files[0];
+    if (selectedFile.type === 'application/pdf') {
+      setSelectedFile(selectedFile);
+    } else {
+      alert('Por favor, selecione um arquivo PDF.');
+    }
+  };
+  const handleProcessPDF = () => {
+    if (selectedFile) {
+      const fileReader = new FileReader();
+      fileReader.onload = (e) => {
+        const pdfData = e.target.result;
+        // Processar o conteúdo do PDF em base64: pdfData
+        console.log('Conteúdo do PDF:', pdfData);
+      };
+      fileReader.readAsDataURL(selectedFile);
+    } else {
+      alert('Nenhum arquivo PDF selecionado.');
+    }
+  };
 
   const linkTermoAdocao =
     "https://pt.scribd.com/document/331088569/Termo-de-Adocao-de-Caes";
@@ -115,10 +142,7 @@ export const RegistroAdocao = () => {
     <div>
       <HeaderMain />
       <div className="div-container">
-        <div className="title-registro-adocao-container">
-          <h1>Registro de Pedido de Adoção</h1>
-          <span className="sublinha-favoritos"></span>
-        </div>
+        <TitlePage text="Registro de Pedido de Adoção"/>
         <div className="div-principal">
           <div className="div-informacoes">
             <div className="div-info-esquerda">
@@ -372,10 +396,12 @@ export const RegistroAdocao = () => {
               <span>
                 Anexe o termo de adoção, identidade e comprovante de residência:{" "}
               </span>
-              <input
+              <input type="file" ref={fileInputRef} accept=".pdf" onChange={handleFileChange} />
+              <button onClick={handleProcessPDF}>Processar PDF</button>
+              {/* <input
                 type="file"
-                multiple /*onChange={(e) => handleArquivosAnexados(e.target.files)}*/
-              ></input>
+                multiple onChange={(e) => handleArquivosAnexados(e.target.files)}
+              ></input> */}
             </div>
           </div>
           <div className="div-btn-registrar-adocao">

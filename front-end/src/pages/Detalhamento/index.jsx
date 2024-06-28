@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import HeaderMain from "../../components/HeaderMain";
 import Footer from "../../components/Footer";
+import TitlePage from "../../components/Title-Page";
 import "./index.css";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import PetCards from "../../components/PetCards";
@@ -83,6 +84,7 @@ export const Detalhamento = () => {
                     {animais && animais[0] && animais[0].nome}
                   </Breadcrumb.Item>
                 </Breadcrumb>
+                <TitlePage text="Detalhamento"/>
               </div>
 
               <img

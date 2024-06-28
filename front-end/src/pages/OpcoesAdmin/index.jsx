@@ -1,6 +1,7 @@
 import React from "react";
 import "./style.css";
 import HeaderMain from "../../components/HeaderMain";
+import TitlePage from "../../components/Title-Page";
 import Footer from "../../components/Footer";
 import { useNavigate } from "react-router-dom";
 
@@ -23,10 +24,7 @@ const OptionAdmin = () => {
   return (
     <div>
       <HeaderMain />
-      <div className="title-opcao_admin">
-        <h1>Opções de administrador</h1>
-        <span className="sublinha-favoritos"></span>
-      </div>
+      <TitlePage text="Opções de administrador"/>
       <div className="opcao_admin">
         <button className="admin_botao" onClick={cadastroClick}>
           Cadastro de animais

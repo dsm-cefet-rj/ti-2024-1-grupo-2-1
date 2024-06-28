@@ -6,6 +6,7 @@ import PedidoAdocao from "../../components/PedidosAdocao";
 import { getRegisters } from "../../redux/pedidoAdocao/slice";
 import { useDispatch, useSelector } from "react-redux";
 import { Grade } from "../../components/GridContainer";
+import TitlePage from "../../components/Title-Page";
 
 export const AdmPedidos = () => {
   const dispatch = useDispatch();
@@ -24,15 +25,13 @@ export const AdmPedidos = () => {
       console.log("chegou aqui");
       dispatch(getRegisters());
     }
-  }, []); // Dependências vazias para evitar execuções subsequentes
+  }, [orders.length]); // Dependências vazias para evitar execuções subsequentes(colocado orders
+    // para cada vez q a quantidade for alterada, recarregar os pedidos)
   return (
-    <div>
+    <>
       <HeaderMain />
       <div className="container-div">
-        <div>
-          <h1>Autenticação dos pedidos de adoção</h1>
-          <span id="linha"></span>
-        </div>
+        <TitlePage text="Pedidos de Adoção"/>
         <div className="cardpedidos-div">
           {orders != 0 ? (
             <Grade>
@@ -43,13 +42,13 @@ export const AdmPedidos = () => {
           ) : (
             <div className=" espaço-preenchidoPedidos">
               {" "}
-              <p>Não Pedidos de adoção ainda</p>
+              <p>Não há Pedidos de adoção ainda</p>
             </div>
           )}
         </div>
       </div>
       <Footer />
-    </div>
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 import { baseUrl } from "../../baseUrl";
 import { httpGet, httpDelete, httpPost, httpPut } from "../../utils";
 
@@ -6,6 +6,7 @@ const initialState = {
   status: "not_loaded",
   animals: [],
   error: null,
+  currentAnimal: null,
 };
 
 // Função assíncrona para buscar animais da API
@@ -17,6 +18,13 @@ export const fetchAnimais = createAsyncThunk(
     return await httpGet(`${baseUrl}/animals`);
     // transforma a resposta da API em json
     // return await resp.json();
+  }
+);
+export const fetchOneAnimal = createAsyncThunk(
+  "animal/fetchOneAnimal",
+  async (id) => {
+    return await httpGet(`${baseUrl}/animals/${id}`);
+    
   }
 );
 
@@ -42,6 +50,12 @@ export const deleteAnimal = createAsyncThunk(
   async (animalId, { getState }) => {
     await httpDelete(`${baseUrl}/animals/${animalId}`);
     return animalId;
+  }
+);
+export const updateAnimals = createAsyncThunk(
+  "animal/updateAnimals",
+  async(animal, { getState})=>{
+    return await httpPut(`${baseUrl}/animals/${animal.id}`,animal);
   }
 );
 
@@ -71,6 +85,18 @@ const animalSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       })
+      .addCase(fetchOneAnimal.fulfilled, (state, action)=>{
+        state.status = "loaded";
+        state.currentAnimal = action.payload;
+      })
+      .addCase(fetchOneAnimal.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchOneAnimal.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+        state.currentAnimal=null;
+      })
       .addCase(addAnimalServer.fulfilled, (state) => {
         state.status = "saved";
       })
@@ -89,6 +115,12 @@ const animalSlice = createSlice({
       })
       .addCase(deleteAnimal.rejected, (state) => {
         state.status = "failed to delete";
+      })
+      .addCase(updateAnimals.rejected, (state, action) => {
+        state.status = "failed";
+      })
+      .addCase(updateAnimals.fulfilled, (state, action) => {
+        state.status = "saved";
       })
     //.addCase(fetchAnimais.pending, (state,action)=>(state.status="loading"))
     //.addCase(fetchAnimais.rejected,(state, action) => ( state.status = "failed", state.error = action.error.message))

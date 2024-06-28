@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HeaderMain from "../../components/HeaderMain";
 import FtMain from "../../assets/image.png";
 import "./style.css";
@@ -8,7 +8,8 @@ import "./AnimalGrid.css";
 import Footer from "../../components/Footer";
 import { Grade } from "../../components/GridContainer";
 import Paginacao from "../../components/Pagination";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchAnimais } from "../../redux/Animais/slice";
 
 export const Main = () => {
   const [filter, setFilter] = useState("All");
@@ -19,15 +20,23 @@ export const Main = () => {
   const [paginaAtual, setPaginaAtual] = useState(0);
 
   const { animals } = useSelector((rootReducer) => rootReducer.animalReducer);
+  const [animais, setAniamais]= useState([]);
   const { animalsFav } = useSelector(
     (rootReducer) => rootReducer.animalFavReducer
   );
   const { error } = useSelector((rootReducer) => rootReducer.animalReducer);
   const { status } = useSelector((rootReducer) => rootReducer.animalReducer);
+  const dispatch = useDispatch()
 
-  const animaisFiltrados =
-    animals &&
-    animals
+  useEffect(() => {
+    dispatch(fetchAnimais());
+    setAniamais(animals);
+    console.log(animals)
+  }, [animals.length]);
+
+let animaisFiltrados =
+    animais &&
+    animais
       .filter((animal) => {
         if (filter === "All") return true;
         return animal.tipo === filter;

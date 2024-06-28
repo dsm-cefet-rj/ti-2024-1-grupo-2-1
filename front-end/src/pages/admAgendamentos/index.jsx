@@ -5,6 +5,7 @@ import HeaderMain from "../../components/HeaderMain";
 import { getVisitations } from "../../redux/agendamento/slice";
 import "./index.css";
 import { useEffect } from "react";
+import TitlePage from "../../components/Title-Page";
 
 export const AdmAgendamento = () => {
   const dispatch = useDispatch();
@@ -25,10 +26,7 @@ export const AdmAgendamento = () => {
     <div>
       <HeaderMain />
       <div className="container-div">
-        <div>
-          <h1>Agendamentos Cadastrados</h1>
-          <span id="linha"></span>
-        </div>
+        <TitlePage text="Agendamentos Cadastrados"/>
         <div>
           {visitations != 0 ? (
             <>

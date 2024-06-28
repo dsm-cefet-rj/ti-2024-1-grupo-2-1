@@ -45,11 +45,21 @@ export const deleteRequest = createAsyncThunk(
     return animalRegisterId;
   }
 );
+export const updateRequest = createAsyncThunk(
+  "adoptionRegister/updateRequest",
+  async (request,{getState}) =>{
+    return await httpPut(`${baseUrl}/animalsAdoptionRegister/${request.id}`, request);
+  }
+)
 
 const requestAdoptionRegisterSlice = createSlice({
   name: "requestAdoptionRegister",
   initialState,
-  reducers: {},
+  reducers: {
+    orderNull: (state) => {
+      state.currentOrder = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(addRequest.pending, (state) => {
@@ -86,7 +96,14 @@ const requestAdoptionRegisterSlice = createSlice({
         state.error = action.error.message;
         state.currentOrder = null;
       })
+      .addCase(updateRequest.rejected, ( state, action ) =>{
+        state.status ="failed";
+      })
+      .addCase(updateRequest.fulfilled, ( state, action) =>{
+        state.status="saved";
+      })
   },
 });
+export const{ orderNull} = requestAdoptionRegisterSlice.actions;
 
 export default requestAdoptionRegisterSlice.reducer;

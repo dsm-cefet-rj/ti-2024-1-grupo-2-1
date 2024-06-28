@@ -55,6 +55,29 @@
     box-shadow: 1px 1px 8px 0px rgba(255, 0, 0, 1);
 
 }
+.animal_update{
+    font-size: 30px;
+    padding: auto;
+    margin-left: 0.2rem;
+    margin-top: -0.8rem;
+    color: rgb(8, 59, 134);
+    display: block;
+    position: absolute;
+    background-color: white;
+    border:none;
+    border-radius: 6px;
+    box-shadow: 1px 1px 8px 0px rgb(0, 0, 0);
+    transition: transform 0.3s ease;
+}
+
+.animal_update:hover {
+    cursor: pointer;
+    background: rgb(8, 59, 134);
+    color: rgb(255, 255, 255);
+    transform: scale(1.10);
+    box-shadow: 1px 1px 8px 0px rgb(8, 59, 134);
+
+}
 
 /* .pet-card {
     position: relative;

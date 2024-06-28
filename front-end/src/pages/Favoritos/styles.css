@@ -4,35 +4,12 @@
   margin: 1rem 5rem -0.8rem;
 }
 
-.title-favoritos-container {
-  
-  margin: 0rem 5rem ;
-}
-
-.title-favoritos {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  font-family: "Poppins", Arial, sans-serif;
-  font-size: 40px;
-  font-weight: 550;
-  color: rgb(1, 73, 131);
-}
-
 .espaço-preenchido{
   display: flex;
   align-items: center;
   justify-content: center;
   height: 37.1Vh;
 
-}
-.sublinha-favoritos {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 2px;
-  background-color: rgba(0, 0, 0, 0.8);
-  margin: 0 3rem;
 }
 
 .form-filtro-favoritos {
@@ -94,29 +71,4 @@
 
 .grade-container {
   margin-left: 0.6rem;
-}
-
-@media (max-width: 860px) {
-
-  .sublinha-favoritos {
-      margin: 0 3rem;
-  }
-
-}
-@media (max-width: 560px) {
-
-  .sublinha-favoritos {
-      margin: 0 1rem;
-  }
-
-}
-
-@media (max-width: 500px) {
-
-  .title-favoritos {
-    
-    font-size: 20px;
-    
-  }
-  
 }

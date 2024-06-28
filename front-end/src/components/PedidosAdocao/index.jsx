@@ -22,7 +22,6 @@ export const PedidoAdocao = ({ pedido }) => {
   const Delete = (e) => {
     e.preventDefault();
     dispatch(deleteRequest(id));
-    window.location.reload();
   };
   return (
     <div className="cardadocao-main-div">
@@ -31,9 +30,27 @@ export const PedidoAdocao = ({ pedido }) => {
         <h3>Nome animal: {pedido.nomeAnimal}</h3>
       </div>
       <div className="right-side-div">
+        
         <button id="btn-verify" onClick={handleClick}>
-          VERIFICAR
+          DETALHES
         </button>
+        {
+        pedido.status == "pending" ?(
+          <span className="status_pedido">
+            status: NÃO VERIFICADO
+          </span>
+        ):(
+          pedido.status == "approved" ?(
+            <span className="status_pedido">
+            status: <span style={{color:"green"}}>APROVADO</span>
+          </span>
+
+        ):(
+          <span className="status_pedido">
+           status: <span style={{color:"red"}}>NEGADO</span>
+          </span>
+        ))
+      }
       </div>
       <MdOutlineCancel className="Pedido_Cancel" onClick={Delete} />
     </div>

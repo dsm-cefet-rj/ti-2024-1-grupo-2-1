@@ -1,0 +1,33 @@
+.radio-btn{
+    width: 20px;
+    height: 20px;
+    border: 2px solid #014983;
+    border-radius: 50%;
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.label{
+    margin-left: 2px;
+    margin-top: -2px;
+}
+
+.radio-btn .checkmark{
+    width: calc(100% - 6px);
+    height:calc(100% - 6px) ;
+    background-color: #014983;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 0.5 ease;
+}
+.radio-btn input{
+    display: none;
+} 
+
+.radio-btn input:checked + .checkmark{
+    opacity: 1;
+
+}
