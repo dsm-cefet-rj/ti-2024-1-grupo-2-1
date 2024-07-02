@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { fetchUserByEmail } from "../../redux/user/slice";
 import { Layout } from "../../components/Layoutform";
 import { InputUsuario } from "../../components/InputUsuario";
+import { SuccessMessage } from "../../components/SuccessMessage";
 
 export const Login = () => {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [err, setErr] = useState("");
+  const[success,setSuccess]=useState("");
 
   const navigate = useNavigate();
 
@@ -33,8 +35,13 @@ export const Login = () => {
     dispatch(fetchUserByEmail({ email, senha }))
       .then((result) => {
         if (result.payload) {
-          alert("Usuário Logado!");
-          navigate("/");
+          setSuccess("Usuário Logado!");
+          setTimeout(()=>{
+            setSuccess("")
+          },3000)
+          setTimeout(()=>{
+            navigate("/");
+          },3000)
         } else {
           setErr("E-mail ou senha inválidos!");
         }
@@ -68,6 +75,7 @@ export const Login = () => {
             Login
           </button>
         </div>
+        <SuccessMessage text={success}/>
 
         <div className="text-center">
           <span className="txt1">Não possui conta?</span>

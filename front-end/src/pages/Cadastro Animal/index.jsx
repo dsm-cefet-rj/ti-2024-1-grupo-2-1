@@ -121,7 +121,7 @@ const CadastroAnimal = () => {
       <div className="div-container">
         <TitlePage text="Cadastro de animais"/>
         <div className="div-form">
-          <form onSubmit={cadastrarAnimal}>
+          <form  className="form-SignUp"onSubmit={cadastrarAnimal}>
             <h4 className="label-radio">Imagem do animal</h4>
             <label className="ft" for="ft_input" tabIndex={0}>
               <span className="ft_image">Escolha uma imagem</span>
@@ -133,7 +133,7 @@ const CadastroAnimal = () => {
               accept="image/"
               onChange={handleImageChange}
             />
-            <div className="wraper-input-c">
+            <div className="wraper-input-cad">
               <input
                 className={name !== "" ? "has-val input" : "input-c"}
                 type="name"
@@ -179,7 +179,7 @@ const CadastroAnimal = () => {
             />
             </div>
 
-            <div className="wraper-input-c">
+            <div className="wraper-input-cad">
               <input
                 className={age !== "" ? "has-val input" : "input-c"}
                 type="text"
@@ -192,7 +192,7 @@ const CadastroAnimal = () => {
               ></span>
             </div>
 
-            <div className="wraper-input-c">
+            <div className="wraper-input-cad">
               <input
                 className={history !== "" ? "has-val input" : "input-c"}
                 type="text"
@@ -204,7 +204,7 @@ const CadastroAnimal = () => {
                 data-placeholder="História do animal"
               ></span>
             </div>
-            <button className="cadastro-animal-bt" type="submit">
+            <button className="cadastro-animal-botao" type="submit">
               Cadastrar animal
             </button>
           </form>

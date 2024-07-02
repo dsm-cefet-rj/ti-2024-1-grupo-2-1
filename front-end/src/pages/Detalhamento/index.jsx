@@ -71,6 +71,7 @@ export const Detalhamento = () => {
       <HeaderMain />
       {animais && (
         <div className="div-main">
+                <TitlePage text="Detalhamento"/>
           <div className="div-topo">
             <div className="div-esquerda">
               <div className="navegacao">
@@ -84,7 +85,6 @@ export const Detalhamento = () => {
                     {animais && animais[0] && animais[0].nome}
                   </Breadcrumb.Item>
                 </Breadcrumb>
-                <TitlePage text="Detalhamento"/>
               </div>
 
               <img

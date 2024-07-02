@@ -1,0 +1,38 @@
+.SuccessContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #609966;
+    border-radius: 8px;
+    position: relative;
+    bottom: 5%;
+    left: 0%;
+    opacity: 0; /* Começa transparente */
+    visibility: hidden; /* Começa escondido */
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* Animação de 0.5s com easing */
+}
+
+.SuccessContainer.ativo{
+    opacity: 1; /* Fica opaco quando ativo */
+    visibility: visible; /* Fica visível quando ativo */
+}
+.SuccessText{
+    color: white;
+    font-weight: 300px;
+}
+
+@media (max-width: 460px) {
+    
+    .SuccessContainer{
+        width: 15rem;
+        left: 15%;
+        top: 15%;
+    }
+    
+    .SuccessText{
+        font-size: 12px;
+    }
+    
+
+}

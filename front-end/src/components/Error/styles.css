@@ -1,0 +1,38 @@
+.ErrorContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: rgb(189, 13, 13);
+    border-radius: 8px;
+    position: relative;
+    bottom: 2%;
+    left: 0%;
+    opacity: 0; /* Começa transparente */
+    visibility: hidden; /* Começa escondido */
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* Animação de 0.5s com easing */
+}
+
+.ErrorContainer.ativo{
+    opacity: 1; /* Fica opaco quando ativo */
+    visibility: visible; /* Fica visível quando ativo */
+}
+
+.ErrorText{
+    color: white;
+    font-weight: bold;
+}
+
+@media (max-width: 460px) {
+    
+    .ErrorContainer{
+        width: 15rem;
+        left: 15%;
+    }
+    
+    .ErrorText{
+        font-size: 12px;
+    }
+    
+
+}

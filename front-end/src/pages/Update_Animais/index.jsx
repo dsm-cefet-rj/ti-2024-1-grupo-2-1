@@ -155,7 +155,7 @@ const UpdateAnimais = () => {
               accept="image/"
               onChange={handleImageChange}
             />
-            <div className="wraper-input-c">
+            <div className="wraper-input-cad">
               <input
                 className={name !== "" ? "has-val input" : "input-c"}
                 type="name"
@@ -200,7 +200,7 @@ const UpdateAnimais = () => {
               onChange={(e)=>[setSex(e.target.value)]}
             />
             </div>
-            <div className="wraper-input-c">
+            <div className="wraper-input-cad">
               <input
                 className={age !== "" ? "has-val input" : "input-c"}
                 type="text"
@@ -213,7 +213,7 @@ const UpdateAnimais = () => {
               ></span>
             </div>
 
-            <div className="wraper-input-c">
+            <div className="wraper-input-cad">
               <input
                 className={history !== "" ? "has-val input" : "input-c"}
                 type="text"
@@ -225,7 +225,7 @@ const UpdateAnimais = () => {
                 data-placeholder="História do animal"
               ></span>
             </div>
-            <button className="cadastro-animal-bt" type="submit">
+            <button className="cadastro-animal-botao" type="submit">
               Atualizar Animal
             </button>
           </form>

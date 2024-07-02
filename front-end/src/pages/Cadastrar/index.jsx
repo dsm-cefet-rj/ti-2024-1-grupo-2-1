@@ -5,6 +5,7 @@ import { Layout } from "../../components/Layoutform";
 import { useDispatch } from "react-redux";
 import { addUserServer, emailExistServer } from "../../redux/user/slice";
 import { InputUsuario } from "../../components/InputUsuario";
+import {SuccessMessage} from "../../components/SuccessMessage";
 
 export const Cadastrar = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,8 @@ export const Cadastrar = () => {
   const [err, setErr] = useState("");
   const [errE, setErrE] = useState("");
   const [errP, setErrP] = useState("");
+  const [success, setSuccess] = useState("");
+  
 
   const navigate = useNavigate();
 
@@ -62,8 +65,14 @@ export const Cadastrar = () => {
       if (!isPasswordValid(senha, 5)) return;
       else {
         dispatch(addUserServer({ nome, email, senha }));
-        alert("Usuário cadastrado com sucesso!");
-        navigate("/login");
+        // alert("Usuário cadastrado com sucesso!");
+        setSuccess("Usuário cadastrado com sucesso!");
+        setTimeout(() => {
+          setSuccess("");
+        }, 3000);
+        setTimeout(()=>{
+          navigate("/login");
+        },2000)
       }
     });
   };
@@ -128,6 +137,7 @@ export const Cadastrar = () => {
           </button>
         </div>
         {/* <label className="erro">{err}</label> */}
+        <SuccessMessage text={success}/>
 
         <div className="text-center-r">
           <span className="txtr1">Possui conta?</span>
