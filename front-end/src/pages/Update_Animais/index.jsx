@@ -18,8 +18,8 @@ const UpdateAnimais = () => {
   const {id} = useParams();
   // const {currentUser} = useSelector((rootReducer)=>rootReducer.userReducer);
   const {currentAnimal} = useSelector((rootReducer)=>rootReducer.animalReducer);
-  
-  const dispatch =useDispatch();
+  const { status } = useSelector((rootReducer) => rootReducer.userReducer);
+  const dispatch = useDispatch();
 
   const [name, setName] = useState("");
   const [type, setType] = useState("");
@@ -30,8 +30,11 @@ const UpdateAnimais = () => {
   const [img, setImg] = useState("");
 
   useEffect(()=>{
-    dispatch(fetchOneAnimal(id));
-  },[])
+   if(status==="loaded"){
+     dispatch(fetchOneAnimal(id));
+   }
+  //  window.location.reload();
+},[]);
   useEffect(()=>{
     setName(currentAnimal.nome);
     setType(currentAnimal.tipo);

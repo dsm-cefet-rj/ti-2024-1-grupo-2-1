@@ -17,12 +17,15 @@ export const VerificarPedido = () => {
   const { currentAnimal } = useSelector(
     (rootReducer) => rootReducer.animalReducer
   );
+  const { status } = useSelector((rootReducer) => rootReducer.userReducer);
 
   console.log(currentOrder );
 
   useEffect(() => {
     dispatch(getOneRegister(id));
-    dispatch(fetchOneAnimal(currentOrder.idAnimal));
+    if(status === "loaded"){
+      dispatch(fetchOneAnimal(currentOrder.idAnimal));
+    }
   }, []);
   
   const handleVerify = (e) =>{
