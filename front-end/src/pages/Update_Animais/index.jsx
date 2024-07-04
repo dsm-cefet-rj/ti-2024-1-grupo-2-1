@@ -140,6 +140,7 @@ const UpdateAnimais = () => {
     {value: "Fêmea", label: "Fêmea"}
   ];
   return (
+    currentAnimal== null ?<></>: 
     <div>
       <HeaderMain />
       <div className="div-container">

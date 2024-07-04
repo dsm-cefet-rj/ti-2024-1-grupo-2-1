@@ -74,6 +74,7 @@ export const VerificarPedido = () => {
   }
 
   return (
+    currentAnimal== null ?<></>: 
     <>
       <HeaderMain />
       <div className="info-form-pedido">
