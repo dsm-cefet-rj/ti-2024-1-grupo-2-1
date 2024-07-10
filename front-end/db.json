@@ -2,7 +2,6 @@
   "animals": [
     {
       "id": "1",
-      "isfav": false,
       "img": "https://t2.gstatic.com/licensed-image?q=tbn:ANd9GcQOO0X7mMnoYz-e9Zdc6Pe6Wz7Ow1DcvhEiaex5aSv6QJDoCtcooqA7UUbjrphvjlIc",
       "nome": "Flavio",
       "tipo": "Cachorro",
@@ -141,17 +140,6 @@
       "sexo": "Fêmea",
       "idade": "8 anos",
       "história": "Conheça a encantadora Fiona: Uma gata majestosa à procura de um lar caloroso! Fiona chegou ao nosso abrigo após ser encontrada vagando pelas ruas, exibindo uma elegância e calma que capturou nossa atenção imediatamente. Com seus 8 anos de idade, ela é uma verdadeiro dama felina, sempre pronta para receber um carinho suave ou compartilhar um momento tranquilo ao sol. Fiona é do tipo que prefere uma vida serena, desfrutando de longas sonecas e observando o mundo ao seu redor com olhos sábios. Se você procura por uma companheira tranquila e amorosa para trazer serenidade ao seu lar, Fiona é a escolha perfeita. Ao adotá-la, você estará oferecendo a ela um lugar seguro e acolhedor para passar seus dias, enquanto ela retribui com todo o seu charme e afeto. Venha conhecer a adorável Fiona e descubra como sua presença pode transformar sua vida para sempre!"
-    },
-    {
-      "id": "14",
-      "isfav": false,
-      "img": "https://img.freepik.com/fotos-gratis/um-gato-brincalhao-espreitando-por-tras-de-uma-superficie-branca_60438-3920.jpg?size=626&ext=jpg&ga=GA1.1.1459418701.1707737255&semt=sph",
-      "nome": "Whiskers",
-      "tipo": "Gato",
-      "porte": "Médio",
-      "sexo": "Macho",
-      "idade": "10 anos",
-      "história": "Whiskers é um gato adorável que foi resgatado das ruas quando era apenas um filhote. Ele teve uma infância difícil, mas graças aos cuidados amorosos de seus protetores, ele se transformou em um gato carinhoso e brincalhão. Whiskers adora brincar com bolinhas de papel e tirar sonecas aconchegantes em seu cantinho favorito. Ele está ansioso para encontrar um lar amoroso onde possa receber todo o carinho e atenção que merece."
     },
     {
       "id": "15",
@@ -494,6 +482,22 @@
       "email": "admin@admin",
       "data": "2024-06-26",
       "hora": "14:30h"
+    },
+    {
+      "id": "3e9f",
+      "nome": "Adm",
+      "idUsuario": "0000",
+      "email": "admin@admin",
+      "data": "2024-07-04",
+      "hora": "12:00h"
+    },
+    {
+      "id": "8895",
+      "nome": "Adm",
+      "idUsuario": "0000",
+      "email": "admin@admin",
+      "data": "2024-07-11",
+      "hora": "14:00h"
     }
   ]
 }
