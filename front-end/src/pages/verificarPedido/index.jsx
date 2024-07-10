@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./index.css";
 import { useParams } from "react-router-dom";
-import { getOneRegister, updateRequest, orderNull } from "../../redux/pedidoAdocao/slice";
-import { useEffect } from "react";
+import { getOneRegister, updateRequest, orderNull, getRegisters } from "../../redux/pedidoAdocao/slice";
+import { useDebugValue, useEffect } from "react";
 import HeaderMain from "../../components/HeaderMain/index";
 import Footer from "../../components/Footer/index";
 import ContainerInfo from "../../components/Container-Info";
@@ -23,12 +23,17 @@ export const VerificarPedido = () => {
   console.log(currentOrder );
 
   useEffect(() => {
+    dispatch(getRegisters)
     dispatch(getOneRegister(id));
-    if(status === "loaded"){
-      dispatch(fetchOneAnimal(currentOrder.idAnimal));
-    }
   }, []);
   
+  useEffect(() => {
+    if(currentOrder !== null){
+      dispatch(fetchOneAnimal(currentOrder.idAnimal));
+    }else{
+      console.log("Carregando pedido de adoção")
+    }
+  }, [currentOrder])
   const handleVerify = (e) =>{
     e.preventDefault();
      
