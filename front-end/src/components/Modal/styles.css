@@ -1,0 +1,72 @@
+.div_modal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #e9e9e9;
+    border-radius: 8px;
+    position: relative;
+    bottom: 20%;
+    left: 0%;
+    box-shadow: 1px 1px 8px 0px rgba(0, 0, 0,0.7);
+    opacity: 0; /* Começa transparente */
+    visibility: hidden; /* Começa escondido */
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* Animação de 0.5s com easing */
+}
+
+.div_modal.ativo{
+    opacity: 1; /* Fica opaco quando ativo */
+    visibility: visible; /* Fica visível quando ativo */
+}
+/* .SuccessText{
+    color: white;
+    font-weight: 300px;
+} */
+
+.close-modal{
+    font-size: 25px;
+    top: 5%;
+    left: 90%;
+    color: red;
+    display: block;
+    position: absolute;
+    background-color: transparent;
+    border:none;
+    border-radius: 30px;
+    /* box-shadow: 1px 1px 8px 0px rgb(0, 0, 0); */
+    transition: transform 0.3s ease;
+}
+
+.close-modal:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.delete-Botao{
+    color: red;
+    width: 5rem;
+    background-color: white;
+    border:none;
+    border-radius: 7px;
+    box-shadow: 1px 1px 8px 0px rgb(0, 0, 0);
+    transition: transform 0.3s ease;
+    font-weight: bold;
+
+}
+
+.delete-Botao:hover {
+    cursor: pointer;
+    background: rgba(255, 0, 0, 1);
+    color: rgb(255, 255, 255);
+    box-shadow: 1px 1px 8px 0px rgba(255, 0, 0, 1);
+
+}
+.modal-Text{
+    font-weight: bold;
+}
+
+.modal_btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -13,6 +13,7 @@ import { useSelector, useDispatch } from "react-redux";
 import TitlePage from '../../components/Title-Page';
 import { InputUsuario } from '../../components/InputUsuario';
 import RadioInput from '../../components/RadioInput';
+import {SuccessMessage}  from "../../components/SuccessMessage"
 
 const UpdateAnimais = () => {
   const {id} = useParams();
@@ -20,6 +21,7 @@ const UpdateAnimais = () => {
   const {currentAnimal} = useSelector((rootReducer)=>rootReducer.animalReducer);
   const { status } = useSelector((rootReducer) => rootReducer.userReducer);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [type, setType] = useState("");
@@ -28,6 +30,7 @@ const UpdateAnimais = () => {
   const [age, setAge] = useState("");
   const [history, setHistory] = useState("");
   const [img, setImg] = useState("");
+  const [message, setMessage] = useState("");
 
   useEffect(()=>{
    if(status==="loaded"){
@@ -113,6 +116,7 @@ const UpdateAnimais = () => {
   }
   const handleUpdate =(e)=>{
     e.preventDefault();
+    setMessage("Animal atualizado com sucesso.");
     dispatch(updateAnimals({
       id:id,
       isFav:currentAnimal.isFav,
@@ -124,6 +128,10 @@ const UpdateAnimais = () => {
       idade:age,
       história:history,
     }))
+
+    setTimeout(()=>{
+      navigate("/home")
+    },3000)
   }
 
   const items=[
@@ -232,6 +240,7 @@ const UpdateAnimais = () => {
             <button className="cadastro-animal-botao" type="submit">
               Atualizar Animal
             </button>
+            <SuccessMessage text={message}/>
           </form>
         </div>
       </div>

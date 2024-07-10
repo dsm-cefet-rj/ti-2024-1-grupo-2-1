@@ -11,11 +11,11 @@ const ErrorMessage = ({text}) => {
       }
     }, [text]);
   
-    return text ? (
+    return(
     <div className={`ErrorContainer ${ativo && 'ativo'}`}>
       <text className="ErrorText">{text}</text>
     </div>
-  ) : null
+  ) 
 }
 
 export default ErrorMessage

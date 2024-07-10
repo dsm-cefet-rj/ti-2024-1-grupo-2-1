@@ -11,11 +11,11 @@ export const SuccessMessage = ({text}) => {
       }
     }, [text]);
   
-    return text ? (
+    return (
     <div className={`SuccessContainer ${ativo && 'ativo'}`}>
       <text className="SuccessText">{text}</text>
     </div>
-  ) : null
+  )
 }
 
 

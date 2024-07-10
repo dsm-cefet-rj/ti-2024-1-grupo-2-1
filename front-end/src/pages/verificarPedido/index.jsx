@@ -5,6 +5,7 @@ import { getOneRegister, updateRequest, orderNull } from "../../redux/pedidoAdoc
 import { useEffect } from "react";
 import HeaderMain from "../../components/HeaderMain/index";
 import Footer from "../../components/Footer/index";
+import ContainerInfo from "../../components/Container-Info";
 import { fetchOneAnimal } from "../../redux/Animais/slice";
 import { FiCheck, FiX } from "react-icons/fi";
 import logo from "../../assets/logopreta2.png";
@@ -87,57 +88,49 @@ export const VerificarPedido = () => {
             id="img_animal"
           ></img>
         </div>
+          <div className="info-Principais">
+            <ContainerInfo
+            label={"Nome do adotante:"}
+            info={currentOrder.nomeAdotante}
+            label2={"Nome do animal:"}
+            info2={currentOrder.nomeAnimal}
+            />
+          </div>
         <div className="info-form_lados">
           <div className="info-form-pedido_esquerda">
-            <p className="topico_registro">Nome do adotante:</p>
-            {currentOrder && (
-              <p className="resp_registro">{currentOrder.nomeAdotante}</p>
-            )}
-            <p className="topico_registro">Celular do adotante:</p>
-            {currentOrder && (
-              <p className="resp_registro">{currentOrder.celAdotante}</p>
-            )}
-            <p className="topico_registro">CPF do adotante:</p>
-            {currentOrder && (
-              <p className="resp_registro">{currentOrder.cpfAdotante}</p>
-            )}
-            <p className="topico_registro">Email do adotante:</p>
-            {currentOrder && (
-              <p className="resp_registro">{currentOrder.emailAdotante}</p>
-            )}
-            <p className="topico_registro">Idade do adotante:</p>
-            {currentOrder && (
-              <p className="resp_registro">{currentOrder.idadeAdotante}</p>
-            )}
+            <ContainerInfo
+            label={"Celular do adotante:"}
+            label2={"CPF do adotante:"}
+            info={currentOrder.celAdotante}
+            info2={currentOrder.cpfAdotante}
+            />
+             <ContainerInfo
+            label={"Email do adotante:"}
+            label2={"idade do adotante:"}
+            info={currentOrder.emailAdotante}
+            info2={currentOrder.idadeAdotante}
+            />
           </div>
 
           <span className="linha_h"></span>
 
           <div className="info-form-pedido_direita">
-            <p className="topico_registro">Nome do animal:</p>
-            {currentOrder && (
-              <p className="resp_registro">{currentOrder.nomeAnimal}</p>
-            )}
-            <p className="topico_registro">Idade do animal: </p>
-            {currentAnimal && (
-              <p className="resp_registro">{currentAnimal.idade}</p>
-            )}
-            <p className="topico_registro">Tipo do animal: </p>
-            {currentAnimal && (
-              <p className="resp_registro">{currentAnimal.tipo}</p>
-            )}
-            <p className="topico_registro">Porte do animal: </p>
-            {currentAnimal && (
-              <p className="resp_registro">{currentAnimal.porte}</p>
-            )}
-            <p className="topico_registro">Sexo do animal:</p>
-            {currentAnimal && (
-              <p className="resp_registro">{currentAnimal.sexo}</p>
-            )}
+          <ContainerInfo
+            label={"Idade do animal:"}
+            label2={"Tipo do animal:"}
+            info={currentAnimal.idade}
+            info2={currentAnimal.tipo}
+            />
+            <ContainerInfo
+            label={"Porte do animal:"}
+            label2={"Sexo do animal:"}
+            info={currentAnimal.porte}
+            info2={currentAnimal.sexo}
+            />
           </div>
         </div>
         <div className="info-form-responsabilidade">
-        <h3>Responsabilidade de Adoção</h3>
+        <h3 className="subtittle">Responsabilidade de Adoção</h3>
         <span className="sublinha-form-responsabilidade"></span>
         <div className="info-form-resp">
 

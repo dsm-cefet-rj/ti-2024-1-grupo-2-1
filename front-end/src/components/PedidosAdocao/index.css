@@ -51,7 +51,7 @@
 }
 
 .Pedido_Cancel{
-    font-size: 40px;
+    font-size: 30px;
     color: red;
     display: block;
     position: absolute;
@@ -59,7 +59,7 @@
     margin-left: 43rem;
     background-color: white;
     border:none;
-    border-radius: 30px;
+    border-radius: 15px;
     box-shadow: 1px 1px 8px 0px rgb(0, 0, 0);
     transition: transform 0.3s ease;
 }

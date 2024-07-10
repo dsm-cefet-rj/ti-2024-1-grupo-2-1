@@ -1,24 +1,24 @@
-import React from "react";
-import { IoMdHeart } from "react-icons/io";
-import { IoIosHeartEmpty } from "react-icons/io";
+import React, {useEffect, useRef, useState} from "react";
+import { IoMdHeart, IoIosHeartEmpty } from "react-icons/io";
 import "./style.css";
 import Card from "react-bootstrap/Card";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addAnimalToFav, removeAnimalToFav } from "../../redux/favanimal/slice";
-import { changeAnimalIsFav, deleteAnimal } from "../../redux/Animais/slice";
-import { MdOutlineCancel } from "react-icons/md";
-import { FaPencil } from "react-icons/fa6";
+import { changeAnimalIsFav, deleteAnimal, fetchAnimais } from "../../redux/Animais/slice";
+import { FaTrash } from "react-icons/fa";
 import { addAnimalFavServer } from "../../redux/AnimaisFav/slice";
+import Modal from "../Modal";
+import { FaPenClip } from "react-icons/fa6";
 
 const PetCards = ({ animais }) => {
   const id = animais.id;
   const { currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
   // const { animaisFav }  = useSelector((rootReducer) => rootReducer.animaisFavReducer)
   const [fav, setFav] = useState(animais.isfav);
+  const[visible,setVisible] =useState(false);
+  const[visivel,setVisivel] =useState(false);
+  const modalRef = useRef(null);
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -41,6 +41,24 @@ const PetCards = ({ animais }) => {
       alert("Você precisa estar logado para favoritar um animal");
     }
   };
+
+  useEffect(() => {
+    // Adiciona um ouvinte de evento de clique ao documento inteiro
+    function handleClickOutside(event) {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        // Clique fora do botão de perfil, então ele é escondido
+        setVisible(false);
+      }
+    }
+
+    document.addEventListener("click", handleClickOutside);
+
+    // Limpa o ouvinte de evento quando o componente de mostrar perfil é desmontado
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+  
   
   const handleRemove = () => {
     dispatch(removeAnimalToFav(animais.id));
@@ -56,14 +74,13 @@ const PetCards = ({ animais }) => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
-
   const Delete = (e) => {
     e.preventDefault();
     dispatch(deleteAnimal(id));
-    window.location.reload();
+    dispatch(fetchAnimais())
+    // window.location.reload();
   };
-  const Update = (e) =>{
-    e.preventDefault();
+  const Update = () =>{
     navigate(`/update_animal/${id}`);
     {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -71,6 +88,7 @@ const PetCards = ({ animais }) => {
   }
 
   return (
+    <>
     <Card className="card-animal" style={{ width: "18rem" }}>
       <Card.Img variant="top" src={animais.img} />
       <Card.Body>
@@ -84,15 +102,24 @@ const PetCards = ({ animais }) => {
           {animais && <p> Idade: {animais.idade}</p>}
           {animais && <p> Porte: {animais.porte}</p>}
         </Card.Text>
-        {/* <Button variant="primary" onClick={handleSubmit} >Detalhes</Button> */}
-
         <button className="info" onClick={handleClick}>
           Detalhes
         </button>
+        {currentUser !== null && currentUser.nome === "Adm" && currentUser.email === "admin@admin" ? 
+        <button className="info"onClick={Update}>
+          <FaPenClip /> Editar 
+        </button>: <></>}
       </Card.Body>
-      {currentUser !== null && currentUser.nome === "Adm" && currentUser.email === "admin@admin" ? <MdOutlineCancel className="animal_delete" onClick={Delete} /> : <></>}
-      {currentUser !== null && currentUser.nome === "Adm" && currentUser.email === "admin@admin" ? <FaPencil className="animal_update" onClick={Update} /> : <></>}
+      {currentUser !== null && currentUser.nome === "Adm" && currentUser.email === "admin@admin" ? <button ref={modalRef}  className="botao-options" onClick={()=>{setVisible(true)}} > <FaTrash className="animal_options"/> </button>: <></>}
     </Card>
+      <Modal 
+        visivel={visible}
+        close={()=>{setVisible(false)}}
+        onClick={Delete}
+        text={"Deseja excluir esse animal?"}
+        labelButton={`Excluir `}
+        />
+    </>
   );
 };
 

@@ -1,0 +1,30 @@
+.container-Info{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items:flex-start;
+    max-width: 50rem;
+    right: 7rem;
+}
+.infor-dir, .infor-esq{
+    display: flex;
+    margin-right:0.5rem;
+}
+
+.label{
+    font-size: 25px;
+    color: #636262;
+    line-height: 1.3;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+.informacao{
+    font-size: 20px;
+    color: #000000;
+    line-height: 1.5;
+    font-weight: 700;
+    margin-bottom: 7px;
+    padding-left: 10px;
+    border:none;
+}
