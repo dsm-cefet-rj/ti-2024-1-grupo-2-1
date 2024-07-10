@@ -20,17 +20,17 @@ export const VerificarPedido = () => {
   );
   const { status } = useSelector((rootReducer) => rootReducer.userReducer);
 
-  console.log(currentOrder );
+  console.log(currentOrder);
 
   useEffect(() => {
-    dispatch(getRegisters)
-    dispatch(getOneRegister(id));
+    dispatch(getRegisters);
   }, []);
   
   useEffect(() => {
-    if(currentOrder !== null){
-      dispatch(fetchOneAnimal(currentOrder.idAnimal));
+    if(currentOrder == null){
+      dispatch(getOneRegister(id));
     }else{
+      dispatch(fetchOneAnimal(currentOrder.idAnimal));
       console.log("Carregando pedido de adoção")
     }
   }, [currentOrder])
@@ -80,7 +80,7 @@ export const VerificarPedido = () => {
   }
 
   return (
-    currentAnimal== null ?<></>: 
+    currentAnimal == null ?<></>: 
     <>
       <HeaderMain />
       <div className="info-form-pedido">
