@@ -19,7 +19,7 @@ const RadioInput = ({name, items, value, onChange}) => {
           />
           <span className="checkmark"/>
           </label>
-          <label for={name + item.value} className="label">{item.label}</label>
+          <label for={name + item.value} className="label-radioBTN">{item.label}</label>
         </div>
       ))}
     </>
