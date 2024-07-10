@@ -33,19 +33,23 @@ const UpdateAnimais = () => {
   const [message, setMessage] = useState("");
 
   useEffect(()=>{
-   if(status==="loaded"){
+     dispatch(fetchAnimais);
      dispatch(fetchOneAnimal(id));
-   }
   //  window.location.reload();
 },[]);
   useEffect(()=>{
-    setName(currentAnimal.nome);
-    setType(currentAnimal.tipo);
-    setSize(currentAnimal.porte);
-    setSex(currentAnimal.sexo);
-    setAge(currentAnimal.idade);
-    setHistory(currentAnimal.história);
-    image(currentAnimal.img);
+    if(currentAnimal !== null){
+      setName(currentAnimal.nome);
+      setType(currentAnimal.tipo);
+      setSize(currentAnimal.porte);
+      setSex(currentAnimal.sexo);
+      setAge(currentAnimal.idade);
+      setHistory(currentAnimal.história);
+      image(currentAnimal.img);
+      console.log(type)
+    }else{
+      console.log("Carregando animal")
+    }
     console.log(type)
   },[currentAnimal])
   
@@ -148,7 +152,7 @@ const UpdateAnimais = () => {
     {value: "Fêmea", label: "Fêmea"}
   ];
   return (
-    currentAnimal== null ?<></>: 
+    currentAnimal === null ? <div><h1>O animal é null</h1></div> : 
     <div>
       <HeaderMain />
       <div className="div-container">
