@@ -2,8 +2,26 @@ import React from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./style.css";
 import { useState } from "react";
+/** 
+ * @module Componente/Input_Usuario
+ *  */
 
-export const InputUsuario = ({
+/** 
+ * @typedef InputUsuario
+ * @type {React.FC}
+*/
+
+/** 
+ * Renderiza um input personalizado para atividades do usuário 
+ * @param {string} valor - O valor que o input adquire
+ * @param {string} type - Tipo do input
+ * @param {string} value - O valor que o input adquire
+ * @param {Function} onChange - Função que muda o valor do input a cada iteração
+ * @param {string} label - Texto que server como placeholder
+ * @param {string} error - Mostrará uma mensagem de erro, caso haja um.
+ * @returns {React.FC} O componente renderizado.
+*/
+const InputUsuario = ({
   valor,
   type,
   value,
@@ -44,3 +62,5 @@ export const InputUsuario = ({
     </>
   );
 };
+
+export default InputUsuario

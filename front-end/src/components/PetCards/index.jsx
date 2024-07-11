@@ -10,6 +10,25 @@ import { FaTrash } from "react-icons/fa";
 import { addAnimalFavServer } from "../../redux/AnimaisFav/slice";
 import Modal from "../Modal";
 import { FaPenClip } from "react-icons/fa6";
+/**
+ * @module Componente/Card_Pet
+ */
+
+/**
+ * @typedef PetCards
+ * @type {React.FC}
+ * @property {number}id - Identificador do animal.
+ * @property {string}nome - Nome do animal.
+ * @property {URL}img - URL da foto do animal.
+ * @property {string}idade - idade do animal.
+ * @property {string}porte - porte do animal.
+ *
+ */
+/**
+ * Componente React para exibir informações de animal e permitir a exclusão ou atualização do animal(somente admin).
+ * @param {object} pedido - O objeto que contem as informações
+ * @returns {React.FC} - Retorna um componente React
+ */
 
 const PetCards = ({ animais }) => {
   const id = animais.id;

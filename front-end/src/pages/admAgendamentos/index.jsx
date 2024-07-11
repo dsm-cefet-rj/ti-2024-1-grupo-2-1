@@ -6,14 +6,31 @@ import { getVisitations } from "../../redux/agendamento/slice";
 import "./index.css";
 import { useEffect } from "react";
 import TitlePage from "../../components/Title-Page";
+/**
+* @module Page/Tela_de_admAgendamento
+*/
 
-export const AdmAgendamento = () => {
+/**
+* @typedef AdmAgendamento
+* @type {React.FC}
+*/
+/**
+* Componente React para gerenciar a visualização e edição de agendamentos
+* @returns {React.FC} - Um componente React que renderiza a tela de agendamentos.
+ */
+
+
+const AdmAgendamento = () => {
+  // Dispatch do Redux para disparar ações
   const dispatch = useDispatch();
+  // Estado para armazenar o status da busca
   const { status } = useSelector((rootReducer) => rootReducer.schedulingSlice);
+  // Estado para armazenar os agendamentos
   const { visitations } = useSelector(
     (rootReducer) => rootReducer.schedulingSlice
   );
 
+  // Efeito para buscar agendamentos na inicialização do componente
   useEffect(() => {
     dispatch(getVisitations());
 

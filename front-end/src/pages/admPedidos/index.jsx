@@ -8,7 +8,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { Grade } from "../../components/GridContainer";
 import TitlePage from "../../components/Title-Page";
 
-export const AdmPedidos = () => {
+/**
+ * @module Page/Tela_de_admPedidos
+ *  
+ */
+/**
+* @typedef AdmPedidos
+* @type {React.FC}
+*/
+/**
+* Componente React para gerenciar a visualização e edição de pedidos de adoção
+* @returns {React.FC} - Um componente React que renderiza a tela de pedidos de adoção.
+ */
+
+
+const AdmPedidos = () => {
   const dispatch = useDispatch();
   const { orders } = useSelector(
     (rootReducer) => rootReducer.pedidoAdocaoReducer
@@ -22,7 +36,6 @@ export const AdmPedidos = () => {
     dispatch(getRegisters()); // Carregar dados no useEffect
 
     if (status === "deleted") {
-      console.log("chegou aqui");
       dispatch(getRegisters());
     }
   }, [orders.length]); // Dependências vazias para evitar execuções subsequentes(colocado orders

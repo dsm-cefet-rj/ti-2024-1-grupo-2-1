@@ -1,5 +1,22 @@
-import React from 'react'
+import React, { Component } from 'react'
 import "./styles.css"
+/** 
+ * @module ComponenteInformacao/ContainerInfo
+ *  */
+
+/** 
+ * @typedef ContainerInfo
+ * @type {React.FC}
+*/
+
+/** 
+ * Renderiza uma linha com informações do pedido de adoção
+ * @param {string} label  - Uma legenda da primeira informação 
+ * @param {string} label2 - Uma legenda da segunda informação 
+ * @param {string} info  - Informações que será apresentada
+ * @param {string} info2  - Informações que será apresentada
+ * @returns {React.FC} O componente renderizado.
+*/
 
 const ContainerInfo = ({label, label2, info, info2}) => {
   return (

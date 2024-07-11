@@ -1,10 +1,28 @@
 import "./index.css";
-import { React, useState } from "react";
+import { Component, React, useState } from "react";
 import { MdOutlineCancel } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { deleteVisitation } from "../../redux/agendamento/slice";
 
-export const Agendamento = ({ infos }) => {
+/** 
+ * @module Cards/Cards_de_Agendamento
+ *  */
+
+/** 
+ * @typedef Agendamento
+ * @type {React.FC}
+ * @property {number} id - Identificador.
+ * @property {string} data - Dia do agendamento
+ * @property {string} hora - Horário do agendamento
+*/
+
+/** 
+  Renderiza cards contendo informações de agendamentos realizados,juntamente com um botão de excluir.
+ * @param {Object} infos - Objeto agendamento com informações do agendamento
+  @returns {React.FC} O componente renderizado.
+*/
+
+const Agendamento = ({ infos }) => {
   const id = infos.id;
   const dispatch = useDispatch();
 

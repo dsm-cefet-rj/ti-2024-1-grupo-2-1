@@ -1,6 +1,21 @@
 import React from "react";
 import "./styles.css";
+/**
+ * @module Componente/RadioInput
+ */
 
+/**
+ * @typedef RadioInput
+ * @type {React.FC}
+ */
+/**
+ * Componente React para exibir inputs do tipo button radio
+ * @param {string} name - o texto que serve como opção
+ * @param {Array} items - Array que contem a quantidade de opções
+ * @param {string} value - Indica o valor do input.
+ * @param {Function} onChange - Função que altera o valor do input.
+ * @returns {React.FC} - Retorna um componente React
+ */
 
 const RadioInput = ({name, items, value, onChange}) => {
   return (

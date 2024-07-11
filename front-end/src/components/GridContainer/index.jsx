@@ -3,8 +3,21 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+/** 
+ * @module Componente/Grade
+ *  */
 
-export const Grade = (props) => {
+/** 
+ * @typedef Grade
+ * @type {React.FC}
+*/
+
+/** 
+ * Renderiza uma grid que se adequa ao tamanho da página
+ * @param {React.ReactNode} props.children - Lista de cards a serem exibidos na grade.
+ * @returns {React.FC} O componente renderizado.
+*/
+const Grade = (props) => {
   return (
     <Container fluid>
       <Row className="justify-content-center">
@@ -26,3 +39,5 @@ export const Grade = (props) => {
     </Container>
   );
 };
+
+export default Grade

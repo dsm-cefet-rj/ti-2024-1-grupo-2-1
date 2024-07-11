@@ -1,5 +1,26 @@
 import React, { useState } from "react";
 import "./style.css";
+/** 
+ * @module Componente/Filtro
+ *  */
+
+/** 
+ * @typedef Filtro
+ * @type {React.FC}
+*/
+
+/** 
+ * Renderiza um componente contendo um filtro para ser utilizado para filtrar animais
+ * @param {string} filter - Informações do tipo de animal a ser filtrado
+ * @param {string} setFilter - Uma função para definir tipo de animail a ser filtrado
+ * @param {string} porteFilter - Informações do porte de animal a ser filtrado
+ * @param {string} setPorteFilter - Uma função para definir o porte de animail a ser filtrado
+ * @param {string} sexoFilter - Informações do sexo de animal a ser filtrado
+ * @param {string} setSexoFilter - Uma função para definir o sexo de animail a ser filtrado
+ * @param {string} idadeFilter - Informações do idade de animal a ser filtrado
+ * @param {string} setIdadeFilter - Uma função para definir a idade de animail a ser filtrado
+ * @returns {React.FC} O componente renderizado.
+*/
 
 const Filtro = ({
   filter,

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Filter/filtro.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Filter/filtro.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState } from "react";
+import "./style.css";
+/** 
+ * @module Componente/Filtro
+ *  */
+
+/** 
+ * @typedef Filtro
+ * @type {React.FC}
+*/
+
+/** 
+ * Renderiza um componente contendo um filtro para ser utilizado para filtrar animais
+ * @param {string} filter - Informações do tipo de animal a ser filtrado
+ * @param {string} setFilter - Uma função para definir tipo de animail a ser filtrado
+ * @param {string} porteFilter - Informações do porte de animal a ser filtrado
+ * @param {string} setPorteFilter - Uma função para definir o porte de animail a ser filtrado
+ * @param {string} sexoFilter - Informações do sexo de animal a ser filtrado
+ * @param {string} setSexoFilter - Uma função para definir o sexo de animail a ser filtrado
+ * @param {string} idadeFilter - Informações do idade de animal a ser filtrado
+ * @param {string} setIdadeFilter - Uma função para definir a idade de animail a ser filtrado
+ * @returns {React.FC} O componente renderizado.
+*/
+
+const Filtro = ({
+  filter,
+  setFilter,
+  porteFilter,
+  setPorteFilter,
+  sexoFilter,
+  setSexoFilter,
+  idadeFilter,
+  setIdadeFilter,
+}) => {
+  const [selectedFilter, setSelectedFilter] = useState(filter);
+  const [selectedPorteFilter, setSelectedPorteFilter] = useState(porteFilter);
+  const [selectedSexoFilter, setSelectedSexoFilter] = useState(sexoFilter);
+  const [selectedIdadeFilter, setSelectedIdadeFilter] = useState(idadeFilter);
+  const [err, setErr] = useState("");
+
+  const handleFilterChange = (e) => {
+    setSelectedFilter(e.target.value);
+  };
+
+  const handlePorteChange = (e) => {
+    setSelectedPorteFilter(e.target.value);
+  };
+  const handleSexoChange = (e) => {
+    setSelectedSexoFilter(e.target.value);
+  };
+
+  const handleIdadeChange = (e) => {
+    setSelectedIdadeFilter(e.target.value);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    setFilter(selectedFilter);
+    setPorteFilter(selectedPorteFilter);
+    setSexoFilter(selectedSexoFilter);
+    setIdadeFilter(selectedIdadeFilter);
+  };
+
+  return (
+    &lt;form className="filtro" onSubmit={handleSubmit}>
+      &lt;span className="titlle">Alguns animais para adoção&lt;/span>
+      &lt;span className="line">&lt;/span>
+      &lt;div className="search-filter">
+        &lt;div className="above-filter">
+          &lt;div className="filtro-select">
+            &lt;p>Tipos de animal&lt;/p>
+            &lt;select onChange={handleFilterChange}>
+              &lt;option value="All">Todos&lt;/option>
+              &lt;option value="Gato">Gato&lt;/option>
+              &lt;option value="Cachorro">Cachorro&lt;/option>
+            &lt;/select>
+          &lt;/div>
+          &lt;div className="filtro-select">
+            &lt;p>Porte do animal&lt;/p>
+            &lt;select onChange={handlePorteChange}>
+              &lt;option value="All">Todos&lt;/option>
+              &lt;option value="Grande">Grande&lt;/option>
+              &lt;option value="Médio">Médio&lt;/option>
+              &lt;option value="Pequeno">Pequeno&lt;/option>
+            &lt;/select>
+          &lt;/div>
+        &lt;/div>
+
+        &lt;div className="under-filter">
+          &lt;div className="filtro-select">
+            &lt;p>Sexo do animal&lt;/p>
+            &lt;select onChange={handleSexoChange}>
+              &lt;option value="All">Todos&lt;/option>
+              &lt;option value="Macho">Macho&lt;/option>
+              &lt;option value="Fêmea">Fêmea&lt;/option>
+            &lt;/select>
+          &lt;/div>
+          &lt;div className="filtro-select">
+            &lt;p>Idade do animal&lt;/p>
+            &lt;select onChange={handleIdadeChange}>
+              &lt;option value="All">Todos&lt;/option>
+              &lt;option value="1 ano">1 ano&lt;/option>
+              &lt;option value="2 anos">2 anos&lt;/option>
+              &lt;option value="3 anos">3 anos&lt;/option>
+              &lt;option value="4 anos">4 anos&lt;/option>
+              &lt;option value="5 anos">5 anos&lt;/option>
+              &lt;option value="6 anos">6 anos&lt;/option>
+              &lt;option value="7 anos">7 anos&lt;/option>
+              &lt;option value="8 anos">8 anos&lt;/option>
+              &lt;option value="9 anos">9 anos&lt;/option>
+              &lt;option value="10 anos">10 anos&lt;/option>
+              &lt;option value="11 anos">11 anos&lt;/option>
+              &lt;option value="12 anos">12 anos&lt;/option>
+              &lt;option value="13 anos">13 anos&lt;/option>
+              &lt;option value="14 anos">14 anos&lt;/option>
+            &lt;/select>
+          &lt;/div>
+          &lt;div className="btnn-search">
+            &lt;button className="bt-search" type="submit">
+              Buscar
+            &lt;/button>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    &lt;/form>
+  );
+};
+
+export default Filtro;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Cards_Cards_de_Agendamento.html">Cards/Cards_de_Agendamento</a></li><li><a href="module-Componente_Card_PedidoAdocao.html">Componente/Card_PedidoAdocao</a></li><li><a href="module-Componente_Card_Pet.html">Componente/Card_Pet</a></li><li><a href="module-Componente_Filtro.html">Componente/Filtro</a></li><li><a href="module-Componente_Footer.html">Componente/Footer</a></li><li><a href="module-Componente_Grade.html">Componente/Grade</a></li><li><a href="module-Componente_Header.html">Componente/Header</a></li><li><a href="module-Componente_Input_Usuario.html">Componente/Input_Usuario</a></li><li><a href="module-Componente_Layout.html">Componente/Layout</a></li><li><a href="module-Componente_Modal.html">Componente/Modal</a></li><li><a href="module-Componente_Paginacao.html">Componente/Paginacao</a></li><li><a href="module-Componente_RadioInput.html">Componente/RadioInput</a></li><li><a href="module-Componente_TittlePage.html">Componente/TittlePage</a></li><li><a href="module-ComponenteInformacao_ContainerInfo.html">ComponenteInformacao/ContainerInfo</a></li><li><a href="module-MessageReturn_Mensagem_De_Erro.html">MessageReturn/Mensagem_De_Erro</a></li><li><a href="module-MessageReturn_Mensagem_De_Sucesso.html">MessageReturn/Mensagem_De_Sucesso</a></li><li><a href="module-Page_Tela_deAgendamento.html">Page/Tela_deAgendamento</a></li><li><a href="module-Page_Tela_de_admAgendamento.html">Page/Tela_de_admAgendamento</a></li><li><a href="module-Page_Tela_de_admPedidos.html">Page/Tela_de_admPedidos</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Thu Jul 11 2024 19:49:30 GMT-0300 (Horário Padrão de Brasília)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

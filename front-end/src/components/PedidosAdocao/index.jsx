@@ -8,7 +8,27 @@ import { useNavigate } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
 import Modal from "../Modal";
 
-export const PedidoAdocao = ({ pedido }) => {
+/**
+ * @module Componente/Card_PedidoAdocao
+ */
+
+/**
+ * @typedef PedidoAdocao
+ * @type {React.FC}
+ * @property {number}id - Identificador do pedido de adoção.
+ * @property {string}nome - Nome do animal a ser adotado.
+ * @property {URL}foto - URL da foto do animal a ser adotado.
+ * @property {string}descricao - Descrição do animal a ser adotado.
+ * @property {string}situacao - Situação do pedido de adoção (pendente, aprovado, recusado).
+ *
+ */
+/**
+ * Componente React para exibir informações de um pedido de adoção e permitir a exclusão do pedido(somente admin).
+ * @param {object} pedido - O objeto que contem as informações
+ * @returns {React.FC} - Retorna um componente React
+ */
+
+const PedidoAdocao = ({ pedido }) => {
   const id = pedido.id;
   console.log(id);
   const dispatch = useDispatch();

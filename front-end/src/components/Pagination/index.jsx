@@ -3,6 +3,22 @@ import "./style.css";
 
 const Max_items = 5;
 const Max_Left = (Max_items - 1) / 2;
+/** 
+ * @module Componente/Paginacao
+ *  */
+
+/** 
+ * @typedef Paginacao
+ * @type {React.FC}
+*/
+
+/** 
+ * Renderiza botoes que servem como paginação.
+ * @param {number} paginaAtual - Representa a pagina atual da grade de paginação
+ * @param {number} pages - Quantidade de paginas que há
+ * @param {Function} setPaginaAtual - Uma função para definir a página atualmente selecionada.
+ * @returns {React.FC} O componente renderizado.
+*/
 
 const Paginacao = ({ paginaAtual, pages, setPaginaAtual }) => {
   // const last = Math.min(pages, first + Max_items - 1)

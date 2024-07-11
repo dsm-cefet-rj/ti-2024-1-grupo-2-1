@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: HeaderMain/index.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: HeaderMain/index.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useEffect, useState, useRef } from "react";
+import "./style.css";
+import { FaBars } from "react-icons/fa";
+import { useNavigate, Link } from "react-router-dom";
+import Logo from "../../assets/logo2.png";
+import Logo2 from "../../assets/logopart2.png";
+import { VscAccount } from "react-icons/vsc";
+import { useSelector, useDispatch } from "react-redux";
+import { logOut } from "../../redux/user/slice";/** 
+* @module Componente/Header
+*  */
+
+/** 
+* @typedef HeaderMain
+* @type {React.FC}
+*/
+
+/** 
+* Renderiza container de header para a página.
+* @returns {React.FC} O componente renderizado.
+*/
+
+const HeaderMain = () => {
+  const navigate = useNavigate();
+  const [infoOpen, setInfoOpen] = useState(false);
+  const perfilRef = useRef(null);
+  const [menuOpen, setMenuOpen] = useState(true);
+  const [id, setId] = useState("");
+
+  //acessando o objeto usuario, afim de pegar os dados, atraves do useSelector
+  const { currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
+  useEffect(() => {
+    if (currentUser != null) {
+      setId(currentUser.id);
+    }
+  });
+  //altera os dados do objeto
+  const dispatch = useDispatch();
+
+  const handleLogOut = () => {
+    navigate("/");
+    dispatch(logOut());
+    window.location.reload();
+  };
+  const handleAcount = () => {
+    navigate(`../detalhes_conta/${id}`);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      if (window.innerWidth &lt;= 980) {
+        setMenuOpen(false);
+      }
+      if (window.innerWidth >= 980) {
+        setMenuOpen(true);
+      }
+    });
+  });
+  const goLogin = () => {
+    navigate("/login");
+  };
+  const goSignup = () => {
+    navigate("/cadastrar");
+  };
+
+  useEffect(() => {
+    // Adiciona um ouvinte de evento de clique ao documento inteiro
+    function handleClickOutside(event) {
+      if (perfilRef.current &amp;&amp; !perfilRef.current.contains(event.target)) {
+        // Clique fora do botão de perfil, então ele é escondido
+        setInfoOpen(false);
+      }
+    }
+
+    document.addEventListener("click", handleClickOutside);
+
+    // Limpa o ouvinte de evento quando o componente de mostrar perfil é desmontado
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+  
+  const toMain =()=>{
+    navigate("/");
+    window.location.reload();
+  }
+
+  return (
+    &lt;div className="headermain">
+      &lt;div className="header-container">
+        &lt;div className="logo">
+          &lt;Link onClick={toMain}>
+            &lt;img className="pata" src={Logo} alt="" />
+            &lt;img className="logo_nome" src={Logo2} alt="" />
+          &lt;/Link>
+        &lt;/div>
+        &lt;FaBars
+          className="barrinhas"
+          style={{ color: "rgb(1, 73, 131)" }}
+          onClick={() => {
+            setMenuOpen(!menuOpen);
+          }}
+        />
+      &lt;/div>
+      {menuOpen &amp;&amp; (
+        &lt;nav className="navbarra">
+          &lt;Link
+            style={{ textDecoration: "none", color: "rgb(1, 73, 131)" }}
+            to={`/`}
+          >
+            {" "}
+            Home{" "}
+          &lt;/Link>
+          &lt;span> | &lt;/span>
+          &lt;Link
+            style={{ textDecoration: "none", color: "rgb(1, 73, 131)" }}
+            to={"/quem_somos"}
+          >
+            {" "}
+            Quem somos{" "}
+          &lt;/Link>
+          &lt;span> | &lt;/span>
+          &lt;Link
+            style={{ textDecoration: "none", color: "rgb(1, 73, 131)" }}
+            to={`/favoritos`}
+          >
+            {" "}
+            Favoritados
+          &lt;/Link>
+          {currentUser !== null &amp;&amp;
+          currentUser.nome === "Adm" &amp;&amp;
+          currentUser.email === "admin@admin" &amp;&amp;
+          currentUser.senha === "admin" &amp;&amp;
+          currentUser.id === "0000" ? (
+            &lt;>
+              {" "}
+              &lt;span> | &lt;/span>{" "}
+              &lt;Link
+                style={{ textDecoration: "none", color: "rgb(1, 73, 131)" }}
+                to={`/opcao_admin`}
+              >
+                {" "}
+                Opções de admin
+              &lt;/Link>{" "}
+            &lt;/>
+          ) : (
+            &lt;>&lt;/>
+          )}
+        &lt;/nav>
+      )}
+
+      {currentUser ? (
+        &lt;div className="botao-perfil-header">
+          &lt;button
+            ref={perfilRef}
+            type="submit"
+            className="show_perfil"
+            onClick={() => {
+              setInfoOpen(!infoOpen);
+            }}
+          >
+            &lt;VscAccount className="show-perfil-svg" color="rgb(1, 73, 131)" />
+          &lt;/button>
+          {infoOpen &amp;&amp; currentUser != [] &amp;&amp; currentUser != null &amp;&amp; (
+            &lt;div className="perfil">
+              &lt;ul>
+                {
+                  &lt;label className="welcome">
+                    Bem vindo: {currentUser.nome}
+                  &lt;/label>
+                }
+                &lt;button className="conta" onClick={handleAcount}>
+                  conta
+                &lt;/button>
+                &lt;button className="sair" onClick={handleLogOut}>
+                  Sair
+                &lt;/button>
+              &lt;/ul>
+            &lt;/div>
+          )}
+        &lt;/div>
+      ) : (
+        &lt;div className="botao-header">
+          &lt;button className="login-bt" onClick={goLogin}>
+            Entrar
+          &lt;/button>
+          &lt;button className="signup-bt" onClick={goSignup}>
+            Cadastrar
+          &lt;/button>
+        &lt;/div>
+      )}
+    &lt;/div>
+  );
+};
+export default HeaderMain;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Cards_Cards_de_Agendamento.html">Cards/Cards_de_Agendamento</a></li><li><a href="module-Componente_Card_PedidoAdocao.html">Componente/Card_PedidoAdocao</a></li><li><a href="module-Componente_Card_Pet.html">Componente/Card_Pet</a></li><li><a href="module-Componente_Filtro.html">Componente/Filtro</a></li><li><a href="module-Componente_Footer.html">Componente/Footer</a></li><li><a href="module-Componente_Grade.html">Componente/Grade</a></li><li><a href="module-Componente_Header.html">Componente/Header</a></li><li><a href="module-Componente_Input_Usuario.html">Componente/Input_Usuario</a></li><li><a href="module-Componente_Layout.html">Componente/Layout</a></li><li><a href="module-Componente_Modal.html">Componente/Modal</a></li><li><a href="module-Componente_Paginacao.html">Componente/Paginacao</a></li><li><a href="module-Componente_RadioInput.html">Componente/RadioInput</a></li><li><a href="module-Componente_TittlePage.html">Componente/TittlePage</a></li><li><a href="module-ComponenteInformacao_ContainerInfo.html">ComponenteInformacao/ContainerInfo</a></li><li><a href="module-MessageReturn_Mensagem_De_Erro.html">MessageReturn/Mensagem_De_Erro</a></li><li><a href="module-MessageReturn_Mensagem_De_Sucesso.html">MessageReturn/Mensagem_De_Sucesso</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Thu Jul 11 2024 15:20:07 GMT-0300 (Horário Padrão de Brasília)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

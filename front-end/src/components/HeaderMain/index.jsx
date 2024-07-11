@@ -6,7 +6,19 @@ import Logo from "../../assets/logo2.png";
 import Logo2 from "../../assets/logopart2.png";
 import { VscAccount } from "react-icons/vsc";
 import { useSelector, useDispatch } from "react-redux";
-import { logOut } from "../../redux/user/slice";
+import { logOut } from "../../redux/user/slice";/** 
+* @module Componente/Header
+*  */
+
+/** 
+* @typedef HeaderMain
+* @type {React.FC}
+*/
+
+/** 
+* Renderiza container de header para a página.
+* @returns {React.FC} O componente renderizado.
+*/
 
 const HeaderMain = () => {
   const navigate = useNavigate();

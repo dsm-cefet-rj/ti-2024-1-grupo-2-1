@@ -1,7 +1,20 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState, useEffect, Component } from 'react';
 import "./styles.css";
+/** 
+ * @module MessageReturn/Mensagem_De_Sucesso
+ *  */
 
-export const SuccessMessage = ({text}) => {
+/** 
+ * @typedef SuccessMessage
+ * @type {Component}
+*/
+
+/** 
+ * Renderiza card contendo uma menssagem indicando que a ação realizada pelo usuário foi concluida com sucesso
+ * @param {string} text - Informações da ação bem sucedida
+*/
+
+const SuccessMessage = ({text}) => {
   const [ativo, setAtivo] = useState(false);
 
     useEffect(() => {
@@ -19,3 +32,4 @@ export const SuccessMessage = ({text}) => {
 }
 
 
+export default SuccessMessage

@@ -12,8 +12,18 @@ import { addVisitation } from "../../redux/agendamento/slice";
 import ErrorMessage from "../../components/Error";
 import { SuccessMessage } from "../../components/SuccessMessage";
 import TitlePage from "../../components/Title-Page";
-
-export const Agendamento = () => {
+/**
+ * @module Page/Tela_deAgendamento
+ */
+/**
+* @typedef Agendamento
+* @type {React.FC}
+*/
+/**
+* Componente React para realizar o agendamento de uma visita.
+* @returns {React.FC} - Um componente React que renderiza a tela onde realiza os agendamentos.
+ */
+const Agendamento = () => {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
 
@@ -25,28 +35,31 @@ export const Agendamento = () => {
   const { id } = useParams();
   const [animais, setAnimais] = useState([]);
   const navigate = useNavigate();
-  // const getAnimal = async () => {
-  //   try {
-  //     // Verifica se o animal com o ID fornecido existe
-  //     console.log(animal);
-  //     setAnimais(Object.values(animal));
-  //   } catch (error) {
-  //     console.error("Erro ao buscar o animal: ", error);
-  //   }
-  // };
 
   // Função para verificar se uma data é anterior à data atual
+  /**
+   * @function isDateDisabled
+   * @param {string} date -Informa qual a data foi escolhida.
+   * @returns {string} - retorna a data escolhida 
+   */
   const isDateDisabled = (date) => {
     const currentDate = new Date();
     if (date >= currentDate) {
       return setDate(date);
     }
-    console.log(date);
   };
-
+/**
+   * @function handleChange
+   * @param {event} event -Evento
+   * @returns {string} - retorna o dia escolhida 
+   */
   const handleChange = (event) => {
     setSelecao(event.target.value);
   };
+  /**
+   * @function handleConfirm
+   * @param {event} event -Evento
+   */
   const handleConfirm = (e) => {
     e.preventDefault();
 
@@ -69,7 +82,6 @@ export const Agendamento = () => {
         hora: selecao,
       })
     );
-    // alert("Agendamento confirmado com êxito");
     setSuccess("Agendamento confirmado com êxito")
     setTimeout(()=>{
       setErr("")

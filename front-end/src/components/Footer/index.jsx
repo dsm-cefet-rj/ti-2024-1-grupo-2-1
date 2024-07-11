@@ -2,7 +2,19 @@ import React from "react";
 import "./style.css";
 import { IoLogoInstagram } from "react-icons/io";
 import { LiaFacebookSquare } from "react-icons/lia";
+/** 
+ * @module Componente/Footer
+ *  */
 
+/** 
+ * @typedef Footer
+ * @type {React.FC}
+*/
+
+/** 
+ * Renderiza um container de footer para a página.
+ * @returns {React.FC} O componente renderizado.
+*/
 const Footer = () => {
   return (
     <div className="footer">
