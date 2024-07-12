@@ -6,7 +6,7 @@ import Filtro from "../../components/Filter/filtro";
 import PetCards from "../../components/PetCards";
 import "./AnimalGrid.css";
 import Footer from "../../components/Footer";
-import { Grade } from "../../components/GridContainer";
+import  Grade  from "../../components/GridContainer";
 import Paginacao from "../../components/Pagination";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAnimais } from "../../redux/Animais/slice";

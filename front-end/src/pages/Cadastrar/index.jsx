@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
-import { Layout } from "../../components/Layoutform";
+import  Layout  from "../../components/Layoutform";
 import { useDispatch } from "react-redux";
 import { addUserServer, emailExistServer } from "../../redux/user/slice";
-import { InputUsuario } from "../../components/InputUsuario";
-import {SuccessMessage} from "../../components/SuccessMessage";
+import  InputUsuario  from "../../components/InputUsuario";
+import SuccessMessage from "../../components/SuccessMessage";
 
 export const Cadastrar = () => {
   const dispatch = useDispatch();

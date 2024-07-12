@@ -11,9 +11,9 @@ import {
 import { animalSchema } from "../../validations/cadastroAnimalValidation";
 import { useSelector, useDispatch } from "react-redux";
 import TitlePage from '../../components/Title-Page';
-import { InputUsuario } from '../../components/InputUsuario';
+// import InputUsuario from '../../components/InputUsuario';
 import RadioInput from '../../components/RadioInput';
-import {SuccessMessage}  from "../../components/SuccessMessage"
+import SuccessMessage  from "../../components/SuccessMessage"
 
 const UpdateAnimais = () => {
   const {id} = useParams();

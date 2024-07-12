@@ -6,7 +6,7 @@ import TitlePage from "../../components/Title-Page";
 import "./index.css";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import PetCards from "../../components/PetCards";
-import { Grade } from "../../components/GridContainer";
+import  Grade  from "../../components/GridContainer";
 import { useParams } from "react-router-dom";
 import Paginacao from "../../components/Pagination";
 import { useSelector } from "react-redux";
