@@ -5,7 +5,7 @@ import HeaderMain from "../../components/HeaderMain";
 import PedidoAdocao from "../../components/PedidosAdocao";
 import { getRegisters } from "../../redux/pedidoAdocao/slice";
 import { useDispatch, useSelector } from "react-redux";
-import { Grade } from "../../components/GridContainer";
+import  Grade  from "../../components/GridContainer";
 import TitlePage from "../../components/Title-Page";
 
 /**

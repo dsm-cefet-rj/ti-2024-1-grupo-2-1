@@ -4,7 +4,7 @@ import TitlePage from "../../components/Title-Page";
 import "./styles.css";
 import { Breadcrumb } from "react-bootstrap";
 import PetCards from "../../components/PetCards";
-import { Grade } from "../../components/GridContainer";
+import  Grade  from "../../components/GridContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchFavAnimals } from "../../redux/AnimaisFav/slice";

@@ -3,9 +3,9 @@ import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { fetchUserByEmail } from "../../redux/user/slice";
-import { Layout } from "../../components/Layoutform";
-import { InputUsuario } from "../../components/InputUsuario";
-import { SuccessMessage } from "../../components/SuccessMessage";
+import Layout  from "../../components/Layoutform";
+import InputUsuario  from "../../components/InputUsuario";
+import  SuccessMessage from "../../components/SuccessMessage";
 
 export const Login = () => {
   const dispatch = useDispatch();

@@ -12,7 +12,7 @@ import {
   logOut,
 } from "../../redux/user/slice";
 import { useSelector, useDispatch } from "react-redux";
-import { InputUsuario } from "../../components/InputUsuario";
+import  InputUsuario  from "../../components/InputUsuario";
 import TitlePage from "../../components/Title-Page";
 
 const Update_Perfil = () => {

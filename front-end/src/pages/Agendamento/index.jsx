@@ -5,12 +5,12 @@ import Footer from "../../components/Footer";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "./style.css";
-import animal from "../../components/Animal/animal";
+// import animal from "../../components/Animal/animal";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addVisitation } from "../../redux/agendamento/slice";
 import ErrorMessage from "../../components/Error";
-import { SuccessMessage } from "../../components/SuccessMessage";
+import  SuccessMessage  from "../../components/SuccessMessage";
 import TitlePage from "../../components/Title-Page";
 /**
  * @module Page/Tela_deAgendamento
