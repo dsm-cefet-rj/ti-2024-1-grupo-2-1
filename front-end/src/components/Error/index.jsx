@@ -2,7 +2,7 @@ import React,{useEffect,useState} from 'react';
 import "./styles.css";
 import { Component } from 'react';
 /** 
- * @module MessageReturn/Mensagem_De_Erro
+ * @module Componente/Mensagem_De_Erro
  *  */
 
 /** 

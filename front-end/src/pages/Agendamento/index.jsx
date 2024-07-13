@@ -50,7 +50,7 @@ const Agendamento = () => {
   };
 /**
    * @function handleChange
-   * @param {event} event -Evento
+   * @param {*} e -Evento
    * @returns {string} - retorna o dia escolhida 
    */
   const handleChange = (event) => {
@@ -58,7 +58,7 @@ const Agendamento = () => {
   };
   /**
    * @function handleConfirm
-   * @param {event} event -Evento
+   * @param {*} e -Evento
    */
   const handleConfirm = (e) => {
     e.preventDefault();

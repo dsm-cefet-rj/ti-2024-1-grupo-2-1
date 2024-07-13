@@ -6,7 +6,7 @@ import { Main } from "../pages/Principal";
 import Agendamento from "../pages/Agendamento";
 import { RegistroAdocao } from "../pages/RegistroAdocao";
 import { Login } from "../pages/Login";
-import { Cadastrar } from "../pages/Cadastrar";
+import Cadastrar  from "../pages/Cadastrar";
 import QuemSomos from "../pages/Quem_Somos";
 import CadastroAnimal from "../pages/Cadastro Animal";
 import AdmPedidos from "../pages/admPedidos";

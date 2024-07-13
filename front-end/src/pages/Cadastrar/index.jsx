@@ -7,7 +7,20 @@ import { addUserServer, emailExistServer } from "../../redux/user/slice";
 import  InputUsuario  from "../../components/InputUsuario";
 import SuccessMessage from "../../components/SuccessMessage";
 
-export const Cadastrar = () => {
+/**
+ * @module Page/Cadastro
+ * 
+ */
+/**
+ * @typedef Cadastrar
+ * @type {React.FC}
+ */
+/**
+ * Renderiza uma pagina de cadastro de usuário.
+ * @returns {React.FC} - Componente React
+ */
+
+const Cadastrar = () => {
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
@@ -20,6 +33,13 @@ export const Cadastrar = () => {
   
 
   const navigate = useNavigate();
+
+  // /**
+  //  * @function handleSignUp -Função que realizará o cadastro do usuário
+  //  * @param {*} e -Evento
+  //  * 
+  //  */
+
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -149,3 +169,5 @@ export const Cadastrar = () => {
     </Layout>
   );
 };
+
+export default Cadastrar

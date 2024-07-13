@@ -1,7 +1,7 @@
 import React,{useState, useEffect, Component } from 'react';
 import "./styles.css";
 /** 
- * @module MessageReturn/Mensagem_De_Sucesso
+ * @module Componente/Mensagem_De_Sucesso
  *  */
 
 /** 

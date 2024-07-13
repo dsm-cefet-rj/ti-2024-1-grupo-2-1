@@ -6,7 +6,9 @@ import Logo from "../../assets/logo2.png";
 import Logo2 from "../../assets/logopart2.png";
 import { VscAccount } from "react-icons/vsc";
 import { useSelector, useDispatch } from "react-redux";
-import { logOut } from "../../redux/user/slice";/** 
+import { logOut } from "../../redux/user/slice";
+import { fetchAnimais } from "../../redux/Animais/slice";
+/** 
 * @module Componente/Header
 *  */
 
@@ -82,14 +84,14 @@ const HeaderMain = () => {
   
   const toMain =()=>{
     navigate("/");
-    window.location.reload();
+    dispatch(fetchAnimais())
   }
 
   return (
     <div className="headermain">
       <div className="header-container">
         <div className="logo">
-          <Link onClick={toMain}>
+          <Link to={`/`}>
             <img className="pata" src={Logo} alt="" />
             <img className="logo_nome" src={Logo2} alt="" />
           </Link>
