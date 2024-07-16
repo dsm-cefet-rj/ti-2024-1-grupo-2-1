@@ -11,7 +11,20 @@ import Paginacao from "../../components/Pagination";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAnimais } from "../../redux/Animais/slice";
 
-export const Main = () => {
+/**
+ * @module Page/Pagina_Principal
+ * 
+ */
+/**
+ * @typedef Main
+ * @type {React.FC}
+ */
+/**
+ * Renderiza uma pagina home da aplicação.
+ * @returns {React.FC} - Componente react
+ */
+
+ const Main = () => {
   const [filter, setFilter] = useState("All");
   const [porteFilter, setPorteFilter] = useState("All");
   const [sexoFilter, setSexoFilter] = useState("All");
@@ -65,22 +78,6 @@ let animaisFiltrados =
       return animal;
     }
   });
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     // const result =await fetch (Object.values(animal))
-  //     //     .then(response => response.json())
-  //     //     .then(data => data)
-  //     setAnimais(Object.values(animal));
-  //   };
-  //   fetchData();
-  //   // getAnimal();
-  //   // setFiltredAnimals(animaisFiltrados);
-  // }, []);
-
-  // useEffect(()=>{
-  //     setPaginaAtual(0)
-  // },[animalsPerPage])
   let animaisTabelados = "";
   if (status === "loaded") {
     animaisTabelados = (
@@ -128,3 +125,4 @@ let animaisFiltrados =
     </div>
   );
 };
+export default Main;

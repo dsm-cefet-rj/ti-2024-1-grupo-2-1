@@ -2,6 +2,19 @@ import HeaderMain from "../../components/HeaderMain";
 import Footer from "../../components/Footer";
 import "./style.css"; // Importar o arquivo CSS com os estilos
 
+/**
+ * @module Page/QuemSomos
+ * 
+ */
+/**
+ * @typedef QuemSomos
+ * @type {React.FC}
+ */
+/**
+ * Renderiza uma pagina explicando como funciona e o que seria o site.
+ * @returns {React.FC} - Componente React
+ */
+
 export const QuemSomos = () => {
   return (
     <div>

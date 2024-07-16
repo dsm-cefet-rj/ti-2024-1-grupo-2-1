@@ -11,13 +11,30 @@ import { useParams } from "react-router-dom";
 import Paginacao from "../../components/Pagination";
 import { useSelector } from "react-redux";
 
-export const Detalhamento = () => {
+/**
+ * @module Page/Detalhamento_do_Animal
+*/
+/** 
+ * @typedef Detalhamento
+ * @type {React.FC}
+ */
+/**
+ * Renderiza uma página de detalhamento do animal 
+ * @returns {React.FC} - Página de detalhamento do animal
+ */
+
+ const Detalhamento = () => {
   const { currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
   const { id } = useParams();
   const { animals } = useSelector((rootReducer) => rootReducer.animalReducer);
   const { error } = useSelector((rootReducer) => rootReducer.animalReducer);
   const { status } = useSelector((rootReducer) => rootReducer.animalReducer);
   const navigate = useNavigate();
+
+  /**
+   * @function handleClick - Função que fará o navegamento para o agendamento de visitas do animal.
+   * @param {*} e - Evento
+   */
 
   const handleClick = (e) => {
     if (currentUser != null) {

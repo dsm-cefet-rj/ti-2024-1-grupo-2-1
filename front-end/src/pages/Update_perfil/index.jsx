@@ -15,6 +15,19 @@ import { useSelector, useDispatch } from "react-redux";
 import  InputUsuario  from "../../components/InputUsuario";
 import TitlePage from "../../components/Title-Page";
 
+/**
+ * @module Page/Update_Usuario
+ * 
+ */
+/**
+ * @typedef UpdateUsuario
+ * @type {React.FC}
+ */
+/**
+ * Renderiza uma pagina onde é feita a atualização das informações do usuário.
+ * @returns {React.FC} - Componente
+ */
+
 const Update_Perfil = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -51,7 +64,10 @@ const Update_Perfil = () => {
       window.location.reload();
     }
   });
-
+ /**
+   * @function handleUpdate -Função responsavel por atualizar as informações do usuário
+   * @param {*} e - Evento
+   */
   const handleUpdate = (e) => {
     e.preventDefault();
 
@@ -128,6 +144,11 @@ const Update_Perfil = () => {
       return false;
     }
   };
+
+   /**
+   * @function handleRemove - Função responsavel por excluir a conta do usuário
+   * @param {*} e - Evento
+   */
   const handleRemove = () => {
     const id = currentUser.id;
     navigate("/");

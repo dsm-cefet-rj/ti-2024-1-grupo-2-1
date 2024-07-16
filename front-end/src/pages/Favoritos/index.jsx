@@ -9,8 +9,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchFavAnimals } from "../../redux/AnimaisFav/slice";
 
-
-export const Favoritos = () => {
+/**
+ * @module Page/Favoritos
+ * 
+ */
+/**
+ * @typedef Favoritos
+ * @type {React.FC}
+ */
+/**
+ * Renderiza uma pagina de onde ficarão os animais favoritados pelo usuario.
+ * @returns {React.FC} - Componente react
+ */
+ const Favoritos = () => {
   const { currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
 
   const { animaisFav } = useSelector((rootReducer) => rootReducer.animaisFavReducer)
@@ -71,3 +82,4 @@ export const Favoritos = () => {
     </div>
   );
 };
+export default Favoritos;

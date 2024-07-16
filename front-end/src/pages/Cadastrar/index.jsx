@@ -17,7 +17,7 @@ import SuccessMessage from "../../components/SuccessMessage";
  */
 /**
  * Renderiza uma pagina de cadastro de usuário.
- * @returns {React.FC} - Componente React
+ * @returns {React.FC} - Página de detalhamento do animal
  */
 
 const Cadastrar = () => {
@@ -34,11 +34,11 @@ const Cadastrar = () => {
 
   const navigate = useNavigate();
 
-  // /**
-  //  * @function handleSignUp -Função que realizará o cadastro do usuário
-  //  * @param {*} e -Evento
-  //  * 
-  //  */
+  /**
+   * @function handleSignUp -Função que realizará o cadastro do usuário
+   * @param {*} e -Evento
+   * 
+   */
 
 
   const handleSignUp = (e) => {
@@ -97,6 +97,11 @@ const Cadastrar = () => {
     });
   };
 
+  /**
+   * @function isEmailValid -Função que verificará se o email se adequa ao padrão
+   * @param {string} email - Email informado
+   * @returns {boolean}
+   */
   const isEmailValid = (email) => {
     const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
 
@@ -107,7 +112,12 @@ const Cadastrar = () => {
       return false;
     }
   };
-
+/**
+   * @function isEmailValid -Função que verificará se a senha se adequa ao padrão
+   * @param {string} password - Senha informado
+   * @param {number} minDigits - Quantidade minima de digitos
+   * @returns {boolean}
+   */
   const isPasswordValid = (password, minDigits) => {
     if (password.length >= minDigits) {
       return true;

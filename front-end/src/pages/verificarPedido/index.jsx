@@ -9,7 +9,20 @@ import ContainerInfo from "../../components/Container-Info";
 import { fetchOneAnimal } from "../../redux/Animais/slice";
 import { FiCheck, FiX } from "react-icons/fi";
 import logo from "../../assets/logopreta2.png";
-export const VerificarPedido = () => {
+
+/**
+ * @module Page/Verificar_Pedidos
+ * 
+ */
+/**
+ * @typedef VerificarPedido
+ * @type {React.FC}
+ */
+/**
+ * Renderiza uma pagina onde é feita a validação do pedido de adoção, por parte do adm.
+ * @returns {React.FC} - Componente
+ */
+const VerificarPedido = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { currentOrder } = useSelector(
@@ -34,6 +47,11 @@ export const VerificarPedido = () => {
       console.log("Carregando pedido de adoção")
     }
   }, [currentOrder])
+
+   /**
+   * @function handleVerify -Função responsavel aceitar o pedido de adoção do animal
+   * @param {*} e - Evento
+   */
   const handleVerify = (e) =>{
     e.preventDefault();
      
@@ -56,6 +74,11 @@ export const VerificarPedido = () => {
     }));
     orderNull();
   }
+
+  /**
+   * @function handleDenied -Função responsavel negar o pedido de adoção do animal
+   * @param {*} e - Evento
+   */
   const handleDenied = (e) =>{
     e.preventDefault();
     

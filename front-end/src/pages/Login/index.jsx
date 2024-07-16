@@ -7,7 +7,20 @@ import  Layout  from "../../components/Layoutform";
 import  InputUsuario  from "../../components/InputUsuario";
 import  SuccessMessage from "../../components/SuccessMessage";
 
-export const Login = () => {
+/**
+ * @module Page/Pagina_Login
+ * 
+ */
+/**
+ * @typedef Login
+ * @type {React.FC}
+ */
+/**
+ * Renderiza uma pagina de Login de usuário.
+ * @returns {React.FC} - Componente React
+ */
+
+const Login = () => {
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
@@ -16,6 +29,11 @@ export const Login = () => {
   const[success,setSuccess]=useState("");
 
   const navigate = useNavigate();
+
+  /**
+   * @function handleLogin - Função responsavel por realizar o login do usuario na aplicação
+   * @param {*} e - Evento
+   */
 
   const handleLogin = (e) => {
     if (!email && !senha) {
@@ -87,3 +105,4 @@ export const Login = () => {
     </Layout>
   );
 };
+export default Login;

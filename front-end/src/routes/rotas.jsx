@@ -1,11 +1,11 @@
 import { Fragment } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { Favoritos } from "../pages/Favoritos";
-import { Detalhamento } from "../pages/Detalhamento";
-import { Main } from "../pages/Principal";
+import  Favoritos from "../pages/Favoritos";
+import  Detalhamento from "../pages/Detalhamento";
+import Main  from "../pages/Principal";
 import Agendamento from "../pages/Agendamento";
-import { RegistroAdocao } from "../pages/RegistroAdocao";
-import { Login } from "../pages/Login";
+import RegistroAdocao  from "../pages/RegistroAdocao";
+import  Login  from "../pages/Login";
 import Cadastrar  from "../pages/Cadastrar";
 import QuemSomos from "../pages/Quem_Somos";
 import CadastroAnimal from "../pages/Cadastro Animal";

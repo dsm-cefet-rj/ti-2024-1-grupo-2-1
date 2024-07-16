@@ -9,6 +9,18 @@ import * as yup from "yup";
 import { animalSchema } from "../../validations/cadastroAnimalValidation";
 import TitlePage from "../../components/Title-Page";
 import RadioInput from "../../components/RadioInput";
+/**
+ * @module Page/CadastroAnimal
+ * 
+ */
+/**
+ * @typedef CadastroAnimal
+ * @type {React.FC}
+ */
+/**
+ * Renderiza uma pagina de cadastro de animal.
+ * @returns {React.FC} - Componente React
+ */
 
 const CadastroAnimal = () => {
   const { currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
@@ -25,6 +37,11 @@ const CadastroAnimal = () => {
   const [img, setImg] = useState("");
 
   // Utilizando o useEfect para verificar a captura de dados está ocorrendo
+  /**
+   * @function handleImageChange -Função que realizará a alteração da imagem do animal
+   * @param {*} event -Evento
+   * 
+   */
   async function handleImageChange(event) {
     const inputFile = document.querySelector("#ft_input");
     const pictureImage = document.querySelector(".ft_image");
@@ -64,6 +81,11 @@ const CadastroAnimal = () => {
     inputFile.addEventListener("change", handleImageChange);
   }
 
+  /**
+   * @function cadastrarAnimal -Função que realizará o cadastro do animal
+   * @param {*} e -Evento
+   * 
+   */
   const cadastrarAnimal = async (e) => {
     e.preventDefault();
 

@@ -10,8 +10,20 @@ import { addRequest } from "../../redux/pedidoAdocao/slice";
 import { useSelector } from "react-redux";
 import { pedidoAdocaoSchema } from "../../validations/registroPedidoAdocaoValidation";
 import TitlePage from "../../components/Title-Page";
+/**
+ * @module Page/Registrar_PedidoAdocao
+ * 
+ */
+/**
+ * @typedef RegistroAdocao
+ * @type {React.FC}
+ */
+/**
+ * Renderiza uma página onde é feito o registro do pedido de adoção
+ * @returns {React.FC} - Componente
+ */
 
-export const RegistroAdocao = () => {
+const RegistroAdocao = () => {
   const { animals } = useSelector((rootReducer) => rootReducer.animalReducer);
   // const { error } = useSelector((rootReducer) => rootReducer.animalReducer)
   // const { status } = useSelector((rootReducer) => rootReducer.animalReducer)
@@ -34,11 +46,23 @@ export const RegistroAdocao = () => {
   const [q5, setQ5] = useState();
   //const [arquivos, setArquivos] = useState([null, null, null]);
 
+
+ /**
+  * @function formatName - Função que realiza a formataçao do nome para que as letras 
+  * iniciais sejam maiusculas
+  * @param {string} name - valor da variavel a ser formatada
+ * @returns {string} - Nome formatado
+  */
   function formatName(name) {
     if (!name) return "";
     return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
   }
 
+  /**
+   * @function handleConfirm - Função que realiza o registro do pedido de adoção
+   * @param {*} e - Evento 
+   * 
+   */
   const handleConfirm = async (e) => {
     e.preventDefault();
 
@@ -418,3 +442,5 @@ export const RegistroAdocao = () => {
     </div>
   );
 };
+
+export default RegistroAdocao

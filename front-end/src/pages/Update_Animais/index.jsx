@@ -15,6 +15,19 @@ import TitlePage from '../../components/Title-Page';
 import RadioInput from '../../components/RadioInput';
 import SuccessMessage  from "../../components/SuccessMessage"
 
+/**
+ * @module Page/Update_Animais
+ * 
+ */
+/**
+ * @typedef UpdateAnimais
+ * @type {React.FC}
+ */
+/**
+ * Renderiza uma pagina onde é feita a atualização das informações dos animais.
+ * @returns {React.FC} - Componente
+ */
+
 const UpdateAnimais = () => {
   const {id} = useParams();
   // const {currentUser} = useSelector((rootReducer)=>rootReducer.userReducer);
@@ -118,6 +131,10 @@ const UpdateAnimais = () => {
     }
     inputFile.addEventListener("change", handleImageChange);
   }
+  /**
+   * @function handleUpdate -Função responsavel por atualizar as informações dos animais
+   * @param {*} e - Evento
+   */
   const handleUpdate =(e)=>{
     e.preventDefault();
     setMessage("Animal atualizado com sucesso.");
