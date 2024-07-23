@@ -129,7 +129,7 @@ const PetCards = ({ animais }) => {
           <FaPenClip /> Editar 
         </button>: <></>}
       </Card.Body>
-      {currentUser !== null && currentUser.nome === "Adm" && currentUser.email === "admin@admin" ? <button ref={modalRef}  className="botao-options" onClick={Delete} > <FaTrash className="animal_options"/> </button>: <></>}
+      {currentUser !== null && currentUser.nome === "Adm" && currentUser.email === "admin@admin" ? <button ref={modalRef}  className="botao-options" onClick={()=>setVisible(true)} > <FaTrash className="animal_options"/> </button>: <></>}
     </Card>
       <Modal 
         visivel={visible}
