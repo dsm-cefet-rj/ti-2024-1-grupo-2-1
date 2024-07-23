@@ -14,6 +14,7 @@ import TitlePage from '../../components/Title-Page';
 // import InputUsuario from '../../components/InputUsuario';
 import RadioInput from '../../components/RadioInput';
 import SuccessMessage  from "../../components/SuccessMessage"
+// import { current } from '@reduxjs/toolkit';
 
 /**
  * @module Page/Update_Animais
@@ -32,7 +33,8 @@ const UpdateAnimais = () => {
   const {id} = useParams();
   // const {currentUser} = useSelector((rootReducer)=>rootReducer.userReducer);
   const {currentAnimal} = useSelector((rootReducer)=>rootReducer.animalReducer);
-  const { status } = useSelector((rootReducer) => rootReducer.userReducer);
+  // const { animals } = useSelector((rootReducer) => rootReducer.animalReducer);
+  // const { status } = useSelector((rootReducer) => rootReducer.userReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -44,9 +46,19 @@ const UpdateAnimais = () => {
   const [history, setHistory] = useState("");
   const [img, setImg] = useState("");
   const [message, setMessage] = useState("");
+  
+//   const animais =
+//    animals &&
+//    animals.filter((animal) => {
+//     if (id === animal.id) return animal;
+//   });
 
+// const currentAnimal = animais[0]
+// // .slice(0, 1);
+// // currentAnimal = currentAnimal[0];
+// console.log(currentAnimal)
   useEffect(()=>{
-     dispatch(fetchAnimais);
+     dispatch(fetchAnimais());
      dispatch(fetchOneAnimal(id));
   //  window.location.reload();
 },[]);
@@ -59,11 +71,9 @@ const UpdateAnimais = () => {
       setAge(currentAnimal.idade);
       setHistory(currentAnimal.história);
       image(currentAnimal.img);
-      console.log(type)
     }else{
       console.log("Carregando animal")
     }
-    console.log(type)
   },[currentAnimal])
   
   async function image(dataUrl) {
@@ -151,6 +161,7 @@ const UpdateAnimais = () => {
     }))
 
     setTimeout(()=>{
+      dispatch(fetchAnimais());
       navigate("/home")
     },3000)
   }

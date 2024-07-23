@@ -46,6 +46,9 @@ import { fetchAnimais } from "../../redux/Animais/slice";
     setAniamais(animals);
     console.log(animals)
   }, [animals.length]);
+  useEffect(()=>{
+    dispatch(fetchAnimais());
+  },[])
 
 let animaisFiltrados =
     animais &&
@@ -74,7 +77,7 @@ let animaisFiltrados =
 
   itensAtuais.map((animal) => {
     if (animal.id === animalsFav.id) {
-      animal.isfav = animalsFav.isfav;
+      //animal.isfav = animalsFav.isfav;
       return animal;
     }
   });

@@ -9,6 +9,8 @@ import * as yup from "yup";
 import { animalSchema } from "../../validations/cadastroAnimalValidation";
 import TitlePage from "../../components/Title-Page";
 import RadioInput from "../../components/RadioInput";
+import SuccessMessage from "../../components/SuccessMessage";
+import ErroMessage from "../../components/Error"
 /**
  * @module Page/CadastroAnimal
  * 
@@ -35,6 +37,8 @@ const CadastroAnimal = () => {
   const [age, setAge] = useState("");
   const [history, setHistory] = useState("");
   const [img, setImg] = useState("");
+  const [erro, setErro] = useState("");
+  const[sucesso, setSucesso] = useState("")
 
   // Utilizando o useEfect para verificar a captura de dados está ocorrendo
   /**
@@ -100,7 +104,10 @@ const CadastroAnimal = () => {
     });
 
     if (!isValid) {
-      alert("Preencha todos os campos!");
+      setErro("Preencha todos os campos");
+      setTimeout(()=>{
+        setErro("")
+      },3000)
       return;
     }
 
@@ -117,7 +124,7 @@ const CadastroAnimal = () => {
       })
     );
 
-    alert("Animal cadastrado com sucesso!");
+    setSucesso("Animal cadastrado com sucesso!");
     navigate("/");
     window.location.reload();
   };
@@ -229,6 +236,8 @@ const CadastroAnimal = () => {
             <button className="cadastro-animal-botao" type="submit">
               Cadastrar animal
             </button>
+          <ErroMessage text={erro}/>
+          <SuccessMessage text={sucesso} />
           </form>
         </div>
       </div>

@@ -64,15 +64,20 @@ const animalSlice = createSlice({
   initialState,
   reducers: {
     changeAnimalIsFav: (state, action) => {
-      //pegar o index do animal
-      //payload = id
+      // Encontrar o índice do animal
       const index = state.animals.findIndex((e) => e.id === action.payload);
-      //mudar no state no index do array
-      state.animals[index].isfav = !state.animals[index].isfav;
-
-      // {Array.from(Array(state.animals), (_, index) => {
-      //     return ( index )}
-      //     )}
+    
+      // Criar uma cópia do array de animais
+      const updatedAnimals = [...state.animals];
+    
+      // Modificar a propriedade `isfav` no elemento correspondente
+      updatedAnimals[index].isfav = !updatedAnimals[index].isfav;
+    
+      // Atualizar o estado com o novo array
+      return {
+        ...state,
+        animals: updatedAnimals,
+      };
     },
   },
   extraReducers: (builder) => {
