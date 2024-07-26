@@ -10,7 +10,9 @@ import { animalSchema } from "../../validations/cadastroAnimalValidation";
 import TitlePage from "../../components/Title-Page";
 import RadioInput from "../../components/RadioInput";
 import SuccessMessage from "../../components/SuccessMessage";
-import ErroMessage from "../../components/Error"
+import SelectInput from "../../components/Select-input";
+import ErroMessage from "../../components/Error";
+import InputUsuario from "../../components/InputUsuario";
 /**
  * @module Page/CadastroAnimal
  * 
@@ -144,6 +146,23 @@ const CadastroAnimal = () => {
     {value:"Macho", label: "Macho"},
     {value: "Fêmea", label: "Fêmea"}
   ];
+  const items4=[
+    {value:"All",label:"Todos"},
+    {value:"1 ano",label: "1 ano"},
+    {value:"2 anos",label: "2 anos"},
+    {value:"3 anos",label: "3 anos"},
+    {value:"4 anos",label: "4 anos"},
+    {value:"5 anos",label: "5 anos"},
+    {value:"6 anos",label: "6 anos"},
+    {value:"7 anos",label: "7 anos"},
+    {value:"8 anos",label: "8 anos"},
+    {value:"9 anos",label: "9 anos"},
+    {value:"10 anos",label: "10 anos"},
+    {value:"11 anos",label: "11 anos"}, 
+    {value:"12 anos",label: "12 anos"}, 
+    {value:"13 anos",label: "13 anos"},
+    {value:"14 anos",label: "14 anos"}
+    ];
 
   // Usage:
 
@@ -165,7 +184,14 @@ const CadastroAnimal = () => {
               accept="image/"
               onChange={handleImageChange}
             />
-            <div className="wraper-input-cad">
+              <InputUsuario
+                  valor = {name}
+                  type={"text"}
+                  value={name}
+                  onChange={(e)=>[setName(e.target.value)]}
+                  label={"Nome do animal"}
+                />
+            {/* <div className="wraper-input-cad">
               <input
                 className={name !== "" ? "has-val input" : "input-c"}
                 type="name"
@@ -176,7 +202,7 @@ const CadastroAnimal = () => {
                 className="focused-input-c"
                 data-placeholder="Nome do animal"
               ></span>
-            </div>
+            </div> */}
 
             <h4 className="label-radio">Tipo do animal</h4>
             <div style={{display:"flex"}}>
@@ -210,9 +236,14 @@ const CadastroAnimal = () => {
               onChange={(e)=>[setSex(e.target.value)]}
             />
             </div>
-
-            <div className="wraper-input-cad">
-              <input
+            <h4 className="label-radio">Idade do animal</h4>
+            <div style={{display:"flex"}}>
+                <SelectInput
+                name="animal-age"
+                items={items4}
+                onChange={(e)=>[setAge(e.target.value)]}
+                />
+              {/* <input
                 className={age !== "" ? "has-val input" : "input-c"}
                 type="text"
                 value={age}
@@ -221,10 +252,16 @@ const CadastroAnimal = () => {
               <span
                 className="focused-input-c"
                 data-placeholder="Idade do animal"
-              ></span>
+              ></span> */}
             </div>
-
-            <div className="wraper-input-cad">
+                <InputUsuario
+                  valor = {history}
+                  type={"text"}
+                  value={history}
+                  onChange={(e)=>[setHistory(e.target.value)]}
+                  label={"História do animal"}
+                />
+            {/* <div className="wraper-input-cad">
               <input
                 className={history !== "" ? "has-val input" : "input-c"}
                 type="text"
@@ -235,7 +272,7 @@ const CadastroAnimal = () => {
                 className="focused-input-c"
                 data-placeholder="História do animal"
               ></span>
-            </div>
+            </div> */}
             <button className="cadastro-animal-botao" type="submit">
               Cadastrar animal
             </button>

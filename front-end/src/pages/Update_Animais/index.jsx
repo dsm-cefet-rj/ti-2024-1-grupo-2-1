@@ -13,7 +13,9 @@ import { useSelector, useDispatch } from "react-redux";
 import TitlePage from '../../components/Title-Page';
 // import InputUsuario from '../../components/InputUsuario';
 import RadioInput from '../../components/RadioInput';
-import SuccessMessage  from "../../components/SuccessMessage"
+import SuccessMessage  from "../../components/SuccessMessage";
+import SelectInput from '../../components/Select-input';
+import InputUsuario from '../../components/InputUsuario';
 // import { current } from '@reduxjs/toolkit';
 
 /**
@@ -32,8 +34,8 @@ import SuccessMessage  from "../../components/SuccessMessage"
 const UpdateAnimais = () => {
   const {id} = useParams();
   // const {currentUser} = useSelector((rootReducer)=>rootReducer.userReducer);
-  const {currentAnimal} = useSelector((rootReducer)=>rootReducer.animalReducer);
-  // const { animals } = useSelector((rootReducer) => rootReducer.animalReducer);
+  //const {currentAnimal} = useSelector((rootReducer)=>rootReducer.animalReducer);
+   const { animals } = useSelector((rootReducer) => rootReducer.animalReducer);
   // const { status } = useSelector((rootReducer) => rootReducer.userReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -47,16 +49,16 @@ const UpdateAnimais = () => {
   const [img, setImg] = useState("");
   const [message, setMessage] = useState("");
   
-//   const animais =
-//    animals &&
-//    animals.filter((animal) => {
-//     if (id === animal.id) return animal;
-//   });
+  const animais =
+   animals &&
+   animals.filter((animal) => {
+    if (id === animal.id) return animal;
+  });
 
-// const currentAnimal = animais[0]
+const currentAnimal = animais[0]
 // // .slice(0, 1);
 // // currentAnimal = currentAnimal[0];
-// console.log(currentAnimal)
+ console.log(currentAnimal)
   useEffect(()=>{
      dispatch(fetchAnimais());
      dispatch(fetchOneAnimal(id));
@@ -179,6 +181,23 @@ const UpdateAnimais = () => {
     {value:"Macho", label: "Macho"},
     {value: "Fêmea", label: "Fêmea"}
   ];
+  const items4=[
+    {value:"All",label:"Todos"},
+    {value:"1 ano",label: "1 ano"},
+    {value:"2 anos",label: "2 anos"},
+    {value:"3 anos",label: "3 anos"},
+    {value:"4 anos",label: "4 anos"},
+    {value:"5 anos",label: "5 anos"},
+    {value:"6 anos",label: "6 anos"},
+    {value:"7 anos",label: "7 anos"},
+    {value:"8 anos",label: "8 anos"},
+    {value:"9 anos",label: "9 anos"},
+    {value:"10 anos",label: "10 anos"},
+    {value:"11 anos",label: "11 anos"}, 
+    {value:"12 anos",label: "12 anos"}, 
+    {value:"13 anos",label: "13 anos"},
+    {value:"14 anos",label: "14 anos"}
+    ];
   return (
     currentAnimal === null ? <div><h1>O animal é null</h1></div> : 
     <div>
@@ -244,8 +263,15 @@ const UpdateAnimais = () => {
               onChange={(e)=>[setSex(e.target.value)]}
             />
             </div>
-            <div className="wraper-input-cad">
-              <input
+            <h4 className="label-radio">Idade do animal</h4>
+            <div style={{display:"flex"}}>
+                <SelectInput
+                name="animal-age"
+                value={age}
+                items={items4}
+                onChange={(e)=>[setAge(e.target.value)]}
+                />
+              {/* <input
                 className={age !== "" ? "has-val input" : "input-c"}
                 type="text"
                 value={age}
@@ -254,10 +280,16 @@ const UpdateAnimais = () => {
               <span
                 className="focused-input-c"
                 data-placeholder="Idade do animal"
-              ></span>
+              ></span> */}
             </div>
-
-            <div className="wraper-input-cad">
+                <InputUsuario
+                  valor = {history}
+                  type={"text"}
+                  value={history}
+                  onChange={(e)=>[setHistory(e.target.value)]}
+                  label={"História do animal"}
+                />
+            {/* <div className="wraper-input-cad">
               <input
                 className={history !== "" ? "has-val input" : "input-c"}
                 type="text"
@@ -268,7 +300,7 @@ const UpdateAnimais = () => {
                 className="focused-input-c"
                 data-placeholder="História do animal"
               ></span>
-            </div>
+            </div> */}
             <button className="cadastro-animal-botao" type="submit">
               Atualizar Animal
             </button>

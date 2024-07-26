@@ -58,7 +58,7 @@
     padding: 1px;
 }
 
-.above-filter div select,
+/* .above-filter div select,
 .under-filter div select {
     display: block;
     width: 90%;
@@ -97,7 +97,7 @@ select {
     outline: none;
     border: 1px solid #007BFF;
     box-shadow: 1px 1px 8px 0px #007BFF;
-}
+} */
 
 .under-filter .btnn-search {
     display: flex;
