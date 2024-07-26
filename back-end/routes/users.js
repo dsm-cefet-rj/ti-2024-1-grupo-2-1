@@ -8,8 +8,10 @@ router.use(bodyParser.json())
 router.route('/')
 .get(async(req, res, next) => {
 
+  const {email, senha} = req.query;
+
   try{
-    const UsuariosBD = await Usuarios.find({}).maxTimeMS(5000);
+    const UsuariosBD = await Usuarios.find({email, senha}).maxTimeMS(5000);
     res.statusCode = 200;
     res.setHeader('Content-type', 'application/json');
     res.json(UsuariosBD);
