@@ -132,8 +132,7 @@ const HeaderMain = () => {
           {currentUser !== null &&
           currentUser.nome === "Adm" &&
           currentUser.email === "admin@admin" &&
-          currentUser.senha === "admin" &&
-          currentUser.id === "0000" ? (
+          currentUser.senha === "admin" ? (
             <>
               {" "}
               <span> | </span>{" "}

@@ -72,11 +72,12 @@ const Cadastrar = () => {
     }
 
     dispatch(emailExistServer(email)).then((result) => {
+      /*
       if (result.payload) {
         setErrE("Este e-mail já está cadastrado");
         return;
       }
-
+      */
       if (!isEmailValid(email)) {
         if (!isPasswordValid(senha, 5)) return;
 

@@ -1,22 +1,34 @@
 var express = require('express');
 var router = express.Router();
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const Usuarios = require('../model/usuarios');
 router.use(bodyParser.json())
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  // res.send('respond with a resource');
-  res.statusCode = 200;
-  res.setHeader('Content-type', 'application/json');
-  res.json([
-    {
-      "nome": "Adm",
-      "email": "admin@admin",
-      "senha": "admin",
-      "id": "0000"
-    }
-  
-  ]);
-});
+router.route('/')
+.get(async(req, res, next) => {
+
+  try{
+    const UsuariosBD = await Usuarios.find({}).maxTimeMS(5000);
+    res.statusCode = 200;
+    res.setHeader('Content-type', 'application/json');
+    res.json(UsuariosBD);
+  }
+  catch(err){
+    err = {};
+    res.statusCode = 404;
+    res.json(err);
+  }
+})
+.post((req, res, next) => {
+  Usuarios.create(req.body)
+  .then((usuario) => {
+    console.log('Usuário cadastrado', usuario);
+    res.statusCode = 200;
+    res.setHeader('Content-type', 'application/json');
+    res.json(usuario);
+  }, (err) => next(err))
+  .catch((err) => next(err))
+})
 
 module.exports = router;
