@@ -218,18 +218,13 @@ const currentAnimal = animais[0]
               accept="image/"
               onChange={handleImageChange}
             />
-            <div className="wraper-input-cad">
-              <input
-                className={name !== "" ? "has-val input" : "input-c"}
-                type="name"
-                value={name}
-                onChange={(e) => [setName(e.target.value)]}
-              />
-              <span
-                className="focused-input-c"
-                data-placeholder="Nome do animal"
-              ></span>
-            </div>
+              <InputUsuario
+                  valor = {name}
+                  type={"text"}
+                  value={name}
+                  onChange={(e)=>[setName(e.target.value)]}
+                  label={"Nome do animal"}
+                />
 
             <h4 className="label-radio">Tipo do animal</h4>
             <div style={{display:"flex"}}>
@@ -271,16 +266,7 @@ const currentAnimal = animais[0]
                 items={items4}
                 onChange={(e)=>[setAge(e.target.value)]}
                 />
-              {/* <input
-                className={age !== "" ? "has-val input" : "input-c"}
-                type="text"
-                value={age}
-                onChange={(e) => [setAge(e.target.value)]}
-              />
-              <span
-                className="focused-input-c"
-                data-placeholder="Idade do animal"
-              ></span> */}
+              
             </div>
                 <InputUsuario
                   valor = {history}
@@ -289,18 +275,7 @@ const currentAnimal = animais[0]
                   onChange={(e)=>[setHistory(e.target.value)]}
                   label={"História do animal"}
                 />
-            {/* <div className="wraper-input-cad">
-              <input
-                className={history !== "" ? "has-val input" : "input-c"}
-                type="text"
-                value={history}
-                onChange={(e) => [setHistory(e.target.value)]}
-              />
-              <span
-                className="focused-input-c"
-                data-placeholder="História do animal"
-              ></span>
-            </div> */}
+  
             <button className="cadastro-animal-botao" type="submit">
               Atualizar Animal
             </button>
