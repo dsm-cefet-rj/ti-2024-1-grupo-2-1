@@ -22,6 +22,7 @@ router.route('/')
     res.json(err);
   }
 })
+
 .post((req, res, next) => {
   Usuarios.create(req.body)
   .then((usuario) => {
@@ -29,6 +30,19 @@ router.route('/')
     res.statusCode = 200;
     res.setHeader('Content-type', 'application/json');
     res.json(usuario);
+  }, (err) => next(err))
+  .catch((err) => next(err))
+})
+
+router.route('/:id')
+.put((req, res, next) => {
+
+  Usuarios.findByIdAndUpdate({_id: req.params.id}, req.body).then((usuario) => {
+    console.log("Update de usuário, id: ", req.body.id);
+    console.log("Infos: ", req.body)
+    res.statusCode = 200;
+    res.setHeader('Content-type', 'application/json');
+    res.json(req.body);
   }, (err) => next(err))
   .catch((err) => next(err))
 })
