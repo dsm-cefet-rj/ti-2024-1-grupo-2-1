@@ -164,8 +164,14 @@ const currentAnimal = animais[0]
 
     setTimeout(()=>{
       dispatch(fetchAnimais());
-      navigate("/home")
-    },3000)
+      navigate("/")
+    },500)
+
+    setTimeout(() => {
+    navigate("/")
+    dispatch(fetchAnimais());
+    window.location.reload();
+    }, 100)
   }
 
   const items=[
