@@ -47,4 +47,13 @@ router.route('/:id')
   .catch((err) => next(err))
 })
 
+.delete((req, res, next) => {
+  Usuarios.findByIdAndDelete({_id: req.params.id}, req.body).then((usuario) => {
+    res.statusCode = 200;
+    res.setHeader('Content-type', 'application/json');
+    res.json(req.body);
+  }, (err) => next(err))
+  .catch((err) => next(err))
+})
+
 module.exports = router;
