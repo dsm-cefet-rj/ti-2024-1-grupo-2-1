@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const registrosAdocaoSchema = new Schema({
+
     idAnimal:{
         type:Schema.Types.ObjectId,
         required:true,
@@ -70,6 +71,6 @@ registrosAdocaoSchema.set('toJSON',{
     transform: function (doc, ret) {   delete ret._id  }
 })
 
-var registrosAdocao = mongoose.model("registrosAdocao", registrosAdocaoSchema, "registrosAdocao");
+var registrosAdocao = mongoose.model("Registros", registrosAdocaoSchema);
 
 module.exports = registrosAdocao;
