@@ -8,7 +8,7 @@ var usersRouter = require('./routes/users');
 var animalsRouter = require('./routes/animals');
 // var favAnimalsRouter = require('./routes/animaisFav');
 // var schedulingRouter = require('./routes/scheduling');
-// var adoptionRouter = require('./routes/adoption');
+var adoptionRouter = require('./routes/adoption');
 const mongoose = require("mongoose");
 // const Animais = require('./model/animais')
 
@@ -34,6 +34,6 @@ app.use('/userDB', usersRouter);
 app.use('/animals', animalsRouter);
 // app.use('/animaisFav',favAnimalsRouter)
 // app.use('/schedulingRegister', schedulingRouter);
-// app.use('/animalsAdoptionRegister',adoptionRouter);
+app.use('/animalsAdoptionRegister', adoptionRouter);
 
 module.exports = app;
