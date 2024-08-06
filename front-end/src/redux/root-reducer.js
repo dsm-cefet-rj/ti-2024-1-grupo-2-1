@@ -5,6 +5,7 @@ import animalReducer from "./Animais/slice";
 import pedidoAdocaoReducer from "./pedidoAdocao/slice";
 import schedulingSlice from "./agendamento/slice";
 import animaisFavReducer from "./AnimaisFav/slice";
+import userFavoriteAnimalsReducer from "./Favoritos/slice";
 
 const rootReducer = combineReducers({
   userReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   animalReducer,
   pedidoAdocaoReducer,
   schedulingSlice,
+  userFavoriteAnimalsReducer,
 });
 
 export default rootReducer;

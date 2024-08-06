@@ -6,6 +6,7 @@ import { fetchUserByEmail } from "../../redux/user/slice";
 import  Layout  from "../../components/Layoutform";
 import  InputUsuario  from "../../components/InputUsuario";
 import  SuccessMessage from "../../components/SuccessMessage";
+import { getUserEntryAtCollection } from "../../redux/Favoritos/slice";
 
 /**
  * @module Page/Pagina_Login
@@ -58,6 +59,7 @@ const Login = () => {
             setSuccess("")
           },3000)
           setTimeout(()=>{
+            dispatch(getUserEntryAtCollection(email))
             navigate("/");
           },3000)
         } else {

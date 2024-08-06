@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { addUserServer, emailExistServer } from "../../redux/user/slice";
 import  InputUsuario  from "../../components/InputUsuario";
 import SuccessMessage from "../../components/SuccessMessage";
+import { createEntryAtFavoriteCollection } from "../../redux/Favoritos/slice";
 
 /**
  * @module Page/Cadastro
@@ -86,6 +87,7 @@ const Cadastrar = () => {
       if (!isPasswordValid(senha, 5)) return;
       else {
         dispatch(addUserServer({ nome, email, senha }));
+        dispatch(createEntryAtFavoriteCollection({email}));
         // alert("Usuário cadastrado com sucesso!");
         setSuccess("Usuário cadastrado com sucesso!");
         setTimeout(() => {
