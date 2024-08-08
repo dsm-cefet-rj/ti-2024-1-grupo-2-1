@@ -46,6 +46,8 @@ const favoriteSlice = createSlice({
     initialState,
     reducers: {
         cleanArray: (state) => {
+            state.email = null;
+            state.error = null;
             state.userFavAnimals = [];
         },
     },

@@ -8,6 +8,7 @@ import  Grade  from "../../components/GridContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchFavAnimals } from "../../redux/AnimaisFav/slice";
+import { getUserEntryAtCollection } from "../../redux/Favoritos/slice";
 
 /**
  * @module Page/Favoritos
@@ -24,27 +25,29 @@ import { fetchFavAnimals } from "../../redux/AnimaisFav/slice";
  const Favoritos = () => {
   const { currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
 
-  const { animaisFav } = useSelector((rootReducer) => rootReducer.animaisFavReducer)
+  const { userFavAnimals } = useSelector((rootReducer) => rootReducer.userFavoriteAnimalsReducer)
   const { animals } = useSelector((rootReducer) => rootReducer.animalReducer);
 
    const dispatch= useDispatch();
-  // console.log({animals});
-  console.log(animaisFav);
-  const favoritados =
-    animals &&
-    animals.filter((animal) => {
-      // if (animaisFav.id_animal === animal.id){
-      if (animal.isfav === true) {
-        //   if(animaisFav.id_user === currentUser.id){
+  console.log("AAAAAAAAAAAAAAAAA");
+  console.log(userFavAnimals);
 
-            return animal;
-         }
-        // }
-      // }
-    });
+  let favoritados = []
+
+  animals.forEach((animal) => {
+    userFavAnimals.map((ids) => {
+      if(String(ids) === animal.id){
+        favoritados.push(animal);
+      }
+    })
+  })
+
+  console.log(favoritados);
 
     useEffect(() =>{
-      dispatch(fetchFavAnimals());
+      if(currentUser !== null){
+        dispatch(getUserEntryAtCollection(currentUser.email));
+      }
     },[])
 
   return (
