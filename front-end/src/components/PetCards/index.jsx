@@ -10,6 +10,7 @@ import { FaTrash } from "react-icons/fa";
 import { addAnimalFavServer } from "../../redux/AnimaisFav/slice";
 import Modal from "../Modal";
 import { FaPenClip } from "react-icons/fa6";
+import { addAnimalToUserFavoriteCollection } from "../../redux/Favoritos/slice";
 /**
  * @module Componente/Card_Pet
  */
@@ -33,8 +34,9 @@ import { FaPenClip } from "react-icons/fa6";
 const PetCards = ({ animais }) => {
   const id = animais.id;
   const { currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
+  const { userFavAnimals } = useSelector((rootReducer) => rootReducer.userFavoriteAnimalsReducer);
   // const { animaisFav }  = useSelector((rootReducer) => rootReducer.animaisFavReducer)
-  const [fav, setFav] = useState(animais.isfav);
+  const [fav, setFav] = useState(false);
   const[visible,setVisible] =useState(false);
   const[visivel,setVisivel] =useState(false);
   const modalRef = useRef(null);
@@ -42,20 +44,39 @@ const PetCards = ({ animais }) => {
 
   const dispatch = useDispatch();
 
+   // Atualiza o estado `fav` com base na lista de favoritos do Redux
+  useEffect(() => {
+    console.log(userFavAnimals)
+    const arrayAux = userFavAnimals
+    console.log('Estado local: ', arrayAux);
+    arrayAux.map((idsFavoritados) => {
+      if(idsFavoritados === id){
+        setFav(true);
+      }
+    })
+  }, []);
+
+  /*
+  useEffect(() => {
+    animalsUserFav.map((ids) => {
+      if(ids === id){
+        setFav(true);
+      }else{
+        setFav(false);
+      }
+    })
+  }, [])
+  */
+
   const handleAnimalFav = () => {
     if (currentUser !== null) {
-      // animais.isfav=true;
-      dispatch(addAnimalToFav(animais));
-      dispatch(changeAnimalIsFav(animais.id));
-      dispatch(addAnimalFavServer({
-        id_animal:id,
-        id_user: currentUser.id,
-      })
-    );
-      //dispatch isFav to animals array here!!!!!
-      setFav(!animais.isfav);
-      // animals.isfav=true;
-      // animalsFav.isfav=true;
+      if(fav === true){
+        setFav(false);
+        // DISPATCH PARA TIRAR DOS FAVORITOS
+      }else{
+        dispatch(addAnimalToUserFavoriteCollection(currentUser.email, {animalId: id, operacao: "ADD"}));
+        //setFav(true);
+      }
     } else {
       alert("Você precisa estar logado para favoritar um animal");
     }

@@ -22,14 +22,14 @@ export const getUserEntryAtCollection = createAsyncThunk("userFavoriteAnimals/ge
 );
 
 export const addAnimalToUserFavoriteCollection = createAsyncThunk("userFavoriteAnimals/addAnimalToUserFavoriteCollection",
-    async (userEmail, animalId) => {
-        return await httpPut(`${baseUrl}/favoriteAnimals?userEmail=${userEmail}`, animalId);
+    async (email, data) => {
+        return await httpPut(`${baseUrl}/favoriteAnimals?userEmail=${email}`, data);
     }
 );
 
 export const removeAnimalFromUserFavoriteCollection = createAsyncThunk("userFavoriteAnimals/removeAnimalFromUserFavoriteCollection",
-    async (userEmail, animalId) => {
-        return await httpPut(`${baseUrl}/favoriteAnimals?userEmail=${userEmail}`, animalId);
+    async (email, animalId, operacao) => {
+        return await httpPut(`${baseUrl}/favoriteAnimals?userEmail=${email}`, {animalId, operacao});
     }
 );
 
@@ -64,7 +64,8 @@ const favoriteSlice = createSlice({
         })
         .addCase(getUserEntryAtCollection.fulfilled, (state, action) => {
             state.status = "completed";
-            state.userFavAnimals = action.payload;
+            state.userFavAnimals = action.payload.favAnimalsArray;
+            state.email = action.payload.userEmail;
         })
         .addCase(getUserEntryAtCollection.rejected, (state, action) => {
             state.status = "failed";
@@ -73,8 +74,9 @@ const favoriteSlice = createSlice({
         .addCase(addAnimalToUserFavoriteCollection.pending, (state) => {
             state.status = "loading";
         })
-        .addCase(addAnimalToUserFavoriteCollection.fulfilled, (state) => {
+        .addCase(addAnimalToUserFavoriteCollection.fulfilled, (state, action) => {
             state.status = "completed";
+            state.userFavAnimals = action.payload.favAnimalsArray;
         })
         .addCase(addAnimalToUserFavoriteCollection.rejected, (state, action) => {
             state.status = "failed";
