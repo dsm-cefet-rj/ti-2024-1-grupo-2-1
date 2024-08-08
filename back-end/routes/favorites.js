@@ -60,7 +60,7 @@ router.route('/')
         console.log("Informações da operação: OP ", operacao);
         if(operacao  === "ADD"){
             console.log("AAAAAA");
-            const animaisFav = await Favoritos.findOneAndUpdateAndUpdate({ userEmail: email }, { $push: { favAnimalsArray: animalId } }).maxTimeMS(5000).exec();
+            const animaisFav = await Favoritos.findOneAndUpdate({ userEmail: email }, { $push: { favAnimalsArray: animalId } }).maxTimeMS(5000).exec();
             console.log("Resultado do update: ", animaisFav);
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');
@@ -68,7 +68,7 @@ router.route('/')
         }
         else if(operacao  === "REMOVE"){
             console.log("VVVVVVV");
-            const animaisFav = await Favoritos.findOneAndUpdateAndUpdate({ userEmail: email }, { $pull: { favoriteAnimals: animalId } }).maxTimeMS(5000).exec();
+            const animaisFav = await Favoritos.findOneAndUpdate({ userEmail: email }, { $pull: { favoriteAnimals: animalId } }).maxTimeMS(5000).exec();
             console.log("Resultado do update: ", animaisFav);
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');

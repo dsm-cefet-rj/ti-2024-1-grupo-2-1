@@ -10,7 +10,7 @@ import { FaTrash } from "react-icons/fa";
 import { addAnimalFavServer } from "../../redux/AnimaisFav/slice";
 import Modal from "../Modal";
 import { FaPenClip } from "react-icons/fa6";
-import { addAnimalToUserFavoriteCollection } from "../../redux/Favoritos/slice";
+import { addAnimalToUserFavoriteCollection, removeAnimalFromUserFavoriteCollection } from "../../redux/Favoritos/slice";
 /**
  * @module Componente/Card_Pet
  */
@@ -71,11 +71,11 @@ const PetCards = ({ animais }) => {
   const handleAnimalFav = () => {
     if (currentUser !== null) {
       if(fav === true){
+        dispatch(removeAnimalFromUserFavoriteCollection({ email: currentUser.email, animalId: id, operacao: "REMOVE"}));
         setFav(false);
-        // DISPATCH PARA TIRAR DOS FAVORITOS
       }else{
-        dispatch(addAnimalToUserFavoriteCollection(currentUser.email, {animalId: id, operacao: "ADD"}));
-        //setFav(true);
+        dispatch(addAnimalToUserFavoriteCollection({ email: currentUser.email, animalId: id, operacao: "ADD"}));
+        setFav(true);
       }
     } else {
       alert("Você precisa estar logado para favoritar um animal");

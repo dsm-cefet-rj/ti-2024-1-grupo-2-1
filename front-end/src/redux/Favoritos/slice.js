@@ -22,14 +22,16 @@ export const getUserEntryAtCollection = createAsyncThunk("userFavoriteAnimals/ge
 );
 
 export const addAnimalToUserFavoriteCollection = createAsyncThunk("userFavoriteAnimals/addAnimalToUserFavoriteCollection",
-    async (email, data) => {
-        return await httpPut(`${baseUrl}/favoriteAnimals?userEmail=${email}`, data);
+    async (data) => {
+        const { email, animalId, operacao } = data;
+        return await httpPut(`${baseUrl}/favoriteAnimals?userEmail=${data.email}`, data);
     }
 );
 
 export const removeAnimalFromUserFavoriteCollection = createAsyncThunk("userFavoriteAnimals/removeAnimalFromUserFavoriteCollection",
-    async (email, animalId, operacao) => {
-        return await httpPut(`${baseUrl}/favoriteAnimals?userEmail=${email}`, {animalId, operacao});
+    async (data) => {
+        const { email, animalId, operacao } = data;
+        return await httpPut(`${baseUrl}/favoriteAnimals?userEmail=${data.email}`, data);
     }
 );
 
