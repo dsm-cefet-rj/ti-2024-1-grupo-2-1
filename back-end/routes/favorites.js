@@ -68,7 +68,7 @@ router.route('/')
         }
         else if(operacao  === "REMOVE"){
             console.log("VVVVVVV");
-            const animaisFav = await Favoritos.findOneAndUpdate({ userEmail: email }, { $pull: { favoriteAnimals: animalId } }).maxTimeMS(5000).exec();
+            const animaisFav = await Favoritos.findOneAndUpdate({ userEmail: email }, { $pull: { favAnimalsArray: animalId } }, { new: true }).maxTimeMS(5000).exec();
             console.log("Resultado do update: ", animaisFav);
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');

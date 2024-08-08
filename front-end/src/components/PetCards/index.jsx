@@ -10,7 +10,7 @@ import { FaTrash } from "react-icons/fa";
 import { addAnimalFavServer } from "../../redux/AnimaisFav/slice";
 import Modal from "../Modal";
 import { FaPenClip } from "react-icons/fa6";
-import { addAnimalToUserFavoriteCollection, removeAnimalFromUserFavoriteCollection } from "../../redux/Favoritos/slice";
+import { addAnimalToUserFavoriteCollection, getUserEntryAtCollection, removeAnimalFromUserFavoriteCollection } from "../../redux/Favoritos/slice";
 /**
  * @module Componente/Card_Pet
  */
@@ -50,7 +50,7 @@ const PetCards = ({ animais }) => {
     const arrayAux = userFavAnimals
     console.log('Estado local: ', arrayAux);
     arrayAux.map((idsFavoritados) => {
-      if(idsFavoritados === id){
+      if(idsFavoritados === id && currentUser !== null){
         setFav(true);
       }
     })
@@ -70,13 +70,8 @@ const PetCards = ({ animais }) => {
 
   const handleAnimalFav = () => {
     if (currentUser !== null) {
-      if(fav === true){
-        dispatch(removeAnimalFromUserFavoriteCollection({ email: currentUser.email, animalId: id, operacao: "REMOVE"}));
-        setFav(false);
-      }else{
         dispatch(addAnimalToUserFavoriteCollection({ email: currentUser.email, animalId: id, operacao: "ADD"}));
         setFav(true);
-      }
     } else {
       alert("Você precisa estar logado para favoritar um animal");
     }
@@ -101,10 +96,9 @@ const PetCards = ({ animais }) => {
   
   
   const handleRemove = () => {
-    dispatch(removeAnimalToFav(animais.id));
-    dispatch(changeAnimalIsFav(animais.id));
-
-    setFav(animais.isFav);
+    dispatch(removeAnimalFromUserFavoriteCollection({ email: currentUser.email, animalId: id, operacao: "REMOVE"}));
+    setFav(false);
+    dispatch(getUserEntryAtCollection(currentUser.email));
   };
 
   const handleClick = (e) => {
