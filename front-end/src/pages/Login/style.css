@@ -58,14 +58,6 @@
     cursor: pointer;
 }
 
-.erro {
-    font-size: 15px;
-    font-weight: bold;
-    color: red;
-    padding: 0 5px;
-    margin-bottom: 14px;
-}
-
 .text-center {
     display: flex;
     justify-content: center;

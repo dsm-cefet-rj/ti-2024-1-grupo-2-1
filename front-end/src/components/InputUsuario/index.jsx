@@ -22,6 +22,7 @@ import { useState } from "react";
  * @returns {React.FC} O componente renderizado.
 */
 const InputUsuario = ({
+  name,
   valor,
   type,
   value,
@@ -50,6 +51,7 @@ const InputUsuario = ({
           value={value}
           onChange={onChange}
           id={id}
+          name={name}
         />
         <span className="focus-input-user" data-placeholder={label}></span>
         {type === "password" && (
@@ -58,7 +60,7 @@ const InputUsuario = ({
           </span>
         )}
       </div>
-      <label className="erro">{error}</label>
+      <label className="erro" name={name}>{error}</label>
     </>
   );
 };

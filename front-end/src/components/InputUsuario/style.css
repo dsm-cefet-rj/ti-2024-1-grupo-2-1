@@ -113,3 +113,11 @@
     margin-left: 19rem;
     transition: transform 0.3s ease;
 }
+.erro {
+    font-size: 14px;
+    font-weight: bold;
+    color: red;
+    padding: 0 5px;
+    margin-bottom: 5px;
+    margin-top: -8px;
+}
