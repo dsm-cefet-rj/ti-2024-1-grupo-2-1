@@ -22,14 +22,16 @@ export const getUserEntryAtCollection = createAsyncThunk("userFavoriteAnimals/ge
 );
 
 export const addAnimalToUserFavoriteCollection = createAsyncThunk("userFavoriteAnimals/addAnimalToUserFavoriteCollection",
-    async (userEmail, animalId) => {
-        return await httpPut(`${baseUrl}/favoriteAnimals?userEmail=${userEmail}`, animalId);
+    async (data) => {
+        const { email, animalId, operacao } = data;
+        return await httpPut(`${baseUrl}/favoriteAnimals?userEmail=${data.email}`, data);
     }
 );
 
 export const removeAnimalFromUserFavoriteCollection = createAsyncThunk("userFavoriteAnimals/removeAnimalFromUserFavoriteCollection",
-    async (userEmail, animalId) => {
-        return await httpPut(`${baseUrl}/favoriteAnimals?userEmail=${userEmail}`, animalId);
+    async (data) => {
+        const { email, animalId, operacao } = data;
+        return await httpPut(`${baseUrl}/favoriteAnimals?userEmail=${data.email}`, data);
     }
 );
 
@@ -44,6 +46,8 @@ const favoriteSlice = createSlice({
     initialState,
     reducers: {
         cleanArray: (state) => {
+            state.email = null;
+            state.error = null;
             state.userFavAnimals = [];
         },
     },
@@ -64,7 +68,8 @@ const favoriteSlice = createSlice({
         })
         .addCase(getUserEntryAtCollection.fulfilled, (state, action) => {
             state.status = "completed";
-            state.userFavAnimals = action.payload;
+            state.userFavAnimals = action.payload.favAnimalsArray;
+            state.email = action.payload.userEmail;
         })
         .addCase(getUserEntryAtCollection.rejected, (state, action) => {
             state.status = "failed";
@@ -73,8 +78,9 @@ const favoriteSlice = createSlice({
         .addCase(addAnimalToUserFavoriteCollection.pending, (state) => {
             state.status = "loading";
         })
-        .addCase(addAnimalToUserFavoriteCollection.fulfilled, (state) => {
+        .addCase(addAnimalToUserFavoriteCollection.fulfilled, (state, action) => {
             state.status = "completed";
+            state.userFavAnimals = action.payload.favAnimalsArray;
         })
         .addCase(addAnimalToUserFavoriteCollection.rejected, (state, action) => {
             state.status = "failed";

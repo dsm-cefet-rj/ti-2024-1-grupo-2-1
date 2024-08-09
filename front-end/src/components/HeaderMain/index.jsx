@@ -8,6 +8,7 @@ import { VscAccount } from "react-icons/vsc";
 import { useSelector, useDispatch } from "react-redux";
 import { logOut } from "../../redux/user/slice";
 import { fetchAnimais } from "../../redux/Animais/slice";
+import { cleanArray } from "../../redux/Favoritos/slice";
 /** 
 * @module Componente/Header
 *  */
@@ -42,6 +43,7 @@ const HeaderMain = () => {
   const handleLogOut = () => {
     navigate("/");
     dispatch(logOut());
+    dispatch(cleanArray());
     window.location.reload();
   };
   const handleAcount = () => {
