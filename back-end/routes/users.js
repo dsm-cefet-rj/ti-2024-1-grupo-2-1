@@ -23,15 +23,33 @@ router.route('/')
   }
 })
 
-.post((req, res, next) => {
-  Usuarios.create(req.body)
-  .then((usuario) => {
-    console.log('Usuário cadastrado', usuario);
-    res.statusCode = 200;
-    res.setHeader('Content-type', 'application/json');
-    res.json(usuario);
-  }, (err) => next(err))
-  .catch((err) => next(err))
+.post(async (req, res, next) => {
+
+  try{
+    console.log(req.body);
+
+    const existingEmailArray = await Usuarios.find({email: req.body.email});
+    const existingEmail = existingEmailArray[0];
+
+    if(existingEmail != undefined){
+      console.log("Email já possui cadastro, operação cancelada!");
+      res.setHeader('Content-type', 'application/json');
+      return res.status(400).send({message: "Este email já está cadastrado!"})
+    }
+
+    Usuarios.create(req.body).then((usuario) => {
+      console.log("Usuário cadastrado, infos: ", usuario);
+      res.statusCode = 200;
+      res.setHeader('Content-type', 'application/json');
+      res.json(usuario);
+      
+    })
+  } catch(error){
+    return res.status(400).send({
+      error: error,
+      message: 'Ocorreu um erro na criação de usuario'
+  });
+  } 
 })
 
 router.route('/:id')
