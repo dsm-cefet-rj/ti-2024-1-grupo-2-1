@@ -57,31 +57,41 @@ const RegistroAdocao = () => {
     if (!name) return "";
     return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
   }
-
+  
+  const animal =
+    animals &&
+    animals.filter((animal) => {
+      if (id === animal.id) return animal;
+    });
   /**
    * @function handleConfirm - Função que realiza o registro do pedido de adoção
    * @param {*} e - Evento 
    * 
-   */
-  const handleConfirm = async (e) => {
-    e.preventDefault();
-
-    const isValid = await pedidoAdocaoSchema.isValid({ email });
-
-    if (!nomeAnimal | !nome | !cpf | !rg | !email | !idade | !cel) {
-      alert("Preencha todos os campos!");
-      return;
+  */
+ const handleConfirm = async (e) => {
+   e.preventDefault();
+   
+   const isValid = await pedidoAdocaoSchema.isValid({ email });
+   
+   if (!nomeAnimal | !nome | !cpf | !rg | !email | !idade | !cel) {
+     alert("Preencha todos os campos!");
+     return;
     }
-
+    
     if (!isValid) {
       alert("Email Inválido");
       return;
     }
-
+    
     dispatch(
       addRequest({
         idAnimal: id,
         nomeAnimal: nomeAnimal,
+        idadeAnimal:animal[0].idade,
+        imgAnimal:animal[0].img,
+        tipoAnimal:animal[0].tipo,
+        porteAnimal:animal[0].porte,
+        sexoAnimal:animal[0].sexo,
         //rgaAnimal: rga,
         nomeAdotante: nome,
         cpfAdotante: cpf,
@@ -109,11 +119,6 @@ const RegistroAdocao = () => {
 
   const fileInputRef = useRef(null);
 
-  const animais =
-    animals &&
-    animals.filter((animal) => {
-      if (id === animal.id) return animal;
-    });
   /*
   const handleArquivosAnexados = (files) => {
     const fileList = Array.from(files).slice(0, 3); // Limita a seleção a 3 arquivos
@@ -171,7 +176,7 @@ const RegistroAdocao = () => {
           <div className="div-informacoes">
             <div className="div-info-esquerda">
               <img
-                src={animais && animais[0] && animais[0].img}
+                src={animal && animal[0] && animal[0].img}
                 alt="Imagem"
                 id="teste"
               ></img>

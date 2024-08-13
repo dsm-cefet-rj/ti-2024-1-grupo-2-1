@@ -56,7 +56,7 @@ const PedidoAdocao = ({ pedido }) => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    navigate(`/verificando_pedido/${id}`);
+    navigate(`/verificar_pedido/${id}`);
     {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }

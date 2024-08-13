@@ -11,6 +11,26 @@ const registrosAdocaoSchema = new Schema({
         type:String,
         required:true,
     },
+    idadeAnimal:{
+        type:String,
+        required:true,
+    },
+    imgAnimal:{
+        type:String,
+        required:true,
+    },
+    tipoAnimal:{
+        type:String,
+        required:true,
+    },
+    porteAnimal:{
+        type:String,
+        required:true,
+    },
+    sexoAnimal:{
+        type:String,
+        required:true,
+    },
     nomeAdotante:{
         type:String,
         required:true,

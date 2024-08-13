@@ -20,7 +20,7 @@ const SuccessMessage = ({text}) => {
     useEffect(() => {
       if (text != "") {
         setAtivo(true);
-        setTimeout(() =>{ setAtivo(false)}, 2000); // Tempo de exibição da mensagem
+        setTimeout(() =>{ setAtivo(false)}, 1000); // Tempo de exibição da mensagem
       }
     }, [text]);
   

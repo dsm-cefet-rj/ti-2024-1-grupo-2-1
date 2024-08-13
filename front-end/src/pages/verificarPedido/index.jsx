@@ -24,29 +24,37 @@ import logo from "../../assets/logopreta2.png";
  */
 const VerificarPedido = () => {
   const { id } = useParams();
+  console.log(id)
   const dispatch = useDispatch();
-  const { currentOrder } = useSelector(
+  const { orders } = useSelector(
     (rootReducer) => rootReducer.pedidoAdocaoReducer
   );
+  const pedido =
+    orders &&
+    orders.filter((pedido) => {
+      if (id === pedido.id) return pedido;
+    });
+const currentOrder = pedido[0];
+  console.log(currentOrder)
   const { currentAnimal } = useSelector(
     (rootReducer) => rootReducer.animalReducer
   );
   const { status } = useSelector((rootReducer) => rootReducer.userReducer);
 
-  console.log(currentOrder);
+  
 
   useEffect(() => {
     dispatch(getRegisters);
   }, []);
   
-  useEffect(() => {
-    if(currentOrder == null){
-      dispatch(getOneRegister(id));
-    }else{
-      dispatch(fetchOneAnimal(currentOrder.idAnimal));
-      console.log("Carregando pedido de adoção")
-    }
-  }, [currentOrder])
+  // useEffect(() => {
+  //   if(currentOrder == null){
+  //     dispatch(getOneRegister(id));
+  //   }else{
+  //     dispatch(fetchOneAnimal(currentOrder.idAnimal));
+  //     console.log("Carregando pedido de adoção");
+  //   }
+  // }, [currentOrder])
 
    /**
    * @function handleVerify -Função responsavel aceitar o pedido de adoção do animal
@@ -103,7 +111,7 @@ const VerificarPedido = () => {
   }
 
   return (
-    currentAnimal == null ?<></>: 
+    // currentAnimal == null ?<></>: 
     <>
       <HeaderMain />
       <div className="info-form-pedido">
@@ -111,7 +119,7 @@ const VerificarPedido = () => {
           <img src={logo} className="lg" />
 
           <img
-            src={currentAnimal && currentAnimal.img}
+            src={currentOrder && currentOrder.imgAnimal}
             alt="Imagem do Animal"
             id="img_animal"
           ></img>
@@ -146,14 +154,14 @@ const VerificarPedido = () => {
           <ContainerInfo
             label={"Idade do animal:"}
             label2={"Tipo do animal:"}
-            info={currentAnimal.idade}
-            info2={currentAnimal.tipo}
+            info={currentOrder.idadeAnimal}
+            info2={currentOrder.tipoAnimal}
             />
             <ContainerInfo
             label={"Porte do animal:"}
             label2={"Sexo do animal:"}
-            info={currentAnimal.porte}
-            info2={currentAnimal.sexo}
+            info={currentOrder.porteAnimal}
+            info2={currentOrder.sexoAnimal}
             />
           </div>
         </div>
@@ -170,22 +178,22 @@ const VerificarPedido = () => {
                     Você está pronto para esse compromisso e responsabilidade de
                     longo prazo?</p>
         {currentOrder && (
-              <p className="resp_registro">{currentOrder.pergunta2 === "true" ? ("Sim"):("Não")}</p>
+              <p className="resp_registro">{currentOrder.pergunta2 === true ? ("Sim"):("Não")}</p>
             )}
         <p className="topico_registro">3. Os animais precisam de cuidados com higiene, boa
                     alimentação e atendimento veterinário. Você tem como
                     providenciar isso?</p>
         {currentOrder && (
-              <p className="resp_registro">{currentOrder.pergunta3 === "true" ? ("Sim"):("Não")}</p>
+              <p className="resp_registro">{currentOrder.pergunta3 === true ? ("Sim"):("Não")}</p>
             )}
         <p className="topico_registro">4. Você já tem um médico veterinário?</p>
         {currentOrder && (
-              <p className="resp_registro">{currentOrder.pergunta4 === "true" ? ("Sim"):("Não")}</p>
+              <p className="resp_registro">{currentOrder.pergunta4 === true ? ("Sim"):("Não")}</p>
             )}
         <p className="topico_registro">5. Em caso de emergência, tem como levar seu animal
                     imediatamente ao veterinário?</p>
         {currentOrder && (
-              <p className="resp_registro">{currentOrder.pergunta5 === "true" ? ("Sim"):("Não")}</p>
+              <p className="resp_registro">{currentOrder.pergunta5 === true ? ("Sim"):("Não")}</p>
             )}                
 
         </div>

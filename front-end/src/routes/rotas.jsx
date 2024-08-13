@@ -37,7 +37,7 @@ export const AppRouter = () => {
           <Route path="/admin_agendamentos" element={<AdmAgendamento />} />
           <Route exact path="/detalhes_conta/:id" element={<Update_Perfil />} />
           <Route exact path="opcao_admin" element={<OptionAdmin/>}/>
-          <Route exact path="/verificando_pedido/:id" element={<VerificarPedido />} />
+          <Route exact path="/verificar_pedido/:id" element={<VerificarPedido />} />
           <Route exact path="/update_animal/:id" element={<UpdateAnimais/>}/>
         </Routes>
       </Fragment>
