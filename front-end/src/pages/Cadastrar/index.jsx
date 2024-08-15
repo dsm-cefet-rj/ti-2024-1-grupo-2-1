@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { addUserServer, emailExistServer } from "../../redux/user/slice";
 import  InputUsuario  from "../../components/InputUsuario";
 import SuccessMessage from "../../components/SuccessMessage";
+import ErrorMessage from "../../components/Error"
 import * as Yup from 'yup'
 import { createEntryAtFavoriteCollection } from "../../redux/Favoritos/slice";
 
@@ -30,6 +31,7 @@ const Cadastrar = () => {
   const [nome, setNome] = useState("");
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState("");
+  const [messageError, setMessageError] = useState("");
   const formData ={
     nome: nome,
     email: email,
@@ -81,29 +83,29 @@ const Cadastrar = () => {
         {nome,email,senha,},{ abortEarly: false}
       );
       setErrors({});
-      console.log(formData);
-      
-      dispatch(emailExistServer(email))
-      dispatch(addUserServer(formData));
-      dispatch(createEntryAtFavoriteCollection({email}));
+
+      const resp = await dispatch(addUserServer({nome, email, senha}));
+      if(resp.error!= null){
+        setMessageError("email já cadastrado");
+        setTimeout(() => {
+          setMessageError("");
+        }, 1500);
+        return console.log(resp.data)
+      }else{
+        dispatch(createEntryAtFavoriteCollection({email}));
+        console.log(resp);
         setSuccess("Usuário cadastrado com sucesso!");
         setTimeout(() => {
           setSuccess("");
-        }, 1000);
-        setTimeout(()=>{
+        }, 1500);
+        setTimeout(() =>{
           navigate("/login");
-        },1000)
+        }, 1500)
+      }
     }catch(err){
+        console.error("Erro durante o cadastro:", err)
         setErrors(ERROR(err.errors));
       }
-
-      /*
-      if (result.payload) {
-        setErrE("Este e-mail já está cadastrado");
-        return;
-        }
-        */ 
-  
     
   };
   return (
@@ -144,6 +146,7 @@ const Cadastrar = () => {
         </div>
         {/* <label className="erro">{err}</label> */}
         <SuccessMessage text={success}/>
+        <ErrorMessage text={messageError}/>
 
         <div className="text-center-r">
           <span className="txtr1">Possui conta?</span>
