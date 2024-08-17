@@ -113,6 +113,7 @@ const Cadastrar = () => {
       <form id="form" className="register-form" onSubmit={(formData)=>{handleSignUp(formData)}}>
         <span className="tittle-r">Fazer cadastro</span>
         <InputUsuario
+          isLogin={true}
           valor={nome}
           type={"name"}
           value={nome}
@@ -122,6 +123,7 @@ const Cadastrar = () => {
         />
 
         <InputUsuario
+          isLogin={true}
           valor={email}
           type={"text"}
           value={email}
@@ -132,6 +134,7 @@ const Cadastrar = () => {
           error={errors.email}
         />
         <InputUsuario
+          isLogin={true}
           valor={senha}
           type={"password"}
           value={senha}

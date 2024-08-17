@@ -95,6 +95,7 @@ const userSlice = createSlice({
       .addCase(addUserServer.fulfilled, (state, action) => {
         state.status = "saved";
         userAdapter.addOne(state, action.payload);
+        state.error=null;
       })
       .addCase(addUserServer.rejected, (state, action) => {
         state.status = "failed";

@@ -22,7 +22,7 @@ import { useState } from "react";
  * @returns {React.FC} O componente renderizado.
 */
 const InputUsuario = ({
-  name,
+  isLogin,
   valor,
   type,
   value,
@@ -37,6 +37,7 @@ const InputUsuario = ({
     setShowPassword(!showPassword);
   };
   return (
+    isLogin ?
     <>
       <div className="wrap-input-user">
         <input
@@ -51,7 +52,6 @@ const InputUsuario = ({
           value={value}
           onChange={onChange}
           id={id}
-          name={name}
         />
         <span className="focus-input-user" data-placeholder={label}></span>
         {type === "password" && (
@@ -60,8 +60,21 @@ const InputUsuario = ({
           </span>
         )}
       </div>
-      <label className="erro" name={name}>{error}</label>
+      <label className="erro">{error}</label>
     </>
+    :
+    
+        <div className="inputBox">
+          <input type="text" required="required"
+            value={value}
+            onChange={onChange}
+            id={id}
+            />
+            <span>{label}</span>
+          <label className="erro">{error}</label>
+        </div>
+  
+  
   );
 };
 

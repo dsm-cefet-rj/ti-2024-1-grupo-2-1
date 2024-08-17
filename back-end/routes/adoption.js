@@ -49,6 +49,17 @@ router.route('/:id')
     }
 
 })
+.put((req, res, next) => {
+
+    registrosAdocao.findByIdAndUpdate({_id: req.params.id}, req.body).then((registro) => {
+      console.log("Update do pedido, id: ", req.body.id);
+      console.log("Infos: ", req.body, registro)
+      res.statusCode = 200;
+      res.setHeader('Content-type', 'application/json');
+      res.json(req.body);
+    }, (err) => next(err))
+    .catch((err) => next(err))
+  })
 .delete((req, res, next) => {
     registrosAdocao.findByIdAndDelete(req.params.id)
   .then((registro)=>{

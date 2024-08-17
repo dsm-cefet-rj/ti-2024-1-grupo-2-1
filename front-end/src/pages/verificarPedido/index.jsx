@@ -2,11 +2,13 @@ import { useDispatch, useSelector } from "react-redux";
 import "./index.css";
 import { useParams } from "react-router-dom";
 import { getOneRegister, updateRequest, orderNull, getRegisters } from "../../redux/pedidoAdocao/slice";
-import { useDebugValue, useEffect } from "react";
+import { useEffect , useState} from "react";
 import HeaderMain from "../../components/HeaderMain/index";
 import Footer from "../../components/Footer/index";
 import ContainerInfo from "../../components/Container-Info";
+import { useNavigate } from "react-router-dom";
 import { fetchOneAnimal } from "../../redux/Animais/slice";
+import SuccessMessage from "../../components/SuccessMessage";
 import { FiCheck, FiX } from "react-icons/fi";
 import logo from "../../assets/logopreta2.png";
 
@@ -24,7 +26,9 @@ import logo from "../../assets/logopreta2.png";
  */
 const VerificarPedido = () => {
   const { id } = useParams();
-  console.log(id)
+  const navigate = useNavigate();
+  const [success, setSuccess]= useState("");
+  console.log(id);
   const dispatch = useDispatch();
   const { orders } = useSelector(
     (rootReducer) => rootReducer.pedidoAdocaoReducer
@@ -36,10 +40,10 @@ const VerificarPedido = () => {
     });
 const currentOrder = pedido[0];
   console.log(currentOrder)
-  const { currentAnimal } = useSelector(
-    (rootReducer) => rootReducer.animalReducer
-  );
-  const { status } = useSelector((rootReducer) => rootReducer.userReducer);
+  // const { currentAnimal } = useSelector(
+  //   (rootReducer) => rootReducer.animalReducer
+  // );
+  // const { status } = useSelector((rootReducer) => rootReducer.userReducer);
 
   
 
@@ -67,6 +71,11 @@ const currentOrder = pedido[0];
       id : currentOrder.id,
      idAnimal : currentOrder.idAnimal,
      nomeAnimal : currentOrder.nomeAnimal,
+     idadeAnimal:currentOrder.idadeAnimal,
+      imgAnimal:currentOrder.imgAnimal,
+    tipoAnimal:currentOrder.tipoAnimal,
+    porteAnimal:currentOrder.porteAnimal,
+    sexoAnimal:currentOrder.sexoAnimal,
      nomeAdotante : currentOrder.nomeAdotante,
      cpfAdotante : currentOrder.cpfAdotante,
      rgAdotante : currentOrder.rgAdotante,
@@ -81,6 +90,13 @@ const currentOrder = pedido[0];
       status:"approved"
     }));
     orderNull();
+    setSuccess("Pedido Atualizado com Sucesso!");
+    setTimeout(()=>{
+      setSuccess('')
+    },1500)
+    setTimeout(() =>{
+      navigate("/admin_pedidos");
+    }, 1500)
   }
 
   /**
@@ -94,6 +110,11 @@ const currentOrder = pedido[0];
       id : currentOrder.id,
      idAnimal : currentOrder.idAnimal,
      nomeAnimal : currentOrder.nomeAnimal,
+     idadeAnimal:currentOrder.idadeAnimal,
+      imgAnimal:currentOrder.imgAnimal,
+    tipoAnimal:currentOrder.tipoAnimal,
+    porteAnimal:currentOrder.porteAnimal,
+    sexoAnimal:currentOrder.sexoAnimal,
      nomeAdotante : currentOrder.nomeAdotante,
      cpfAdotante : currentOrder.cpfAdotante,
      rgAdotante : currentOrder.rgAdotante,
@@ -108,6 +129,13 @@ const currentOrder = pedido[0];
       status:"rejected"
     }));
     orderNull();
+    setSuccess("Pedido Atualizado com Sucesso!");
+    setTimeout(()=>{
+      setSuccess('')
+    },1500)
+    setTimeout(() =>{
+      navigate("/admin_pedidos");
+    }, 1500)
   }
 
   return (
@@ -210,8 +238,7 @@ const currentOrder = pedido[0];
         <FiX style={{fontSize:30}}/>
           recusar
         </button>
-        
-
+        <SuccessMessage text={success}/>
       </div>
 
       <Footer />

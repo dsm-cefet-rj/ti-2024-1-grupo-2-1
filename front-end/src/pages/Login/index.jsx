@@ -76,6 +76,7 @@ const Login = () => {
       <form className="login-form">
         <span className="tittle">Seja Bem Vindo</span>
         <InputUsuario
+          isLogin={true}
           valor={email}
           type={"email"}
           value={email}
@@ -83,6 +84,7 @@ const Login = () => {
           label={"Email"}
         />
         <InputUsuario
+          isLogin={true}
           valor={senha}
           type={"password"}
           value={senha}

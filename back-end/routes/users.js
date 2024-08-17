@@ -34,7 +34,7 @@ router.route('/')
     if(existingEmail != undefined){
       console.log("Email já possui cadastro, operação cancelada!");
       res.setHeader('Content-type', 'application/json');
-      return res.status(400).send({message: "Este email já está cadastrado!"})
+      return res.status(409).send({message: "Este email já está cadastrado!"})
     }
 
     Usuarios.create(req.body).then((usuario) => {
