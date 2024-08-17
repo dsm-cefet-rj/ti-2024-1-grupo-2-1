@@ -2,7 +2,38 @@ var express = require('express');
 var router = express.Router();
 const bodyParser = require('body-parser');
 const Usuarios = require('../model/usuarios');
+var passport = require('passport');
+var authenticate = require('../middleware/authenticate');
 router.use(bodyParser.json())
+
+
+router.post('/signup',(req, res, next)=>{
+  Usuarios.register( new Usuarios({nome: req.body.nome}), req.body.senha,
+  (err, user) =>{
+    if(err){
+      res.status(500);
+      res.setHeader('Content-Type', 'application/json');
+      res.json({err: err});
+    } else{
+      passport.authenticate('local')(req, res, ( )=>{
+        res.status(200).send({
+          success: true,
+          status: 'Registration Successful'
+        })
+        res.setHeader('Content-Type', 'application/json');
+      })
+    }
+  }
+)});
+
+router.post('/login', passport.authenticate('local'), (req, res)=>{
+  var token = authenticate.getToken({_id: req.user._id});
+  res.status(200).send({
+    success: true,
+    token: token,
+    status: 'Registration Successful'
+  })
+});
 
 /* GET users listing. */
 router.route('/')

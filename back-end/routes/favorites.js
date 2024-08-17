@@ -3,6 +3,7 @@ var router = express.Router();
 const bodyParser = require('body-parser');
 const Favoritos = require("../model/favoritos");
 const { Mongoose } = require('mongoose');
+var authenticate = require('../middleware/authenticate')
 router.use(bodyParser.json())
 
 router.route('/')
@@ -22,7 +23,8 @@ router.route('/')
     .catch((err) => next(err));
 })
 
-.get(async (req, res, next) => {
+.get( authenticate.verifyUser, async (req, res, next) => {
+    console.log(req.user)
     const email = req.query.userEmail;
 
     if (!email) {
@@ -44,7 +46,7 @@ router.route('/')
     }
 })
 
-.put(async (req, res, next) => {
+.put(authenticate.verifyUser, async (req, res, next) => {
     const email = req.query.userEmail;
     const { animalId, operacao } = req.body; 
 

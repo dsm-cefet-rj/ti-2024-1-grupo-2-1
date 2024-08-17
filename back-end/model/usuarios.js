@@ -14,6 +14,10 @@ const usuariosSchema = new Schema({
         type:String,
         required:true,
     },
+    admin:{
+        type:Boolean,
+        default:false,
+    }
 })
 
 // Método para renomear o campo _id para id
