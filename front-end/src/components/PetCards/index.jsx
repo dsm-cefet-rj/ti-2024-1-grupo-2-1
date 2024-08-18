@@ -46,9 +46,9 @@ const PetCards = ({ animais }) => {
 
    // Atualiza o estado `fav` com base na lista de favoritos do Redux
   useEffect(() => {
-    console.log(userFavAnimals)
+    // console.log(userFavAnimals)
     const arrayAux = userFavAnimals
-    console.log('Estado local: ', arrayAux);
+    // console.log('Estado local: ', arrayAux);
     arrayAux.map((idsFavoritados) => {
       if(idsFavoritados === id && currentUser !== null){
         setFav(true);

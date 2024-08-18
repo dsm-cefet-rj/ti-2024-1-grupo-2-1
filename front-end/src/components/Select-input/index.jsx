@@ -5,7 +5,7 @@ const SelectInput = ({ name, value, items, onChange}) => {
   return (
     <div style={{display:"flex", width:"100%",marginTop:"3%"}}>
     <select value = {value}className="select_input"onChange={onChange}>
-      {console.log(value)}
+      {/* {console.log(value)} */}
         {items.map((item)=>(
             <option 
                 id={name+item.value}
