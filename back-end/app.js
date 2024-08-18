@@ -1,6 +1,6 @@
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
+const cors = require('cors');
 var logger = require('morgan');
 var passport = require('passport');
 
@@ -25,11 +25,25 @@ connect.then((db)=>{
 
 var app = express();
 
+// app.use(cors({
+//     origin: '*'
+// }))
+
+app.use((req, res, next)=>{
+    // console.log("cors acessado")
+    res.header("Access-Control-Allow-Oring", "http://192.168.1.2:3000" );
+    res.header("Access-Control-Allow-Oring", 'GET,PUT,DELETE,POST' );
+    app.use(cors({
+            origin: '*'
+        }));
+    next();
+
+})
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 
 app.use('/', indexRouter);
