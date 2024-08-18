@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+var passportLocalMongoose = require('passport-local-mongoose');
 const Schema = mongoose.Schema;
 
 const usuariosSchema = new Schema({
@@ -30,6 +31,7 @@ usuariosSchema.set('toJSON', {
     transform: function (doc, ret) {   delete ret._id  }
 })
 
+usuariosSchema.plugin(passportLocalMongoose)
 var Usuarios = mongoose.model("Usuarios", usuariosSchema);
 
 module.exports = Usuarios;
