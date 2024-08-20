@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { fetchUserByEmail } from "../../redux/user/slice";
+import { loginUser } from "../../redux/user/slice";
 import  Layout  from "../../components/Layoutform";
 import  InputUsuario  from "../../components/InputUsuario";
 import  SuccessMessage from "../../components/SuccessMessage";
@@ -51,7 +51,7 @@ const Login = () => {
       return;
     }
     e.preventDefault();
-    dispatch(fetchUserByEmail({ email, senha }))
+    dispatch(loginUser({ email, senha }))
       .then((result) => {
         if (result.payload) {
           setSuccess("Usuário Logado!");

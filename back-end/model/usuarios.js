@@ -9,17 +9,26 @@ const usuariosSchema = new Schema({
     },
     email:{
         type:String,
+        required:false,
         required:true,
+        unique:true,
     },
     senha:{
         type:String,
-        required:true,
+        required:false,
     },
     admin:{
         type:Boolean,
         default:false,
     }
 })
+
+// Aplicando o plugin passport-local-mongoose ao schema
+usuariosSchema.plugin(passportLocalMongoose, { 
+    usernameField: "email", 
+    passwordField: "senha",
+    // usernameQueryFields: 'email' 
+});
 
 // Método para renomear o campo _id para id
 usuariosSchema.virtual('id').get(function(){
@@ -31,7 +40,6 @@ usuariosSchema.set('toJSON', {
     transform: function (doc, ret) {   delete ret._id  }
 })
 
-usuariosSchema.plugin(passportLocalMongoose)
 var Usuarios = mongoose.model("Usuarios", usuariosSchema);
 
 module.exports = Usuarios;

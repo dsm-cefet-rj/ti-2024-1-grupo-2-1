@@ -8,32 +8,50 @@ router.use(bodyParser.json())
 
 
 router.post('/signup',(req, res, next)=>{
-  Usuarios.register( new Usuarios({nome: req.body.nome}), req.body.senha,
+  Usuarios.register( new Usuarios({email: req.body.email, nome: req.body.nome}), req.body.senha,
   (err, user) =>{
+    console.log(req.body)
+    console.log("passou aqui 1", req.body)
     if(err){
       res.status(500);
       res.setHeader('Content-Type', 'application/json');
       res.json({err: err});
     } else{
+      console.log("passou aqui 2");
       passport.authenticate('local')(req, res, ( )=>{
-        res.status(200).send({
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).json({
           success: true,
           status: 'Registration Successful'
         })
-        res.setHeader('Content-Type', 'application/json');
       })
     }
   }
 )});
 
-router.post('/login', passport.authenticate('local'), (req, res)=>{
+router.post('/login', passport.authenticate('local', { session: false}), (req, res)=>{
   var token = authenticate.getToken({_id: req.user._id});
-  res.status(200).send({
+  // console.log(req);
+  res.status(200).json({
+    _id: req.user._id,
     success: true,
     token: token,
+    user:req.user,
     status: 'Registration Successful'
   })
 });
+
+router.get('/logout', (req, res) => {
+  if(req.session) {
+    req.session.destroy();
+    res.clearCookie('session-id');
+    res.redirect('/');
+  }else{
+    var err = new Error("Você não está logado");
+    err.status = 403;
+    next(err);
+  }
+})
 
 /* GET users listing. */
 router.route('/')
@@ -54,34 +72,34 @@ router.route('/')
   }
 })
 
-.post(async (req, res, next) => {
+// .post(async (req, res, next) => {
 
-  try{
-    console.log(req.body);
+//   try{
+//     console.log(req.body);
 
-    const existingEmailArray = await Usuarios.find({email: req.body.email});
-    const existingEmail = existingEmailArray[0];
+//     const existingEmailArray = await Usuarios.find({email: req.body.email});
+//     const existingEmail = existingEmailArray[0];
 
-    if(existingEmail != undefined){
-      console.log("Email já possui cadastro, operação cancelada!");
-      res.setHeader('Content-type', 'application/json');
-      return res.status(409).send({message: "Este email já está cadastrado!"})
-    }
+//     if(existingEmail != undefined){
+//       console.log("Email já possui cadastro, operação cancelada!");
+//       res.setHeader('Content-type', 'application/json');
+//       return res.status(409).send({message: "Este email já está cadastrado!"})
+//     }
 
-    Usuarios.create(req.body).then((usuario) => {
-      console.log("Usuário cadastrado, infos: ", usuario);
-      res.statusCode = 200;
-      res.setHeader('Content-type', 'application/json');
-      res.json(usuario);
+//     Usuarios.create(req.body).then((usuario) => {
+//       console.log("Usuário cadastrado, infos: ", usuario);
+//       res.statusCode = 200;
+//       res.setHeader('Content-type', 'application/json');
+//       res.json(usuario);
       
-    })
-  } catch(error){
-    return res.status(400).send({
-      error: error,
-      message: 'Ocorreu um erro na criação de usuario'
-  });
-  } 
-})
+//     })
+//   } catch(error){
+//     return res.status(400).send({
+//       error: error,
+//       message: 'Ocorreu um erro na criação de usuario'
+//   });
+//   } 
+// })
 
 router.route('/:id')
 .put((req, res, next) => {

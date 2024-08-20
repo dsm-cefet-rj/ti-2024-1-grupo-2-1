@@ -7,7 +7,18 @@ var jwt = require('jsonwebtoken'); // utiliza para criar, logar e verificar o to
 
 var config = require('../config.js')
 
-passport.use( new LocalStrategy( Usuarios.authenticate()));
+passport.use( new LocalStrategy({ usernameField: 'email', passwordField: 'senha' },
+    function(email, senha, done) {
+      Usuarios.authenticate()(email, senha, function(err, user, options) {
+        if (err) {
+          return done(err);
+        }
+        if (!user) {
+          return done(null, false, { message: options.message });
+        }
+        return done(null, user);
+      });
+    }));
 passport.serializeUser(Usuarios.serializeUser());
 passport.deserializeUser(Usuarios.deserializeUser());
 
@@ -21,17 +32,21 @@ opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = config.secretKey;
 
 exports.jwtPassport = passport.use( new JwtStrategy(opts, //cria um middleware com a estrategia do jsonToken
-    (jwt_payload, done)=>{
+  async  (jwt_payload, done)=>{
         console.log('JWT payload: ', jwt_payload);
-        Usuarios.findOne({_id:jwt_payload._id}, ( err, user)=>{ // utiliza do mongoose para localizar um usuario atraves do id
-            if(err){
-                return done(err, false);
-            }else if(user){
-                return done(null,user);
-            }else{
-                return done(null, false);
-            }
-        });
+    try{
+
+        const user = await Usuarios.findOne({_id: jwt_payload.id});
+        if(user){
+            return done( null, user)
+        }else{
+            return done(null, false)
+        }
+
+    }catch(err){
+        return done(err, false)
+    }
+
     }
 ));
 

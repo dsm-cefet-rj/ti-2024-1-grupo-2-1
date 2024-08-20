@@ -139,12 +139,16 @@ const PetCards = ({ animais }) => {
         <button className="info" onClick={handleClick}>
           Detalhes
         </button>
-        {currentUser !== null && currentUser.nome === "Adm" && currentUser.email === "admin@admin" ? 
+        {currentUser !== null &&
+        currentUser.admin ===  true
+        // && currentUser.nome === "Adm" && currentUser.email === "admin@admin" 
+        ? 
         <button className="info"onClick={Update}>
           <FaPenClip /> Editar 
         </button>: <></>}
       </Card.Body>
-      {currentUser !== null && currentUser.nome === "Adm" && currentUser.email === "admin@admin" ? <button ref={modalRef}  className="botao-options" onClick={Delete} > <FaTrash className="animal_options"/> </button>: <></>}
+      {/* && currentUser.nome === "Adm" && currentUser.email === "admin@admin" */}
+      {currentUser !== null && currentUser.admin ===  true ? <button ref={modalRef}  className="botao-options" onClick={Delete} > <FaTrash className="animal_options"/> </button>: <></>}
     </Card>
       <Modal 
         visivel={visible}

@@ -132,9 +132,7 @@ const HeaderMain = () => {
             Favoritados
           </Link>
           {currentUser !== null &&
-          currentUser.nome === "Adm" &&
-          currentUser.email === "admin@admin" &&
-          currentUser.senha === "admin" ? (
+          currentUser.admin ===  true? (
             <>
               {" "}
               <span> | </span>{" "}

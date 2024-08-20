@@ -1,8 +1,4 @@
-import {
-  createAsyncThunk,
-  createSlice,
-  createEntityAdapter,
-} from "@reduxjs/toolkit";
+import {createAsyncThunk,createSlice,createEntityAdapter,} from "@reduxjs/toolkit";
 import { baseUrl } from "../../baseUrl";
 import { httpGet, httpDelete, httpPost, httpPut } from "../../utils";
 
@@ -11,6 +7,7 @@ const userAdapter = createEntityAdapter();
 const initialState = userAdapter.getInitialState({
   status: "not_loaded",
   currentUser: null,
+  toke:null,
   error: null,
 });
 
@@ -24,7 +21,7 @@ export const fetchUser = createAsyncThunk(
 export const addUserServer = createAsyncThunk(
   "users/addUserServer",
   async (user, { getState }) => {
-    return await httpPost(`${baseUrl}/userDB`, user);
+    return await httpPost(`${baseUrl}/userDB/signup`, user);
   }
 );
 
@@ -43,18 +40,17 @@ export const updateUsers = createAsyncThunk(
   }
 );
 
-export const fetchUserByEmail = createAsyncThunk(
-  "users/fetchUSerByEmail",
+export const loginUser = createAsyncThunk(
+  "users/loginUser",
   async (payload, { getState }) => {
-    try {
-      const { email, senha } = payload;
-      const response = await fetch(
-        `${baseUrl}/userDB?email=${email}&senha=${senha}`
+    try{
+      const response = await httpPost(
+        `${baseUrl}/userDB/login`, payload
       );
-      const user = await response.json();
-      return user[0];
-    } catch (error) {
-      throw error;
+      return response;
+
+    }catch(err){
+        throw err;
     }
   }
 );
@@ -67,6 +63,12 @@ export const emailExistServer = createAsyncThunk(
     return existe.length > 0;
   }
 );
+// export const logoutUser= createAsyncThunk(
+//   "users/logoutUser",
+//   async (user, { getState }) => {
+//     return await httpGet(`${baseUrl}/userDB/${user.id}`, user);
+//   }
+// );
 
 const userSlice = createSlice({
   name: "user",
@@ -74,6 +76,8 @@ const userSlice = createSlice({
   reducers: {
     logOut: (state) => {
       state.currentUser = null;
+      state.currentToken = null;
+      state.isAdmin = false;
     },
   },
   extraReducers: (builder) => {
@@ -101,14 +105,17 @@ const userSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       })
-      .addCase(fetchUserByEmail.fulfilled, (state, action) => {
+      .addCase(loginUser.fulfilled, (state, action) => {
         state.status = "logged";
-        state.currentUser = action.payload;
+        userAdapter.addOne(state, action.payload);
+        state.currentUser = action.payload.user;
+        state.currentToken = action.payload.token;
+            
       })
-      .addCase(fetchUserByEmail.pending, (state, action) => {
+      .addCase(loginUser.pending, (state, action) => {
         state.status = "loading";
       })
-      .addCase(fetchUserByEmail.rejected, (state, action) => {
+      .addCase(loginUser.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       })

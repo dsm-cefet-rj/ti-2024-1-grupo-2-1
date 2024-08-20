@@ -6,7 +6,7 @@ import Footer from "../../components/Footer";
 import {
   updateUsers,
   emailExistServer,
-  fetchUserByEmail,
+  //fetchUserByEmail,
   fetchUser,
   deleteUser,
   logOut,
@@ -52,7 +52,7 @@ const Update_Perfil = () => {
   useEffect(() => {
     if (status === "saved") {
       dispatch(fetchUser());
-      dispatch(fetchUserByEmail(currentUser.id));
+      //dispatch(fetchUserByEmail(currentUser.id));
       entities.map((entiti) => {
         if (entiti.id === currentUser.id) {
           currentUser.nome = entiti.nome;
