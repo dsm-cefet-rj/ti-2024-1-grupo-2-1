@@ -23,7 +23,7 @@ router.route('/')
     .catch((err) => next(err));
 })
 
-.get( authenticate.verifyUser, async (req, res, next) => {
+.get( async (req, res, next) => {
     console.log(req.user)
     const email = req.query.userEmail;
 
@@ -46,7 +46,7 @@ router.route('/')
     }
 })
 
-.put(authenticate.verifyUser, async (req, res, next) => {
+.put( async (req, res, next) => {
     const email = req.query.userEmail;
     const { animalId, operacao } = req.body; 
 
