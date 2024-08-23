@@ -51,3 +51,18 @@ exports.jwtPassport = passport.use( new JwtStrategy(opts, //cria um middleware c
 ));
 
 exports.verifyUser = passport.authenticate('jwt', {session: false});
+
+exports.verifyJwt =(req, res, next)=>{
+  const token = req.headers['authorization'];
+
+  jwt.verify(token,config.secretKey, (err, decoded)=>{
+
+      if(err) return res.status(401).end();
+
+      req._id = decoded._id;
+      next();
+  })
+
+}
+
+

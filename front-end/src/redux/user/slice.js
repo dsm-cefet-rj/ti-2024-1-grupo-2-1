@@ -7,7 +7,7 @@ const userAdapter = createEntityAdapter();
 const initialState = userAdapter.getInitialState({
   status: "not_loaded",
   currentUser: null,
-  toke:null,
+  token:null,
   error: null,
 });
 
@@ -76,8 +76,8 @@ const userSlice = createSlice({
   reducers: {
     logOut: (state) => {
       state.currentUser = null;
-      state.currentToken = null;
-      state.isAdmin = false;
+      state.token = null;
+      // state.isAdmin = false;
     },
   },
   extraReducers: (builder) => {
@@ -109,7 +109,7 @@ const userSlice = createSlice({
         state.status = "logged";
         userAdapter.addOne(state, action.payload);
         state.currentUser = action.payload.user;
-        state.currentToken = action.payload.token;
+        state.token = action.payload.token;
             
       })
       .addCase(loginUser.pending, (state, action) => {

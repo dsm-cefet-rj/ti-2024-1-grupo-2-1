@@ -15,23 +15,36 @@ export const createEntryAtFavoriteCollection = createAsyncThunk("userFavoriteAni
 );
 
 export const getUserEntryAtCollection = createAsyncThunk("userFavoriteAnimals/getUserEntryAtCollection",
-    async (email) => {
+    async (data) => {
 
-        return await httpGet(`${baseUrl}/favoriteAnimals?userEmail=${email}`);
+        return await httpGet(`${baseUrl}/favoriteAnimals?userEmail=${data.email}`,{
+            headers:{
+                Authorization:`${data.token}`
+            }
+        });
     }
 );
 
 export const addAnimalToUserFavoriteCollection = createAsyncThunk("userFavoriteAnimals/addAnimalToUserFavoriteCollection",
-    async (data) => {
+    async (data, { getState}) => {
         const { email, animalId, operacao } = data;
-        return await httpPut(`${baseUrl}/favoriteAnimals?userEmail=${data.email}`, data);
+        return await httpPut(`${baseUrl}/favoriteAnimals?userEmail=${data.email}`, data, {
+            headers:{
+                Authorization:`${data.token}`
+            }
+        });
     }
 );
 
 export const removeAnimalFromUserFavoriteCollection = createAsyncThunk("userFavoriteAnimals/removeAnimalFromUserFavoriteCollection",
     async (data) => {
         const { email, animalId, operacao } = data;
-        return await httpPut(`${baseUrl}/favoriteAnimals?userEmail=${data.email}`, data);
+        console.log(data);
+        return await httpPut(`${baseUrl}/favoriteAnimals?userEmail=${data.email}`, data, {
+            headers:{
+                Authorization:`${data.token}`
+            }
+        });
     }
 );
 

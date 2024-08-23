@@ -59,7 +59,7 @@ const Login = () => {
             setSuccess("")
           },3000)
           setTimeout(()=>{
-            dispatch(getUserEntryAtCollection(email))
+            // dispatch(getUserEntryAtCollection(email))
             navigate("/");
           },3000)
         } else {

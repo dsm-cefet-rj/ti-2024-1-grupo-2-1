@@ -44,7 +44,7 @@ const HeaderMain = () => {
     navigate("/");
     dispatch(logOut());
     dispatch(cleanArray());
-    window.location.reload();
+    // window.location.reload();
   };
   const handleAcount = () => {
     navigate(`../detalhes_conta/${id}`);

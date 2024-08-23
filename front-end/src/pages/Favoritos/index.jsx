@@ -24,6 +24,7 @@ import { getUserEntryAtCollection } from "../../redux/Favoritos/slice";
  */
  const Favoritos = () => {
   const { currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
+  const {token}= useSelector((rootReducer)=> rootReducer.userReducer)
 
   const { userFavAnimals } = useSelector((rootReducer) => rootReducer.userFavoriteAnimalsReducer)
   const { animals } = useSelector((rootReducer) => rootReducer.animalReducer);
@@ -46,7 +47,7 @@ import { getUserEntryAtCollection } from "../../redux/Favoritos/slice";
 
     useEffect(() =>{
       if(currentUser !== null){
-        dispatch(getUserEntryAtCollection(currentUser.email));
+        dispatch(getUserEntryAtCollection({email:currentUser.email, token:token}));
       }
     },[])
 
