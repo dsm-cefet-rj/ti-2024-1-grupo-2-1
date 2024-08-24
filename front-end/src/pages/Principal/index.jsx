@@ -10,6 +10,7 @@ import  Grade  from "../../components/GridContainer";
 import Paginacao from "../../components/Pagination";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAnimais } from "../../redux/Animais/slice";
+import { getUserEntryAtCollection } from "../../redux/Favoritos/slice";
 
 /**
  * @module Page/Pagina_Principal
@@ -39,14 +40,22 @@ import { fetchAnimais } from "../../redux/Animais/slice";
   );
   const { error } = useSelector((rootReducer) => rootReducer.animalReducer);
   const { status } = useSelector((rootReducer) => rootReducer.animalReducer);
+  const { currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
+  const {token}= useSelector((rootReducer)=> rootReducer.userReducer)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(fetchAnimais());
+    if (currentUser !== null){
+      dispatch(getUserEntryAtCollection({email:currentUser.email, token:token}))
+    }
     setAniamais(animals);
     console.log(animals)
   }, [animals.length]);
   useEffect(()=>{
+    if (currentUser !== null){
+      dispatch(getUserEntryAtCollection({email:currentUser.email, token:token}))
+    }
     dispatch(fetchAnimais());
   },[])
 

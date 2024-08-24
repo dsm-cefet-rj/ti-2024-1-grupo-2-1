@@ -31,7 +31,7 @@ var app = express();
 
 app.use((req, res, next)=>{
     // console.log("cors acessado")
-    res.header("Access-Control-Allow-Oring", "http://192.168.1.2:3000" );
+    res.header("Access-Control-Allow-Oring", "http://127.0.0.1:3000" );
     res.header("Access-Control-Allow-Oring", 'GET,PUT,DELETE,POST' );
     app.use(cors({
             origin: '*'
