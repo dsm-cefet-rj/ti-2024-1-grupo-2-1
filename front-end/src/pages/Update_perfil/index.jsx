@@ -28,7 +28,7 @@ import TitlePage from "../../components/Title-Page";
  * @returns {React.FC} - Componente
  */
 
-const Update_Perfil = () => {
+const UpdatePerfil = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [nome, setNome] = useState("");
@@ -219,4 +219,4 @@ const Update_Perfil = () => {
   );
 };
 
-export default Update_Perfil;
+export default UpdatePerfil;
