@@ -41,20 +41,19 @@ import { getUserEntryAtCollection } from "../../redux/Favoritos/slice";
   const { error } = useSelector((rootReducer) => rootReducer.animalReducer);
   const { status } = useSelector((rootReducer) => rootReducer.animalReducer);
   const { currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
-  const {token}= useSelector((rootReducer)=> rootReducer.userReducer)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(fetchAnimais());
     if (currentUser !== null){
-      dispatch(getUserEntryAtCollection({email:currentUser.email, token:token}))
+      dispatch(getUserEntryAtCollection(currentUser.email))
     }
     setAniamais(animals);
     console.log(animals)
   }, [animals.length]);
   useEffect(()=>{
     if (currentUser !== null){
-      dispatch(getUserEntryAtCollection({email:currentUser.email, token:token}))
+      dispatch(getUserEntryAtCollection(currentUser.email))
     }
     dispatch(fetchAnimais());
   },[])

@@ -34,7 +34,6 @@ import { addAnimalToUserFavoriteCollection, getUserEntryAtCollection, removeAnim
 const PetCards = ({ animais }) => {
   const id = animais.id;
   const { currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
-  const { token } = useSelector((rootReducer) => rootReducer.userReducer);
   const { userFavAnimals } = useSelector((rootReducer) => rootReducer.userFavoriteAnimalsReducer);
   // const { animaisFav }  = useSelector((rootReducer) => rootReducer.animaisFavReducer)
   const [fav, setFav] = useState(false);
@@ -71,7 +70,7 @@ const PetCards = ({ animais }) => {
 
   const handleAnimalFav = () => {
     if (currentUser !== null) {
-        dispatch(addAnimalToUserFavoriteCollection({ email: currentUser.email, animalId: id, operacao: "ADD", token:token}));
+        dispatch(addAnimalToUserFavoriteCollection({ email: currentUser.email, animalId: id, operacao: "ADD"}));
         setFav(true);
     } else {
       alert("Você precisa estar logado para favoritar um animal");
@@ -97,9 +96,9 @@ const PetCards = ({ animais }) => {
   
   
   const handleRemove = () => {
-    dispatch(removeAnimalFromUserFavoriteCollection({ email: currentUser.email, animalId: id, operacao: "REMOVE", token:token}));
+    dispatch(removeAnimalFromUserFavoriteCollection({ email: currentUser.email, animalId: id, operacao: "REMOVE"}));
     setFav(false);
-    dispatch(getUserEntryAtCollection({email:currentUser.email, token:token}));
+    dispatch(getUserEntryAtCollection(currentUser.email));
   };
 
   const handleClick = (e) => {

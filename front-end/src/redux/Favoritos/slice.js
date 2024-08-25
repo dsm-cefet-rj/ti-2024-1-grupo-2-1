@@ -15,42 +15,49 @@ export const createEntryAtFavoriteCollection = createAsyncThunk("userFavoriteAni
 );
 
 export const getUserEntryAtCollection = createAsyncThunk("userFavoriteAnimals/getUserEntryAtCollection",
-    async (data) => {
+    async (email, {getState}) => {
 
-        return await httpGet(`${baseUrl}/favoriteAnimals?userEmail=${data.email}`,{
+        return await httpGet(`${baseUrl}/favoriteAnimals?userEmail=${email}`,{
             headers:{
-                Authorization:`${data.token}`
+                Authorization:`${getState().userReducer.token}`
             }
         });
     }
 );
 
 export const addAnimalToUserFavoriteCollection = createAsyncThunk("userFavoriteAnimals/addAnimalToUserFavoriteCollection",
-    async (data, { getState}) => {
+    async (data, {getState}) => {
         const { email, animalId, operacao } = data;
         return await httpPut(`${baseUrl}/favoriteAnimals?userEmail=${data.email}`, data, {
             headers:{
-                Authorization:`${data.token}`
+                Authorization:`${getState().userReducer.token}`
             }
         });
     }
 );
 
 export const removeAnimalFromUserFavoriteCollection = createAsyncThunk("userFavoriteAnimals/removeAnimalFromUserFavoriteCollection",
-    async (data) => {
+    async (data, { getState }) => {
         const { email, animalId, operacao } = data;
         console.log(data);
+        console.log(getState().userReducer.token)
         return await httpPut(`${baseUrl}/favoriteAnimals?userEmail=${data.email}`, data, {
             headers:{
-                Authorization:`${data.token}`
+                Authorization: `${getState().userReducer.token}`
             }
         });
     }
 );
 
 export const deleteUserEntryAtFavoriteCollection = createAsyncThunk("userFavoriteAnimals/deleteUserEntryAtFavoriteCollection",
-    async (userEmail) => {
-        return await httpDelete(`${baseUrl}/favoriteAnimals?userEmail=${userEmail}`);
+    async (userEmail,{getState}) => {
+        return await httpDelete(`${baseUrl}/favoriteAnimals?userEmail=${userEmail}`,
+            {
+                headers:{
+                    Authorization: `${getState().userReducer.token}`
+                }
+            }
+        );
     }
 );
 
