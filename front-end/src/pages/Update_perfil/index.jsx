@@ -14,6 +14,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import  InputUsuario  from "../../components/InputUsuario";
 import TitlePage from "../../components/Title-Page";
+import { modifyUserEmailAtFavoriteCollection } from "../../redux/Favoritos/slice";
 
 /**
  * @module Page/Update_Usuario
@@ -30,6 +31,7 @@ import TitlePage from "../../components/Title-Page";
 
 const UpdatePerfil = () => {
   const [email, setEmail] = useState("");
+  const [oldEmail, setOldEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [nome, setNome] = useState("");
   const [err, setErr] = useState("");
@@ -47,6 +49,7 @@ const UpdatePerfil = () => {
     setNome(currentUser.nome);
     setEmail(currentUser.email);
     setSenha(currentUser.senha);
+    setOldEmail(currentUser.email);
   }, [currentUser]);
 
   useEffect(() => {
@@ -118,6 +121,7 @@ const UpdatePerfil = () => {
       if (!isPasswordValid(senha, 5)) return;
       else {
         dispatch(updateUsers({ id, nome, email, senha }));
+        dispatch(modifyUserEmailAtFavoriteCollection({email: oldEmail, newEmail: email}))
         alert("Informações do usuário atualizadas!");
         logOut();
         navigate("/login");

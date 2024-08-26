@@ -83,5 +83,21 @@ router.route('/')
         res.json({ error: 'Não foi possível realizar update dos favoritos do usuário.' });
     }
 })
+router.route('/modifyEmail')
+.put(authenticate.verifyJwt, async (req, res, next) => {
+    const {email, newEmail} = req.body;
 
+    try {
+        console.log("Email recebido: ", email, ", novo email: ", newEmail);
+        const animaisFav = await Favoritos.findOneAndUpdate({ userEmail: email }, {userEmail: newEmail}).maxTimeMS(5000).exec();
+        console.log("Resultado da query: ", animaisFav);
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+        res.json(animaisFav);
+    } catch (err) {
+        console.error(err);
+        res.statusCode = 404;
+        res.json({ error: 'Não foi possível encontrar e-mail fornecido.' });
+    }
+})
 module.exports = router;

@@ -61,6 +61,18 @@ export const deleteUserEntryAtFavoriteCollection = createAsyncThunk("userFavorit
     }
 );
 
+export const modifyUserEmailAtFavoriteCollection = createAsyncThunk("userFavoriteAnimals/modifyUserEmailAtFavoriteCollection",
+    async (data, {getState}) => {
+        return await httpPut(`${baseUrl}/favoriteAnimals/modifyEmail`, data ,
+            {
+                headers:{
+                    Authorization: `${getState().userReducer.token}`
+                }
+            }
+        )
+    }
+)
+
 const favoriteSlice = createSlice({
     name: "userFavoriteAnimals",
     initialState,
