@@ -103,8 +103,16 @@ router.route('/')
 
 router.route('/:id')
 .put((req, res, next) => {
-
-  Usuarios.findByIdAndUpdate({_id: req.params.id}, req.body).then((usuario) => {
+  const {nome} = req.body.nome;
+  const {email} = req.body.email;
+  Usuarios.findByIdAndUpdate({_id: req.params.id}, {nome: nome, email: email}).then((usuario) => {
+    
+    if(usuario){
+      usuario.setPassword(req.body.senha, function(){
+        usuario.save();
+      });
+    }
+    
     console.log("Update de usuário, id: ", req.body.id);
     console.log("Infos: ", req.body)
     res.statusCode = 200;
