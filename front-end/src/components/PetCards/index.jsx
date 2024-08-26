@@ -45,63 +45,63 @@ const PetCards = ({ animais }) => {
   const dispatch = useDispatch();
 
    // Atualiza o estado `fav` com base na lista de favoritos do Redux
-  useEffect(() => {
-    // console.log(userFavAnimals)
-    const arrayAux = userFavAnimals
-    // console.log('Estado local: ', arrayAux);
-    arrayAux.map((idsFavoritados) => {
-      if(idsFavoritados === id && currentUser !== null){
-        setFav(true);
-      }
-    })
-  }, []);
-
-  /*
-  useEffect(() => {
+   
+   /*
+   useEffect(() => {
     animalsUserFav.map((ids) => {
       if(ids === id){
         setFav(true);
-      }else{
-        setFav(false);
+        }else{
+          setFav(false);
       }
-    })
-  }, [])
-  */
-
-  const handleAnimalFav = () => {
-    if (currentUser !== null) {
+      })
+      }, [])
+      */
+     
+     const handleAnimalFav = () => {
+       if (currentUser !== null) {
         dispatch(addAnimalToUserFavoriteCollection({ email: currentUser.email, animalId: id, operacao: "ADD"}));
         setFav(true);
-    } else {
-      alert("Você precisa estar logado para favoritar um animal");
-    }
-  };
-
-  useEffect(() => {
-    // Adiciona um ouvinte de evento de clique ao documento inteiro
-    function handleClickOutside(event) {
-      if (modalRef.current && !modalRef.current.contains(event.target)) {
-        // Clique fora do botão de perfil, então ele é escondido
-        setVisible(false);
+      } else {
+        alert("Você precisa estar logado para favoritar um animal");
       }
-    }
-
-    document.addEventListener("click", handleClickOutside);
-
-    // Limpa o ouvinte de evento quando o componente de mostrar perfil é desmontado
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
     };
-  }, []);
-  
-  
-  const handleRemove = () => {
-    dispatch(removeAnimalFromUserFavoriteCollection({ email: currentUser.email, animalId: id, operacao: "REMOVE"}));
-    setFav(false);
-    dispatch(getUserEntryAtCollection(currentUser.email));
-  };
-
-  const handleClick = (e) => {
+    
+    useEffect(() => {
+      // Adiciona um ouvinte de evento de clique ao documento inteiro
+      function handleClickOutside(event) {
+        if (modalRef.current && !modalRef.current.contains(event.target)) {
+          // Clique fora do botão de perfil, então ele é escondido
+          setVisible(false);
+        }
+      }
+      
+      document.addEventListener("click", handleClickOutside);
+      
+      // Limpa o ouvinte de evento quando o componente de mostrar perfil é desmontado
+      return () => {
+        document.removeEventListener("click", handleClickOutside);
+      };
+    }, []);
+    
+    
+    const handleRemove = () => {
+      dispatch(removeAnimalFromUserFavoriteCollection({ email: currentUser.email, animalId: id, operacao: "REMOVE"}));
+      setFav(false);
+      dispatch(getUserEntryAtCollection(currentUser.email));
+    };
+    
+    useEffect(() => {
+      // console.log(userFavAnimals)
+      const arrayAux = userFavAnimals
+      // console.log('Estado local: ', arrayAux);
+      arrayAux.map((idsFavoritados) => {
+        if(idsFavoritados === id && currentUser !== null){
+          setFav(true);
+        }
+      })
+    }, [handleAnimalFav,handleRemove]);
+    const handleClick = (e) => {
     e.preventDefault();
     navigate(`/detalhamento/${id}`);
     {
