@@ -9,7 +9,10 @@ import { useDispatch } from "react-redux";
 import { addRequest } from "../../redux/pedidoAdocao/slice";
 import { useSelector } from "react-redux";
 import { pedidoAdocaoSchema } from "../../validations/registroPedidoAdocaoValidation";
+import RadioInput from '../../components/RadioInput';
 import TitlePage from "../../components/Title-Page";
+import InputUsuario from "../../components/InputUsuario";
+
 /**
  * @module Page/Registrar_PedidoAdocao
  * 
@@ -40,10 +43,10 @@ const RegistroAdocao = () => {
   const { id } = useParams();
 
   const [q1, setQ1] = useState();
-  const [q2, setQ2] = useState();
-  const [q3, setQ3] = useState();
-  const [q4, setQ4] = useState();
-  const [q5, setQ5] = useState();
+  const [q2, setQ2] = useState("");
+  const [q3, setQ3] = useState("");
+  const [q4, setQ4] = useState("");
+  const [q5, setQ5] = useState("");
   //const [arquivos, setArquivos] = useState([null, null, null]);
 
 
@@ -115,57 +118,10 @@ const RegistroAdocao = () => {
     alert("Pedido de adoção realizado");
   };
 
-  const [selectedFile, setSelectedFile] = useState(null);
-
-  const fileInputRef = useRef(null);
-
-  /*
-  const handleArquivosAnexados = (files) => {
-    const fileList = Array.from(files).slice(0, 3); // Limita a seleção a 3 arquivos
-  
-    // Converter os arquivos para base64
-    const arquivosBase64 = fileList.map((file) => {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result.split(',')[1]);
-        reader.onerror = (error) => reject(error);
-      });
-    });
-  
-    Promise.all(arquivosBase64)
-      .then((result) => {
-        setArquivos(result);
-      })
-      .catch((error) => {
-        console.error('Erro ao converter arquivos:', error);
-      });
-  };
-  */
-  const handleFileChange = (event) => {
-    const selectedFile = fileInputRef.current.files[0];
-    if (selectedFile.type === 'application/pdf') {
-      setSelectedFile(selectedFile);
-    } else {
-      alert('Por favor, selecione um arquivo PDF.');
-    }
-  };
-  const handleProcessPDF = () => {
-    if (selectedFile) {
-      const fileReader = new FileReader();
-      fileReader.onload = (e) => {
-        const pdfData = e.target.result;
-        // Processar o conteúdo do PDF em base64: pdfData
-        console.log('Conteúdo do PDF:', pdfData);
-      };
-      fileReader.readAsDataURL(selectedFile);
-    } else {
-      alert('Nenhum arquivo PDF selecionado.');
-    }
-  };
-
-  const linkTermoAdocao =
-    "https://pt.scribd.com/document/331088569/Termo-de-Adocao-de-Caes";
+    const items=[
+      {value: true, label: "Sim"},
+      {value: false, label: "Não"}
+    ];
 
   return (
     <div>
@@ -181,32 +137,23 @@ const RegistroAdocao = () => {
                 id="teste"
               ></img>
               <div className="div-inputs-esquerda">
-                <div className="wraper-input-r">
-                  <input
-                    className={nomeAnimal !== "" ? "has-val input" : "input"}
-                    type="name"
-                    value={nomeAnimal}
-                    onChange={(e) => [
-                      setNomeAnimal(formatName(e.target.value)),
-                    ]}
-                  />
-                  <span
-                    className="focused-input"
-                    data-placeholder="Nome do animal"
-                  ></span>
-                </div>
-                <div className="wraper-input-r">
-                  <input
-                    className={email !== "" ? "has-val input" : "input"}
-                    type="email"
-                    value={email}
-                    onChange={(e) => [setEmail(e.target.value)]}
-                  />
-                  <span
-                    className="focused-input"
-                    data-placeholder="Email do adotante"
-                  ></span>
-                </div>
+            
+                <InputUsuario
+                valor={nomeAnimal}
+                type={"name"}
+                value={nomeAnimal}
+                onChange={(e) => [setNomeAnimal(e.target.value)]}
+                label={"Nome do animal"}
+                // error={err}
+              />
+              <InputUsuario
+                valor={email}
+                type={"email"}
+                value={email}
+                onChange={(e) => [setEmail(e.target.value)]}
+                label={"Email do Adotante"}
+                // error={err}
+              />
               </div>
             </div>
             <div className="div-info-direita">
@@ -214,82 +161,62 @@ const RegistroAdocao = () => {
                 <img src={logo} alt="Imagem"></img>
               </div>
               <div className="div-inputs-direita">
-                <div className="wraper-input-r">
-                  <input
-                    className={nome !== "" ? "has-val input" : "input"}
-                    type="name"
-                    value={nome}
-                    onChange={(e) => [setNome(e.target.value)]}
-                  />
-                  <span
-                    className="focused-input"
-                    data-placeholder="Nome do adotante"
-                  ></span>
-                </div>
-                <div className="wraper-input-r">
-                  <input
-                    className={idade !== "" ? "has-val input" : "input"}
-                    type="name"
-                    value={idade}
-                    onChange={(e) => [setIdade(e.target.value)]}
-                  />
-                  <span
-                    className="focused-input"
-                    data-placeholder="Idade do adotante"
-                  ></span>
-                </div>
-                <div className="wraper-input-r">
-                  <input
-                    className={cpf !== "" ? "has-val input" : "input"}
-                    type="text"
-                    value={cpf}
-                    onChange={(e) => {
-                      const cpfMask = e.target.value
-                        .replace(/\D/g, "")
-                        .replace(/(\d{3})(\d)/, "$1.$2")
-                        .replace(/(\d{3})(\d)/, "$1.$2")
-                        .replace(/(\d{3})(\d{1,2})/, "$1-$2")
-                        .replace(/(-\d{2})(\d+?$)/, "$1");
-                      setCpf(cpfMask);
-                    }}
-                  />
-                  <span
-                    className="focused-input"
-                    data-placeholder="CPF do adotante"
-                  ></span>
-                </div>
-                <div className="wraper-input-r">
-                  <input
-                    className={rg !== "" ? "has-val input" : "input"}
-                    type="text"
-                    value={rg}
-                    onChange={(e) => [setRg(e.target.value)]}
-                  />
-                  <span
-                    className="focused-input"
-                    data-placeholder="Rg do adotante"
-                  ></span>
-                </div>
-                <div className="wraper-input-r">
-                  <input
-                    className={cel !== "" ? "has-val input" : "input"}
-                    type="tel"
-                    value={cel}
-                    onChange={(e) => {
-                      const formattedTel = e.target.value
-                        .replace(/\D/g, "")
-                        .replace(/(\d{2})(\d)/, "($1) $2")
-                        .replace(/(\d{5})(\d{1,2})/, "$1-$2")
-                        .replace(/(-\d{4})(\d+?$)/, "$1");
+              <InputUsuario
+                valor={nome}
+                type={"name"}
+                value={nome}
+                onChange={(e) => [setNome(e.target.value)]}
+                label={"Nome do Adotante"}
+                // error={err}
+              />
+                <InputUsuario
+                valor={idade}
+                type={"text"}
+                value={idade}
+                onChange={(e) => [setIdade(e.target.value)]}
+                label={"idade do adotante"}
+                // error={err}
+              />
+              <InputUsuario
+                valor={cpf}
+                type={"text"}
+                value={cpf}
+                onChange={(e) =>  {
+                  const cpfMask = e.target.value
+                    .replace(/\D/g, "")
+                    .replace(/(\d{3})(\d)/, "$1.$2")
+                    .replace(/(\d{3})(\d)/, "$1.$2")
+                    .replace(/(\d{3})(\d{1,2})/, "$1-$2")
+                    .replace(/(-\d{2})(\d+?$)/, "$1");
+                  setCpf(cpfMask);
+                }}
+                label={"CPF do Adotante"}
+                // error={err}
+              />
+              <InputUsuario
+                valor={rg}
+                type={"name"}
+                value={rg}
+                onChange={(e) => [setRg(e.target.value)]}
+                label={"rg do adotante"}
+                // error={err}
+              />
+                <InputUsuario
+                valor={cel}
+                type={"name"}
+                value={cel}
+                onChange={(e) => {
+                  const formattedTel = e.target.value
+                    .replace(/\D/g, "")
+                    .replace(/(\d{2})(\d)/, "($1) $2")
+                    .replace(/(\d{5})(\d{1,2})/, "$1-$2")
+                    .replace(/(-\d{4})(\d+?$)/, "$1");
 
-                      setCel(formattedTel);
-                    }}
-                  />
-                  <span
-                    className="focused-input"
-                    data-placeholder="Telefone celular"
-                  ></span>
-                </div>
+                  setCel(formattedTel);
+                }}
+                label={"Telefone (Celular)"}
+                // error={err}
+              />
               </div>
             </div>
           </div>
@@ -317,25 +244,14 @@ const RegistroAdocao = () => {
                     Você está pronto para esse compromisso e responsabilidade de
                     longo prazo?
                   </span>
-                  <div>
-                    <span>Sim</span>
-                    <input
-                      type="radio"
-                      name="q2"
-                      value={true}
-                      onChange={(e) => {
-                        setQ2(e.target.value);
-                      }}
-                    />
-                    <span>Não</span>
-                    <input
-                      type="radio"
-                      name="q2"
-                      value={false}
-                      onChange={(e) => {
-                        setQ2(e.target.value);
-                      }}
-                    />
+                  <div style={{display:"flex",marginLeft:"45%"}}>
+                      <RadioInput
+                        name="questao2"
+                        items={items}
+                        value={q2}
+                        onChange={(e)=>[setQ2(e.target.value)]}
+                      />
+
                   </div>
                 </div>
                 <div className="div-pergunta">
@@ -344,93 +260,44 @@ const RegistroAdocao = () => {
                     alimentação e atendimento veterinário. Você tem como
                     providenciar isso?
                   </span>
-                  <div>
-                    <span>Sim</span>
-                    <input
-                      type="radio"
-                      name="q3"
-                      value={true}
-                      onChange={(e) => {
-                        setQ3(e.target.value);
-                      }}
-                    />
-                    <span>Não</span>
-                    <input
-                      type="radio"
-                      name="q3"
-                      value={false}
-                      onChange={(e) => {
-                        setQ3(e.target.value);
-                      }}
-                    />
-                  </div>
+                  <div style={{display:"flex", marginLeft:"45%"}}>
+                      <RadioInput
+                        name="questao3"
+                        items={items}
+                        value={q3}
+                        onChange={(e)=>[setQ3(e.target.value)]}
+                      />
+
+                </div>
                 </div>
                 <div className="div-pergunta">
                   <span>4. Você já tem um médico veterinário?</span>
-                  <div>
-                    <span>Sim</span>
-                    <input
-                      type="radio"
-                      name="q4"
-                      value={true}
-                      onChange={(e) => {
-                        setQ4(e.target.value);
-                      }}
+                  <div style={{display:"flex", marginLeft:"45%"}}>
+                    <RadioInput
+                      name="questao4"
+                      items={items}
+                      value={q4}
+                      onChange={(e)=>[setQ4(e.target.value)]}
                     />
-                    <span>Não</span>
-                    <input
-                      type="radio"
-                      name="q4"
-                      value={false}
-                      onChange={(e) => {
-                        setQ4(e.target.value);
-                      }}
-                    />
-                  </div>
+
+            </div>
                 </div>
                 <div className="div-pergunta">
                   <span>
                     5. Em caso de emergência, tem como levar seu animal
                     imediatamente ao veterinário?
                   </span>
-                  <div>
-                    <span>Sim</span>
-                    <input
-                      type="radio"
-                      name="q5"
-                      value={true}
-                      onChange={(e) => {
-                        setQ5(e.target.value);
-                      }}
-                    />
-                    <span>Não</span>
-                    <input
-                      type="radio"
-                      name="q5"
-                      value={false}
-                      onChange={(e) => {
-                        setQ5(e.target.value);
-                      }}
-                    />
-                  </div>
+                  <div style={{display:"flex", marginLeft:"45%"}}>
+                      <RadioInput
+                        name="questao5"
+                        items={items}
+                        value={q5}
+                        onChange={(e)=>[setQ5(e.target.value)]}
+                      />
+
+            </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="div-documentos">
-            <a href={linkTermoAdocao} target="_blank">
-              Baixe aqui o termo de adoção
-            </a>
-            <div>
-              <span>
-                Anexe o termo de adoção, identidade e comprovante de residência:{" "}
-              </span>
-              <input type="file" ref={fileInputRef} accept=".pdf" onChange={handleFileChange} />
-              <button onClick={handleProcessPDF}>Processar PDF</button>
-              {/* <input
-                type="file"
-                multiple onChange={(e) => handleArquivosAnexados(e.target.files)}
-              ></input> */}
             </div>
           </div>
           <div className="div-btn-registrar-adocao">

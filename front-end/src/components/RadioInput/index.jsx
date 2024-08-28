@@ -29,7 +29,7 @@ const RadioInput = ({name, items, value, onChange}) => {
             id={name + item.value}
             name={name}
             value={item.value}
-            checked={value === item.value}
+            checked={value === item.value.toString()}
             onChange={onChange}
           />
           <span className="checkmark"/>

@@ -33,12 +33,14 @@ const Agendamento = ({ infos }) => {
     dispatch(deleteVisitation(id));
     window.location.reload();
   };
-
+ let datas = infos.data
+ datas = datas.split('-');
+ datas = datas[2]+'/'+datas[1]+'/'+datas[0];
   return (
     <div className="cardagendamento-div">
       <div className="namoral">
         <div className="left-div">
-          <h3>Data: {infos.data}</h3>
+          <h3>Data: {datas}</h3>
         </div>
         <div className="middle-div">
           <h3>Hora: {infos.hora}</h3>
