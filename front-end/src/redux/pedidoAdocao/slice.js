@@ -18,8 +18,12 @@ export const getOneRegister = createAsyncThunk(
 
 export const getRegisters = createAsyncThunk(
   "adoptionRegister/getRegisters",
-  async () => {
-    return await httpGet(`${baseUrl}/animalsAdoptionRegister`);
+  async ({ getState }) => {
+    return await httpGet(`${baseUrl}/animalsAdoptionRegister`, {
+      headers: {
+        Authorization: `${getState().userReducer.token}`
+      }
+    });
   }
 );
 function fullfillPedidosReducer(state, action) {
@@ -34,21 +38,33 @@ function fullfillPedidosReducer(state, action) {
 export const addRequest = createAsyncThunk(
   "adoptionRegister/addRegister",
   async (animalRegister, { getState }) => {
-    return await httpPost(`${baseUrl}/animalsAdoptionRegister`, animalRegister);
+    return await httpPost(`${baseUrl}/animalsAdoptionRegister`, animalRegister, {
+      headers: {
+        Authorization: `${getState().userReducer.token}`
+      }
+    });
   }
 );
 
 export const deleteRequest = createAsyncThunk(
   "adoptionRegister/deleteRequest",
   async (animalRegisterId, { getState }) => {
-    await httpDelete(`${baseUrl}/animalsAdoptionRegister/${animalRegisterId}`);
+    await httpDelete(`${baseUrl}/animalsAdoptionRegister/${animalRegisterId}`, {
+      headers: {
+        Authorization: `${getState().userReducer.token}`
+      }
+    });
     return animalRegisterId;
   }
 );
 export const updateRequest = createAsyncThunk(
   "adoptionRegister/updateRequest",
-  async (request,{getState}) =>{
-    return await httpPut(`${baseUrl}/animalsAdoptionRegister/${request.id}`, request);
+  async (request, { getState }) => {
+    return await httpPut(`${baseUrl}/animalsAdoptionRegister/${request.id}`, request, {
+      headers: {
+        Authorization: `${getState().userReducer.token}`
+      }
+    });
   }
 )
 
@@ -96,14 +112,14 @@ const requestAdoptionRegisterSlice = createSlice({
         state.error = action.error.message;
         state.currentOrder = null;
       })
-      .addCase(updateRequest.rejected, ( state, action ) =>{
-        state.status ="failed";
+      .addCase(updateRequest.rejected, (state, action) => {
+        state.status = "failed";
       })
-      .addCase(updateRequest.fulfilled, ( state, action) =>{
-        state.status="saved";
+      .addCase(updateRequest.fulfilled, (state, action) => {
+        state.status = "saved";
       })
   },
 });
-export const{ orderNull} = requestAdoptionRegisterSlice.actions;
+export const { orderNull } = requestAdoptionRegisterSlice.actions;
 
 export default requestAdoptionRegisterSlice.reducer;
