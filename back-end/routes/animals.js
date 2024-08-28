@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const bodyParser = require('body-parser');
 const Animais = require('../model/animais');
+var authenticate = require('../middleware/authenticate');
 router.use(bodyParser.json());
 
 /* GET users listing. */
@@ -20,7 +21,7 @@ router.route('/')
     res.json(err);
   } 
 })
-.post((req,res, next) =>{
+.post(authenticate.verifyJwt,async(req,res, next) =>{
 
   Animais.create(req.body)
   .then((animal)=>{
@@ -56,7 +57,7 @@ try{
 
 
 })
-.delete((req, res, next)=> {
+.delete(authenticate.verifyJwt,async(req, res, next)=> {
 
   Animais.findByIdAndDelete(req.params.id)
   .then((animal)=>{
@@ -70,7 +71,7 @@ try{
   //   return value.id != req.params.id
   // });
 })
-.put((req, res, next)=> {
+.put(authenticate.verifyJwt,async(req, res, next)=> {
   Animais.findByIdAndUpdate({_id: req.params.id}, req.body)
   .then((animal)=>{
     res.statusCode = 200;

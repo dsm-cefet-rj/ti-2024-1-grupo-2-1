@@ -41,21 +41,33 @@ function fullfillAnimalsReducer(state, action) {
 export const addAnimalServer = createAsyncThunk(
   "animal/addAnimalServer",
   async (animal, { getState }) => {
-    return await httpPost(`${baseUrl}/animals`, animal);
+    return await httpPost(`${baseUrl}/animals`, animal,{
+      headers:{
+          Authorization:`${getState().userReducer.token}`
+      }
+  });
   }
 );
 
 export const deleteAnimal = createAsyncThunk(
   "animal/deleteAnimal",
   async (animalId, { getState }) => {
-    await httpDelete(`${baseUrl}/animals/${animalId}`);
+    await httpDelete(`${baseUrl}/animals/${animalId}`,{
+      headers:{
+          Authorization:`${getState().userReducer.token}`
+      }
+  });
     return animalId;
   }
 );
 export const updateAnimals = createAsyncThunk(
   "animal/updateAnimals",
   async(animal, { getState})=>{
-    return await httpPut(`${baseUrl}/animals/${animal.id}`,animal);
+    return await httpPut(`${baseUrl}/animals/${animal.id}`,animal,{
+      headers:{
+          Authorization:`${getState().userReducer.token}`
+      }
+  });
   }
 );
 
