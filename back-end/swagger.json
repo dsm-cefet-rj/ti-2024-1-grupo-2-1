@@ -1,0 +1,165 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Back-End Sistema de Adoção de Animais",
+        "description": "Esse API tem como objetivo ser o back-end do sistema de adoção de animais (SAA)",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:5000/",
+            "description": "API back-end"
+        }
+    ],
+    "paths": {
+        "/userDB/signup": {
+            "post": {
+                "summary": "Cadastro de usuário",
+                "description": "Essa rota é responsável por cadastrar um novo usuário",
+                "tags": ["Usuarios"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UsuarioCadastro"
+                            },
+                            "examples": {
+                                "usuario": {
+                                    "value": {
+                                        "nome": "José Silva",
+                                        "email": "jose@jose.com",
+                                        "senha": "12345"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "500": {
+                        "description": "User email alredy exist in data base"
+                    },
+                    "200": {
+                        "description": "Registration Successful"
+                    }
+                }
+            }
+        },
+        "/userDB/login": {
+            "post": {
+                "summary": "Login de usuário",
+                "description": "Essa rota é responsável por autenticar um usuário",
+                "tags": ["Usuarios"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UsuarioLogin"
+                            },
+                            "examples": {
+                                "usuario": {
+                                    "value": {
+                                        "email": "jose@jose.com",
+                                        "senha": "12345"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "200": {
+                        "description": "Authorized"
+                    }
+                }
+            }
+        },
+        "/userDB/logout": {
+            "post": {
+                "summary": "Logout de usuário",
+                "description": "Essa rota é responsável por deslogar um usuário",
+                "tags": ["Usuarios"],
+                "responses": {
+                    "401": {
+                        "description": "Incompleto"
+                    },
+                    "200": {
+                        "description": "Sucesso"
+                    }
+                }
+            }
+        },
+        "/userDB/:id": {
+            "put": {
+                "summary": "Atualiza as informações do usuário",
+                "description": "Essa rota é responsável por atualizar as infromações de um usuário",
+                "tags": ["Usuarios"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UsuarioCadastro"
+                            },
+                            "examples": {
+                                "usuario": {
+                                    "value": {
+                                        "nome": "José Saverino",
+                                        "email": "jose@jose2000.com",
+                                        "senha": "12345"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Concluido"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Deleta usuário do banco de dados",
+                "description": "Essa rota é responsável por deletar um usuário do banco de dados",
+                "tags": ["Usuarios"],
+                "responses": {
+                    "200": {
+                        "description": "Concluido"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "UsuarioCadastro": {
+                "type": "object",
+                "properties": {
+                    "nome": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "senha": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UsuarioLogin": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "senha": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
