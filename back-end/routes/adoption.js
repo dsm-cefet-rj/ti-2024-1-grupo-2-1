@@ -17,7 +17,7 @@ router.route('/')
             .catch((err) => next(err))
     })
 
-    .get(async (req, res, next) => {
+    .get(authenticate.verifyJwt, async (req, res, next) => {
         try {
             const registros = await registrosAdocao.find({}).maxTimeMS(3000);
             res.statusCode = 200;
