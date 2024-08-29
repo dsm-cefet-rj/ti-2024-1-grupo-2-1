@@ -3,7 +3,7 @@
     "info": {
         "title": "API Back-End Sistema de Adoção de Animais",
         "description": "Esse API tem como objetivo ser o back-end do sistema de adoção de animais (SAA)",
-        "version": "1.0.0"
+        "version": "1.0.1"
     },
     "servers": [
         {
@@ -131,6 +131,125 @@
                     }
                 }
             }
+        },
+        "/favoriteAnimals/": {
+            "post": {
+                "summary": "Cria favoritos de usuário",
+                "description": "Essa rota é responsável por criar a entry de animais favoritos de um usuário após ele ser cadastrado, a entry é composta pelo email do usuário e um array de animais vazio",
+                "tags": ["Favoritos"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EntryFavoritos"
+                            },
+                            "examples": {
+                                "entry": {
+                                    "value": {
+                                        "email_usuario": "jose@jose.com"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    }
+                }
+            },
+            "get": {
+                "summary": "Captura os animais favoritos de um usuário",
+                "description": "Essa rota é responsável por capturar os array de ids dos animais favoritos de um usuário através do email fornecido na página de login.",
+                "tags": ["Favoritos"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EntryFavoritos"
+                            },
+                            "examples": {
+                                "entry": {
+                                    "value": {
+                                        "email_usuario": "jose@jose.com"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    }
+                }
+            }
+        },
+        "/favoriteAnimals/{email}": {
+            "put": {
+                "summary": "Altera ou deleta um animal na entry de favoritos de um usuário no Banco de Dados",
+                "description": "Essa rota é responsável por adicionar ou remover um animal na entry de favoritos de um usuário, a operação realizada é definida através do operador que é passado nos parâmetros",
+                "tags": ["Favoritos"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EntryFavoritosPut"
+                            },
+                            "examples": {
+                                "entry_add": {
+                                    "value": {
+                                        "animal_id": "66c9ced6891ceafea9333b27",
+                                        "operation": "ADD"
+                                    }
+                                },
+                                "entry_remove": {
+                                    "value": {
+                                        "animal_id": "66c9ced6891ceafea9333b27",
+                                        "operation": "REMOVE"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    }
+                }
+
+            }
+        },
+        "/favoriteAnimals/modifyEmail": {
+            "put": {
+                "summary": "Altera o email do usuario na entry de favoritos do usuario",
+                "description": "Recebe como parâmetros o email antigo e o email novo do usuário, a partir do antigo localiza a entry e atualiza para o email novo",
+                "tags": ["Favoritos"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EntryFavoritosEmailModify"
+                            },
+                            "examples": {
+                                "modify_email": {
+                                    "value": {
+                                        "email_novo": "jose2004@jose2004.com",
+                                        "email_velho": "josesantana@josesantana.com"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -156,6 +275,39 @@
                         "type": "string"
                     },
                     "senha": {
+                        "type": "string"
+                    }
+                }
+            },
+            "EntryFavoritos": {
+                "type": "object",
+                "properties": {
+                    "email_usuario": {
+                        "type": "string"
+                    },
+                    "favorite_animals_array": {
+                        "type": ["string"]
+                    }
+                }
+            },
+            "EntryFavoritosPut": {
+                "type": "object",
+                "properties": {
+                    "animal_id": {
+                        "type": "string"
+                    },
+                    "operacao": {
+                        "type": "string"
+                    }
+                }
+            },
+            "EntryFavoritosEmailModify": {
+                "type": "object",
+                "properties": {
+                    "email_antigo": {
+                        "type": "string"
+                    },
+                    "email_novo": {
                         "type": "string"
                     }
                 }
