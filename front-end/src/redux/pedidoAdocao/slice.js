@@ -18,12 +18,14 @@ export const getOneRegister = createAsyncThunk(
 
 export const getRegisters = createAsyncThunk(
   "adoptionRegister/getRegisters",
-  async ({ getState }) => {
-    return await httpGet(`${baseUrl}/animalsAdoptionRegister`, {
-      headers: {
-        Authorization: `${getState().userReducer.token}`
-      }
-    });
+  async () => {
+    return await httpGet(`${baseUrl}/animalsAdoptionRegister`, 
+    //   {
+    //   headers: {
+    //     Authorization: `${getState().userReducer.token}`
+    //   }
+    // }
+  );
   }
 );
 function fullfillPedidosReducer(state, action) {
