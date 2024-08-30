@@ -10,7 +10,7 @@ import  Grade  from "../../components/GridContainer";
 import Paginacao from "../../components/Pagination";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAnimais } from "../../redux/Animais/slice";
-import { getUserEntryAtCollection } from "../../redux/Favoritos/slice";
+import { cleanArray, getUserEntryAtCollection } from "../../redux/Favoritos/slice";
 
 /**
  * @module Page/Pagina_Principal
@@ -45,6 +45,7 @@ import { getUserEntryAtCollection } from "../../redux/Favoritos/slice";
 
   useEffect(() => {
     dispatch(fetchAnimais());
+    dispatch(cleanArray());
     if (currentUser !== null){
       dispatch(getUserEntryAtCollection(currentUser.email))
     }
@@ -52,6 +53,7 @@ import { getUserEntryAtCollection } from "../../redux/Favoritos/slice";
     console.log(animals)
   }, [animals.length]);
   useEffect(()=>{
+    dispatch(cleanArray());
     if (currentUser !== null){
       dispatch(getUserEntryAtCollection(currentUser.email))
     }

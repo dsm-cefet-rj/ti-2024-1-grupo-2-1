@@ -14,7 +14,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import  InputUsuario  from "../../components/InputUsuario";
 import TitlePage from "../../components/Title-Page";
-import { modifyUserEmailAtFavoriteCollection } from "../../redux/Favoritos/slice";
+import { cleanArray, deleteUserEntryAtFavoriteCollection, modifyUserEmailAtFavoriteCollection, testeCleanArrayAsync } from "../../redux/Favoritos/slice";
 
 /**
  * @module Page/Update_Usuario
@@ -158,7 +158,10 @@ const UpdatePerfil = () => {
     navigate("/");
     dispatch(deleteUser(id)).then((resposta) => {
       if (resposta.payload) {
+        
+        dispatch(deleteUserEntryAtFavoriteCollection({email: oldEmail}));
         dispatch(logOut());
+        window.location.reload();
       }
     });
   };

@@ -35,10 +35,16 @@ router.route('/')
     try {
         console.log("Email recebido: ", email);
         const animaisFav = await Favoritos.findOne({ userEmail: email }).maxTimeMS(5000).exec();
-        console.log("Resultado da query: ", animaisFav);
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'application/json');
-        res.json(animaisFav);
+        if(animaisFav){
+            console.log("Resultado da query: ", animaisFav);
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'application/json');
+            res.json(animaisFav);
+        }
+        else{
+            res.statusCode = 404;
+            res.json({ error: 'Não foi possível encontrar os favoritos para o e-mail fornecido.' });
+        }
     } catch (err) {
         console.error(err);
         res.statusCode = 404;
@@ -98,6 +104,26 @@ router.route('/modifyEmail')
         console.error(err);
         res.statusCode = 404;
         res.json({ error: 'Não foi possível encontrar e-mail fornecido.' });
+    }
+})
+
+router.route('/deleteEntry')
+.post( authenticate.verifyJwt, async (req, res, next) => {
+    const {email} = req.body;
+
+    try{
+        console.log("Email recebido para delete de entry favoritos : ", email);
+        const entry =  await Favoritos.findOne({userEmail: email}).maxTimeMS(1000).exec();
+        console.log("Resultado da query de delete entry: ", entry);
+        const result = await Favoritos.findByIdAndDelete({_id: entry._id});
+        console.log(result);
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+        res.json(result);
+    } catch(err){
+        console.error(err);
+        res.statusCode = 500;
+        res.json({ error: err});
     }
 })
 module.exports = router;

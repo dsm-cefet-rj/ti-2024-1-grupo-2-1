@@ -50,11 +50,11 @@ export const removeAnimalFromUserFavoriteCollection = createAsyncThunk("userFavo
 );
 
 export const deleteUserEntryAtFavoriteCollection = createAsyncThunk("userFavoriteAnimals/deleteUserEntryAtFavoriteCollection",
-    async (userEmail,{getState}) => {
-        return await httpDelete(`${baseUrl}/favoriteAnimals?userEmail=${userEmail}`,
+    async (data,{getState}) => {
+        return await httpPost(`${baseUrl}/favoriteAnimals/deleteEntry`, data,
             {
                 headers:{
-                    Authorization: `${getState().userReducer.token}`
+                    Authorization: `${getState().userReducer.token}`, 'Content-Type': 'application/json'
                 }
             }
         );
@@ -73,6 +73,11 @@ export const modifyUserEmailAtFavoriteCollection = createAsyncThunk("userFavorit
     }
 )
 
+export const testeCleanArrayAsync = createAsyncThunk("userFavoriteAnimals/testeCleanArrayAsync",
+    async (sla, {getState}) => {
+        return ;
+    }
+)
 const favoriteSlice = createSlice({
     name: "userFavoriteAnimals",
     initialState,
@@ -133,6 +138,7 @@ const favoriteSlice = createSlice({
         })
         .addCase(deleteUserEntryAtFavoriteCollection.fulfilled, (state) => {
             state.status = "completed";
+            state.favAnimalsArray = [];
         })
         .addCase(deleteUserEntryAtFavoriteCollection.rejected, (state, action) => {
             state.status = "failed";

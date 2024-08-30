@@ -105,10 +105,12 @@ router.route('/:id')
 .put((req, res, next) => {
   const {nome} = req.body.nome;
   const {email} = req.body.email;
-  Usuarios.findByIdAndUpdate({_id: req.params.id}, {nome: nome, email: email}).then((usuario) => {
+  Usuarios.findById({_id: req.params.id}).then((usuario) => {
     
     if(usuario){
       usuario.setPassword(req.body.senha, function(){
+        usuario.email = req.body.email;
+        usuario.nome = req.body.nome;
         usuario.save();
       });
     }
@@ -121,6 +123,7 @@ router.route('/:id')
   }, (err) => next(err))
   .catch((err) => next(err))
 })
+
 
 .delete((req, res, next) => {
   Usuarios.findByIdAndDelete({_id: req.params.id}, req.body).then((usuario) => {
