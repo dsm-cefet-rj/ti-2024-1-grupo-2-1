@@ -387,6 +387,127 @@
                 }
                 
             }
+        },
+        "/adoption/": {
+            "post": {
+                "summary": "Grava registro de adoção",
+                "description": "Grava o registro de adoção de um animal no banco de dados",
+                "tags": ["Adoção"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Adoção"
+                            },
+                            "examples": {
+                                "register_animal": {
+                                    "value": {
+                                        "animal_id": "66c9ced6891ceafea9333b27",
+                                        "animal_nome": "Pitoco",
+                                        "animal_idade": "5 anos",
+                                        "animal_img": "ldjaslj@98e091830ndlq09023840230-1.png",
+                                        "animal_tipo": "Cachorro",
+                                        "animal_porte": "Pequeno",
+                                        "animal_sexo": "Macho",
+                                        "adotante_nome": "José",
+                                        "adotante_cpf": "111.222.333-44",
+                                        "adotante_rg": "3218721921-32",
+                                        "adotante_email": "jose@jose.com",
+                                        "adotante_idade": "41 anos",
+                                        "adotante_cel": "(21)953300001",
+                                        "pergunta1": "True",
+                                        "pergunta2": "True",
+                                        "pergunta3": "True",
+                                        "pergunta4": "True",
+                                        "pergunta5": "True",
+                                        "status": "pending"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    }
+                }
+            },
+            "get": {
+                "summary": "Captura todos os registro de adoção",
+                "description": "Captura todos os registros de adoção no banco de dados",
+                "tags": ["Adoção"],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    },
+                    "404": {
+                        "description": "Erro"
+                    }
+                }
+            }
+        },
+        "/adoption/:id": {
+            "get": {
+                "summary": "Captura um único registro de adoção de um animal",
+                "description": "Captura um único registro de adoção de animal através do id do registro de adoção",
+                "tags": ["Adoção"],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    },
+                    "404": {
+                        "description": "Erro"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Altera o status de um pedido de adoção de um animal",
+                "description": "Altera o status de um pedido de adoção de um animal através do id do pedido",
+                "tags": ["Adoção"],
+                "requestBody": {
+                    "content": {
+                        "application/json":{
+                            "schema":{
+                                "$ref": "#/components/schemas/AdoçãoStatus"
+                            }
+                        },
+                        "examples": {
+                            "registro_aprovado": {
+                                "value": {
+                                    "status": "aprovado"
+                                }
+                            },
+                            "register_reprovado": {
+                                "value": {
+                                    "status": "reprovado"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    },
+                    "404": {
+                        "description": "Erro"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Deleta o pedido de adoção de um animal",
+                "description": "Deleta o pedido de adoção de um animal do banco de dados através do id do pedido",
+                "tags": ["Adoção"],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    },
+                    "404": {
+                        "description": "Erro"
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -480,6 +601,76 @@
                         "type": "string"
                     },
                     "historia": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Adoção": {
+                "type": "object",
+                "properties": {
+                    "animal_id": {
+                        "type": "string"
+                    },
+                    "animal_nome": {
+                        "type": "string"
+                    },
+                    "animal_idade": {
+                        "type": "string"
+                    },
+                    "animal_img": {
+                        "type": "string"
+                    },
+                    "animal_tipo": {
+                        "type": "string"
+                    },
+                    "animal_porte": {
+                        "type": "string"
+                    },
+                    "animal_sexo": {
+                        "type": "string"
+                    },
+                    "adotante_nome": {
+                        "type": "string"
+                    },
+                    "adotante_cpf": {
+                        "type": "string"
+                    },
+                    "adotante_rg": {
+                        "type": "string"
+                    },
+                    "adotante_email": {
+                        "type": "string"
+                    },
+                    "adotante_idade": {
+                        "type": "string"
+                    },
+                    "adotante_cel": {
+                        "type": "string"
+                    },
+                    "pergunta1": {
+                        "type": "boolean"
+                    },
+                    "pergunta2": {
+                        "type": "boolean"
+                    },
+                    "pergunta3": {
+                        "type": "boolean"
+                    },
+                    "pergunta4": {
+                        "type": "boolean"
+                    },
+                    "pergunta5": {
+                        "type": "boolean"
+                    },
+                    "status": {
+                        "type": "string"
+                    }
+                }
+            },
+            "AdoçãoStatus": {
+                "type": "object",
+                "properties": {
+                    "status": {
                         "type": "string"
                     }
                 }
