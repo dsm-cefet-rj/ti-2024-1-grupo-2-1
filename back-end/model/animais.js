@@ -3,18 +3,13 @@ const Schema = mongoose.Schema;
 // const normalize = require('normalize-mongoose')
 
 const animaisSchema = new Schema({
-    img: {
+    file: {
         type: String,
         required: true,
     },
     nome: {
         type: String,
         required: true,
-    },
-    isfav: {
-        type: Boolean,
-        required: true,
-        default: false,
     },
     tipo: {
         type: String,
@@ -32,7 +27,7 @@ const animaisSchema = new Schema({
         type: String,
         required: true,
     },
-    história: {
+    historia: {
         type: String,
         required: true,
     },

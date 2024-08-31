@@ -82,7 +82,7 @@ import { useSelector } from "react-redux";
   } else if (status === "failed") {
     animaisTabelados = <div>error: {error}</div>;
   }
-
+console.log(animais[0].file.replace(/\\/g, "/").split('/')[4])
   return (
     <div>
       <HeaderMain />
@@ -105,7 +105,7 @@ import { useSelector } from "react-redux";
               </div>
 
               <img
-                src={animais && animais[0] && animais[0].img}
+                src={require(`../../images/${animais[0].file.replace(/\\/g, "/").split('/')[4]}`)}
                 alt="Imagem do Animal"
                 id="imagem-animal"
               ></img>
@@ -120,7 +120,7 @@ import { useSelector } from "react-redux";
                 <h2 id="acessos">Acessos à página: {acessos}</h2>
               </div>
               <div className="historia-animal">
-                <p>{animais && animais[0] && animais[0].história}</p>
+                <p>{animais && animais[0] && animais[0].historia}</p>
               </div>
               <div className="botao-adotar">
                 <input

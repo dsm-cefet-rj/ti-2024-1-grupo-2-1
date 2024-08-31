@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { baseUrl } from "../../baseUrl";
 import { httpGet, httpDelete, httpPost, httpPut } from "../../utils";
+import api from "../../configAPI"
 
 const initialState = {
   status: "not_sended",
@@ -46,10 +47,25 @@ export const addImages = createAsyncThunk(
     //     //   ...(animalImage && { 'Content-Type': 'multipart/form-data' })
     //     }
     //   };
-//     console.log(animalImage)
-//     const formData = new FormData();
-// formData.append('file', animalImage);
-    return await httpPost(`${baseUrl}/pictures`, animalImage
+   console.log(animalImage)
+   const formData = new FormData();
+    for(const key in animalImage){
+      if (animalImage[key] !== null && animalImage[key] !== undefined) {
+        console.log(animalImage[key])
+        formData.append(key, animalImage[key]);
+    }
+    }
+    const headers ={
+      'headers':{
+        'Content-Type': 'application/json',
+        'Content-Type': 'multipart/form-data; boundary=<calculated when request is sent>'
+      }
+    }
+  //  formData.append('file', animalImage.src);
+    return api.post("/pictures", {name:animalImage.name,file:animalImage.file,idAnimal:animalImage.idAnimal}, headers).then((response)=>{
+      console.log(response)
+    })
+    // await httpPost(`${baseUrl}/pictures`, animalImage
     //     {
     //   headers: {
         // Authorization: `${getState().userReducer.token}`
@@ -57,7 +73,7 @@ export const addImages = createAsyncThunk(
         // ...(animalImage && { 'Content-Type': 'multipart/form-data' })
     //     }
     // }
-);
+      // );
   }
 );
 
@@ -96,18 +112,18 @@ const imagesAnimalSlice = createSlice({
       .addCase(addImages.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(addImages.fulfilled, fullfillImagesReducer)
+      .addCase(addImages.fulfilled,(state, action)=>{
+        state.status = "saved";
+      })
       .addCase(addImages.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
+        console.log(action);
       })
       .addCase(getImages.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(getImages.fulfilled, (state, action) => {
-        state.status = "saved";
-        state.images = action.payload;
-      })
+      .addCase(getImages.fulfilled,fullfillImagesReducer)
       .addCase(getImages.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;

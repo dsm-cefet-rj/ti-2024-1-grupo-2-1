@@ -19,6 +19,7 @@ import {
   getUserEntryAtCollection,
   removeAnimalFromUserFavoriteCollection,
 } from "../../redux/Favoritos/slice";
+
 /**
  * @module Componente/Card_Pet
  */
@@ -45,7 +46,6 @@ const PetCards = ({ animais }) => {
   const { userFavAnimals } = useSelector(
     (rootReducer) => rootReducer.userFavoriteAnimalsReducer
   );
-  // const { animaisFav }  = useSelector((rootReducer) => rootReducer.animaisFavReducer)
   const [fav, setFav] = useState(false);
   const [visible, setVisible] = useState(false);
   const [visivel, setVisivel] = useState(false);
@@ -129,11 +129,21 @@ const PetCards = ({ animais }) => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
-
+  const [path, setPath] = useState("");
+  let ca
+  let co;
+    useEffect(()=>{
+          ca = animais.file.replace(/\\/g, "/");
+          co = ca.split('/')[4];
+          setPath(co)
+    },[animais])
   return (
     <>
       <Card className="card-animal" style={{ width: "18rem" }}>
+        {path?<Card.Img variant="top" src={require(`../../images/${path}`)} />:
         <Card.Img variant="top" src={animais.img} />
+        }
+
         <Card.Body>
           <Card.Title>{animais.nome}</Card.Title>
           {fav ? (

@@ -3,6 +3,7 @@ var router = express.Router();
 const bodyParser = require('body-parser');
 const Animais = require('../model/animais');
 var authenticate = require('../middleware/authenticate');
+const upload = require('../middleware/uploadImage');
 router.use(bodyParser.json());
 
 /* GET users listing. */
@@ -21,9 +22,14 @@ router.route('/')
       res.json(err);
     }
   })
-  .post(authenticate.verifyJwt, async (req, res, next) => {
-
-    Animais.create(req.body)
+  .post(authenticate.verifyJwt,upload.single("file"), async (req, res, next) => {
+    console.log(req.file)
+    console.log(req.body)
+      const{nome,tipo,porte,idade,sexo,historia}=req.body;
+      const file = req.file.path;
+      // const path = file.replace(/\\/g, "/");
+      // const caminho = path.split('/')[4];
+    Animais.create({nome,tipo,porte,idade,sexo,historia, file:file,})
       .then((animal) => {
         console.log('animal criado', animal);
         res.statusCode = 200;

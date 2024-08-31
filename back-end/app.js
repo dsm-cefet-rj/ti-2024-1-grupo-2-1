@@ -12,7 +12,6 @@ var animalsRouter = require("./routes/animals");
 var favAnimalsRouter = require("./routes/favorites");
 var schedulingRouter = require("./routes/scheduling");
 var adoptionRouter = require("./routes/adoption");
-var imageRouter = require("./routes/picture");
 const mongoose = require("mongoose");
 // const Animais = require('./model/animais')
 
@@ -61,7 +60,6 @@ app.use("/animals", animalsRouter);
 app.use("/favoriteAnimals", favAnimalsRouter);
 app.use("/schedulingRegister", schedulingRouter);
 app.use("/animalsAdoptionRegister", adoptionRouter);
-app.use("/pictures", imageRouter);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 module.exports = app;

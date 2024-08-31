@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 import { baseUrl } from "../../baseUrl";
 import { httpGet, httpDelete, httpPost, httpPut } from "../../utils";
-
+import api from "../../configAPI"
 const initialState = {
   status: "not_loaded",
   animals: [],
@@ -41,11 +41,36 @@ function fullfillAnimalsReducer(state, action) {
 export const addAnimalServer = createAsyncThunk(
   "animal/addAnimalServer",
   async (animal, { getState }) => {
-    return await httpPost(`${baseUrl}/animals`, animal,{
-      headers:{
-          Authorization:`${getState().userReducer.token}`
+    const formData = new FormData();
+    for(const key in animal){
+      if (animal[key] !== null && animal[key] !== undefined) {
+        console.log(animal[key])
+        formData.append(key, animal[key]);
+    }
+    }
+    const headers ={
+      'headers':{
+        'Content-Type': 'application/json',
+        'Content-Type': 'multipart/form-data; boundary=<calculated when request is sent>',
+        'Authorization':`${getState().userReducer.token}`
       }
-  });
+    }
+    return api.post("animals",{
+      nome:animal.nome,
+      tipo:animal.tipo,
+      porte:animal.porte,
+      idade:animal.idade,
+      sexo:animal.sexo,
+      historia:animal.historia,
+      file:animal.file}, headers).then((response)=>{
+        console.log(response)
+      })
+  //   httpPost(`${baseUrl}/animals`, animal,
+  //     {
+  //     headers:{
+  //         Authorization:`${getState().userReducer.token}`
+  //     }
+  // });
   }
 );
 

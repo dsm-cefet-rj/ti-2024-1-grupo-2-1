@@ -7,7 +7,7 @@ const PictureSchema = new Schema({
         type:String,
         required: true
     },
-    src:{
+    file:{
         type:String,
         required: true
     },

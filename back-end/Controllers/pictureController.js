@@ -18,9 +18,10 @@ exports.create = async (req, res) =>{
         const picture = new Picture({
             name,
             idAnimal,
-            src: file.path,
+            file: file.path,
         })
         console.log("passou aqui")
+        console.log(picture)
          await picture.save()
 
         res.json({picture, message: "imagem salva"})

@@ -13,6 +13,7 @@ import SuccessMessage from "../../components/SuccessMessage";
 import SelectInput from "../../components/Select-input";
 import ErroMessage from "../../components/Error";
 import InputUsuario from "../../components/InputUsuario";
+
 /**
  * @module Page/CadastroAnimal
  * 
@@ -60,6 +61,7 @@ const CadastroAnimal = () => {
     }
 
     const file = event.target.files[0];
+    setImg(file);
 
     if (file) {
       const reader = new FileReader();
@@ -76,7 +78,7 @@ const CadastroAnimal = () => {
         img.src = imageData;
         img.classList.add("ft_img");
         pictureImage.appendChild(img);
-        setImg(img.src);
+  
       } catch (error) {
         console.error("Error loading image:", error);
         pictureImage.innerHTML = pictureImgTxt; // mostra um erro caso ocorra
@@ -95,43 +97,46 @@ const CadastroAnimal = () => {
   const cadastrarAnimal = async (e) => {
     e.preventDefault();
 
-    const isValid = await animalSchema.isValid({
-      img,
-      name,
-      type,
-      size,
-      sex,
-      age,
-      history,
-    });
+    // const isValid = await animalSchema.isValid({
+    //   img,
+    //   name,
+    //   type,
+    //   size,
+    //   sex,
+    //   age,
+    //   history,
+    // });
 
-    if (!isValid) {
-      setErro("Preencha todos os campos");
-      setTimeout(()=>{
-        setErro("")
-      },3000)
-      return;
-    }
+    // if (!isValid) {
+    //   setErro("Preencha todos os campos");
+    //   setTimeout(()=>{
+    //     setErro("")
+    //   },3000)
+    //   return;
+    // }
 
     dispatch(
       addAnimalServer({
-        isfav: false,
-        img: img,
+        // isfav: false,
+        // img: img,
+        file:img,
         nome: name,
         tipo: type,
         porte: size,
         sexo: sex,
         idade: age,
-        história: history,
+        historia: history
       })
-    );
+
+      
+    )
 
     setSucesso("Animal cadastrado com sucesso!");
     setTimeout(()=>{
       setSucesso("")
     },3000)
-    navigate("/");
-    window.location.reload();
+    // navigate("/");
+    // window.location.reload();
   };
   const items=[
     {value:"Cachorro", label: "Cachorro"},
@@ -180,6 +185,7 @@ const CadastroAnimal = () => {
             <input
               className="ft_input"
               id="ft_input"
+              name="file"
               type="file"
               accept="image/"
               onChange={handleImageChange}

@@ -10,6 +10,7 @@ import  Grade  from "../../components/GridContainer";
 import Paginacao from "../../components/Pagination";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAnimais } from "../../redux/Animais/slice";
+import { getImages } from "../../redux/image/slice";
 import { cleanArray, getUserEntryAtCollection } from "../../redux/Favoritos/slice";
 
 /**
@@ -45,6 +46,7 @@ import { cleanArray, getUserEntryAtCollection } from "../../redux/Favoritos/slic
 
   useEffect(() => {
     dispatch(fetchAnimais());
+    dispatch(getImages());
     dispatch(cleanArray());
     if (currentUser !== null){
       dispatch(getUserEntryAtCollection(currentUser.email))
@@ -96,7 +98,7 @@ let animaisFiltrados =
     animaisTabelados = (
       <Grade>
         {itensAtuais.map((animal) => (
-          <PetCards key={animal.id} animais={animal} />
+            <PetCards key={animal.id} animais={animal} />
         ))}
       </Grade>
     );
