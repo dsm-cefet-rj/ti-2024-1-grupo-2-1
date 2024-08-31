@@ -3,7 +3,7 @@
     "info": {
         "title": "API Back-End Sistema de Adoção de Animais",
         "description": "Esse API tem como objetivo ser o back-end do sistema de adoção de animais (SAA)",
-        "version": "1.0.1"
+        "version": "1.0.2"
     },
     "servers": [
         {
@@ -250,6 +250,143 @@
                     }
                 }
             }
+        },
+        "/favoriteAnimals/deleteEntry": {
+            "post": {
+                "summary": "Deleta a entry de animais favoritos de um usuário",
+                "description": "Recebe como parâmetro o email do usuário, procura por um usuário no banco de dados com o mesmo email, extrai o id desse usuário, e deleta ele através do id",
+                "tags": ["Favoritos"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EntryFavoritosDelete"
+                            },
+                            "examples": {
+                                "modify_email": {
+                                    "value": {
+                                        "email": "jose@jose.com"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    },
+                    "500": {
+                        "description": "Erro"
+                    }
+                }
+            }
+        },
+        "/animals/": {
+            "get": {
+                "summary": "Coleta todos os animais",
+                "description": "Coleta todos os animais do banco de dados e suas informações para passar para o front-end",
+                "tags": ["Animais"],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    },
+                    "404": {
+                        "description": "Erro"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Adiciona um novo animal",
+                "description": "Adiciona o animal com suas informações no banco de dados",
+                "tags": ["Animais"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Animal"
+                            },
+                            "examples": {
+                                "add_animal": {
+                                    "value": {
+                                        "img": "ldjaslj@98e091830ndlq09023840230-1.png",
+                                        "nome": "Caremelo",
+                                        "tipo": "Cachorro",
+                                        "porte": "Médio",
+                                        "idade": "5 anos",
+                                        "sexo": "Macho",
+                                        "historia": "Caramelo brasileiro"
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    }
+                }
+            }
+        },
+        "/animals/:id": {
+            "get": {
+                "summary": "Busca animal específico",
+                "description": "Busca por um animal específico no banco de dados através do seu id",
+                "tags": ["Animais"],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    },
+                    "404": {
+                        "description": "Animal não encontrado"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Deleta um animal específico",
+                "description": "Deleta um animal específico no banco de dados através do seu id",
+                "tags": ["Animais"],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Atualiza informações de um animal específico",
+                "description": "Atualiza as informações de um animal específico no banco de dados através do seu id, atualizando pelas informações recebidas como parâmetros",
+                "tags": ["Animais"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Animal"
+                            },
+                            "examples": {
+                                "update_animal": {
+                                    "value": {
+                                        "img": "ldjaslj@98e091830ndlq09023840230-1.png",
+                                        "nome": "Fila Brasileiro",
+                                        "tipo": "Cachorro",
+                                        "porte": "Grande",
+                                        "idade": "3 anos",
+                                        "sexo": "Macho",
+                                        "historia": "Fila Brasileiro Bruto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    }
+                }
+                
+            }
         }
     },
     "components": {
@@ -308,6 +445,41 @@
                         "type": "string"
                     },
                     "email_novo": {
+                        "type": "string"
+                    }
+                }
+            },
+            "EntryFavoritosDelete": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Animal": {
+                "type": "object",
+                "properties": {
+                    "img": {
+                        "type": "url"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "tipo": {
+                        "type": "string"
+                    },
+                    "porte": {
+                        "type": "string"
+                    },
+                    "sexo": {
+                        "type": "string"
+                    },
+                    "idade": {
+
+                        "type": "string"
+                    },
+                    "historia": {
                         "type": "string"
                     }
                 }
