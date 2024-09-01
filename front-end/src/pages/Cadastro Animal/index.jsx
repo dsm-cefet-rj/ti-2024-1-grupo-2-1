@@ -134,9 +134,9 @@ const CadastroAnimal = () => {
     setSucesso("Animal cadastrado com sucesso!");
     setTimeout(()=>{
       setSucesso("")
+      navigate("/");
+      //window.location.reload();
     },3000)
-    // navigate("/");
-    // window.location.reload();
   };
   const items=[
     {value:"Cachorro", label: "Cachorro"},
