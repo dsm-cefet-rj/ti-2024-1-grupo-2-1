@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const Animais = require('../model/animais');
 var authenticate = require('../middleware/authenticate');
 const upload = require('../middleware/uploadImage');
+const fs = require("fs")
 router.use(bodyParser.json());
 
 /* GET users listing. */
@@ -67,6 +68,7 @@ router.route('/:id')
 
     Animais.findByIdAndDelete(req.params.id)
       .then((animal) => {
+        fs.unlinkSync(animal.file)
         res.statusCode = 200;
         res.setHeader('Content-type', 'application/json');
         res.json(animal.id);
