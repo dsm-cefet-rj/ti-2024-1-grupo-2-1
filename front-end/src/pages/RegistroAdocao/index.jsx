@@ -12,6 +12,7 @@ import { pedidoAdocaoSchema } from "../../validations/registroPedidoAdocaoValida
 import RadioInput from '../../components/RadioInput';
 import TitlePage from "../../components/Title-Page";
 import InputUsuario from "../../components/InputUsuario";
+import SuccessMessage from "../../components/SuccessMessage";
 
 /**
  * @module Page/Registrar_PedidoAdocao
@@ -35,6 +36,7 @@ const RegistroAdocao = () => {
   const [nomeAnimal, setNomeAnimal] = useState("");
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
+  const[success, setSuccess] = useState("");
   const [nome, setNome] = useState("");
   const [idade, setIdade] = useState("");
   const [cpf, setCpf] = useState("");
@@ -111,11 +113,16 @@ const RegistroAdocao = () => {
         //arquivos: arquivos
       })
     );
-    navigate(`/`);
-    {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-    alert("Pedido de adoção realizado");
+    setSuccess("Pedido de adoção realizado");
+    setTimeout(()=>{
+      setSuccess('')
+    },1500)
+    setTimeout(() =>{
+      navigate("/");
+      {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }, 1500)
   };
 
     const items=[
@@ -155,10 +162,26 @@ const RegistroAdocao = () => {
                 // error={err}
               />
               </div>
+                <InputUsuario
+                valor={cel}
+                type={"name"}
+                value={cel}
+                onChange={(e) => {
+                  const formattedTel = e.target.value
+                    .replace(/\D/g, "")
+                    .replace(/(\d{2})(\d)/, "($1) $2")
+                    .replace(/(\d{5})(\d{1,2})/, "$1-$2")
+                    .replace(/(-\d{4})(\d+?$)/, "$1");
+
+                  setCel(formattedTel);
+                }}
+                label={"Telefone (Celular)"}
+                // error={err}
+              />
             </div>
             <div className="div-info-direita">
               <div>
-                <img src={logo} alt="Imagem"></img>
+                <img src={logo} alt="Imagem" id="teste2"></img>
               </div>
               <div className="div-inputs-direita">
               <InputUsuario
@@ -199,22 +222,6 @@ const RegistroAdocao = () => {
                 value={rg}
                 onChange={(e) => [setRg(e.target.value)]}
                 label={"rg do adotante"}
-                // error={err}
-              />
-                <InputUsuario
-                valor={cel}
-                type={"name"}
-                value={cel}
-                onChange={(e) => {
-                  const formattedTel = e.target.value
-                    .replace(/\D/g, "")
-                    .replace(/(\d{2})(\d)/, "($1) $2")
-                    .replace(/(\d{5})(\d{1,2})/, "$1-$2")
-                    .replace(/(-\d{4})(\d+?$)/, "$1");
-
-                  setCel(formattedTel);
-                }}
-                label={"Telefone (Celular)"}
                 // error={err}
               />
               </div>
@@ -307,6 +314,7 @@ const RegistroAdocao = () => {
               id="btn-registar-adocao"
               onClick={handleConfirm}
             />
+            <SuccessMessage text={success}/>
           </div>
         </div>
       </div>

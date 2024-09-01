@@ -1,12 +1,14 @@
 .SuccessContainer{
     display: flex;
+    width: 20rem;
+    margin:0 0 0.5rem 0;
     align-items: center;
     justify-content: center;
     padding: 10px;
     background-color: #609966;
     border-radius: 8px;
     position: relative;
-    bottom: 5%;
+    bottom: 9%;
     left: 0%;
     opacity: 0; /* Começa transparente */
     visibility: hidden; /* Começa escondido */

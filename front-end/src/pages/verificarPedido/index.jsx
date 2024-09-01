@@ -228,17 +228,19 @@ const currentOrder = pedido[0];
 
         </div>
       </div>
-      <div className="botoes">
+      <div style={{display:"flex",flexDirection:"column",alignItems:"center" ,justifyContent:"space-between"}}>
+        <div className="botoes">
 
-        <button id="btn-acept" onClick={handleVerify}>
-        <FiCheck style={{fontSize:30}}/>
-          aceitar
-        </button>
-        <button id="btn-cancel" onClick={handleDenied}>
-        <FiX style={{fontSize:30}}/>
-          recusar
-        </button>
-        <SuccessMessage text={success}/>
+          <button id="btn-acept" onClick={handleVerify}>
+          <FiCheck style={{fontSize:30}}/>
+            aceitar
+          </button>
+          <button id="btn-cancel" onClick={handleDenied}>
+          <FiX style={{fontSize:30}}/>
+            recusar
+          </button>
+        </div>
+          <SuccessMessage text={success}/>
       </div>
 
       <Footer />
