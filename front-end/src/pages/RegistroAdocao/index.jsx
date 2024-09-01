@@ -91,7 +91,7 @@ const RegistroAdocao = () => {
         idAnimal: id,
         nomeAnimal: nomeAnimal,
         idadeAnimal:animal[0].idade,
-        imgAnimal:animal[0].img,
+        imgAnimal:animal[0].file.replace(/\\/g, "/").split('/')[4],
         tipoAnimal:animal[0].tipo,
         porteAnimal:animal[0].porte,
         sexoAnimal:animal[0].sexo,
@@ -132,7 +132,7 @@ const RegistroAdocao = () => {
           <div className="div-informacoes">
             <div className="div-info-esquerda">
               <img
-                src={animal && animal[0] && animal[0].img}
+                src={require(`../../images/${animal[0].file.replace(/\\/g, "/").split('/')[4]}`)}
                 alt="Imagem"
                 id="teste"
               ></img>

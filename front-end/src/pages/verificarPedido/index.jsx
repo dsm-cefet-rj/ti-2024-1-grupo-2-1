@@ -147,7 +147,7 @@ const currentOrder = pedido[0];
           <img src={logo} className="lg" />
 
           <img
-            src={currentOrder && currentOrder.imgAnimal}
+            src={currentOrder && require(`../../images/${currentOrder.imgAnimal}`)}
             alt="Imagem do Animal"
             id="img_animal"
           ></img>
