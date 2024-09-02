@@ -79,12 +79,18 @@ router.route('/:id')
     //   return value.id != req.params.id
     // });
   })
-  .put(authenticate.verifyJwt, async (req, res, next) => {
-    Animais.findByIdAndUpdate({ _id: req.params.id }, req.body)
+  .put(authenticate.verifyJwt, upload.single("file"), async (req, res, next) => {
+    console.log(req.file)
+    console.log(req.body)
+      const{nome,tipo,porte,idade,sexo,historia}=req.body;
+      const file = req.file.path;
+
+    Animais.findByIdAndUpdate({ _id: req.params.id }, 
+      {nome,tipo,porte,idade,sexo,historia, file:file,})
       .then((animal) => {
         res.statusCode = 200;
         res.setHeader('Content-type', 'application/json');
-        res.json(req.body);
+        res.json(animal);
       }, (err) => next(err))
       .catch((err) => next(err));
     // let index= animais.map(p=>p.id).indexOf(req.params.id)

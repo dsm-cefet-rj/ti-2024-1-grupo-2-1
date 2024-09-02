@@ -56,12 +56,10 @@ const UpdateAnimais = () => {
   });
 
 const currentAnimal = animais[0]
-// // .slice(0, 1);
-// // currentAnimal = currentAnimal[0];
- console.log(currentAnimal)
-  useEffect(()=>{
+
+useEffect(()=>{
      dispatch(fetchAnimais());
-     dispatch(fetchOneAnimal(id));
+    //  dispatch(fetchOneAnimal(id));
   //  window.location.reload();
 },[]);
   useEffect(()=>{
@@ -71,31 +69,35 @@ const currentAnimal = animais[0]
       setSize(currentAnimal.porte);
       setSex(currentAnimal.sexo);
       setAge(currentAnimal.idade);
-      setHistory(currentAnimal.história);
-      image(currentAnimal.img);
+      setHistory(currentAnimal.historia);
+      setImg(currentAnimal.file);
+      setTimeout(()=>{
+        image();
+      },50)
+
     }else{
       console.log("Carregando animal")
     }
   },[currentAnimal])
   
-  async function image(dataUrl) {
+  async function image(e) {
     const inputFile = document.querySelector("#ft_input");
     const pictureImage = document.querySelector(".ft_image");
     
 
-  if (!dataUrl) {
+  if (!img) {
     return;
   }
 
   // Limpeza da imagem anterior e do erro
   pictureImage.innerHTML = "";
   // errorImage.style.display = "none";
-
+  let path = currentAnimal.file.replace(/\\/g, "/").split('/')[4];
   // Criação e exibição da imagem
-  const img = document.createElement("img");
-  img.src = dataUrl;  // Define o src como a URL de dados
-  img.classList.add("ft_img");
-  pictureImage.appendChild(img);
+  const imagem = document.createElement("img");
+  imagem.src = require(`../../images/${path}`);  // Define o src como a URL de dados
+  imagem.classList.add("ft_img");
+  pictureImage.appendChild(imagem);
   setImg(img.src);
   inputFile.addEventListener("change", image);
   }
@@ -104,8 +106,6 @@ const currentAnimal = animais[0]
     const inputFile = document.querySelector("#ft_input");
     const pictureImage = document.querySelector(".ft_image");
     const pictureImgTxt = "Escolha uma imagem";
-    console.log(event.target.files)
-
     if (!inputFile || !pictureImage) {
       throw new Error(
         "DOM elements not found. Ensure #ft_input and .ft_image exist."
@@ -113,7 +113,7 @@ const currentAnimal = animais[0]
     }
 
     const file = event.target.files[0];
-    console.log(file);
+    setImg(file);
 
     if (file) {
       const reader = new FileReader();
@@ -128,12 +128,9 @@ const currentAnimal = animais[0]
 
         pictureImage.innerHTML = ""; //limpa a imagem usada anteriormente
         const image = document.createElement("img");
-        console.log(image)
-        console.log(imageData)
         image.src = imageData;
         image.classList.add("ft_img");
         pictureImage.appendChild(image);
-        setImg(imageData);
       } catch (error) {
         console.error("Error loading image:", error);
         pictureImage.innerHTML = pictureImgTxt; // mostra um erro caso ocorra
@@ -149,29 +146,36 @@ const currentAnimal = animais[0]
    */
   const handleUpdate =(e)=>{
     e.preventDefault();
-    setMessage("Animal atualizado com sucesso.");
+  try{  
     dispatch(updateAnimals({
       id:id,
-      isFav:currentAnimal.isFav,
-      img:img,
+      // isFav:currentAnimal.isFav,
+      file:img,
       nome:name,
       tipo:type,
       porte:size,
       sexo:sex,
       idade:age,
-      história:history,
+      historia:history,
     }))
+    setMessage("Animal atualizado com sucesso.");
 
     setTimeout(()=>{
-      dispatch(fetchAnimais());
-      navigate("/")
-    },500)
+      setMessage("");
+      navigate("/");
+     dispatch(fetchAnimais());
+      // window.location.reload();
+    },900)
+  }catch(err){  
+    console.log(err)
 
-    setTimeout(() => {
-    navigate("/")
-    dispatch(fetchAnimais());
-    window.location.reload();
-    }, 100)
+  }
+
+    // setTimeout(() => {
+    // navigate("/")
+    // dispatch(fetchAnimais());
+    // window.location.reload();
+    // }, 100)
   }
 
   const items=[

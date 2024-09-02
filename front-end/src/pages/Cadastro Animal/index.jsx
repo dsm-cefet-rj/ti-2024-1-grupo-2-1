@@ -115,7 +115,7 @@ const CadastroAnimal = () => {
     //   return;
     // }
 
-    dispatch(
+   const response = dispatch(
       addAnimalServer({
         // isfav: false,
         // img: img,
@@ -126,11 +126,9 @@ const CadastroAnimal = () => {
         sexo: sex,
         idade: age,
         historia: history
-      })
-
-      
+      }) 
     )
-
+    console.log(response)
     setSucesso("Animal cadastrado com sucesso!");
     setTimeout(()=>{
       setSucesso("")

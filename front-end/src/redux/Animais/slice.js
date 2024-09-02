@@ -88,11 +88,35 @@ export const deleteAnimal = createAsyncThunk(
 export const updateAnimals = createAsyncThunk(
   "animal/updateAnimals",
   async(animal, { getState})=>{
-    return await httpPut(`${baseUrl}/animals/${animal.id}`,animal,{
-      headers:{
-          Authorization:`${getState().userReducer.token}`
+    const formData = new FormData();
+    for(const key in animal){
+      if (animal[key] !== null && animal[key] !== undefined) {
+        console.log(animal[key])
+        formData.append(key, animal[key]);
+    }
+    }
+    const headers ={
+      'headers':{
+        'Content-Type': 'application/json',
+        'Content-Type': 'multipart/form-data; boundary=<calculated when request is sent>',
+        'Authorization':`${getState().userReducer.token}`
       }
-  });
+    }
+    return api.put(`animals/${animal.id}`,{
+      nome:animal.nome,
+      tipo:animal.tipo,
+      porte:animal.porte,
+      idade:animal.idade,
+      sexo:animal.sexo,
+      historia:animal.historia,
+      file:animal.file}, headers).then((response)=>{
+        console.log(response)
+      })
+  //   return await httpPut(`${baseUrl}/animals/${animal.id}`,animal,{
+  //     headers:{
+  //         Authorization:`${getState().userReducer.token}`
+  //     }
+  // });
   }
 );
 
