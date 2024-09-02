@@ -3,7 +3,7 @@
     "info": {
         "title": "API Back-End Sistema de Adoção de Animais",
         "description": "Esse API tem como objetivo ser o back-end do sistema de adoção de animais (SAA)",
-        "version": "1.0.2"
+        "version": "1.0.3"
     },
     "servers": [
         {
@@ -464,23 +464,27 @@
             "put": {
                 "summary": "Altera o status de um pedido de adoção de um animal",
                 "description": "Altera o status de um pedido de adoção de um animal através do id do pedido",
-                "tags": ["Adoção"],
+                "tags": [
+                    "Adoção"
+                ],
                 "requestBody": {
                     "content": {
-                        "application/json":{
-                            "schema":{
+                        "application/json": {
+                            "schema": {
                                 "$ref": "#/components/schemas/AdoçãoStatus"
-                            }
-                        },
-                        "examples": {
-                            "registro_aprovado": {
-                                "value": {
-                                    "status": "aprovado"
-                                }
                             },
-                            "register_reprovado": {
-                                "value": {
-                                    "status": "reprovado"
+                            "examples": {
+                                "registro_aprovado": {
+                                    "summary": "Exemplo de pedido aprovado",
+                                    "value": {
+                                        "status": "aprovado"
+                                    }
+                                },
+                                "registro_reprovado": {
+                                    "summary": "Exemplo de pedido reprovado",
+                                    "value": {
+                                        "status": "reprovado"
+                                    }
                                 }
                             }
                         }
@@ -504,6 +508,70 @@
                         "description": "Sucesso"
                     },
                     "404": {
+                        "description": "Erro"
+                    }
+                }
+            }
+        },
+        "/scheduling/": {
+            "get": {
+                "summary": "Captura todos os agendamentos de visita",
+                "description": "Captura todos os agendamentos de visita no banco de dados",
+                "tags": ["Agendamentos"],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    },
+                    "404": {
+                        "description": "Erro"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Registra um agendamento de visita",
+                "description": "Registra um agendamento de visita no banco de dados",
+                "tags": ["Agendamentos"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Visitação"
+                            },
+                            "examples": {
+                                "register_visitação": {
+                                    "summary": "Exemplo de agendamento de visita",
+                                    "value": {
+                                        "nome": "José Silva",
+                                        "idUsuario": "2019031039028",
+                                        "email": "jose@jose.com",
+                                        "data": "2024-09-22",
+                                        "hora": "14:00"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    },
+                    "404": {
+                        "description": "Erro"
+                    }
+                }
+            }
+        },
+        "/scheduling/:id": {
+            "delete": {
+                "summary": "Deleta um úncio agendamento de visita",
+                "description": "Deleta um único agendamento de visita no banco de dados e suas informações, através do seu id",
+                "tags": ["Agendamentos"],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    },
+                    "500": {
                         "description": "Erro"
                     }
                 }
@@ -671,6 +739,26 @@
                 "type": "object",
                 "properties": {
                     "status": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Visitação": {
+                "type": "object",
+                "properties": {
+                    "nome": {
+                        "type": "string"
+                    },
+                    "idUsuario": {
+                        "'type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "string"
+                    },
+                    "hora": {
                         "type": "string"
                     }
                 }
