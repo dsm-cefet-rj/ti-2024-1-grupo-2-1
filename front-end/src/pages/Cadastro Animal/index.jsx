@@ -40,8 +40,47 @@ const CadastroAnimal = () => {
   const [age, setAge] = useState("");
   const [history, setHistory] = useState("");
   const [img, setImg] = useState("");
+  const [errors, setErrors] = useState({});
   const [erro, setErro] = useState("");
   const[sucesso, setSucesso] = useState("")
+
+
+  const ERROR = (erro) =>{
+    let erroN;
+    let erroF;
+    let erroT; 
+    let erroSi;
+    let erroSex;
+    let erroA;
+    let erroH;
+    erro.map((err)=>{
+      if(err.toLowerCase().includes("imagem")){
+        erroF = err;
+      }else if(err.toLowerCase().includes("nome")){
+        erroN = err;
+      } else if(err.toLowerCase().includes("tipo")){
+        erroT = err;
+      }else if(err.toLowerCase().includes("tamanho")){
+        erroSi = err;
+      } else if(err.toLowerCase().includes("sexo")){
+        erroSex = err;
+      }else if(err.toLowerCase().includes("idade")){
+        erroA = err;
+      } else if(err.toLowerCase().includes("historia")){
+        erroH = err;
+      }
+    })
+    return {
+      img: erroF,
+      name: erroN,
+      type: erroT,
+      size: erroSi,
+      sex: erroSex,
+      age: erroA,
+      history:erroH,
+    }
+
+  }
 
   // Utilizando o useEfect para verificar a captura de dados está ocorrendo
   /**
@@ -96,26 +135,19 @@ const CadastroAnimal = () => {
    */
   const cadastrarAnimal = async (e) => {
     e.preventDefault();
-
-    // const isValid = await animalSchema.isValid({
-    //   img,
-    //   name,
-    //   type,
-    //   size,
-    //   sex,
-    //   age,
-    //   history,
-    // });
-
-    // if (!isValid) {
-    //   setErro("Preencha todos os campos");
-    //   setTimeout(()=>{
-    //     setErro("")
-    //   },3000)
-    //   return;
-    // }
-
-   const response = dispatch(
+try{
+    await animalSchema.validate({
+      img,
+      name,
+      type,
+      size,
+      sex,
+      age,
+      history,
+    }, { abortEarly: false});
+    setErrors({});
+    
+   dispatch(
       addAnimalServer({
         // isfav: false,
         // img: img,
@@ -127,14 +159,27 @@ const CadastroAnimal = () => {
         idade: age,
         historia: history
       }) 
-    )
-    console.log(response)
-    setSucesso("Animal cadastrado com sucesso!");
-    setTimeout(()=>{
-      setSucesso("")
-      navigate("/");
-      //window.location.reload();
-    },3000)
+    ).then((response)=>{
+      console.log(response)
+      if (response.error){
+        setErro("Token está inválido")
+        setTimeout(()=>{
+          setErro("")
+        },1000)
+        return
+      }else{
+        setSucesso("Animal cadastrado com sucesso!");
+        setTimeout(()=>{
+          setSucesso("")
+           navigate("/");
+          //window.location.reload();
+        },3000)
+      }
+    })
+  }catch(err){
+    console.error("Erro durante o cadastro:", err.errors)
+    setErrors(ERROR(err.errors));
+  }
   };
   const items=[
     {value:"Cachorro", label: "Cachorro"},
@@ -188,26 +233,15 @@ const CadastroAnimal = () => {
               accept="image/"
               onChange={handleImageChange}
             />
+            <label className="erro">{errors.img}</label>
               <InputUsuario
                   valor = {name}
                   type={"text"}
                   value={name}
                   onChange={(e)=>[setName(e.target.value)]}
                   label={"Nome do animal"}
+                  error={errors.name}
                 />
-            {/* <div className="wraper-input-cad">
-              <input
-                className={name !== "" ? "has-val input" : "input-c"}
-                type="name"
-                value={name}
-                onChange={(e) => [setName(e.target.value)]}
-              />
-              <span
-                className="focused-input-c"
-                data-placeholder="Nome do animal"
-              ></span>
-            </div> */}
-
             <h4 className="label-radio">Tipo do animal</h4>
             <div style={{display:"flex"}}>
             <RadioInput
@@ -216,7 +250,7 @@ const CadastroAnimal = () => {
               value={type}
               onChange={(e)=>[setType(e.target.value)]}
             />
-
+            <label className="erro">{errors.type}</label>
             </div>
             
             <h4 className="label-radio">Porte do animal</h4>
@@ -227,7 +261,7 @@ const CadastroAnimal = () => {
               value={size}
               onChange={(e)=>[setSize(e.target.value)]}
             />
-
+            <label className="erro">{errors.size}</label>
             </div>
 
             <h4 className="label-radio">Sexo do animal</h4>
@@ -239,24 +273,16 @@ const CadastroAnimal = () => {
               value={sex}
               onChange={(e)=>[setSex(e.target.value)]}
             />
+            <label className="erro">{errors.sex}</label>
             </div>
             <h4 className="label-radio">Idade do animal</h4>
-            <div style={{display:"flex"}}>
+            <div style={{display:"flex", flexDirection: "column"}}>
                 <SelectInput
                 name="animal-age"
                 items={items4}
                 onChange={(e)=>[setAge(e.target.value)]}
                 />
-              {/* <input
-                className={age !== "" ? "has-val input" : "input-c"}
-                type="text"
-                value={age}
-                onChange={(e) => [setAge(e.target.value)]}
-              />
-              <span
-                className="focused-input-c"
-                data-placeholder="Idade do animal"
-              ></span> */}
+              <label className="erro">{errors.age}</label>
             </div>
                 <InputUsuario
                   valor = {history}
@@ -264,19 +290,9 @@ const CadastroAnimal = () => {
                   value={history}
                   onChange={(e)=>[setHistory(e.target.value)]}
                   label={"História do animal"}
+                  error={errors.history}
                 />
-            {/* <div className="wraper-input-cad">
-              <input
-                className={history !== "" ? "has-val input" : "input-c"}
-                type="text"
-                value={history}
-                onChange={(e) => [setHistory(e.target.value)]}
-              />
-              <span
-                className="focused-input-c"
-                data-placeholder="História do animal"
-              ></span>
-            </div> */}
+            
             <button className="cadastro-animal-botao" type="submit">
               Cadastrar animal
             </button>

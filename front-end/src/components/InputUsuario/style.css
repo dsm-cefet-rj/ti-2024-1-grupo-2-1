@@ -121,6 +121,14 @@
     margin-bottom: 5px;
     margin-top: -8px;
 }
+.erro-box{
+    font-size: 14px;
+    font-weight: bold;
+    color: red;
+    padding: 0 2px;
+    margin-bottom: 2px;
+    margin-top: -8px;
+}
 
 .inputBox{
     position: relative;

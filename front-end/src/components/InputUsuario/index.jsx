@@ -71,7 +71,7 @@ const InputUsuario = ({
             id={id}
             />
             <span>{label}</span>
-          <label className="erro">{error}</label>
+          <label className="erro-box">{error}</label>
         </div>
   
   

@@ -82,17 +82,37 @@ router.route('/:id')
   .put(authenticate.verifyJwt, upload.single("file"), async (req, res, next) => {
     console.log(req.file)
     console.log(req.body)
+    if(req.file){
       const{nome,tipo,porte,idade,sexo,historia}=req.body;
       const file = req.file.path;
+      Animais.findByIdAndUpdate({ _id: req.params.id }, 
+        {nome,tipo,porte,idade,sexo,historia, file:file,})
+        .then((animal) => {
+          res.statusCode = 200;
+          res.setHeader('Content-type', 'application/json');
+          res.json(animal);
+        }, (err) => next(err))
+        .catch((err) => next(err));
+    }else{
+      const{nome,tipo,porte,idade,sexo,historia,file}=req.body;
+      Animais.findByIdAndUpdate({ _id: req.params.id }, 
+        {nome,tipo,porte,idade,sexo,historia, file:file,})
+        .then((animal) => {
+          res.statusCode = 200;
+          res.setHeader('Content-type', 'application/json');
+          res.json(animal);
+        }, (err) => next(err))
+        .catch((err) => next(err));
+    }
 
-    Animais.findByIdAndUpdate({ _id: req.params.id }, 
-      {nome,tipo,porte,idade,sexo,historia, file:file,})
-      .then((animal) => {
-        res.statusCode = 200;
-        res.setHeader('Content-type', 'application/json');
-        res.json(animal);
-      }, (err) => next(err))
-      .catch((err) => next(err));
+    // Animais.findByIdAndUpdate({ _id: req.params.id }, 
+    //   {nome,tipo,porte,idade,sexo,historia, file:file,})
+    //   .then((animal) => {
+    //     res.statusCode = 200;
+    //     res.setHeader('Content-type', 'application/json');
+    //     res.json(animal);
+    //   }, (err) => next(err))
+    //   .catch((err) => next(err));
     // let index= animais.map(p=>p.id).indexOf(req.params.id)
     // animais.splice(index, 1, req.body)
   })

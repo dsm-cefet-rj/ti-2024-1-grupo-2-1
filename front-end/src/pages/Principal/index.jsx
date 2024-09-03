@@ -34,7 +34,7 @@ import { cleanArray, getUserEntryAtCollection } from "../../redux/Favoritos/slic
   const [paginaAtual, setPaginaAtual] = useState(0);
 
   const { animals } = useSelector((rootReducer) => rootReducer.animalReducer);
-  const [animais, setAniamais]= useState([]);
+  // const [animais, setAniamais]= useState([]);
   const { animalsFav } = useSelector(
     (rootReducer) => rootReducer.animalFavReducer
   );
@@ -49,7 +49,7 @@ import { cleanArray, getUserEntryAtCollection } from "../../redux/Favoritos/slic
     if (currentUser !== null){
       dispatch(getUserEntryAtCollection(currentUser.email))
     }
-    setAniamais(animals);
+    // setAniamais(animals);
     console.log(animals)
   }, [animals.length]);
   useEffect(()=>{
@@ -58,11 +58,12 @@ import { cleanArray, getUserEntryAtCollection } from "../../redux/Favoritos/slic
       dispatch(getUserEntryAtCollection(currentUser.email))
     }
     dispatch(fetchAnimais());
+    // setAniamais(animals);
   },[])
 
 let animaisFiltrados =
-    animais &&
-    animais
+    animals &&
+    animals
       .filter((animal) => {
         if (filter === "All") return true;
         return animal.tipo === filter;

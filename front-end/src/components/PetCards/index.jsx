@@ -121,7 +121,7 @@ const PetCards = ({ animais }) => {
     e.preventDefault();
     dispatch(deleteAnimal(id));
     dispatch(fetchAnimais());
-    // window.location.reload();
+    window.location.reload();
   };
   const Update = () => {
     navigate(`/update_animal/${id}`);

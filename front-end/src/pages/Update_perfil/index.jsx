@@ -14,7 +14,9 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import  InputUsuario  from "../../components/InputUsuario";
 import TitlePage from "../../components/Title-Page";
+import { validationUserSchema } from "../../validations/UpdateUsuario";
 import { cleanArray, deleteUserEntryAtFavoriteCollection, modifyUserEmailAtFavoriteCollection, testeCleanArrayAsync } from "../../redux/Favoritos/slice";
+import ErrorMessage from "../../components/Error";
 
 /**
  * @module Page/Update_Usuario
@@ -34,16 +36,15 @@ const UpdatePerfil = () => {
   const [oldEmail, setOldEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [nome, setNome] = useState("");
-  const [err, setErr] = useState("");
-  const [errE, setErrE] = useState("");
-  const [errP, setErrP] = useState("");
+  const [erro, setErro] = useState("");
+  const [errors, setErrors] = useState({});
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
   const { status } = useSelector((rootReducer) => rootReducer.userReducer);
   const { entities } = useSelector((rootReducer) => rootReducer.userReducer);
-  console.log(entities);
+  
 
   useEffect(() => {
     setNome(currentUser.nome);
@@ -67,86 +68,62 @@ const UpdatePerfil = () => {
       window.location.reload();
     }
   });
+  const ERROR = (erro) =>{
+    let erroE;
+    let erroN;
+    let erroS;
+    erro.map((err)=>{
+      if(err.toLowerCase().includes("nome")){
+        erroN = err;
+      }else if(err.toLowerCase().includes("email")){
+        erroE = err;
+      } else if(err.toLowerCase().includes("senha")){
+        erroS = err;
+      }
+    })
+    return {
+      nome: erroN,
+      email: erroE,
+      senha: erroS
+    }
+
+  }
  /**
    * @function handleUpdate -Função responsavel por atualizar as informações do usuário
    * @param {*} e - Evento
    */
-  const handleUpdate = (e) => {
+  const handleUpdate = async(e) => {
     e.preventDefault();
 
     const id = currentUser.id;
 
-    if (!email || !senha || !nome) {
-      e.preventDefault();
-      if (!nome) {
-        setErr("Preencha todos os campos");
-        if (!email) {
-          setErrE("Preencha todos os campos");
-          if (!senha) {
-            setErrP("Preencha todos os campos");
+    try{
+        await validationUserSchema.validate(
+        {nome,email,senha,},{ abortEarly: false}
+      );
+      setErrors({});
+
+      dispatch(emailExistServer(email)).then((result) => {
+        if (result.payload) {
+          if (email === currentUser.email) {
+          } else {
+            setErro("Este e-mail já está cadastrado");
             return;
           }
-          return;
         }
-        return;
-      }
-      if (!email) {
-        setErrE("Preencha todos os campos");
-        if (!senha) {
-          setErrP("Preencha todos os campos");
-          return;
+        else {
+          dispatch(updateUsers({ id, nome, email, senha }));
+          dispatch(modifyUserEmailAtFavoriteCollection({email: oldEmail, newEmail: email}))
+          alert("Informações do usuário atualizadas!");
+          logOut();
+          navigate("/login");
         }
-        return;
-      }
-      if (!senha) {
-        setErrP("Preencha todos os campos");
-        return;
-      }
+      });
+    }catch(err){
+      console.error("Erro durante o cadastro:", err.errors)
+      setErrors(ERROR(err.errors));
     }
 
-    dispatch(emailExistServer(email)).then((result) => {
-      if (result.payload) {
-        if (email === currentUser.email) {
-        } else {
-          setErrE("Este e-mail já está cadastrado");
-          return;
-        }
-      }
-
-      if (!isEmailValid(email)) {
-        if (!isPasswordValid(senha, 5)) return;
-
-        return;
-      }
-      if (!isPasswordValid(senha, 5)) return;
-      else {
-        dispatch(updateUsers({ id, nome, email, senha }));
-        dispatch(modifyUserEmailAtFavoriteCollection({email: oldEmail, newEmail: email}))
-        alert("Informações do usuário atualizadas!");
-        logOut();
-        navigate("/login");
-      }
-    });
-  };
-
-  const isEmailValid = (email) => {
-    const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-
-    if (emailRegex.test(email)) {
-      return true;
-    } else {
-      setErrE("Preencha o email de maneira correta.");
-      return false;
-    }
-  };
-
-  const isPasswordValid = (password, minDigits) => {
-    if (password.length >= minDigits) {
-      return true;
-    } else {
-      setErrP("A senha precisa de no mínimo 5 digitos");
-      return false;
-    }
   };
 
    /**
@@ -179,9 +156,9 @@ const UpdatePerfil = () => {
                 valor={nome}
                 type={"name"}
                 value={nome}
-                onChange={(e) => [setNome(e.target.value), setErr("")]}
+                onChange={(e) => [setNome(e.target.value)]}
                 label={"Nome"}
-                error={err}
+                error={errors.nome}
               />
 
               <InputUsuario
@@ -190,24 +167,19 @@ const UpdatePerfil = () => {
                 value={email}
                 onChange={(e) => [
                   setEmail(e.target.value),
-                  isEmailValid,
-                  setErrE(""),
-                  setErr(""),
                 ]}
                 label={"Email"}
-                error={errE}
+                error={errors.email}
               />
               <InputUsuario
                 valor={senha}
                 type={"password"}
                 value={senha}
                 onChange={(e) => [
-                  setSenha(e.target.value),
-                  setErrP(""),
-                  setErr(""),
+                  setSenha(e.target.value)
                 ]}
                 label={"Senha"}
-                error={errP}
+                error={errors.senha}
               />
 
               <button className="edit_botao" type="submit">
@@ -217,6 +189,9 @@ const UpdatePerfil = () => {
             <button className="excluir_botao" onClick={handleRemove}>
               Excluir conta
             </button>
+            <div style={{display:"flex"}}>
+                  <ErrorMessage text={erro}/>
+            </div>
           </div>
         </div>
       </div>

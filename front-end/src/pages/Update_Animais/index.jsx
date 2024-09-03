@@ -39,16 +39,6 @@ const UpdateAnimais = () => {
   // const { status } = useSelector((rootReducer) => rootReducer.userReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const [name, setName] = useState("");
-  const [type, setType] = useState("");
-  const [size, setSize] = useState("");
-  const [sex, setSex] = useState("");
-  const [age, setAge] = useState("");
-  const [history, setHistory] = useState("");
-  const [img, setImg] = useState("");
-  const [message, setMessage] = useState("");
-  
   const animais =
    animals &&
    animals.filter((animal) => {
@@ -56,6 +46,16 @@ const UpdateAnimais = () => {
   });
 
 const currentAnimal = animais[0]
+
+  const [name, setName] = useState("");
+  const [type, setType] = useState("");
+  const [size, setSize] = useState("");
+  const [sex, setSex] = useState("");
+  const [age, setAge] = useState("");
+  const [history, setHistory] = useState("");
+  const [img, setImg] = useState(currentAnimal.file);
+  const [message, setMessage] = useState("");
+  
 
 useEffect(()=>{
      dispatch(fetchAnimais());
@@ -162,9 +162,9 @@ useEffect(()=>{
 
     setTimeout(()=>{
       setMessage("");
-      navigate("/");
-     dispatch(fetchAnimais());
+      dispatch(fetchAnimais());
       // window.location.reload();
+      navigate("/");
     },900)
   }catch(err){  
     console.log(err)
