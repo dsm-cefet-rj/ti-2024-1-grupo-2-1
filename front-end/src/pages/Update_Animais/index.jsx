@@ -164,7 +164,7 @@ useEffect(()=>{
       setMessage("");
       dispatch(fetchAnimais());
       // window.location.reload();
-      navigate("/");
+      //navigate("/");
     },900)
   }catch(err){  
     console.log(err)
