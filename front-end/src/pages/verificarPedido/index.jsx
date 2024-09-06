@@ -7,10 +7,11 @@ import HeaderMain from "../../components/HeaderMain/index";
 import Footer from "../../components/Footer/index";
 import ContainerInfo from "../../components/Container-Info";
 import { useNavigate } from "react-router-dom";
-import { fetchOneAnimal } from "../../redux/Animais/slice";
+import { fetchOneAnimal, patchStatus } from "../../redux/Animais/slice";
 import SuccessMessage from "../../components/SuccessMessage";
 import { FiCheck, FiX } from "react-icons/fi";
 import logo from "../../assets/logopreta2.png";
+
 
 /**
  * @module Page/Verificar_Pedidos
@@ -33,6 +34,7 @@ const VerificarPedido = () => {
   const { orders } = useSelector(
     (rootReducer) => rootReducer.pedidoAdocaoReducer
   );
+  const { animals } = useSelector((rootReducer) => rootReducer.animalReducer);
   const pedido =
     orders &&
     orders.filter((pedido) => {
@@ -51,14 +53,13 @@ const currentOrder = pedido[0];
     dispatch(getRegisters);
   }, []);
   
-  // useEffect(() => {
-  //   if(currentOrder == null){
-  //     dispatch(getOneRegister(id));
-  //   }else{
-  //     dispatch(fetchOneAnimal(currentOrder.idAnimal));
-  //     console.log("Carregando pedido de adoção");
-  //   }
-  // }, [currentOrder])
+  const animais =
+  animals &&
+  animals.filter((animal) => {
+   if (currentOrder.idAnimal === animal.id) return animal;
+ });
+
+const currentAnimal = animais[0];
 
    /**
    * @function handleVerify -Função responsavel aceitar o pedido de adoção do animal
@@ -90,6 +91,7 @@ const currentOrder = pedido[0];
       status:"approved"
     }));
     orderNull();
+    dispatch(patchStatus({currentAnimal, adopted: true}))
     setSuccess("Pedido Atualizado com Sucesso!");
     setTimeout(()=>{
       setSuccess('')

@@ -31,6 +31,11 @@ const animaisSchema = new Schema({
         type: String,
         required: true,
     },
+    adopted:{
+        type:Boolean,
+        required: false,
+        default:false,
+    }
 })
 
 // Método para renomear o campo _id para id

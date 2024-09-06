@@ -104,17 +104,19 @@ router.route('/:id')
         }, (err) => next(err))
         .catch((err) => next(err));
     }
-
-    // Animais.findByIdAndUpdate({ _id: req.params.id }, 
-    //   {nome,tipo,porte,idade,sexo,historia, file:file,})
-    //   .then((animal) => {
-    //     res.statusCode = 200;
-    //     res.setHeader('Content-type', 'application/json');
-    //     res.json(animal);
-    //   }, (err) => next(err))
-    //   .catch((err) => next(err));
-    // let index= animais.map(p=>p.id).indexOf(req.params.id)
-    // animais.splice(index, 1, req.body)
+  })
+  .patch(authenticate.verifyJwt, async (req, res, next) => {
+    const{adopted} = req.body;
+    Animais.findByIdAndUpdate({ _id: req.params.id }, 
+      {adopted:adopted})
+      .then((animal) => {
+        res.statusCode = 200;
+        res.setHeader('Content-type', 'application/json');
+        console.log(animal);
+        console.log(adopted);
+        res.json(animal);
+      }, (err) => next(err))
+      .catch((err) => next(err));
   })
 
 module.exports = router;

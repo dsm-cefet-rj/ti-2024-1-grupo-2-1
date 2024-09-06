@@ -63,7 +63,11 @@ import { cleanArray, getUserEntryAtCollection } from "../../redux/Favoritos/slic
 
 let animaisFiltrados =
     animals &&
+    // animals.adopted === false &&
     animals
+      .filter((animal)=>{
+        if(animal.adopted === false) return true;
+      })
       .filter((animal) => {
         if (filter === "All") return true;
         return animal.tipo === filter;
