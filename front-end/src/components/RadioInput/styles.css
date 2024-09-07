@@ -31,3 +31,23 @@
     opacity: 1;
 
 }
+
+@media(max-width: 430px) {
+    .radio-btn{
+        width: 15px;
+        height: 15px;
+        border: 1px solid #014983;
+        margin-left: 10px;
+    }
+    .label-radioBTN{
+        margin-left: 1px;
+        margin-top: -5px;
+    }
+    
+    .radio-btn .checkmark{
+        width: calc(100% - 10px);
+        height:calc(100% - 10px) ;
+       
+    }
+
+}

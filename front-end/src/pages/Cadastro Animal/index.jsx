@@ -221,84 +221,91 @@ try{
         <TitlePage text="Cadastro de animais"/>
         <div className="div-form">
           <form  className="form-SignUp"onSubmit={cadastrarAnimal}>
-            <h4 className="label-radio">Imagem do animal</h4>
-            <label className="ft" for="ft_input" tabIndex={0}>
-              <span className="ft_image">Escolha uma imagem</span>
-            </label>
-            <input
-              className="ft_input"
-              id="ft_input"
-              name="file"
-              type="file"
-              accept="image/"
-              onChange={handleImageChange}
-            />
-            <label className="erro">{errors.img}</label>
-              <InputUsuario
-                  valor = {name}
-                  type={"text"}
-                  value={name}
-                  onChange={(e)=>[setName(e.target.value)]}
-                  label={"Nome do animal"}
-                  error={errors.name}
-                />
-            <h4 className="label-radio">Tipo do animal</h4>
-            <div style={{display:"flex"}}>
-            <RadioInput
-              name="animal-type"
-              items={items}
-              value={type}
-              onChange={(e)=>[setType(e.target.value)]}
-            />
-            <label className="erro">{errors.type}</label>
-            </div>
-            
-            <h4 className="label-radio">Porte do animal</h4>
-            <div style={{display:"flex"}}>
-            <RadioInput
-              name="animal-size"
-              items={items2}
-              value={size}
-              onChange={(e)=>[setSize(e.target.value)]}
-            />
-            <label className="erro">{errors.size}</label>
-            </div>
-
-            <h4 className="label-radio">Sexo do animal</h4>
-
-            <div style={{display:"flex"}}>
-            <RadioInput
-              name="animal-sex"
-              items={items3}
-              value={sex}
-              onChange={(e)=>[setSex(e.target.value)]}
-            />
-            <label className="erro">{errors.sex}</label>
-            </div>
-            <h4 className="label-radio">Idade do animal</h4>
-            <div style={{display:"flex", flexDirection: "column"}}>
-                <SelectInput
-                name="animal-age"
-                items={items4}
-                onChange={(e)=>[setAge(e.target.value)]}
-                />
-              <label className="erro">{errors.age}</label>
-            </div>
+            <div className="div-form-SignUp_inputs">
+            <div className="form-SignUp_input">
+              <h4 className="label-radio">Imagem do animal</h4>
+              <label className="ft" for="ft_input" tabIndex={0}>
+                <span className="ft_image">Escolha uma imagem</span>
+              </label>
+              <input
+                className="ft_input"
+                id="ft_input"
+                name="file"
+                type="file"
+                accept="image/"
+                onChange={handleImageChange}
+              />
+              <label className="erro">{errors.img}</label>
                 <InputUsuario
-                  valor = {history}
-                  type={"text"}
-                  value={history}
-                  onChange={(e)=>[setHistory(e.target.value)]}
-                  label={"História do animal"}
-                  error={errors.history}
-                  history={true}
+                    valor = {name}
+                    type={"text"}
+                    value={name}
+                    onChange={(e)=>[setName(e.target.value)]}
+                    label={"Nome do animal"}
+                    error={errors.name}
+                  />
+            </div>
+            <div className="form-SignUp_input">
+                <h4 className="label-radio">Tipo do animal</h4>
+                <div style={{display:"flex"}}>
+                <RadioInput
+                  name="animal-type"
+                  items={items}
+                  value={type}
+                  onChange={(e)=>[setType(e.target.value)]}
                 />
-            
+                <label className="erro">{errors.type}</label>
+                </div>
+                
+                <h4 className="label-radio">Porte do animal</h4>
+                <div style={{display:"flex"}}>
+                <RadioInput
+                  name="animal-size"
+                  items={items2}
+                  value={size}
+                  onChange={(e)=>[setSize(e.target.value)]}
+                />
+                <label className="erro">{errors.size}</label>
+                </div>
+
+                <h4 className="label-radio">Sexo do animal</h4>
+
+                <div style={{display:"flex"}}>
+                <RadioInput
+                  name="animal-sex"
+                  items={items3}
+                  value={sex}
+                  onChange={(e)=>[setSex(e.target.value)]}
+                />
+                <label className="erro">{errors.sex}</label>
+                </div>
+                    <h4 className="label-radio">Idade do animal</h4>
+                <div style={{display:"flex", flexDirection: "column"}}>
+                    <SelectInput
+                    name="animal-age"
+                    items={items4}
+                    onChange={(e)=>[setAge(e.target.value)]}
+                    />
+                  <label className="erro">{errors.age}</label>
+                </div>
+                    <InputUsuario
+                      valor = {history}
+                      type={"text"}
+                      value={history}
+                      onChange={(e)=>[setHistory(e.target.value)]}
+                      label={"História do animal"}
+                      error={errors.history}
+                      history={true}
+                    />
+             </div>
+            </div> 
+          <div className="form-SignUpAnimal-Botao"> 
             <button className="cadastro-animal-botao" type="submit">
               Cadastrar animal
             </button>
           <ErroMessage text={erro}/>
           <SuccessMessage text={sucesso} />
+          </div>
           </form>
         </div>
       </div>

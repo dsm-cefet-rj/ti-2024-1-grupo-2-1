@@ -138,13 +138,13 @@
 .hasHistoryBox{
     position: relative;
     /* height: 20px; */
-    margin:10px 0px;
+    margin:12px 0px;
     width: 100%;
 }
 .hasHistoryBox textarea{
     width: 100%;
     padding: 10px;
-    height: 130px;
+    height: 150px;
     border: 2px solid rgb(1, 73, 131);
     border-radius: 5px;
     background: white;

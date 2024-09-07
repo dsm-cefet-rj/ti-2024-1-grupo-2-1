@@ -215,7 +215,9 @@ useEffect(()=>{
       <div className="div-container">
         <TitlePage text="Atualização das informações do animal"/>
         <div className="div-form">
-          <form onSubmit={handleUpdate}>
+          <form className="form-SignUp" onSubmit={handleUpdate}>
+          <div className="div-form-SignUp_inputs">
+          <div className="form-SignUp_input">
             <h4 className="label-radio">Imagem do animal</h4>
             <label className="ft" for="ft_input" tabIndex={0}>
               <span className="ft_image">Escolha uma imagem</span>
@@ -235,7 +237,8 @@ useEffect(()=>{
                   onChange={(e)=>[setName(e.target.value)]}
                   label={"Nome do animal"}
                 />
-
+            </div>
+            <div className="form-SignUp_input">
             <h4 className="label-radio">Tipo do animal</h4>
             <div style={{display:"flex"}}>
             <RadioInput
@@ -244,9 +247,7 @@ useEffect(()=>{
               value={type}
               onChange={(e)=>[setType(e.target.value)]}
             />
-
             </div>
-            
             <h4 className="label-radio">Porte do animal</h4>
             <div style={{display:"flex"}}>
             <RadioInput
@@ -284,12 +285,16 @@ useEffect(()=>{
                   value={history}
                   onChange={(e)=>[setHistory(e.target.value)]}
                   label={"História do animal"}
+                  history={true}
                 />
-  
-            <button className="cadastro-animal-botao" type="submit">
-              Atualizar Animal
-            </button>
-            <SuccessMessage text={message}/>
+            </div>
+            </div>
+            <div className="form-SignUpAnimal-Botao"> 
+              <button className="cadastro-animal-botao" type="submit">
+                Atualizar Animal
+              </button>
+              <SuccessMessage text={message}/>
+            </div>
           </form>
         </div>
       </div>

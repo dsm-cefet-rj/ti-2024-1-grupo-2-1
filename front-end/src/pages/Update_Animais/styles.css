@@ -21,36 +21,7 @@
     display: flex;
     justify-content: center;
 }
-.ft{
-    background-color: #eee;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px dashed #aaa;
-    border-radius: 5px;
-    color:#635e5e;
-    height: 10rem;
-    width: 15rem;
-    margin-bottom: 1rem;
-    cursor: pointer;
-    transition: 0.5s;
-}
-.ft:hover{
-    color:#000000;
-    border: 1px dashed #000000;
-    transition: 0.5s;
 
-}
-.ft:focus{
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-.ft_input{
-    display: none;
-}
-.ft_img{
-    max-width: 15rem;
-    max-height: 10rem;
-}
 
 .wraper-input-c {
     width: 35rem;
