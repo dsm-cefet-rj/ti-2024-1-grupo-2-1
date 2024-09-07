@@ -56,7 +56,7 @@ exports.verifyJwt =(req, res, next)=>{
   const token = req.headers['authorization'];
 
   jwt.verify(token,config.secretKey, (err, decoded)=>{
-
+      console.log("resultado",decoded);
       if(err) return res.status(401).end();
 
       req._id = decoded._id;

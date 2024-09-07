@@ -135,7 +135,26 @@
     margin:10px 0px;
     width: 100%;
 }
-
+.hasHistoryBox{
+    position: relative;
+    /* height: 20px; */
+    margin:10px 0px;
+    width: 100%;
+}
+.hasHistoryBox textarea{
+    width: 100%;
+    padding: 10px;
+    height: 130px;
+    border: 2px solid rgb(1, 73, 131);
+    border-radius: 5px;
+    background: white;
+    outline: none;
+    color: rgb(132, 146, 158);
+    font-size: 1em;
+    word-break: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
 .inputBox input{
     width: 100%;
     padding: 10px;
@@ -147,7 +166,7 @@
     font-size: 1em;
 }
 
-.inputBox span{
+.inputBox span,.hasHistoryBox span{
     position: absolute;
     left: 0;
     padding: 12px;
@@ -160,7 +179,9 @@
 }
 
 .inputBox input:valid ~ span,
-.inputBox input:focus ~ span{
+.hasHistoryBox textarea:valid ~ span,
+.inputBox input:focus ~ span,
+.hasHistoryBox textarea:focus ~ span{
     color:  #999999;
     transform: translateX(10px) translateY(-10px);
     font-size: 15px;
@@ -170,6 +191,8 @@
     border-right: 2px solid rgb(1, 73, 131);
 }
 .inputBox input:valid,
-.inputBox input:focus{
+.hasHistoryBox textarea:valid,
+.inputBox input:focus,
+.hasHistoryBox textarea:focus{
     border: 2px solid rgb(1, 73, 131);
 }

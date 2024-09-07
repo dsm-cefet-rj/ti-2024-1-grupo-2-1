@@ -30,6 +30,7 @@ const InputUsuario = ({
   label,
   error,
   id,
+  history,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -64,12 +65,20 @@ const InputUsuario = ({
     </>
     :
     
-        <div className="inputBox">
-          <input type="text" required="required"
+        <div className={`${history? "hasHistoryBox" : "inputBox"}`}>
+         { history? 
+         <textarea type="text" required="required" 
             value={value}
             onChange={onChange}
             id={id}
-            />
+            rows={10}
+            /> 
+            :
+         <input type="text" required="required" 
+            value={value}
+            onChange={onChange}
+            id={id}
+            />}
             <span>{label}</span>
           <label className="erro-box">{error}</label>
         </div>

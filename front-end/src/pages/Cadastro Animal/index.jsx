@@ -291,6 +291,7 @@ try{
                   onChange={(e)=>[setHistory(e.target.value)]}
                   label={"História do animal"}
                   error={errors.history}
+                  history={true}
                 />
             
             <button className="cadastro-animal-botao" type="submit">
