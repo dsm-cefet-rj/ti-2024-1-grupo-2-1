@@ -82,9 +82,11 @@ let animaisFiltrados =
       })
       .filter((animal) => {
         if (idadeFilter === "All") return true;
-        return animal.idade === idadeFilter;
-      });
+        const idades = idadeFilter.split(",");
 
+        // Verifica se a idade do animal está presente no array de idades
+        return idades.some(idade => animal.idade === idade);
+      });
   const pages = Math.ceil(animaisFiltrados.length / animalsPerPage, 1);
   const startIndex = paginaAtual * animalsPerPage;
   const endIndex = startIndex + animalsPerPage;
@@ -121,13 +123,9 @@ let animaisFiltrados =
 
       <div className="main">
         <Filtro
-          filter={filter}
           setFilter={setFilter}
-          porteFilter={porteFilter}
           setPorteFilter={setPorteFilter}
-          sexoFilter={sexoFilter}
           setSexoFilter={setSexoFilter}
-          idadeFilter={idadeFilter}
           setIdadeFilter={setIdadeFilter}
         />
         {animaisTabelados}

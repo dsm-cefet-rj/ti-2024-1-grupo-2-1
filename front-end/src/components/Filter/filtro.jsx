@@ -24,44 +24,12 @@ import SelectInput from "../Select-input";
 */
 
 const Filtro = ({
-  filter,
   setFilter,
-  porteFilter,
   setPorteFilter,
-  sexoFilter,
   setSexoFilter,
-  idadeFilter,
   setIdadeFilter,
 }) => {
-  const [selectedFilter, setSelectedFilter] = useState(filter);
-  const [selectedPorteFilter, setSelectedPorteFilter] = useState(porteFilter);
-  const [selectedSexoFilter, setSelectedSexoFilter] = useState(sexoFilter);
-  const [selectedIdadeFilter, setSelectedIdadeFilter] = useState(idadeFilter);
-  const [err, setErr] = useState("");
-
-  const handleFilterChange = (e) => {
-    setSelectedFilter(e.target.value);
-  }; 
-
-  const handlePorteChange = (e) => {
-    setSelectedPorteFilter(e.target.value);
-  };
-  const handleSexoChange = (e) => {
-    setSelectedSexoFilter(e.target.value);
-  };
-
-  const handleIdadeChange = (e) => {
-    setSelectedIdadeFilter(e.target.value);
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    setFilter(selectedFilter);
-    setPorteFilter(selectedPorteFilter);
-    setSexoFilter(selectedSexoFilter);
-    setIdadeFilter(selectedIdadeFilter);
-  };
-
+ 
   const items=[
     {value: "All", label: "Todos"},
     {value:"Cachorro", label: "Cachorro"},
@@ -79,25 +47,32 @@ const Filtro = ({
     {value: "Fêmea" , label: "Fêmea"}
   ];
 
-  const items4=[
-  {value:"All",label:"Todos"},
-  {value:"1 ano",label: "1 ano"},
-  {value:"2 anos",label: "2 anos"},
-  {value:"3 anos",label: "3 anos"},
-  {value:"4 anos",label: "4 anos"},
-  {value:"5 anos",label: "5 anos"},
-  {value:"6 anos",label: "6 anos"},
-  {value:"7 anos",label: "7 anos"},
-  {value:"8 anos",label: "8 anos"},
-  {value:"9 anos",label: "9 anos"},
-  {value:"10 anos",label: "10 anos"},
-  {value:"11 anos",label: "11 anos"}, 
-  {value:"12 anos",label: "12 anos"}, 
-  {value:"13 anos",label: "13 anos"},
-  {value:"14 anos",label: "14 anos"}
+  const intervals =[
+    {value:"All",label:"Todos"},
+    {value:[
+      "1 ano",
+      "2 anos",
+      "3 anos",
+      "4 anos",
+      "5 anos",
+    ], label: "1 ano - 5 anos"},
+    {value:[
+      "6 anos",
+      "7 anos",
+      "8 anos",
+      "9 anos",
+      "10 anos",
+    ], label: "6 anos - 10 anos"},
+    {value:[
+      "11 anos",
+      "12 anos",
+      "13 anos",
+      "14 anos"
+    ], label: "11 anos - 14 anos"}
+
   ]
   return (
-    <form className="filtro" onSubmit={handleSubmit}>
+    <div className="filtro" > {/*onSubmit={handleSubmit}>*/}
       <span className="titlle">Alguns animais para adoção</span>
       <span className="line"></span>
       <div className="search-filter">
@@ -107,7 +82,7 @@ const Filtro = ({
             <SelectInput
               name="animal-type"
               items={items}
-              onChange={handleFilterChange}
+              onChange={(e)=>setFilter(e.target.value)}
             />
           </div>
           <div className="filtro-select">
@@ -115,7 +90,7 @@ const Filtro = ({
             <SelectInput
               name="animal-size"
               items={items2}
-              onChange={handlePorteChange}
+              onChange={(e)=>setPorteFilter(e.target.value)}
             />
           </div>
         </div>
@@ -126,7 +101,7 @@ const Filtro = ({
             <SelectInput
               name="animal-sex"
               items={items3}
-              onChange={handleSexoChange}
+              onChange={(e)=>setSexoFilter(e.target.value)}
             />
             {/* <select onChange={handleSexoChange}>
               <option value="All">Todos</option>
@@ -138,18 +113,18 @@ const Filtro = ({
             <p>Idade do animal</p>
             <SelectInput
               name="animal-age"
-              items={items4}
-              onChange={handleIdadeChange}
+              items={intervals}
+              onChange={(e)=>setIdadeFilter(e.target.value)}
             />
           </div>
-          <div className="btnn-search">
-            <button className="bt-search" type="submit">
+          {/* <div className="btnn-search">
+            <button className="bt-search" >
               Buscar
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
-    </form>
+    </div>
   );
 };
 
