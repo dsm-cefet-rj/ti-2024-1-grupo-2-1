@@ -131,6 +131,7 @@ const currentAnimal = animais[0];
       status:"rejected"
     }));
     orderNull();
+    dispatch(patchStatus({currentAnimal, adopted: false}))
     setSuccess("Pedido Atualizado com Sucesso!");
     setTimeout(()=>{
       setSuccess('')
