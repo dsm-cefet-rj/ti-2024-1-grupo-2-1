@@ -27,7 +27,7 @@ const HeaderMain = () => {
   const navigate = useNavigate();
   const [infoOpen, setInfoOpen] = useState(false);
   const perfilRef = useRef(null);
-  const [menuOpen, setMenuOpen] = useState(true);
+  const [menuOpen, setMenuOpen] = useState();
   const [id, setId] = useState("");
 
   //acessando o objeto usuario, afim de pegar os dados, atraves do useSelector
@@ -51,7 +51,7 @@ const HeaderMain = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("resize", () => {
+  window.addEventListener("resize", () => {
       if (window.innerWidth <= 980) {
         setMenuOpen(false);
       }
@@ -59,7 +59,7 @@ const HeaderMain = () => {
         setMenuOpen(true);
       }
     });
-  });
+  },[]);
   const goLogin = () => {
     navigate("/login");
   };
@@ -106,8 +106,8 @@ const HeaderMain = () => {
           }}
         />
       </div>
-      {menuOpen && (
-        <nav className="navbarra">
+      {/* {menuOpen && ( */}
+        <div className={`navbarra ${menuOpen && 'ativo'}`}>
           <Link
             style={{ textDecoration: "none", color: "rgb(1, 73, 131)" }}
             to={`/`}
@@ -147,8 +147,8 @@ const HeaderMain = () => {
           ) : (
             <></>
           )}
-        </nav>
-      )}
+        </div>
+      {/* )} */}
 
       {currentUser ? (
         <div className="botao-perfil-header">
@@ -162,8 +162,8 @@ const HeaderMain = () => {
           >
             <VscAccount className="show-perfil-svg" color="rgb(1, 73, 131)" />
           </button>
-          {infoOpen && currentUser != [] && currentUser != null && (
-            <div className="perfil">
+          
+            <div className={`perfil ${infoOpen && 'ativo'}`}>
               <ul>
                 {
                   <label className="welcome">
@@ -178,7 +178,7 @@ const HeaderMain = () => {
                 </button>
               </ul>
             </div>
-          )}
+          
         </div>
       ) : (
         <div className="botao-header">

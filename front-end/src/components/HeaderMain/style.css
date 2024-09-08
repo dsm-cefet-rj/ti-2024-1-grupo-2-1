@@ -162,7 +162,7 @@
     transition: 0.6s;
 }
 
-.perfil {
+.perfil{
     position: absolute;
     background-color: #ffffff;
     flex-direction: column;
@@ -172,7 +172,35 @@
     padding: 10px 10px 10px 0px;
     width: 16rem;
     margin-left: -4vw;
+    overflow: hidden;
+    opacity: 0; /* Começa transparente */
+    visibility: hidden; /* Começa escondido */
+    animation: shrink2 1.5s ease-in-out alternate;
+    transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out; /* Animação de 0.5s com easing */
 }
+@keyframes shrink2 {
+    10% {
+      height: 130px;
+    }
+    100% {
+      height: 0px;
+    }
+  }
+.perfil.ativo{
+    opacity: 1; /* Fica opaco quando ativo */
+    animation: grow2 1.5s ease-in-out forwards;
+    /* animation: slideInLeft 2s ease-in-out; */
+    transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out; /* Animação de 0.5s com easing */
+    visibility: visible; /* Fica visível quando ativo */
+}
+@keyframes grow2 {
+    20% {
+      height: 0%;
+    }
+    100% {
+      height: 130px; /* Altura final da barra */
+    }
+  }
 
 .sair,.conta {
     border: none;
@@ -216,8 +244,6 @@
 @media (max-width: 980px) {
     .headermain {
         flex-direction: column;
-
-
     }
 
     .headermain .header-container {
@@ -255,13 +281,53 @@
 
     }
 
-    .headermain .navbarra {
-        margin-top: -1.0rem;
-        margin-right: 0rem;
-        flex-direction: column;
-        align-items: flex-end;
-        transition: 0.9s ease;
+     .navbarra {
+        width:80%;
+        height: 40px;
+        position: absolute;
+        top:10.5%;
+        background-color: rgb(255, 255, 255);
+        padding: 4px 20px;
+        box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.3);
+        justify-content: space-between;
+        overflow: hidden;
+        opacity: 0; /* Começa transparente */
+        visibility: hidden; /* Começa escondido */
+        animation: shrink 1.5s ease-in-out alternate;
+        transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out; /* Animação de 0.5s com easing */
     }
+    .navbarra.ativo{
+        opacity: 1; /* Fica opaco quando ativo */
+        animation: grow 1.5s ease-in-out forwards;
+        /* animation: slideInLeft 2s ease-in-out; */
+        transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out; /* Animação de 0.5s com easing */
+        visibility: visible; /* Fica visível quando ativo */
+    }
+    
+    @keyframes slideInLeft {
+        from {
+          transform: translateX(-100%);
+        }
+        to {
+          transform: translateX(0);
+        }
+    }
+    @keyframes shrink {
+        0% {
+          height: 40px;
+        }
+        100% {
+          height: 0px;
+        }
+      }
+      @keyframes grow {
+        20% {
+          height: 0%;
+        }
+        100% {
+          height: 40px; /* Altura final da barra */
+        }
+      }
 
     .navbarra Link {
         width: 100px;
