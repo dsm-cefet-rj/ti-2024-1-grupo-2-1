@@ -47,7 +47,8 @@
     align-items: center;
 }
 
-.div-inputs-esquerda {
+.div-inputs-esquerda, 
+.div-inputs-direita {
     font-family: 'Poppins', Arial, sans-serif;
     margin: 2rem 0 0 0;
 }
@@ -83,14 +84,6 @@
     margin-bottom: 2rem;
 
 }
-
-.div-inputs-direita {
-    display: flex;
-    flex-direction: column;
-
-}
-
-
 
 .div-responsabilidade-adocao {}
 

@@ -1,12 +1,17 @@
 .cardadocao-main-div{
     border: 2px solid black;
     border-radius: 8px;
-    padding: 1.5rem 0.2rem;
+    padding: 1.5rem 0.2rem 0.5rem 0.2rem;
     display: flex;
     justify-content: space-between;
     margin-bottom: 1.5rem;
     height: 10rem;
     width: 45rem;
+    box-sizing: border-box;
+    position: relative;
+    transition: transform 0.3s ease;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 8px 0px rgba(0, 0, 0,0.3);
 }
 
 .left-side-div{
@@ -32,7 +37,7 @@
     text-transform: uppercase;
     
     width: 10rem;
-    height: 5rem;
+    height: 4.5rem;
 
     background: -webkit-linear-gradient(to right, rgb(7, 217, 63), rgb(1, 73, 131));
     background: -o-linear-gradient(to right, rgb(61, 200, 107), rgb(61, 200, 107));
@@ -51,19 +56,21 @@
 }
 
 .Pedido_Cancel{
-    font-size: 30px;
-    color: red;
+    left: 27rem;
+    top:2rem;
+    color: rgb(8, 59, 134);
+    padding: 0.35rem;
     display: block;
     position: absolute;
-    margin-top: -2.5rem;
-    margin-left: 43rem;
     background-color: white;
     border:none;
-    border-radius: 15px;
-    box-shadow: 1px 1px 8px 0px rgb(0, 0, 0);
+    border-radius: 10px;
+    box-shadow: 1px 1px 8px 0px rgba(0, 0, 0,0.3);
     transition: transform 0.3s ease;
 }
-
+.PedAdo_options{
+    font-size: 50px;
+}
 .Pedido_Cancel:hover {
     cursor: pointer;
     background: rgba(255, 0, 0, 1);
@@ -75,7 +82,7 @@
 .status_pedido{
     display: flex;
     color: rgba(0, 0, 0, 0.473);
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     font-weight: bold;
     font-size: 14px;
 }
@@ -101,10 +108,12 @@
         height: 3rem;
     
     }
-    .Pedido_Cancel{
+    .PedAdo_options{
         font-size: 30px;
-        margin-left: 33rem;
-        margin-top: -2.5rem;
+    }
+    .Pedido_Cancel{
+        left: 23rem;
+        top:1.7rem
     }
     .status_pedido{
         margin-top: 1rem;
@@ -134,10 +143,12 @@
         margin-top: -0.5rem;
     
     }
-    .Pedido_Cancel{
+    .PedAdo_options{
         font-size: 20px;
-        margin-left: 24rem;
-        margin-top: -2.2rem;
+    }
+    .Pedido_Cancel{
+        left: 15rem;
+        top:1.0rem
     }
     .status_pedido{
         margin-top: 0.2rem;
@@ -168,10 +179,10 @@
     
     }
     .Pedido_Cancel{
-        font-size: 20px;
-        margin-left: 19rem;
-        margin-top: -2.2rem;
+        left: 10rem;
+        top:1.0rem
     }
+    
 
 }
 @media(max-width:380px){
@@ -180,6 +191,13 @@
     }
     .left-side-div h3{
         font-size: 11px;
+    }
+    .left-side-div{
+        margin-left: 0.5rem;
+    }
+    
+    .right-side-div{
+        margin-right: 0.5rem;
     }
 
     .cardadocao-main-div{
@@ -195,10 +213,15 @@
         margin-top: -0.5rem;
     
     }
-    .Pedido_Cancel{
-        font-size: 20px;
-        margin-left: 14rem;
-        margin-top: -2.2rem;
+    .PedAdo_options{
+        font-size: 15px;
+        position: relative;
+        bottom: 8px;
     }
-
+    .Pedido_Cancel{
+        left: 7rem;
+        height: 1.8rem;
+        width: 1.8rem;
+        top:1.2rem
+    }
 }

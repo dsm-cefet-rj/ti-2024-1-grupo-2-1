@@ -38,7 +38,7 @@ const AdmPedidos = () => {
     if (status === "deleted") {
       dispatch(getRegisters());
     }
-  }, [orders.length]); // Dependências vazias para evitar execuções subsequentes(colocado orders
+  }, []); // Dependências vazias para evitar execuções subsequentes(colocado orders
     // para cada vez q a quantidade for alterada, recarregar os pedidos)
   return (
     <>

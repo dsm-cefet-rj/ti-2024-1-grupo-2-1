@@ -1,8 +1,9 @@
 import "./index.css";
-import { Component, React, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { FaTrash } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { deleteVisitation, getVisitations } from "../../redux/agendamento/slice";
+import Modal from "../Modal";
 
 /** 
  * @module Cards/Cards_de_Agendamento
@@ -24,12 +25,31 @@ import { deleteVisitation, getVisitations } from "../../redux/agendamento/slice"
 
 const Agendamento = ({ infos }) => {
   const id = infos.id;
+  const [visible, setVisible]=useState(false);
   const dispatch = useDispatch();
+  const modalRef = useRef(null);
+
+  useEffect(() => {
+    // Adiciona um ouvinte de evento de clique ao documento inteiro
+    function handleClickOutside(event) {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        // Clique fora do botão de perfil, então ele é escondido
+        setVisible(false);
+      }
+    }
+
+    document.addEventListener("click", handleClickOutside);
+
+    // Limpa o ouvinte de evento quando o componente de mostrar perfil é desmontado
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   const [infoOpen, setInfoOpen] = useState(false);
 
-  const Delete = (e) => {
-    e.preventDefault();
+  const Delete = () => {
+    // e.preventDefault();
     dispatch(deleteVisitation(id));
     dispatch(getVisitations());
   };
@@ -37,6 +57,7 @@ const Agendamento = ({ infos }) => {
  datas = datas.split('-');
  datas = datas[2]+'/'+datas[1]+'/'+datas[0];
   return (
+    <>
     <div className="cardagendamento-div">
       <div className="namoral">
         <div className="left-div">
@@ -51,11 +72,11 @@ const Agendamento = ({ infos }) => {
             onClick={() => {
               setInfoOpen(!infoOpen);
             }}
-          >
+            >
             DETALHES
           </button>
         </div>
-        <button className="Agendamento_Cancel" onClick={Delete}>
+        <button className="Agendamento_Cancel" ref={modalRef} onClick={()=>{setVisible(true)}}>
           <FaTrash className="agendamento_options"/>
         </button>
       </div>
@@ -65,6 +86,14 @@ const Agendamento = ({ infos }) => {
           <p className="usuario">Contato: {infos.email}</p>
         </ul>
     </div>
+        <Modal 
+        visivel={visible}
+        close={()=>{setVisible(false)}}
+        onClick={Delete}
+        text={"Deseja excluir esse agendamento?"}
+        labelButton={`Excluir `}
+        />
+    </>
   );
 };
 

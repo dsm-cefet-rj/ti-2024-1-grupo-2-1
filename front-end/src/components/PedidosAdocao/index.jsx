@@ -97,7 +97,9 @@ const PedidoAdocao = ({ pedido }) => {
         ))
       }
       </div>
-      <FaTrash className="Pedido_Cancel" onClick={()=>{setVisible(true)}} />
+      <button className="Pedido_Cancel" ref={modalRef} onClick={()=>{setVisible(true)}}>
+           <FaTrash className="PedAdo_options" />
+      </button>
     </div>
       <Modal 
         visivel={visible}

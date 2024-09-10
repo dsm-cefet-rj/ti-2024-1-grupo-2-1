@@ -117,11 +117,11 @@ const PetCards = ({ animais }) => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
-  const Delete = (e) => {
-    e.preventDefault();
+  const Delete = () => {
     dispatch(deleteAnimal(id));
-    dispatch(fetchAnimais());
-    window.location.reload();
+    setTimeout(()=>{
+      dispatch(fetchAnimais());
+    },100)
   };
   const Update = () => {
     navigate(`/update_animal/${id}`);
@@ -167,7 +167,7 @@ const PetCards = ({ animais }) => {
           )}
         </Card.Body>
         {currentUser !== null && currentUser.admin === true ? (
-          <button ref={modalRef} className="botao-options" onClick={Delete}>
+          <button ref={modalRef} className="botao-options" onClick={()=>{setVisible(true)}}>
             {" "}
             <FaTrash className="animal_options" />{" "}
           </button>

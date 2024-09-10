@@ -51,7 +51,7 @@ import { cleanArray, getUserEntryAtCollection } from "../../redux/Favoritos/slic
     }
     // setAniamais(animals);
     console.log(animals)
-  }, [animals.length]);
+  }, []);
   useEffect(()=>{
     dispatch(cleanArray());
     if (currentUser !== null){
