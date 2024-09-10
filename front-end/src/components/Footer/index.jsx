@@ -1,7 +1,9 @@
-import React from "react";
+import React,{ useState,useEffect} from "react";
 import "./style.css";
+import { useNavigate, Link } from "react-router-dom";
 import { IoLogoInstagram } from "react-icons/io";
 import { LiaFacebookSquare } from "react-icons/lia";
+import { useSelector } from "react-redux";
 /** 
  * @module Componente/Footer
  *  */
@@ -16,6 +18,16 @@ import { LiaFacebookSquare } from "react-icons/lia";
  * @returns {React.FC} O componente renderizado.
 */
 const Footer = () => {
+  const [id, setId] = useState("");
+  const navigate = useNavigate();
+
+  //acessando o objeto usuario, afim de pegar os dados, atraves do useSelector
+  const { currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
+  useEffect(() => {
+    if (currentUser != null) {
+      setId(currentUser.id);
+    }
+  });
   return (
     <div className="footer">
       <div className="above">
@@ -37,7 +49,7 @@ const Footer = () => {
           </ul>
           <ul>
             <h2>Perfil</h2>
-            <li>Minha página de perfil</li>
+            <li onClick={()=> navigate(`../detalhes_conta/${id}`)}>Minha página de perfil</li>
             <li>Cadastre-se</li>
           </ul>
         </div>

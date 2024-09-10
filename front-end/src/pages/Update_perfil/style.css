@@ -3,9 +3,12 @@
     margin:5rem;
     height: 20rem;
     border: 1px solid black;
-    padding: 2rem 15rem;
+    padding: 2rem 5%;
     border-radius:10px;
 
+}
+.div-container-Att_Perfil{
+    margin-bottom: -10%;
 }
 .visualizaçao-de-form{
     display: flex;

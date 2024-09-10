@@ -3,6 +3,7 @@ import Agendamento from "../../components/Agendamentos";
 import Footer from "../../components/Footer";
 import HeaderMain from "../../components/HeaderMain";
 import { getVisitations } from "../../redux/agendamento/slice";
+import Grade  from "../../components/GridContainer";
 import "./index.css";
 import { useEffect } from "react";
 import TitlePage from "../../components/Title-Page";
@@ -46,11 +47,11 @@ const AdmAgendamento = () => {
         <TitlePage text="Agendamentos Cadastrados"/>
         <div>
           {visitations != 0 ? (
-            <>
+            <Grade>
               {Object.values(visitations).map((agendamento) => (
                 <Agendamento key={agendamento.id} infos={agendamento} />
               ))}
-            </>
+            </Grade>
           ) : (
             <div className="espaço-preenchidoAgendamento">
               {" "}

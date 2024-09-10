@@ -29,20 +29,42 @@ import SuccessMessage from "../../components/SuccessMessage";
 
 const RegistroAdocao = () => {
   const { animals } = useSelector((rootReducer) => rootReducer.animalReducer);
+  const {currentUser}=useSelector((rootReducer)=>rootReducer.userReducer)
   // const { error } = useSelector((rootReducer) => rootReducer.animalReducer)
   // const { status } = useSelector((rootReducer) => rootReducer.animalReducer)
   const dispatch = useDispatch();
+  const { id } = useParams();
 
-  const [nomeAnimal, setNomeAnimal] = useState("");
+  /**
+   * @function formatName - Função que realiza a formataçao do nome para que as letras 
+   * iniciais sejam maiusculas
+   * @param {string} name - valor da variavel a ser formatada
+  * @returns {string} - Nome formatado
+   */
+   function formatName(name) {
+     if (!name) return "";
+     return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+   }
+   
+   const animal =
+     animals &&
+     animals.filter((animal) => {
+       if (id === animal.id) return animal;
+     });
+   /**
+    * @function handleConfirm - Função que realiza o registro do pedido de adoção
+    * @param {*} e - Evento 
+    * 
+   */
+  const [nomeAnimal, setNomeAnimal] = useState(animal[0].nome);
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(currentUser.email);
   const[success, setSuccess] = useState("");
-  const [nome, setNome] = useState("");
+  const [nome, setNome] = useState(currentUser.nome);
   const [idade, setIdade] = useState("");
   const [cpf, setCpf] = useState("");
   const [rg, setRg] = useState("");
   const [cel, setCel] = useState("");
-  const { id } = useParams();
 
   const [q1, setQ1] = useState();
   const [q2, setQ2] = useState("");
@@ -52,27 +74,6 @@ const RegistroAdocao = () => {
   //const [arquivos, setArquivos] = useState([null, null, null]);
 
 
- /**
-  * @function formatName - Função que realiza a formataçao do nome para que as letras 
-  * iniciais sejam maiusculas
-  * @param {string} name - valor da variavel a ser formatada
- * @returns {string} - Nome formatado
-  */
-  function formatName(name) {
-    if (!name) return "";
-    return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
-  }
-  
-  const animal =
-    animals &&
-    animals.filter((animal) => {
-      if (id === animal.id) return animal;
-    });
-  /**
-   * @function handleConfirm - Função que realiza o registro do pedido de adoção
-   * @param {*} e - Evento 
-   * 
-  */
  const handleConfirm = async (e) => {
    e.preventDefault();
    
@@ -161,7 +162,6 @@ const RegistroAdocao = () => {
                 label={"Email do Adotante"}
                 // error={err}
               />
-              </div>
                 <InputUsuario
                 valor={cel}
                 type={"name"}
@@ -178,6 +178,7 @@ const RegistroAdocao = () => {
                 label={"Telefone (Celular)"}
                 // error={err}
               />
+              </div>
             </div>
             <div className="div-info-direita">
               <div>
@@ -251,7 +252,7 @@ const RegistroAdocao = () => {
                     Você está pronto para esse compromisso e responsabilidade de
                     longo prazo?
                   </span>
-                  <div style={{display:"flex",marginLeft:"45%"}}>
+                  <div className="Radio_Responsabilidade">
                       <RadioInput
                         name="questao2"
                         items={items}
@@ -267,7 +268,7 @@ const RegistroAdocao = () => {
                     alimentação e atendimento veterinário. Você tem como
                     providenciar isso?
                   </span>
-                  <div style={{display:"flex", marginLeft:"45%"}}>
+                  <div className="Radio_Responsabilidade">
                       <RadioInput
                         name="questao3"
                         items={items}
@@ -279,7 +280,7 @@ const RegistroAdocao = () => {
                 </div>
                 <div className="div-pergunta">
                   <span>4. Você já tem um médico veterinário?</span>
-                  <div style={{display:"flex", marginLeft:"45%"}}>
+                  <div className="Radio_Responsabilidade">
                     <RadioInput
                       name="questao4"
                       items={items}
@@ -287,14 +288,14 @@ const RegistroAdocao = () => {
                       onChange={(e)=>[setQ4(e.target.value)]}
                     />
 
-            </div>
+                  </div>
                 </div>
                 <div className="div-pergunta">
                   <span>
                     5. Em caso de emergência, tem como levar seu animal
                     imediatamente ao veterinário?
                   </span>
-                  <div style={{display:"flex", marginLeft:"45%"}}>
+                  <div className="Radio_Responsabilidade">
                       <RadioInput
                         name="questao5"
                         items={items}
@@ -302,7 +303,7 @@ const RegistroAdocao = () => {
                         onChange={(e)=>[setQ5(e.target.value)]}
                       />
 
-            </div>
+                  </div>
                 </div>
               </div>
             </div>

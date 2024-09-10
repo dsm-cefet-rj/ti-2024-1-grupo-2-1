@@ -171,12 +171,12 @@
     margin-top: 4vh;
     padding: 10px 10px 10px 0px;
     width: 16rem;
-    margin-left: -4vw;
+    margin-left: -8vw;
     overflow: hidden;
     opacity: 0; /* Começa transparente */
     visibility: hidden; /* Começa escondido */
-    animation: shrink2 1.5s ease-in-out alternate;
-    transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out; /* Animação de 0.5s com easing */
+    animation: shrink2 0.7s ease-in-out alternate;
+    transition: opacity 0.7s ease-in-out, visibility 0.7s ease-in-out; /* Animação de 0.5s com easing */
 }
 @keyframes shrink2 {
     10% {
@@ -188,9 +188,9 @@
   }
 .perfil.ativo{
     opacity: 1; /* Fica opaco quando ativo */
-    animation: grow2 1.5s ease-in-out forwards;
+    animation: grow2 0.7s ease-in-out forwards;
     /* animation: slideInLeft 2s ease-in-out; */
-    transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out; /* Animação de 0.5s com easing */
+    transition: opacity 0.7s ease-in-out, visibility 0.7s ease-in-out; /* Animação de 0.5s com easing */
     visibility: visible; /* Fica visível quando ativo */
 }
 @keyframes grow2 {
@@ -293,14 +293,14 @@
         overflow: hidden;
         opacity: 0; /* Começa transparente */
         visibility: hidden; /* Começa escondido */
-        animation: shrink 1.5s ease-in-out alternate;
-        transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out; /* Animação de 0.5s com easing */
+        animation: shrink 0.7s ease-in-out alternate;
+        transition: opacity 0.7s ease-in-out, visibility 0.7s ease-in-out; /* Animação de 0.5s com easing */
     }
     .navbarra.ativo{
         opacity: 1; /* Fica opaco quando ativo */
-        animation: grow 1.5s ease-in-out forwards;
+        animation: grow 0.7s ease-in-out forwards;
         /* animation: slideInLeft 2s ease-in-out; */
-        transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out; /* Animação de 0.5s com easing */
+        transition: opacity 0.7s ease-in-out, visibility 0.7s ease-in-out; /* Animação de 0.5s com easing */
         visibility: visible; /* Fica visível quando ativo */
     }
     

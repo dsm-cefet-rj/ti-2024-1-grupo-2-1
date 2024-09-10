@@ -120,7 +120,7 @@ const UpdatePerfil = () => {
         }
       });
     }catch(err){
-      console.error("Erro durante o cadastro:", err.errors)
+      console.error("Erro durante a atualização:", err.errors)
       setErrors(ERROR(err.errors));
     }
 
@@ -146,8 +146,7 @@ const UpdatePerfil = () => {
   return (
     <div>
       <HeaderMain />
-      <div>
-        <div className="title-registro-adocao-container">
+        <div className="div-container-Att_Perfil">
           <TitlePage text="Informações da Conta"/>
 
           <div className="visualizaçao-de-form">
@@ -194,7 +193,6 @@ const UpdatePerfil = () => {
             </div>
           </div>
         </div>
-      </div>
 
       <Footer />
     </div>

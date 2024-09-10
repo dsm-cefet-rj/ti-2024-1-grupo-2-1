@@ -4,14 +4,12 @@
     margin: 1rem;
 }
 
-.title-registro-adocao-container {}
-
 #teste {
     width: 400px;
     border-radius: 5px;
 }
 #teste2 {
-    width: 300px;
+    width: 250px;
     position: relative;
     border-radius: 5px;
     right: 35%;
@@ -124,7 +122,11 @@
 .div-pergunta div {
     margin: 1rem 0 0 0;
 }
+.div-pergunta .Radio_Responsabilidade{
+    display: flex;
+    margin-left: 45%;
 
+}
 .div-pergunta input {
     margin: 0 8px;
 }
@@ -214,6 +216,9 @@
         width: 30%;
 
     }
+    #teste2 {
+        right: 25%;
+    }
 
 }
 
@@ -241,6 +246,14 @@
         width: 15rem;
 
     }
+    #teste2 {
+        right: 30%;
+    }
+    .div-pergunta .Radio_Responsabilidade{
+        display: flex;
+        margin-left: 40%;
+    
+    }
 
 }
 
@@ -266,6 +279,11 @@
         width: 15rem;
 
     }
+    .div-pergunta .Radio_Responsabilidade{
+        display: flex;
+        margin-left: 35%;
+    
+    }
 
 }
 
@@ -279,7 +297,7 @@
     #teste {
         justify-content: center;
         margin-left: 1rem;
-        width: 60%;
+        width: 80%;
     }
 
     .wraper-input-r {
@@ -301,17 +319,35 @@
     }
 
     #btn-registar-adocao {
-        font-size: 15px;
-        width: 10rem;
+        font-size: 20px;
+        width: 13rem;
     }
 
     .div-container {
 
         margin: 1rem;
     }
+    #teste2 {
+        width: 200px;
+        right: -5%;
+    }
+    .div-pergunta .Radio_Responsabilidade{
+        display: flex;
+        margin-left: 30%;
+    }
+
 
 }
-
+@media(max-width:450px) {
+    #teste2 {
+        width: 150px;
+        right: -10%;
+    }
+    .div-pergunta .Radio_Responsabilidade{
+        display: flex;
+        margin-left: 25%;
+    }
+}
 @media screen and (max-width: 400px) {
 
     .div-info-esquerda {
@@ -324,17 +360,12 @@
 @media(max-width: 360px) {
 
     .div-info-esquerda {
-        width: 20rem;
-        margin: 2rem 0 0rem 5rem;
-    }
-
-    .wraper-input-r {
         width: 15rem;
-
+        margin: 2rem 0 0rem 0rem;
     }
 
     .div-info-direita {
-        width: 10rem;
+        width: 15rem;
         margin-left: -0rem;
 
     }
@@ -354,6 +385,10 @@
     .div-documentos div {
         box-sizing: border-box;
         font-size: 14px;
+    }
+    #teste2 {
+        width: 150px;
+        right: -20%;
     }
 
 }

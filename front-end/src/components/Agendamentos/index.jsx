@@ -1,8 +1,8 @@
 import "./index.css";
 import { Component, React, useState } from "react";
-import { MdOutlineCancel } from "react-icons/md";
+import { FaTrash } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { deleteVisitation } from "../../redux/agendamento/slice";
+import { deleteVisitation, getVisitations } from "../../redux/agendamento/slice";
 
 /** 
  * @module Cards/Cards_de_Agendamento
@@ -31,7 +31,7 @@ const Agendamento = ({ infos }) => {
   const Delete = (e) => {
     e.preventDefault();
     dispatch(deleteVisitation(id));
-    window.location.reload();
+    dispatch(getVisitations());
   };
  let datas = infos.data
  datas = datas.split('-');
@@ -55,15 +55,15 @@ const Agendamento = ({ infos }) => {
             DETALHES
           </button>
         </div>
-        <MdOutlineCancel className="Agendamento_Cancel" onClick={Delete} />
+        <button className="Agendamento_Cancel" onClick={Delete}>
+          <FaTrash className="agendamento_options"/>
+        </button>
       </div>
-      {infoOpen && (
-        <ul>
+        <ul className={`informacoes_Agendamentos ${infoOpen && 'ativo'}`}>
           <div className="la-line"></div>
           <p className="usuario">Nome do agendante: {infos.nome}</p>
           <p className="usuario">Contato: {infos.email}</p>
         </ul>
-      )}
     </div>
   );
 };
