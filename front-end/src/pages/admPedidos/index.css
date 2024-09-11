@@ -13,19 +13,39 @@
 }
 
 .cardpedidos-div{
-display: flex;
-
-    
+  margin-left:0 0.6rem;
+}
+.cardpedidos-div p{
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .espaço-preenchidoPedidos{
     display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 35%;
   height: 40.5Vh;
 }
 @media(max-width:1440px){
   .espaço-preenchidoPedidos{
+    margin: 0 25%;  
   height: 42.5Vh;
 }
+}
+@media(max-width:630px){
+  .espaço-preenchidoPedidos{
+    margin: 0 15%;
+  }
+  .cardpedidos-div p{
+    font-size: 18px;
+  }
+}
+@media(max-width:410px){
+  .espaço-preenchidoPedidos{
+    margin: 0 10%;  
+  }
+  .cardpedidos-div p{
+    font-size: 14px;
+  }
 }

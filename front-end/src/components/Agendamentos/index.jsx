@@ -62,10 +62,11 @@ const Agendamento = ({ infos }) => {
       <div className="namoral">
         <div className="left-div">
           <h3>Data: {datas}</h3>
-        </div>
-        <div className="middle-div">
           <h3>Hora: {infos.hora}</h3>
         </div>
+        {/* <div className="middle-div">
+          <h3>Hora: {infos.hora}</h3>
+        </div> */}
         <div className="right-div">
           <button
             className="btn-details"
@@ -80,11 +81,11 @@ const Agendamento = ({ infos }) => {
           <FaTrash className="agendamento_options"/>
         </button>
       </div>
-        <ul className={`informacoes_Agendamentos ${infoOpen && 'ativo'}`}>
+        <div className={`informacoes_Agendamentos ${infoOpen && 'ativo'}`}>
           <div className="la-line"></div>
           <p className="usuario">Nome do agendante: {infos.nome}</p>
           <p className="usuario">Contato: {infos.email}</p>
-        </ul>
+        </div>
     </div>
         <Modal 
         visivel={visible}

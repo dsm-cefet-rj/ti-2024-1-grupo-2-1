@@ -11,17 +11,17 @@ store.dispatch(fetchUser());
 
 function App() {
   // Function to clear complete cache data
-  const clearCacheData = () => {
-    caches.keys().then((names) => {
-      names.forEach((name) => {
-        caches.delete(name);
-      });
-    });
+  // const clearCacheData = () => {
+  //   caches.keys().then((names) => {
+  //     names.forEach((name) => {
+  //       caches.delete(name);
+  //     });
+  //   });
     // alert('Complete Cache Cleared')
-  };
-  useEffect(()=>{
-      clearCacheData();
-  },[])
+  // };
+  // useEffect(()=>{
+  //     clearCacheData();
+  // },[])
   return (
     <Provider store={store} persistor={persistor}>
       <AppRouter />

@@ -1,6 +1,6 @@
 .cardagendamento-div{
     border: 2px solid black;
-    width: 40rem;
+    width: 30rem;
     border-radius: 8px;
     padding: 1.5rem 0.2rem 0.5rem 0.2rem;
     display: flex;
@@ -14,19 +14,17 @@
 }
 
 .left-div{
-    margin-left: 1rem;
-    margin-top: 1.4rem;
+    margin-left: 5%;
 }
 
 .middle-div{
     margin-top: 1.4rem;
 }
-.left-div h3,
-.middle-div h3{
+.left-div h3{
     font-size: 23px;
 }
 .Agendamento_Cancel{
-    left: 27rem;
+    right: 35%;
     top:2rem;
     color: rgb(8, 59, 134);
     padding: 0.35rem;
@@ -52,7 +50,7 @@
 
 }
 .right-div{
-    margin-right: 1rem;
+    margin-right: 5%;
 }
 .btn-details{
     font-size: 17px;
@@ -98,7 +96,7 @@
 }
 @keyframes shrink3 {
     0% {
-      height: 150px;
+      height: 100px;
     }
     100% {
       height: 0px;
@@ -116,48 +114,41 @@
       height: 0px;
     }
     100% {
-      height: 150px; /* Altura final da barra */
+      height: 100px; /* Altura final da barra */
     }
   }
 
 .la-line{
-    margin-bottom: 5px;
     padding-bottom: 2px;
     border-bottom: 2px solid #555;
     max-width: 100%;
-    margin-right: 2rem;
+    margin: 0.3rem 5%;
 }
 
 .namoral{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
 }
 
 .usuario{
-    margin-top: 1rem;
-    text-align: center;
+    margin-left: 5%;
+    margin-bottom:0;
+    /* text-align: center; */
     font-size: 28px;
     font-family: Arial;
     font-style: normal;
     color: #000000;
 }
 @media(max-width:680px){
-
     .cardagendamento-div{
-        font-size: 20px;
-        width: 34.5rem;
+        padding: 1rem 0.2rem 0rem 0.2rem;
     }
-    .left-div h3,
-    .middle-div h3{
+    .left-div h3{
         font-size: 20px;
-    }
-    .middle-div{
-        margin-left: -3.4rem;
     }
     .Agendamento_Cancel{
-        left: 22rem;
-        top:2rem;
+        top:1.4rem;
     }
     .agendamento_options{
         font-size: 35px;
@@ -165,38 +156,15 @@
     .btn-details{
         height: 3.5rem;
     }
-}
-
-@media(max-width:595px){
-    .cardagendamento-div{
-        font-size: 18px;
-        width: 27rem;
-    }
-    .left-div h3,
-    .middle-div h3{
-        font-size: 18px;
-    }
-    .left-div{
-        margin-left: 0.2rem;
-    }
-    .Agendamento_Cancel{
-        left: 17.5rem;
-    }
-    .agendamento_options{
-        font-size: 30px;
-    }
-    .btn-details{
-        height: 3.5rem;
-        font-size: 14px;
-        width: 5rem;
+    .usuario{
+        font-size: 23px;
     }
     .informacoes_Agendamentos{
         animation: shrink4 0.7s ease-in-out alternate;
-        transition: opacity 0.7s ease-in-out, visibility 0.7s ease-in-out; /* Animação de 0.5s com easing */
     }
     @keyframes shrink4 {
         0% {
-          height: 100px;
+          height: 75px;
         }
         100% {
           height: 0px;
@@ -204,103 +172,87 @@
     }
     .informacoes_Agendamentos.ativo{
         animation: grow4 0.7s ease-in-out forwards;
-        transition: opacity 0.7s ease-in-out, visibility 0.7s ease-in-out; /* Animação de 0.5s com easing */
     }
     @keyframes grow4 {
         0% {
           height: 0px;
         }
         100% {
-          height: 100px; /* Altura final da barra */
+          height: 75px; /* Altura final da barra */
         }
       }
+}
+
+@media(max-width:595px){
+    .left-div h3{
+        font-size: 18px;
+    }
+    .Agendamento_Cancel{
+        top:20px}
+    .agendamento_options{
+        font-size: 30px;
+    }
+    .btn-details{
+        height: 3rem;
+        font-size: 14px;
+        width: 5rem;
+    }
     .usuario{
-        margin-top: 1rem;
         font-size: 20px;
     }
 }
 
-@media(max-width:460px){
+@media(max-width:510px){
     .cardagendamento-div{
         font-size: 15px;
-        width: 22rem;
+        width: 25rem;
     }
-    .left-div h3,
-    .middle-div h3{
+    .left-div h3{
         font-size: 13px;
     }
-    .left-div{
-        margin-left: 0.2rem;
-    }
     .Agendamento_Cancel{
-        left: 13rem;
+        height: 2.5rem;
+        width: 2.5rem;
+        top:15px;
     }
     .agendamento_options{
         font-size: 25px;
     }
     .btn-details{
-        height: 3.25rem;
+        margin-top: -5px;
+        height: 2.85rem;
         font-size: 12px;
         width: 4.5rem;
     }
-    .informacoes_Agendamentos{
-        animation: shrink5 0.7s ease-in-out alternate;
-        transition: opacity 0.7s ease-in-out, visibility 0.7s ease-in-out; /* Animação de 0.5s com easing */
-    }
-    @keyframes shrink5 {
-        0% {
-          height: 80px;
-        }
-        100% {
-          height: 0px;
-        }
-    }
-    .informacoes_Agendamentos.ativo{
-        animation: grow5 0.7s ease-in-out forwards;
-        transition: opacity 0.7s ease-in-out, visibility 0.7s ease-in-out; /* Animação de 0.5s com easing */
-    }
-    @keyframes grow5 {
-        0% {
-          height: 0px;
-        }
-        100% {
-          height: 80px; /* Altura final da barra */
-        }
-      }
     .usuario{
-        margin-top: 1rem;
         font-size: 15px;
     }
     
 }
 
-@media(max-width:380px){
+@media(max-width:430px){
     .cardagendamento-div{
-        font-size: 12px;
+        font-size: 13px;
         width: 18rem;
-        padding: 1.5rem 0.1rem 0.5rem 0rem;
+        padding: 0.8rem 0.1rem 0rem 0.1rem;
     }
-    .left-div h3,
-    .middle-div h3{
+    .left-div h3{
         font-size: 11px;
     }
-    .left-div{
-        margin-left: 0.2rem;
-    }
-    .middle-div{
-        margin-left: -3rem;
-    }
+    
     .Agendamento_Cancel{
-        left: 10.4rem;
+        top:14px;
+        width: 2rem;
+        height: 2rem;
     }
     .agendamento_options{
         font-size: 20px;
     }
     .btn-details{
-        height: 2.5rem;
+        margin-top:-2.5px;
+        height: 2.25rem;
         font-size: 11px;
         width: 4rem;
-        margin-right: -0.5rem;
     }
     .informacoes_Agendamentos{
         animation: shrink6 0.7s ease-in-out alternate;
@@ -327,7 +279,6 @@
         }
       }
     .usuario{
-        margin-top: 1rem;
         font-size: 13px;
     }
 }
